@@ -1,0 +1,775 @@
+@use "../core/variables" as *;
+@use "../core/mixins" as *;
+
+// ─────────────────────────────────────────────
+// C-HEADER
+// ─────────────────────────────────────────────
+.c-header {
+  width: 100%;
+  position: relative;
+  z-index: 400;
+
+  // ── TOP BAR ──────────────────────────────────
+  &__top {
+    background-color: var(--color-grey);
+    padding: 8px 0;
+    width: 100%;
+
+    &--content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .left-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+
+        &--item {
+          margin-left: 10px;
+          margin-right: 10px;
+          list-style: none;
+
+          .link {
+            color: var(--color-white);
+            font-size: var(--fontSize13);
+            transition: all ease 0.5s;
+            display: inline-block;
+            text-decoration: none;
+
+            &:hover,
+            &:focus { color: #b1c0cc; }
+          }
+        }
+      }
+
+      .right-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+
+        &--item {
+          margin-left: 10px;
+          margin-right: 10px;
+          list-style: none;
+
+          .link {
+            display: block;
+            background-color: var(--color-light-grey2);
+            border: #bfc6cc dotted 1px;
+            padding: 7px;
+            box-shadow: 0 1px 20px 1px var(--color-light-grey2);
+            border-radius: 10px;
+            color: var(--color-white);
+            font-size: var(--fontSize13);
+            transition: all ease 0.5s;
+            text-decoration: none;
+
+            &:hover,
+            &:focus { background-color: var(--color-primary2); }
+          }
+
+          &:last-child { margin-right: 0; }
+        }
+      }
+    }
+  }
+
+  // ── BOTTOM BAR ───────────────────────────────
+  &__bottom {
+    background-color: var(--color-white);
+
+    &--content {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .header-logo {
+        position: absolute;
+        left: 0;
+        top: -16px;
+        z-index: 10;
+        display: none;
+
+        .link {
+          padding: 0.5rem;
+          background-color: var(--color-white);
+          border-radius: 0.5rem;
+          display: block;
+        }
+
+        img { height: 65px; width: auto; }
+      }
+
+      .mobile-logo {
+        width: 185px;
+
+        img { width: 100%; height: auto; }
+      }
+
+      .menu-section {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 4px;
+      }
+    }
+
+    // Sticky fixed state
+    &.fixedmenu {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      height: 90px;
+      z-index: 400;
+      animation: smoothScroll 1s forwards;
+      box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+
+      .c-header__bottom--content .header-logo { display: none; }
+    }
+  }
+}
+
+@keyframes smoothScroll {
+  0%   { transform: translateY(-90px); }
+  100% { transform: translateY(0); }
+}
+
+// ─────────────────────────────────────────────
+// DESKTOP STELLARNAV
+// ─────────────────────────────────────────────
+.navigationsection {
+  clear: right;
+  float: right;
+  position: relative;
+  margin-top: 15px;
+}
+
+.stellarnav {
+  position: relative;
+  width: 100%;
+  z-index: 9900;
+  line-height: normal;
+
+  &__root {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    > li {
+      display: inline-block;
+      position: relative;
+      margin-right: 12px;
+
+      &:first-child { margin-left: 0 !important; }
+      &:last-child  { margin-right: 0; }
+
+      > a {
+        display: block;
+        padding: 10px 0 25px;
+        text-decoration: none;
+        color: #43464b;
+        font-size: var(--fontSize14);
+        font-weight: var(--fontMedium);
+        white-space: nowrap;
+        transition: color 0.3s ease-out;
+
+        &:hover { color: var(--color-primary); }
+
+        i {
+          color: var(--color-primary);
+          font-size: 12px;
+          font-weight: var(--fontSemiBold);
+          margin-left: 3px;
+          vertical-align: middle;
+        }
+      }
+
+      &.has-sub {
+        > .sub-menu {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 235px;
+          background-color: var(--color-white);
+          box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+          z-index: 9999;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          border-top: 3px solid var(--color-primary);
+        }
+
+        &:hover > .sub-menu { display: block; }
+      }
+
+      &.drop-left > .sub-menu { left: auto; right: 0; }
+    }
+  }
+
+  .sub-menu {
+    li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      border-top: 1px dashed #ededed;
+
+      &:first-child { border-top: none; }
+
+      > a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        color: #333;
+        font-size: var(--fontSize13);
+        font-weight: var(--fontRegular);
+        text-decoration: none;
+        transition: all 0.25s ease;
+        white-space: nowrap;
+
+        &:hover {
+          color: var(--color-primary);
+          background-color: var(--color-light-grey);
+          padding-left: 20px;
+        }
+      }
+
+      &.has-sub--nested {
+        > a .sub-arrow {
+          color: var(--color-primary);
+          font-size: 14px;
+          flex-shrink: 0;
+          margin-left: auto;
+        }
+
+        > .sub-menu--nested {
+          display: none;
+          position: absolute;
+          top: 0;
+          left: 100%;
+          width: 215px;
+          background-color: var(--color-white);
+          box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+          z-index: 9999;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          border-top: 3px solid var(--color-primary);
+        }
+
+        &:hover > .sub-menu--nested { display: block; }
+      }
+    }
+  }
+
+  .drop-left .sub-menu--nested { left: auto; right: 100%; }
+
+  &.dark .sub-menu {
+    background-color: var(--color-white);
+    box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.08);
+  }
+}
+
+// ─────────────────────────────────────────────
+// MOBILE HAMBURGER BUTTON
+// Shown only on ≤991px, uses var(--color-primary)
+// ─────────────────────────────────────────────
+.mobile-nav__hamburger {
+  display: none;          // shown via media query below
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 6px;
+  line-height: 1;
+
+  i {
+    font-size: 26px;
+    color: var(--color-primary);   // ← primary maroon color as requested
+    transition: opacity 0.2s ease;
+  }
+
+  &:hover i { opacity: 0.8; }
+}
+
+// ─────────────────────────────────────────────
+// OTHERICON — info sidebar trigger (ri-menu-3-fill)
+// Always visible, unchanged from original
+// ─────────────────────────────────────────────
+.othericon {
+  margin-left: 8px;
+  cursor: pointer;
+
+  i {
+    font-size: 24px;
+    color: #43464b;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover { color: var(--color-primary); }
+  }
+}
+
+// ─────────────────────────────────────────────
+// MOBILE NAV DRAWER
+// Black background, slide from left — exact match to browser screenshot
+// ─────────────────────────────────────────────
+
+// Dark overlay behind drawer
+.mobile-nav__overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9000;
+  cursor: pointer;
+}
+
+// Slide-in panel
+.mobile-nav__drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 280px;
+  background-color: var(--color-black);   // pure black as in screenshot
+  z-index: 9100;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+
+  &--open { transform: translateX(0); }
+}
+
+// ── Top bar: phone | location | CLOSE ────────
+// Three equal thirds, black background, white icons/text
+// Exactly matches browser HTML .call-btn-mobile.third / .location-btn-mobile.third / .close-menu.third
+.mobile-nav__topbar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-shrink: 0;
+  background-color: var(--color-black);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.mobile-nav__topbar-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--color-white);
+  box-sizing: border-box;
+  padding: 15px;
+
+  // .third — exactly 33% width as in browser stellarnav CSS
+  &.third {
+    width: 33.333%;
+    text-align: center;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+
+    &:first-child { border-left: 0; }
+  }
+
+  &:hover { background-color: rgba(255, 255, 255, 0.08); }
+}
+
+// Phone and location SVG icons
+.mobile-nav__topbar-svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--color-white);
+}
+
+// Close button text + × icon
+.mobile-nav__close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--fontSize13);
+  font-weight: var(--fontMedium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  gap: 5px;
+  color: var(--color-white);
+}
+
+// The × close icon (same .icon-close as browser stellarnav)
+.mobile-nav__close-icon {
+  box-sizing: border-box;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 4px;
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 0;
+    border-bottom: solid 3px var(--color-white);
+    position: absolute;
+    top: 50%;
+  }
+
+  &::before { transform: rotate(45deg); }
+  &::after  { transform: rotate(-45deg); }
+}
+
+// ── Scrollable nav body ───────────────────────
+.mobile-nav__body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.mobile-nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// ── Nav items — black bg, white text, dashed borders ─────────
+// Matches browser screenshot exactly
+.mobile-nav__item {
+  list-style: none;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+
+  // Leaf link
+  .mobile-nav__link {
+    display: block;
+    padding: 13px 16px;
+    color: var(--color-white);
+    font-size: var(--fontSize14);
+    font-weight: var(--fontRegular);
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.06);
+      color: var(--color-accent-yellow);
+    }
+  }
+
+  // Parent toggle button — label left, + / × right
+  .mobile-nav__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 13px 16px;
+    background: none;
+    border: none;
+    color: var(--color-white);
+    font-size: var(--fontSize14);
+    font-weight: var(--fontRegular);
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s ease;
+
+    &:hover { background-color: rgba(255, 255, 255, 0.06); }
+
+    // + / × character icon on the right
+    .mobile-nav__toggle-icon {
+      font-size: 20px;
+      font-weight: var(--fontLight);
+      line-height: 1;
+      color: rgba(255, 255, 255, 0.7);
+      flex-shrink: 0;
+      margin-left: 8px;
+      transition: color 0.2s ease;
+    }
+  }
+
+  // Open state — item highlighted
+  &--open {
+    > .mobile-nav__toggle {
+      background-color: rgba(255, 255, 255, 0.05);
+
+      .mobile-nav__toggle-icon {
+        color: var(--color-white);
+      }
+    }
+  }
+
+  // ── Sub-list ──────────────────────────────────
+  .mobile-nav__sub {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    // Depth 1 — slight indent, slightly darker bg
+    &--depth-1 {
+      background-color: rgba(255, 255, 255, 0.03);
+
+      .mobile-nav__link,
+      .mobile-nav__toggle {
+        padding-left: 28px;
+        font-size: var(--fontSize13);
+        color: rgba(255, 255, 255, 0.85);
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+      }
+
+      .mobile-nav__item { border-bottom: none; }
+    }
+
+    // Depth 2 — deeper indent, darker still
+    &--depth-2 {
+      background-color: rgba(255, 255, 255, 0.05);
+
+      .mobile-nav__link,
+      .mobile-nav__toggle {
+        padding-left: 44px;
+        font-size: var(--fontSize13);
+        color: rgba(255, 255, 255, 0.7);
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+      }
+
+      .mobile-nav__item { border-bottom: none; }
+    }
+  }
+}
+
+// ─────────────────────────────────────────────
+// INFO SIDEBAR MODAL (right slide)
+// ─────────────────────────────────────────────
+.sidebarModal {
+  &.modal {
+    display: block;
+    z-index: 9999;
+
+    .modal-dialog {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      max-width: 340px;
+      margin: 0;
+    }
+
+    .modal-content {
+      height: 100%;
+      border-radius: 0;
+      border: none;
+      overflow-y: auto;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+      z-index: 10;
+      line-height: 1;
+
+      &:hover { color: var(--color-primary); }
+    }
+
+    .modal-body {
+      padding: 25px;
+
+      .sidebar-logo-link {
+        display: block;
+
+        .main-logo { width: 70%; height: auto; }
+      }
+
+      .sidebar-content {
+        margin-top: 35px;
+        margin-bottom: 40px;
+
+        h3 {
+          font-size: var(--fontSize22);
+          font-weight: var(--fontSemiBold);
+          margin-bottom: 15px;
+        }
+
+        p {
+          font-size: var(--fontSize14);
+          line-height: 1.7;
+          color: #555;
+          margin-bottom: 40px;
+        }
+
+        .sidebar-btn { margin-top: 25px; }
+      }
+
+      .sidebar-contact-info {
+        margin-top: 30px;
+
+        h3 {
+          font-size: var(--fontSize22);
+          font-weight: var(--fontSemiBold);
+          margin-bottom: 0;
+        }
+
+        .info-list {
+          padding-left: 0;
+          margin-top: 20px;
+          margin-bottom: 0;
+
+          li {
+            list-style: none;
+            font-size: var(--fontSize14);
+            color: #555;
+            font-weight: var(--fontMedium);
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 22px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+
+            &:last-child { margin-bottom: 0; }
+
+            i {
+              position: absolute;
+              left: 0;
+              top: 2px;
+              color: var(--color-primary2);
+              flex-shrink: 0;
+            }
+
+            a {
+              color: #555;
+              text-decoration: none;
+
+              &:hover { color: var(--color-primary2); }
+            }
+          }
+        }
+      }
+
+      .sidebar-social-list {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+
+        li a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          i {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 35px;
+            width: 35px;
+            font-size: var(--fontSize16);
+            background: var(--color-primary2);
+            color: var(--color-white);
+            border-radius: 50%;
+            transition: all ease 0.5s;
+
+            &:hover {
+              transform: translateY(-5px);
+              background-color: #43464b;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Shared backdrop
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+
+  &.show { opacity: 1; }
+}
+
+// ─────────────────────────────────────────────
+// RESPONSIVE BREAKPOINTS
+// ─────────────────────────────────────────────
+
+// ≥ 576px — top bar row
+@media (min-width: 576px) {
+  .c-header__top--content {
+    flex-direction: row;
+    justify-content: flex-end;
+
+    .right-content {
+      margin-top: 0;
+
+      &--item:last-child { margin-right: 0; }
+    }
+  }
+}
+
+// ≥ 992px
+@media (min-width: 992px) {
+  .c-header__bottom--content .mobile-logo { width: 224px; }
+  .navigationsection { margin-top: 0; margin-right: 15px; }
+}
+
+// ≤ 1199px — tighter desktop nav spacing
+@media only screen and (max-width: 1199px) {
+  .stellarnav__root > li { margin-right: 6px; }
+}
+
+// ≥ 1200px — show floating desktop logo
+@media (min-width: 1200px) {
+  .c-header__bottom--content {
+    .header-logo {
+      display: block;
+      top: -8px;
+
+      img { height: 65px; width: auto; }
+    }
+  }
+}
+
+// ≥ 1400px — larger desktop logo
+@media (min-width: 1400px) {
+  .c-header__bottom--content {
+    .header-logo {
+      top: -12px;
+
+      img { height: 85px; width: auto; }
+    }
+  }
+}
+
+// ≤ 991px — MOBILE MODE
+// Hide desktop nav, show mobile hamburger
+@media only screen and (max-width: 991px) {
+  .navigationsection { display: none; }
+
+  // Show mobile hamburger in primary color
+  .mobile-nav__hamburger { display: flex; }
+}

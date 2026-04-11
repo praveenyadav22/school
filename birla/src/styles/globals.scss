@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+// ── Vendors ──────────────────────────────────────────────────
+@use 'vendors/lucide';
+@use 'vendors/bootstrap.min';
+
+// ── Core (order matters: variables → mixins → typography) ────
+@use 'custom/core/variables' as *;
+@use 'custom/core/mixins' as *;
+@use 'custom/core/typography';
+
+// ── Generic utilities ────────────────────────────────────────
+@use 'custom/components/generic/basic';
+@use 'custom/components/generic/colors';
+@use 'custom/components/generic/loader';
+@use 'custom/components/generic/sizes';
+
+// ── Components ───────────────────────────────────────────────
+@use 'custom/components/animation';
+@use 'custom/components/banner';
+@use 'custom/components/button';
+@use 'custom/components/card';
+@use 'custom/components/homepage';
+@use 'custom/components/homeslider';
+
+// ── Layout ───────────────────────────────────────────────────
+@use 'custom/layout/header';
+@use 'custom/layout/footer';
+
+// ── One-off global helpers ────────────────────────────────────
+.ratio-9x16 {
+  --bs-aspect-ratio: 133.3333%;
+}

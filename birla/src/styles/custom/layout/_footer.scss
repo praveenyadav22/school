@@ -1,0 +1,299 @@
+@use "../core/variables" as *;
+@use "../core/mixins" as *;
+
+// ─────────────────────────────────────────────
+// C-FOOTER
+// ─────────────────────────────────────────────
+.c-footer {
+  background-color: var(--color-grey2);
+
+  &__top {
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+    &--title {
+      font-size: var(--fontSize20);
+      color: var(--color-white);
+      font-weight: var(--fontRegular);
+      margin-bottom: 10px;
+      margin-top: 30px;
+    }
+
+    ul.footer-link {
+      display: flex;
+      flex-direction: column;
+      padding-left: 0;
+      margin: 0;
+
+      li.item {
+        list-style-type: none;
+        border-bottom: #42515c solid 1px;
+
+        .link {
+          display: block;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          color: var(--color-white);
+          font-size: var(--fontSize14);
+          position: relative;
+          transition: all ease 0.5s;
+          -webkit-transition: all ease 0.5s;
+          -ms-transition: all ease 0.5s;
+          -o-transition: all ease 0.5s;
+          padding-left: 20px;
+          text-decoration: none;
+
+          &::before {
+               content: "";
+    background-image: url(/images/icons/right-arrow-white.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    top: 8px;
+    left: 0;
+          }
+
+          &:hover {
+            color: #a6b4c0;
+            padding-left: 35px;
+
+            &::before {
+              color: #a6b4c0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// ─────────────────────────────────────────────
+// C-FOOTERCONTENT
+// ─────────────────────────────────────────────
+.c-footercontent {
+  width: 100%;
+  color: var(--color-white);
+
+  &__title {
+    font-size: 1rem;
+    font-weight: var(--fontMedium);
+    margin-bottom: 8px;
+    color: var(--color-white);
+  }
+
+  &__text {
+    position: relative;
+    color: var(--color-white);
+    font-size: var(--fontSize14);
+    margin-bottom: 8px;
+    transition: all ease 0.5s;
+    -webkit-transition: all ease 0.5s;
+    -ms-transition: all ease 0.5s;
+    -o-transition: all ease 0.5s;
+
+    &.withoutlink {
+      padding-left: 20px;
+    }
+
+    &::before {
+      position: absolute;
+      font-size: var(--fontSize14);
+      color: var(--color-white);
+      left: 0;
+      top: 0;
+      font-family: remixicon !important;
+    }
+
+    &.address::before {
+      content: "\ef14";
+    }
+
+    &.phone::before {
+      content: "\efe9";
+    }
+
+    &.mail::before {
+      content: "\eef6";
+    }
+
+    &.globe::before {
+      content: "\edd1";
+    }
+
+    .link {
+      transition: all ease 0.5s;
+      -webkit-transition: all ease 0.5s;
+      -ms-transition: all ease 0.5s;
+      -o-transition: all ease 0.5s;
+      font-size: var(--fontSize14);
+      color: var(--color-white);
+      padding-left: 20px;
+      text-decoration: none;
+
+      &:hover {
+        padding-left: 35px;
+        color: #a6b4c0;
+      }
+    }
+  }
+}
+
+// ─────────────────────────────────────────────
+// C-FOOTERCONTENT ICON (app store row)
+// ─────────────────────────────────────────────
+.c-footercontent-icon {
+  ul {
+    padding-left: 0;
+    margin: 0;
+
+    li {
+      display: inline;
+      list-style-type: none;
+      margin-bottom: 5px;
+      padding-bottom: 5px;
+      margin-right: 2px;
+    }
+  }
+}
+
+// ─────────────────────────────────────────────
+// C-COPYRIGHT
+// ─────────────────────────────────────────────
+.c-copyright {
+  background-color: var(--color-primary);
+  border-top: var(--color-primary-border) solid 1px;
+  position: relative;
+
+  .copyright {
+    padding: 10px 0;
+  }
+
+  .list {
+    ul {
+      padding-left: 0;
+      margin-bottom: 0;
+      float: right;
+      text-align: center;
+
+      li {
+        display: inline-block;
+        margin-right: 15px;
+
+        a {
+          color: var(--color-white);
+          font-size: var(--fontSize13);
+          transition: all ease 0.5s;
+          text-decoration: none;
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ─────────────────────────────────────────────
+// COPYRIGHT COPY block
+// ─────────────────────────────────────────────
+.copyright {
+  .copy {
+    text-align: center;
+
+    p {
+      color: var(--color-white);
+      font-size: var(--fontSize13);
+      margin: 0;
+
+      a {
+        color: var(--color-white);
+        text-decoration: none;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
+
+// ─────────────────────────────────────────────
+// BOTTOM LINKS / COPY ORDER (mobile-first)
+// ─────────────────────────────────────────────
+.bottom-links {
+  order: 1;
+}
+
+.copy {
+  order: 2;
+}
+
+// ─────────────────────────────────────────────
+// SCROLL TO TOP
+// ─────────────────────────────────────────────
+.scroll-top {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-black);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  text-decoration: none;
+  z-index: 999;
+
+  i {
+    font-size: 2rem;
+    color: var(--color-white);
+  }
+
+  &:hover {
+    background-color: var(--color-primary);
+    opacity: 1;
+  }
+}
+
+// ─────────────────────────────────────────────
+// RESPONSIVE BREAKPOINTS
+// ─────────────────────────────────────────────
+
+// ≥ 576px – swap order of copy/bottom-links
+@media (min-width: 576px) {
+  .bottom-links {
+    order: 2;
+  }
+
+  .copy {
+    order: 1;
+  }
+}
+
+// ≥ 992px – footer title loses top margin
+@media (min-width: 992px) {
+  .c-footer__top--title {
+    margin-top: 0;
+  }
+}
+
+// ≥ 1200px – copyright copy left-aligned, list unset
+@media (min-width: 1200px) {
+  .copyright .copy {
+    text-align: left;
+  }
+
+  .c-copyright .list ul {
+    text-align: unset;
+  }
+}

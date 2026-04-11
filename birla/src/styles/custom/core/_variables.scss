@@ -1,0 +1,81 @@
+// ─────────────────────────────────────────────────────────────
+// _variables.scss
+// All design tokens as CSS custom properties on :root + body
+// ─────────────────────────────────────────────────────────────
+
+:root {
+  // ── Font (injected by Next.js Poppins loader onto <html>) ──
+  --font-poppins: "Poppins", sans-serif;
+  --font-primary: var(--font-poppins);
+  --font-secondary: var(--font-poppins);
+
+  // ── Font weights ──────────────────────────────────────────
+  --fontUltraThin : 100;
+  --fontThin      : 200;
+  --fontLight     : 300;
+  --fontRegular   : 400;
+  --fontMedium    : 500;
+  --fontSemiBold  : 600;
+  --fontBold      : 700;
+  --fontBolder    : 900;
+
+  // ── Font sizes ────────────────────────────────────────────
+  --fontSize10: 10px;
+  --fontSize12: 12px;
+  --fontSize13: 13px;
+  --fontSize14: 14px;
+  --fontSize15: 15px;
+  --fontSize16: 16px;
+  --fontSize17: 17px;
+  --fontSize18: 18px;
+  --fontSize19: 19px;
+  --fontSize20: 20px;
+  --fontSize22: 22px;
+  --fontSize24: 24px;
+  --fontSize25: 25px;
+  --fontSize26: 26px;
+  --fontSize28: 28px;
+  --fontSize30: 30px;
+  --fontSize32: 32px;
+  --fontSize34: 34px;
+  --fontSize35: 35px;
+  --fontSize36: 36px;
+  --fontSize38: 38px;
+  --fontSize40: 40px;
+  --fontSize42: 42px;
+  --fontSize44: 44px;
+  --fontSize45: 45px;
+  --fontSize46: 46px;
+  --fontSize48: 48px;
+  --fontSize50: 50px;
+  --fontSize52: 52px;
+  --fontSize58: 58px;
+  --fontSize60: 60px;
+  --fontSize65: 65px;
+  --fontSize68: 68px;
+  --fontSize72: 72px;
+  --fontSize80: 80px;
+
+  // ── Dynamic font scaling controls ────────────────────────
+  --font-increase   : 0;
+  --font-decrease   : 0;
+  --scaling-factor  : 0.85;
+
+  // ── Colours ───────────────────────────────────────────────
+  --color-white       : #ffffff;
+  --color-black       : #000000;
+  --color-grey        : #384450;
+  --color-grey2       : #374550;
+  --color-light-grey  : #f1f1f1;
+  --color-light-grey2 : #4d5864;
+  --color-light-grey3 : #475e71;
+
+  // Theme — maroon palette
+  --color-primary        : #a43605;
+  --color-primary2       : #b83f06;
+  --color-primary-hover  : #a53805;
+  --color-primary-border : #d95116;
+
+  // Accent
+  --color-accent-yellow : #ffc107;
+}

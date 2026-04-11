@@ -1,0 +1,9 @@
+@use "../../core/variables" as *;
+@use "../../core/mixins" as *;
+@use "../generic/sizes" as *;
+
+.cus-container {
+  @include mq(desktop-wide-max) {
+    max-width: 1520px;
+  }
+}
