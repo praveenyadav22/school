@@ -1,0 +1,184 @@
+@use "../core/variables" as *;
+@use "../core/mixins" as *;
+@use "../components/generic/sizes" as *;
+
+// ─────────────────────────────────────────────
+// BODY CONTENT WRAPPER
+// ─────────────────────────────────────────────
+.body-conent {
+  width: 100%;
+}
+
+// ─────────────────────────────────────────────
+// C-HOMECIRCULARSLIST
+// ─────────────────────────────────────────────
+.c-homeCircularslist {
+  padding: 30px 15px;
+  background-color: var(--color-white);
+  margin-bottom: 30px;
+  @include transition(all ease 0.5s);
+  @include box-shadow(0 0 20px 3px rgba(0, 0, 0, 0.08));
+
+  // ── Lift card on hover ────────────────────────
+  &:hover {
+    @include translateY(-10px);
+
+    .c-homeCircularslist__title {
+      color: var(--color-primary2);
+    }
+  }
+
+  // ── Title ─────────────────────────────────────
+  &__title {
+    font-size: var(--fontSize22);
+    @include transition(all ease 0.5s);
+    color: var(--color-grey2);
+    font-weight: var(--fontMedium);
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 15px;
+
+    // Remixicon clipboard icon before title
+    &::before {
+      content: "\ecda";
+      font-family: remixicon;
+      position: absolute;
+      left: 0;
+      top: -5px;
+      color: var(--color-primary2);
+      font-size: 28px;
+    }
+  }
+
+  // ── Scrolling content area ─────────────────────
+  &__content {
+    height: 180px;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 30px;
+
+    ul.listitem {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      li.item {
+        @include flexbox();
+        @include flex-direction(column, vertical);
+        @include justify-content(center);
+        @include align-items(center);
+
+        // ── Date badge ──────────────────────────
+        span {
+          width: 100%;
+          @include flexbox();
+          @include align-items(center);
+          @include justify-content(center);
+          padding: 10px 6px;
+          background-color: #2c3640;
+          color: var(--color-white);
+
+          i {
+            display: inline-block;
+            margin-right: 10px;
+          }
+        }
+
+        // ── Link text ────────────────────────────
+        .text {
+          width: 100%;
+
+          a {
+            background-color: var(--color-light-grey);
+            padding: 10px 6px;
+            font-size: var(--fontSize13);
+            width: 100%;
+            display: block;
+            @include transition(all ease 0.5s);
+            font-weight: var(--fontMedium);
+            color: #2e3b45;
+            text-decoration: none;
+
+            &:hover {
+              background-color: var(--color-primary2);
+              color: var(--color-white);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // ── Responsive: row layout at ≥ 992px ────────
+  @include mq('tablet-max') {
+    &__content ul.listitem li.item {
+      @include flex-direction(row, horizontal);
+      margin: 10px 0;
+
+      span {
+        width: 150px;
+        height: 100%;
+      }
+
+      .text {
+        @include calc(width, "100% - 150px");
+      }
+    }
+  }
+}
+
+// ─────────────────────────────────────────────
+// DEFAULT-BTN — Explore More button
+// ─────────────────────────────────────────────
+.default-btn {
+  background-color: var(--color-light-grey);
+  color: #b2b2b2;
+  font-size: var(--fontSize16);
+  padding: 5px 15px;
+  border-radius: 0;
+  position: relative;
+  @include transition(all ease 0.5s);
+  z-index: 1;
+  text-decoration: none;
+  display: inline-block;
+
+  i {
+    position: relative;
+    top: 3px;
+    padding-left: 5px;
+    color: var(--color-primary2);
+  }
+
+  // Sliding dark overlay — scaleX on hover
+  &::before {
+    position: absolute;
+    content: "";
+    background-color: #43464b;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    @include transition(all ease 0.5s);
+    z-index: -1;
+    @include border-radius(30px);
+  }
+
+  &:hover {
+    color: var(--color-white);
+    @include border-radius(30px);
+
+    i {
+      color: var(--color-white);
+    }
+
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+}

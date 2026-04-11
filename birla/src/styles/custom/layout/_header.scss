@@ -41,7 +41,9 @@
             text-decoration: none;
 
             &:hover,
-            &:focus { color: #b1c0cc; }
+            &:focus {
+              color: #b1c0cc;
+            }
           }
         }
       }
@@ -71,10 +73,14 @@
             text-decoration: none;
 
             &:hover,
-            &:focus { background-color: var(--color-primary2); }
+            &:focus {
+              background-color: var(--color-primary2);
+            }
           }
 
-          &:last-child { margin-right: 0; }
+          &:last-child {
+            margin-right: 0;
+          }
         }
       }
     }
@@ -105,13 +111,19 @@
           display: block;
         }
 
-        img { height: 65px; width: auto; }
+        img {
+          height: 65px;
+          width: auto;
+        }
       }
 
       .mobile-logo {
         width: 185px;
 
-        img { width: 100%; height: auto; }
+        img {
+          width: 100%;
+          height: auto;
+        }
       }
 
       .menu-section {
@@ -132,14 +144,21 @@
       animation: smoothScroll 1s forwards;
       box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
 
-      .c-header__bottom--content .header-logo { display: none; }
+      .c-header__bottom--content .header-logo {
+        display: none;
+      }
     }
   }
 }
 
 @keyframes smoothScroll {
-  0%   { transform: translateY(-90px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(-90px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 // ─────────────────────────────────────────────
@@ -171,20 +190,27 @@
       position: relative;
       margin-right: 12px;
 
-      &:first-child { margin-left: 0 !important; }
-      &:last-child  { margin-right: 0; }
+      &:first-child {
+        margin-left: 0 !important;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
 
       > a {
         display: block;
-        padding: 10px 0 25px;
+        padding: 10px 0 10px;
         text-decoration: none;
         color: #43464b;
         font-size: var(--fontSize14);
-        font-weight: var(--fontMedium);
+        font-weight: var(--fontRegular);
         white-space: nowrap;
         transition: color 0.3s ease-out;
 
-        &:hover { color: var(--color-primary); }
+        &:hover {
+          color: var(--color-primary);
+        }
 
         i {
           color: var(--color-primary);
@@ -211,10 +237,15 @@
           border-top: 3px solid var(--color-primary);
         }
 
-        &:hover > .sub-menu { display: block; }
+        &:hover > .sub-menu {
+          display: block;
+        }
       }
 
-      &.drop-left > .sub-menu { left: auto; right: 0; }
+      &.drop-left > .sub-menu {
+        left: auto;
+        right: 0;
+      }
     }
   }
 
@@ -226,7 +257,9 @@
       position: relative;
       border-top: 1px dashed #ededed;
 
-      &:first-child { border-top: none; }
+      &:first-child {
+        border-top: none;
+      }
 
       > a {
         display: flex;
@@ -270,12 +303,17 @@
           border-top: 3px solid var(--color-primary);
         }
 
-        &:hover > .sub-menu--nested { display: block; }
+        &:hover > .sub-menu--nested {
+          display: block;
+        }
       }
     }
   }
 
-  .drop-left .sub-menu--nested { left: auto; right: 100%; }
+  .drop-left .sub-menu--nested {
+    left: auto;
+    right: 100%;
+  }
 
   &.dark .sub-menu {
     background-color: var(--color-white);
@@ -288,7 +326,7 @@
 // Shown only on ≤991px, uses var(--color-primary)
 // ─────────────────────────────────────────────
 .mobile-nav__hamburger {
-  display: none;          // shown via media query below
+  display: none; // shown via media query below
   align-items: center;
   justify-content: center;
   background: none;
@@ -299,11 +337,13 @@
 
   i {
     font-size: 26px;
-    color: var(--color-primary);   // ← primary maroon color as requested
+    color: var(--color-primary); // ← primary maroon color as requested
     transition: opacity 0.2s ease;
   }
 
-  &:hover i { opacity: 0.8; }
+  &:hover i {
+    opacity: 0.8;
+  }
 }
 
 // ─────────────────────────────────────────────
@@ -320,7 +360,9 @@
     cursor: pointer;
     transition: color 0.3s ease;
 
-    &:hover { color: var(--color-primary); }
+    &:hover {
+      color: var(--color-primary);
+    }
   }
 }
 
@@ -346,7 +388,7 @@
   bottom: 0;
   width: 100%;
   max-width: 280px;
-  background-color: var(--color-black);   // pure black as in screenshot
+  background-color: var(--color-black); // pure black as in screenshot
   z-index: 9100;
   display: flex;
   flex-direction: column;
@@ -354,7 +396,9 @@
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
 
-  &--open { transform: translateX(0); }
+  &--open {
+    transform: translateX(0);
+  }
 }
 
 // ── Top bar: phone | location | CLOSE ────────
@@ -384,10 +428,14 @@
     text-align: center;
     border-left: 1px solid rgba(255, 255, 255, 0.15);
 
-    &:first-child { border-left: 0; }
+    &:first-child {
+      border-left: 0;
+    }
   }
 
-  &:hover { background-color: rgba(255, 255, 255, 0.08); }
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
 }
 
 // Phone and location SVG icons
@@ -431,8 +479,13 @@
     top: 50%;
   }
 
-  &::before { transform: rotate(45deg); }
-  &::after  { transform: rotate(-45deg); }
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
 }
 
 // ── Scrollable nav body ───────────────────────
@@ -488,7 +541,9 @@
     text-align: left;
     transition: background-color 0.2s ease;
 
-    &:hover { background-color: rgba(255, 255, 255, 0.06); }
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.06);
+    }
 
     // + / × character icon on the right
     .mobile-nav__toggle-icon {
@@ -531,7 +586,9 @@
         border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
       }
 
-      .mobile-nav__item { border-bottom: none; }
+      .mobile-nav__item {
+        border-bottom: none;
+      }
     }
 
     // Depth 2 — deeper indent, darker still
@@ -546,7 +603,9 @@
         border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
       }
 
-      .mobile-nav__item { border-bottom: none; }
+      .mobile-nav__item {
+        border-bottom: none;
+      }
     }
   }
 }
@@ -588,7 +647,9 @@
       z-index: 10;
       line-height: 1;
 
-      &:hover { color: var(--color-primary); }
+      &:hover {
+        color: var(--color-primary);
+      }
     }
 
     .modal-body {
@@ -597,7 +658,10 @@
       .sidebar-logo-link {
         display: block;
 
-        .main-logo { width: 70%; height: auto; }
+        .main-logo {
+          width: 70%;
+          height: auto;
+        }
       }
 
       .sidebar-content {
@@ -617,7 +681,9 @@
           margin-bottom: 40px;
         }
 
-        .sidebar-btn { margin-top: 25px; }
+        .sidebar-btn {
+          margin-top: 25px;
+        }
       }
 
       .sidebar-contact-info {
@@ -646,7 +712,9 @@
             align-items: flex-start;
             gap: 8px;
 
-            &:last-child { margin-bottom: 0; }
+            &:last-child {
+              margin-bottom: 0;
+            }
 
             i {
               position: absolute;
@@ -660,7 +728,9 @@
               color: #555;
               text-decoration: none;
 
-              &:hover { color: var(--color-primary2); }
+              &:hover {
+                color: var(--color-primary2);
+              }
             }
           }
         }
@@ -710,7 +780,9 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9998;
 
-  &.show { opacity: 1; }
+  &.show {
+    opacity: 1;
+  }
 }
 
 // ─────────────────────────────────────────────
@@ -726,20 +798,30 @@
     .right-content {
       margin-top: 0;
 
-      &--item:last-child { margin-right: 0; }
+      &--item:last-child {
+        margin-right: 0;
+      }
     }
   }
 }
 
 // ≥ 992px
 @media (min-width: 992px) {
-  .c-header__bottom--content .mobile-logo { width: 224px; }
-  .navigationsection { margin-top: 0; margin-right: 15px; }
+  .c-header__bottom--content .mobile-logo {
+    width: 224px;
+  }
+
+  .navigationsection {
+    margin-top: 0;
+    margin-right: 15px;
+  }
 }
 
 // ≤ 1199px — tighter desktop nav spacing
 @media only screen and (max-width: 1199px) {
-  .stellarnav__root > li { margin-right: 6px; }
+  .stellarnav__root > li {
+    margin-right: 6px;
+  }
 }
 
 // ≥ 1200px — show floating desktop logo
@@ -749,7 +831,10 @@
       display: block;
       top: -8px;
 
-      img { height: 65px; width: auto; }
+      img {
+        height: 65px;
+        width: auto;
+      }
     }
   }
 }
@@ -760,7 +845,10 @@
     .header-logo {
       top: -12px;
 
-      img { height: 85px; width: auto; }
+      img {
+        height: 85px;
+        width: auto;
+      }
     }
   }
 }
@@ -768,8 +856,12 @@
 // ≤ 991px — MOBILE MODE
 // Hide desktop nav, show mobile hamburger
 @media only screen and (max-width: 991px) {
-  .navigationsection { display: none; }
+  .navigationsection {
+    display: none;
+  }
 
   // Show mobile hamburger in primary color
-  .mobile-nav__hamburger { display: flex; }
+  .mobile-nav__hamburger {
+    display: flex;
+  }
 }

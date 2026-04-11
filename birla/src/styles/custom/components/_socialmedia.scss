@@ -1,0 +1,57 @@
+@use "../core/variables" as *;
+@use "../core/mixins" as *;
+@use "../components/generic/sizes" as *;
+
+
+// ─────────────────────────────────────────────
+// TOPSOCIALICON — fixed right-side social bar
+// ─────────────────────────────────────────────
+.topsocialicon {
+  position: fixed;
+  right: -3px;
+  top: 40%;
+  width: 50px;
+  z-index: 999;
+  @include border-radius(5px);
+  background-color: var(--color-white);
+  padding: 5px;
+}
+
+// ─────────────────────────────────────────────
+// BOTTOM-SOCIAL-LIST — vertical icon list
+// ─────────────────────────────────────────────
+.bottom-social-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 5px;
+  margin-top: 5px;
+
+  li {
+    display: inline-block;
+    margin-right: 0;
+    margin-top: 5px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    i {
+      display: inline-block;
+      height: 35px;
+      width: 35px;
+      line-height: 40px;
+      font-size: 17px;
+      background: var(--color-grey);
+      text-align: center;
+      color: var(--color-white);
+      @include border-radius(50%);
+      @include transition(all ease 0.5s);
+
+      &:hover {
+        @include translateY(-5px);
+        background-color: var(--color-primary2);
+        color: var(--color-white);
+      }
+    }
+  }
+}

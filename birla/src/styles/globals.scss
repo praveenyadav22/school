@@ -19,9 +19,10 @@
 @use 'custom/components/animation';
 @use 'custom/components/banner';
 @use 'custom/components/button';
-@use 'custom/components/card';
-@use 'custom/components/homepage';
+@use 'custom/components/socialmedia';
+@use 'custom/components/homegallery';
 @use 'custom/components/homeslider';
+@use 'custom/components/circulars';
 
 // ── Layout ───────────────────────────────────────────────────
 @use 'custom/layout/header';

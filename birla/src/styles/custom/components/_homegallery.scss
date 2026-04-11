@@ -1,0 +1,231 @@
+@use "../core/variables" as *;
+@use "../core/mixins" as *;
+
+// ─────────────────────────────────────────────
+// CUSTOMHEAD__24 — section heading with icon
+// ─────────────────────────────────────────────
+.customhead__24 {
+  font-size: var(--fontSize24);
+  color: var(--color-grey2);
+  font-weight: var(--fontMedium);
+  position: relative;
+  padding-left: 30px;
+  margin: 0;
+
+  // Remixicon arrow-right icon before heading
+  &::before {
+    position: absolute;
+    content: "\ea68";
+    font-family: remixicon;
+    color: var(--color-primary2);
+    font-size: var(--fontSize24);
+    left: 0;
+  }
+}
+
+// ─────────────────────────────────────────────
+// O-VIDEO — iframe wrapper + action bar cover
+// ─────────────────────────────────────────────
+.o-video {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  // Covers YouTube's fullscreen-action-menu bar.
+  // ::after pseudo-elements cannot block iframe UI —
+  // iframe content paints above pseudo-elements in the
+  // stacking context. A real sibling DOM element with
+  // a higher z-index is the only reliable solution.
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 56px;                         // height of YouTube's action bar
+    background-color: var(--color-black); // matches YouTube's dark player bg
+    z-index: 2;                           // above the iframe
+    pointer-events: none;                 // video click/play still works below
+  }
+}
+
+// ─────────────────────────────────────────────
+// GALLERY-CARDLIST — photo and video cards
+// ─────────────────────────────────────────────
+.gallery-cardlist {
+  @include transition(all ease 0.5s);
+  @include box-shadow(0 0 20px 3px rgba(0, 0, 0, 0.08));
+  @include flexbox();
+  @include flex-direction(column, vertical);
+  margin-bottom: 30px;
+  background-color: var(--color-white);
+
+  // ── Image wrap ────────────────────────────────
+  &__imgwrap {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+
+    // Video play icon overlay (for .video modifier)
+    &.video::after {
+      content: "\f008";
+      font-family: remixicon !important;
+      font-size: 4rem;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      @include transform(translate(-50%, -50%));
+      cursor: pointer;
+      color: var(--color-primary2);
+    }
+
+    img.u-img {
+      @include object-fit(cover);
+      width: 100%;
+      height: 100%;
+      @include transition(all ease 0.5s);
+    }
+  }
+
+  // ── Content area ──────────────────────────────
+  &__content {
+    @include flexbox();
+    @include flex-direction(column, vertical);
+    width: 100%;
+    padding: 20px;
+
+    // Meta wrapper — holds date list + button
+    &--meta {
+      margin-top: 7px;
+    }
+
+    // ── Posted / date row ─────────────────────
+    &--postedwrap {
+      @include flexbox();
+      font-size: var(--fontSize13);
+      color: #212529;
+      margin-bottom: 15px;
+      padding: 0;
+      list-style: none;
+
+      .list {
+        margin-right: 10px;
+        position: relative;
+        padding-left: 25px;
+
+        // Date icon
+        &.date::before {
+          position: absolute;
+          content: "\eb27";
+          font-family: remixicon;
+          color: var(--color-primary2);
+          left: 0;
+          font-size: var(--fontSize13);
+        }
+
+        // Post/author icon
+        &.post::before {
+          position: absolute;
+          content: "\f255";
+          font-family: remixicon;
+          color: var(--color-primary2);
+          left: 0;
+          font-size: var(--fontSize13);
+        }
+
+        .value {
+          color: #198754;
+        }
+      }
+    }
+
+    // ── Card title ───────────────────────────
+    &--titel {
+      width: 70%;
+      font-size: var(--fontSize18);
+      margin-bottom: 15px;
+      font-weight: var(--fontMedium);
+      @include transition(all ease 0.5s);
+      line-height: 1.6;
+      color: var(--color-grey2);
+    }
+  }
+
+  // ── v2 modifier — full-height video card ──────
+  &.v2 {
+    height: 100%;
+  }
+
+  // ── Hover states ──────────────────────────────
+  &:hover {
+    .gallery-cardlist__imgwrap img {
+      @include transform(scale(1.1));
+    }
+
+    .gallery-cardlist__content--titel {
+      color: var(--color-primary2);
+    }
+  }
+
+  // ── Responsive: row layout at ≥ 992px ────────
+  @include mq('tablet-max') {
+    @include flex-direction(row, horizontal);
+
+    &__imgwrap {
+      width: 200px;
+      height: 205px;
+    }
+
+    &__content {
+      @include calc(width, "100% - 200px");
+      padding: 15px;
+
+      &--titel {
+        width: 100%;
+        @include line-clamp(2);
+        min-height: 64px;
+      }
+    }
+
+    // v2 stays column on tablet
+    &.v2 {
+      @include flex-direction(column, vertical);
+
+      .gallery-cardlist__imgwrap {
+        width: 100%;
+        height: 252px;
+      }
+
+      .gallery-cardlist__content {
+        width: 100%;
+        padding: 15px;
+      }
+    }
+  }
+
+  // ── Responsive: wider content at ≥ 1200px ────
+  @include mq('desktop-min') {
+    &__content {
+      padding: 20px;
+
+      &--titel {
+        width: 60%;
+        @include line-clamp(2);
+        height: 57px;
+      }
+
+      &--postedwrap,
+      &--postedwrap .list.date::before,
+      &--postedwrap .list.post::before {
+        font-size: var(--fontSize15);
+      }
+    }
+  }
+}

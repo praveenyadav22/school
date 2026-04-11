@@ -3,6 +3,8 @@ import { Poppins } from "next/font/google";
 import "@/styles/globals.scss";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import LogoSlider from "@/utils/LogoSlider";
+import SocialMedia from "@/utils/SocialMedia";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -44,6 +46,8 @@ export default function RootLayout({
       <body>
         <Header />
         <main>{children}</main>
+            <LogoSlider />
+            <SocialMedia />
         <Footer />
       </body>
     </html>
