@@ -1,0 +1,124 @@
+@use "../core/variables" as *;
+@use "../core/mixins" as *;
+
+// ─────────────────────────────────────────────
+// SPACING UTILITY
+// ─────────────────────────────────────────────
+.ptb-50 {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+// ─────────────────────────────────────────────
+// C-INNERBANNER — full-width page header banner
+// ─────────────────────────────────────────────
+.c-innerbanner {
+  width: 100%;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  position: relative;
+  height: 150px;
+
+  // Dark overlay
+  &::before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(78, 77, 77, 0.4);
+  }
+
+  // Content area sits above overlay
+  &__content {
+    height: 100%;
+    @include flexbox();
+    @include flex-direction(column, vertical);
+    @include align-items(center);
+    position: relative;
+    z-index: 2;
+  }
+
+  // Responsive banner heights
+  @include mq('phone-wide')       { height: 180px; }
+  @include mq('tablet')           { height: 214px; }
+  @include mq('tablet-max')       { height: 265px; }
+  @include mq('tablet-wide')      { height: 292px; }
+  @include mq('desktop-min')      { height: 234px; }
+  @include mq('desktop-wide-mid') { height: 320px; }
+}
+
+// ─────────────────────────────────────────────
+// PAGE HEAD + BREADCRUMB
+// ─────────────────────────────────────────────
+.pageHeadWrap {
+  width: 100%;
+  @include flexbox();
+  @include flex-direction(column, vertical);
+  @include justify-content(center);
+  height: 100%;
+
+  h1 {
+    font-size: var(--fontSize30);
+    font-weight: var(--fontMedium);
+    color: var(--color-white);
+    letter-spacing: 1px;
+    margin: 0;
+  }
+}
+
+.breadcrumb {
+  &.themeBreadcrumb {
+    background: none;
+    width: auto;
+    padding: 0;
+    border-radius: 0;
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+
+    > li + li {
+      margin-left: 6px;
+
+      &::before {
+        content: "/";
+        margin-right: 6px;
+        color: var(--color-white);
+      }
+    }
+
+    li {
+      font-size: var(--fontSize15);
+      font-weight: var(--fontRegular);
+      color: var(--color-white);
+
+      // ── Home icon ──────────────────────────────
+      // Sized to match the text baseline of sibling li items
+      a i.ri-home-4-line {
+        font-size: var(--fontSize18);
+        line-height: 1;
+        vertical-align: middle;
+        position: relative;
+        top: -1px;
+      }
+
+      a {
+        color: var(--color-white);
+        text-decoration: none;
+        @include transition(color ease 0.3s);
+
+        &:hover {
+          color: var(--color-accent-yellow);
+        }
+      }
+
+      &.active {
+        color: var(--color-accent-yellow);
+      }
+    }
+  }
+}

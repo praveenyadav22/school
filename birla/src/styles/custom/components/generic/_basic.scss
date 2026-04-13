@@ -249,7 +249,291 @@
   }
 }
 
-
-
-
 // LatestNews Component css Ends
+
+// Table  css starts
+
+.theme__table {
+  clear: left;
+  float: left;
+  width: 100%;
+
+  /* ─── Elements ─── */
+  &__wrapper {
+    .table-responsive {
+      table {
+        width: 100%;
+      }
+    }
+  }
+
+  &__head {
+    th {
+      font-weight: var(--fontBold);
+      font-size: 15px;
+      background: var(--color-primary-dark, #a43605);
+      color: var(--color-white);
+    }
+  }
+
+  &__body {
+    td {
+      font-size: 15px;
+    }
+  }
+
+  &__row {
+    .vacancy__status {
+      color: var(--color-accent-green);
+      font-weight: var(--fontSemiBold);
+    }
+    &--odd {
+      background: var(--color-white);
+    }
+
+    &:hover {
+      background: #ececed !important;
+    }
+  }
+
+  &__action {
+    display: inline-block;
+    border-left: 1px #ccc dotted;
+    vertical-align: middle;
+    color: #2c2c3a;
+    padding: 0 8px;
+    transition: all 0.3s ease-out;
+
+    &:first-child {
+      border: 0;
+    }
+
+    &:hover,
+    &:focus {
+      color: #43546d;
+    }
+
+    &--rounded {
+      border-radius: 50%;
+      background: #d2d3d4 !important;
+      font-size: 0;
+
+      span {
+        font-size: 18px;
+      }
+
+      &:hover {
+        background: #ef772f !important;
+        color: #fff !important;
+      }
+    }
+
+    &--size40 {
+      min-width: 40px;
+      min-height: 40px;
+
+      span {
+        line-height: 40px;
+      }
+    }
+
+    &--size50 {
+      min-width: 50px;
+      min-height: 50px;
+
+      span {
+        line-height: 50px;
+      }
+    }
+  }
+
+  /* ─── Modifiers (OLD CLASSES SUPPORT) ─── */
+
+  &--colored-head {
+    thead th {
+      background: var(--color-primary-dark, #a43605);
+      color: var(--color-white);
+      font-weight: var(--fontMedium);
+    }
+  }
+
+  &--alternate-row {
+    tbody tr:nth-child(odd) {
+      background: var(--color-white);
+    }
+  }
+
+  &--hover {
+    tbody tr:hover {
+      background: #ececed !important;
+    }
+  }
+}
+
+
+/* ─── Button Override (BEM Safe) ─── */
+.btn {
+  &--success {
+    background-color: #374550 !important;
+    border-color: #374550 !important;
+    color: #fff !important;
+
+    &:hover {
+      background-color: #29343b !important;
+      border-color: #29343b !important;
+    }
+  }
+}
+// Table  css ends
+
+.inner-content {
+  .contentsection {
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+    margin-top: 30px;
+
+    &.noborder {
+      margin-top: 0;
+      border: none;
+      padding: 0;
+    }
+  }
+
+  // ── Shared section heading ────────────────────
+  &__head {
+    font-size: var(--fontSize20);
+    margin-bottom: 20px;
+    color: var(--color-grey2);          // #374550
+    font-weight: var(--fontRegular);
+  }
+
+  // ── Body paragraph ────────────────────────────
+  p {
+    font-size: var(--fontSize15);
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-align: justify;
+
+    b, strong {
+      font-weight: var(--fontMedium) !important;
+    }
+  }
+}
+
+.payheding {
+  background-color: var(--color-primary2) !important;  // #b83f06
+  padding: 4px 8px !important;
+  color: var(--color-white) !important;
+  font-size: var(--fontSize18) !important;
+  font-weight: var(--fontRegular) !important;
+  margin-bottom: 16px;
+}
+.payBox {
+  width: 100%;
+  padding: 15px;
+  @include box-shadow(rgba(0, 0, 0, 0.35) 0 5px 15px);
+  margin-bottom: 15px;
+
+  // ── Fee title — underlined heading ───────────
+  &__feetitle {
+    font-size: var(--fontSize14);
+    font-weight: var(--fontBold);
+    color: var(--color-grey2);
+    margin-bottom: 12px;
+    text-align: center;
+
+    u { text-decoration: underline; }
+  }
+
+  // ── Subheadings — Payment Mode / Online payment
+  // Browser: <p><b><u>Payment Mode</u></b></p>
+  // Browser: <p><b>Online payment</b></p>
+  &__subhead {
+    font-size: var(--fontSize12);
+    font-weight: var(--fontBold);
+    color: var(--color-grey2);
+    margin-bottom: 8px;
+
+    // --regular: non-bold variant (Online payment label)
+    &--regular {
+      font-weight: var(--fontMedium);
+      margin-left: 18px;
+    }
+
+    u { text-decoration: underline; }
+  }
+
+  // ── Body paragraphs ───────────────────────────
+  // Browser: inline style font-size:12pt → ~16px
+  &__para {
+    font-size: var(--fontSize15);
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 12px;
+    text-align: justify;
+    margin-left: 54px;                 // matches browser margin-left:54pt
+
+    strong { font-weight: var(--fontBold); }
+  }
+
+  // ── Numbered fee schedule list (ol) ───────────
+  &__list {
+    font-size: var(--fontSize15);
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 16px;
+    padding-left: 20px;
+
+    li {
+      margin-bottom: 8px;
+      text-align: justify;
+
+      strong { font-weight: var(--fontBold); }
+    }
+  }
+
+  // ── Note list (ul) ────────────────────────────
+  // Browser: <ul> with 4 note items, text-align:justify
+  &__notelist {
+    font-size: var(--fontSize15);
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    list-style: none;
+
+    li {
+      margin-bottom: 8px;
+      text-align: justify;
+      position: relative;
+      padding-left: 4px;
+
+      strong { font-weight: var(--fontBold); }
+    }
+  }
+
+  // ── Pay Online button ─────────────────────────
+  // Browser: .btn.btn-danger.btn-sm + onclick
+  // onclick replaced with Next.js <Link>
+  // btn-danger: bg #dc3545, color #fff, border #dc3545
+  // btn-sm: padding 0.25rem 0.5rem, font-size 0.875rem
+  &__btn {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    @include border-radius(0.2rem);
+    background-color: var(--color-primary2);
+    color: var(--color-white);
+    border: 1px solid var(--color-primary2);
+    text-decoration: none;
+    cursor: pointer;
+    @include transition(all ease 0.3s);
+
+    &:hover {
+      background-color: var(--color-primary-hover);
+      border-color: var(--color-primary-hover);
+      color: var(--color-white);
+    }
+  }
+}

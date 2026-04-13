@@ -1,0 +1,93 @@
+@use "../core/variables" as *;
+@use "../core/mixins" as *;
+
+// ─────────────────────────────────────────────
+// THEME__TABLE
+// Modifier classes work together for alternating
+// row colours + coloured header + hover effect
+// ─────────────────────────────────────────────
+.theme__table {
+  clear: left;
+  float: left;
+  width: 100%;
+
+  .table-responsive {
+    table {
+      tr {
+        th {
+          font-weight: var(--fontBold);
+          font-size: var(--fontSize15);
+        }
+
+        td {
+          font-size: var(--fontSize15);
+          border-left: 1px #ccc solid;
+          border-bottom: 1px #ccc solid;
+          vertical-align: middle;
+
+          &:last-child {
+            border-right: 1px #ccc solid;
+          }
+        }
+      }
+
+      caption {
+        padding: 8px 10px;
+        background: var(--color-primary3);  // #991b2c
+        font-size: var(--fontSize14);
+        font-weight: var(--fontBold);
+        color: var(--color-white);
+        letter-spacing: 1px;
+        border: 1px solid #e3e3e3;
+      }
+    }
+  }
+
+  // All tbody rows → base colour #f6f3f3
+  &-withColoredRow .table-responsive table tbody tr {
+    background: var(--color-light-grey4);
+  }
+
+  // thead → white bg, primary maroon text
+  &-withColoredHead .table-responsive table thead tr th {
+    background: var(--color-white);
+    color: var(--color-primary);           // #a43605
+    font-weight: var(--fontMedium);
+  }
+
+  // Odd rows → white, creates even/odd alternating effect
+  &-alternateColoredRow .table-responsive table tbody tr:nth-child(odd) {
+    background: var(--color-white);
+  }
+
+  // Hover → light grey
+  &-withHoveraction .table-responsive table tbody tr {
+    @include transition(background ease 0.2s);
+
+    &:hover {
+      background: #ececed !important;
+    }
+  }
+}
+
+// ── min-width on vacancy table ────────────────
+.vacancy__table {
+  min-width: 800px;
+}
+
+// ─────────────────────────────────────────────
+// VACANCY STATUS BADGE
+// Matches browser: color:green; font-weight:bold
+// ─────────────────────────────────────────────
+.vacancy__status {
+  font-weight: var(--fontBold);
+
+  &--active  { color: var(--color-accent-green);  }  // #008000
+  &--closed  { color: var(--color-accent-red);    }  // #ff0000
+  &--pending { color: var(--color-accent-yellow); }  // #ffc107
+}
+
+// ── Empty state heading ───────────────────────
+.theme-red-color {
+  color: var(--color-primary2) !important;
+}

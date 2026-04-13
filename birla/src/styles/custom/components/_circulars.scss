@@ -57,6 +57,10 @@
     overflow: hidden;
     margin-bottom: 30px;
 
+    .scrolling-container {
+      animation: scrollUp 40s linear infinite;
+    }
+
     ul.listitem {
       width: 100%;
       padding: 0;
@@ -180,5 +184,17 @@
 
   &:focus {
     box-shadow: none;
+  }
+}
+
+// ─────────────────────────────────────────────
+// SCROLLING ANIMATION
+// ─────────────────────────────────────────────
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
   }
 }

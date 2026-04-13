@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LogoSlider from "@/utils/LogoSlider";
 import SocialMedia from "@/utils/SocialMedia";
+import BreadCrumb from "@/components/BreadCrumb";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -45,9 +46,10 @@ export default function RootLayout({
       </head>
       <body>
         <Header />
+        <BreadCrumb />
         <main>{children}</main>
-            <LogoSlider />
-            <SocialMedia />
+        <LogoSlider />
+        <SocialMedia />
         <Footer />
       </body>
     </html>

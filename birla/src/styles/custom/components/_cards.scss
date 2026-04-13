@@ -1,0 +1,52 @@
+@use "../core/variables" as *;
+@use "../core/mixins" as *;
+@use "../components/generic/sizes" as *;
+
+.contentArea {
+  width: 100%;
+}
+
+.admission-card {
+
+
+  border: 1px solid #dee2e6;
+
+  padding: 1rem;
+
+  @include border-radius(0.3rem);
+
+  min-height: 15vh;
+
+  @include box-shadow(0 0.125rem 0.25rem rgba(0, 0, 0, 0.075));
+
+  height: 100%;
+
+  &--featured {
+    border-color: var(--color-accent-yellow); // #ffc107
+    @include box-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.15));
+  }
+
+  &__title {
+    font-weight: var(--fontRegular);
+    font-size: var(--fontSize15);
+    color: var(--color-grey2);
+    margin-bottom: 12px;
+  }
+  .list-inline {
+    .list-inline-item {
+      .btn-warning {
+        color: var(--color-white) !important;
+        background-color: var(--color-primary) !important;
+        border-color: var(--color-primary) !important;
+        &:hover {
+          background-color: var(--color-primary2) !important;
+          border-color: var(--color-primary2) !important;
+        }
+      }
+    }
+  }
+}
+
+.border-warning {
+  border-color: #ffc107 !important;
+}

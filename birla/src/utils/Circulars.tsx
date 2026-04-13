@@ -24,6 +24,8 @@ const CIRCULAR_ITEMS = [
   { date: "25-02-2026", href: "/circular", text: "Circular REGARDING AIR CONDITIONING IN BUSES FROM THE ACADEMIC SESSION 2026-27" },
 ];
 
+import Link from "next/link";
+
 const Circulars = () => {
   return (
     <div className="body-conent pt-4">
@@ -35,14 +37,7 @@ const Circulars = () => {
               <h2 className="c-homeCircularslist__title">Latest Circulars</h2>
 
               <div className="c-homeCircularslist__content">
-                {/* @ts-ignore — marquee matches original markup exactly */}
-                <marquee
-                  scrollAmount={3}
-                  direction="up"
-                  onMouseMove={(e: React.MouseEvent<HTMLMarqueeElement>) => e.currentTarget.stop()}
-                  onMouseOut={(e: React.MouseEvent<HTMLMarqueeElement>) => e.currentTarget.start()}
-                  height="180"
-                >
+                <div className="scrolling-container">
                   <ul className="listitem">
                     {CIRCULAR_ITEMS.map((item, i) => (
                       <li className="item" key={i}>
@@ -50,17 +45,27 @@ const Circulars = () => {
                           <i className="ri-calendar-event-line" /> {item.date}
                         </span>
                         <div className="text">
-                          <a href={item.href}>{item.text}</a>
+                          <Link href={item.href}>{item.text}</Link>
+                        </div>
+                      </li>
+                    ))}
+                    {CIRCULAR_ITEMS.map((item, i) => (
+                      <li className="item" key={`dup-${i}`}>
+                        <span>
+                          <i className="ri-calendar-event-line" /> {item.date}
+                        </span>
+                        <div className="text">
+                          <Link href={item.href}>{item.text}</Link>
                         </div>
                       </li>
                     ))}
                   </ul>
-                </marquee>
+                </div>
               </div>
 
-              <a href="/circular" className="default-btn btn">
+              <Link href="/circular" className="default-btn btn">
                 Explore More <i className="ri-arrow-right-line" />
-              </a>
+              </Link>
 
             </div>
           </div>

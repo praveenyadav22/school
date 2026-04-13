@@ -1,0 +1,108 @@
+@use '../core/variables' as *;
+@use '../core/mixins' as *;
+@use '../components/generic/sizes' as *;
+
+
+.important-links {
+  padding: 20px;
+  background-color: var(--color-light-grey5);   // #f4f6f9
+  margin-bottom: 30px;
+  @include border-radius(0.5rem);
+  @include box-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.15));
+
+  // ── Heading ───────────────────────────────────
+  &__head {
+    font-size: var(--fontSize20);
+    margin-bottom: 20px;
+    font-weight: var(--fontMedium);
+    color: var(--color-primary2);               // #b83f06
+  }
+
+  // ── Main list ─────────────────────────────────
+  ul.listitem {
+    width: 100%;
+    @include flexbox();
+    @include flex-direction(column, vertical);
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: 10px;
+      list-style-type: none;
+
+      // ── Link item ───────────────────────────────
+      a {
+        background-color: var(--color-white);
+        padding: 10px;
+        padding-left: 50px;
+        position: relative;
+        display: block;
+        font-weight: var(--fontMedium);
+        @include transition(all ease 0.5s);
+        font-size: var(--fontSize15);
+        color: var(--color-grey2);              // #374550
+        text-decoration: none;
+
+        // Arrow icon strip on the left
+        &::before {
+          width: 38px;
+          height: 100%;
+          position: absolute;
+          content: "\ea70";                     // ri-arrow-right-s-line
+          color: var(--color-white);
+          font-family: remixicon !important;
+          @include flexbox();
+          @include align-items(center);
+          @include justify-content(center);
+          background-color: var(--color-grey2); // #374550
+          top: 0;
+          left: 0;
+          @include transition(background-color ease 0.5s);
+        }
+
+        // Hover state
+        &:hover {
+          color: var(--color-primary);          // #a43605
+
+          &::before {
+            background-color: var(--color-primary); // #a43605
+          }
+        }
+      }
+
+      // ── Sub-list (nested children) ─────────────
+      ul.sub-list {
+        margin-top: 20px;
+        padding-left: 40px;
+        list-style: none;
+
+        li a {
+          background: none;
+          padding: 0;
+          color: var(--color-black);
+          padding-left: 20px;
+
+          // Hide the left strip icon on sub-items
+          &::before {
+            display: none;
+          }
+
+          // Arrow icon via ::after for sub-items
+          &::after {
+            left: 0;
+            top: 0;
+            content: "\ea70";                   // ri-arrow-right-s-line
+            color: var(--color-primary);        // #a43605
+            font-family: remixicon !important;
+            font-size: var(--fontSize18);
+            position: absolute;
+          }
+
+          &:hover {
+            color: var(--color-primary);
+          }
+        }
+      }
+    }
+  }
+}

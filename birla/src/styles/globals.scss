@@ -23,10 +23,13 @@
 @use 'custom/components/homegallery';
 @use 'custom/components/homeslider';
 @use 'custom/components/circulars';
+@use 'custom/components/innersidebar';
+@use 'custom/components/cards';
 
 // ── Layout ───────────────────────────────────────────────────
 @use 'custom/layout/header';
 @use 'custom/layout/footer';
+@use 'custom/layout/breadcrumb';
 
 // ── One-off global helpers ────────────────────────────────────
 .ratio-9x16 {

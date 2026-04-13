@@ -9,7 +9,7 @@ declare global {
         React.HTMLAttributes<HTMLElement> & {
           behavior?: string;
           direction?: string;
-          scrollDelay?: number;
+          scrolldelay?: number; // ✅ fixed here
         },
         HTMLElement
       >;
@@ -53,7 +53,7 @@ interface MarqueeRowProps {
   scrollDelay?: number;
 }
 
-// Inner marquee row — same <marquee> element as browser markup
+// Inner marquee row
 const MarqueeRow = ({ items, scrollDelay = 100 }: MarqueeRowProps) => {
   return React.createElement(
     "div",
@@ -71,7 +71,7 @@ const MarqueeRow = ({ items, scrollDelay = 100 }: MarqueeRowProps) => {
           const marqueeEl = e.currentTarget as any;
           if (marqueeEl.start) marqueeEl.start();
         },
-        scrollDelay,
+        scrolldelay: scrollDelay, // ✅ FIXED
       },
       React.createElement(
         "ul",
@@ -90,11 +90,10 @@ const MarqueeRow = ({ items, scrollDelay = 100 }: MarqueeRowProps) => {
   );
 };
 
-// ── Main component ──────────────────────────────────────────
+// ── Main component ───────────────────────────────
 const LatestNews = () => {
   return (
     <>
-      {/* ── Bulletin Board ───────────────────────── */}
       <div className="c-latestnewwrap">
         <div className="container">
           <div className="row">
@@ -108,7 +107,6 @@ const LatestNews = () => {
         </div>
       </div>
 
-      {/* ── Bus Updates ──────────────────────────── */}
       <div className="c-latestnewwrap v2 latestBusUpdate">
         <div className="container">
           <div className="row">
