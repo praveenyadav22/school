@@ -15,42 +15,42 @@ const NAV_ITEMS: NavItem[] = [
   {
     label: "About Us",
     children: [
-      { label: "School Profile", href: "/school-profile" },
-      { label: "Vision and Mission", href: "/vision-mission" },
-      { label: "Founders", href: "/founders" },
-      { label: "Chairperson", href: "/chairperson" },
-      { label: "Director & Manager", href: "/director-manager" },
-      { label: "Principal", href: "/principal" },
+      { label: "School Profile", href: "/about/school-profile" },
+      { label: "Vision and Mission", href: "/about/vision-mission" },
+      { label: "Founders", href: "/about/founders" },
+      { label: "Chairperson", href: "/about/chairperson" },
+      { label: "Director & Manager", href: "/about/director-manager" },
+      { label: "Principal", href: "/about/principal" },
       {
         label: "Vice Principal",
-        children: [{ label: "Sr. Section", href: "/sr-section" }],
+        children: [{ label: "Sr. Section", href: "/about/vice-principal/sr-section" }],
       },
-      { label: "Head Mistress", href: "/head-mistress" },
-      { label: "School Managing Committee", href: "/school-managing-committee" },
-      { label: "Faculty", href: "/faculty" },
-      { label: "PTA", href: "/pta" },
-      { label: "Internal Committee", href: "/internal-committee" },
-      { label: "Mandatory Public Disclosure", href: "/mandatory-public-disclosure" },
+      { label: "Head Mistress", href: "/about/head-mistress" },
+      { label: "School Managing Committee", href: "/about/school-managing-committee" },
+      { label: "Faculty", href: "/about/faculty" },
+      { label: "PTA", href: "/about/pta" },
+      { label: "Internal Committee", href: "/about/internal-committee" },
+      { label: "Mandatory Public Disclosure", href: "/about/mandatory-public-disclosure" },
     ],
   },
   {
     label: "CBSE Results",
     children: [
-      { label: "Class XII", href: "/class-xii" },
-      { label: "Class X", href: "/class-x" },
-      { label: "Batch After School", href: "/batch-after-school" },
+      { label: "Class XII", href: "/cbse-results/class-xii" },
+      { label: "Class X", href: "/cbse-results/class-x" },
+      { label: "Batch After School", href: "/cbse-results/batch-after-school" },
     ],
   },
   {
     label: "Student Zone",
     children: [
-      { label: "Rules & Regulations", href: "/rules-regulations" },
-      { label: "Awards & Scholarships", href: "/awards-scholarships" },
+      { label: "Rules & Regulations", href: "/student-zone/rules-regulations" },
+      { label: "Awards & Scholarships", href: "/student-zone/awards-scholarships" },
       {
         label: "Student's Council",
         children: [
-          { label: "Senior Section", href: "/senior-section-council" },
-          { label: "Junior Section", href: "/junior-section-council" },
+          { label: "Senior Section", href: "/student-zone/senior-section-council" },
+          { label: "Junior Section", href: "/student-zone/junior-section-council" },
         ],
       },
       {
@@ -60,63 +60,63 @@ const NAV_ITEMS: NavItem[] = [
           { label: "Syllabus", href: "https://erp.quickcampus.online/auth", isExternal: true },
         ],
       },
-      { label: "Admission", href: "/admission" },
+      { label: "Admission", href: "/student-zone/admission" },
     ],
   },
   {
     label: "Academic Zone",
     children: [
-      { label: "Affiliation", href: "/affiliation" },
+      { label: "Affiliation", href: "/academic-zone/affiliation" },
       {
         label: "Curriculum/Syllabus",
         children: [
-          { label: "Primary School", href: "/primary-school" },
-          { label: "Middle School", href: "/middle-school" },
-          { label: "Secondary School", href: "/secondary-school" },
-          { label: "Senior Secondary School", href: "/senior-secondary-school" },
+          { label: "Primary School", href: "/academic-zone/primary-school" },
+          { label: "Middle School", href: "/academic-zone/middle-school" },
+          { label: "Secondary School", href: "/academic-zone/secondary-school" },
+          { label: "Senior Secondary School", href: "/academic-zone/senior-secondary-school" },
         ],
       },
-      { label: "Streams Offered", href: "/streams-offered" },
-      { label: "Book List 2024-25", href: "/book-list" },
+      { label: "Streams Offered", href: "/academic-zone/streams-offered" },
+      { label: "Book List 2024-25", href: "/academic-zone/book-list" },
     ],
   },
   {
     label: "Facilities",
     children: [
-      { label: "Sarala Birla Krida Kendra", href: "/birla-krida-kendra" },
-      { label: "Transport", href: "/transport" },
-      { label: "Excursion/Educational Tours", href: "/educational-tours" },
-      { label: "BVN-IAPT Anveshika", href: "/bvn-anveshika" },
+      { label: "Sarala Birla Krida Kendra", href: "/facilities/birla-krida-kendra" },
+      { label: "Transport", href: "/facilities/transport" },
+      { label: "Excursion/Educational Tours", href: "/facilities/educational-tours" },
+      { label: "BVN-IAPT Anveshika", href: "/facilities/bvn-anveshika" },
       {
         label: "Clubs",
         children: [
-          { label: "Senior Section", href: "/senior-section-club" },
-          { label: "Junior Section", href: "/junior-section-club" },
+          { label: "Senior Section", href: "/facilities/senior-section-club" },
+          { label: "Junior Section", href: "/facilities/junior-section-club" },
         ],
       },
-      { label: "Canteen", href: "/canteen" },
-      { label: "Career Counselling Cell", href: "/career-counselling-cell" },
-      { label: "Mind Spark", href: "/mind-spark" },
-      { label: "Atal Tinkering Lab", href: "/atal-tinkering-lab" },
+      { label: "Canteen", href: "/facilities/canteen" },
+      { label: "Career Counselling Cell", href: "/facilities/career-counselling-cell" },
+      { label: "Mind Spark", href: "/facilities/mind-spark" },
+      { label: "Atal Tinkering Lab", href: "/facilities/atal-tinkering-lab" },
     ],
   },
   {
     label: "Alumni Zone",
     children: [
-      { label: "Announcements", href: "/announcements" },
-      { label: "Principal's Message", href: "/principal-message" },
-      { label: "Alumni Registration", href: "/alumni-registration" },
+      { label: "Announcements", href: "/alumni-zone/announcements" },
+      { label: "Principal's Message", href: "/alumni-zone/principal-message" },
+      { label: "Alumni Registration", href: "/alumni-zone/alumni-registration" },
     ],
   },
   {
     label: "Media",
-    children: [{ label: "Media / Press Coverage", href: "/media-press-coverage" }],
+    children: [{ label: "Media / Press Coverage", href: "/media/media-press-coverage" }],
   },
   {
     label: "Connect",
     children: [
-      { label: "Reach Us", href: "/reach-us" },
-      { label: "Sitemap", href: "/sitemap" },
+      { label: "Reach Us", href: "/connect/reach-us" },
+      { label: "Sitemap", href: "/connect/sitemap" },
     ],
   },
 ];
@@ -253,24 +253,24 @@ const Header = () => {
                             <li className="has-sub">
                               <a href="#">About Us <i className="ri-arrow-down-s-line" /></a>
                               <ul className="sub-menu">
-                                <li><Link href="/school-profile">School Profile</Link></li>
-                                <li><Link href="/vision-mission">Vision and Mission</Link></li>
-                                <li><Link href="/founders">Founders</Link></li>
-                                <li><Link href="/chairperson">Chairperson</Link></li>
-                                <li><Link href="/director-manager">Director &amp; Manager</Link></li>
-                                <li><Link href="/principal">Principal</Link></li>
+                                <li><Link href="/about/school-profile">School Profile</Link></li>
+                                <li><Link href="/about/vision-mission">Vision and Mission</Link></li>
+                                <li><Link href="/about/founders">Founders</Link></li>
+                                <li><Link href="/about/chairperson">Chairperson</Link></li>
+                                <li><Link href="/about/director-manager">Director &amp; Manager</Link></li>
+                                <li><Link href="/about/principal">Principal</Link></li>
                                 <li className="has-sub has-sub--nested">
                                   <a href="#">Vice Principal <i className="ri-arrow-right-s-line sub-arrow" /></a>
                                   <ul className="sub-menu sub-menu--nested">
-                                    <li><Link href="/sr-section">Sr. Section</Link></li>
+                                    <li><Link href="/about/vice-principal/sr-section">Sr. Section</Link></li>
                                   </ul>
                                 </li>
-                                <li><Link href="/head-mistress">Head Mistress</Link></li>
-                                <li><Link href="/school-managing-committee">School Managing Committee</Link></li>
-                                <li><Link href="/faculty">Faculty</Link></li>
-                                <li><Link href="/pta">PTA</Link></li>
-                                <li><Link href="/internal-committee">Internal Committee</Link></li>
-                                <li><Link href="/mandatory-public-disclosure">Mandatory Public Disclosure</Link></li>
+                                <li><Link href="/about/head-mistress">Head Mistress</Link></li>
+                                <li><Link href="/about/school-managing-committee">School Managing Committee</Link></li>
+                                <li><Link href="/about/faculty">Faculty</Link></li>
+                                <li><Link href="/about/pta">PTA</Link></li>
+                                <li><Link href="/about/internal-committee">Internal Committee</Link></li>
+                                <li><Link href="/about/mandatory-public-disclosure">Mandatory Public Disclosure</Link></li>
                               </ul>
                             </li>
 
@@ -278,9 +278,9 @@ const Header = () => {
                             <li className="has-sub">
                               <a href="#">CBSE Results <i className="ri-arrow-down-s-line" /></a>
                               <ul className="sub-menu">
-                                <li><Link href="/class-xii">Class XII</Link></li>
-                                <li><Link href="/class-x">Class X</Link></li>
-                                <li><Link href="/batch-after-school">Batch After School</Link></li>
+                                <li><Link href="/cbse-results/class-xii">Class XII</Link></li>
+                                <li><Link href="/cbse-results/class-x">Class X</Link></li>
+                                <li><Link href="/cbse-results/batch-after-school">Batch After School</Link></li>
                               </ul>
                             </li>
 
@@ -288,13 +288,13 @@ const Header = () => {
                             <li className="has-sub">
                               <a href="#">Student Zone <i className="ri-arrow-down-s-line" /></a>
                               <ul className="sub-menu">
-                                <li><Link href="/rules-regulations">Rules &amp; Regulations</Link></li>
-                                <li><Link href="/awards-scholarships">Awards &amp; Scholarships</Link></li>
+                                <li><Link href="/student-zone/rules-regulations">Rules &amp; Regulations</Link></li>
+                                <li><Link href="/student-zone/awards-scholarships">Awards &amp; Scholarships</Link></li>
                                 <li className="has-sub has-sub--nested">
                                   <a href="#">Student&apos;s Council <i className="ri-arrow-right-s-line sub-arrow" /></a>
                                   <ul className="sub-menu sub-menu--nested">
-                                    <li><Link href="/senior-section-council">Senior Section</Link></li>
-                                    <li><Link href="/junior-section-council">Junior Section</Link></li>
+                                    <li><Link href="/student-zone/senior-section-council">Senior Section</Link></li>
+                                    <li><Link href="/student-zone/junior-section-council">Junior Section</Link></li>
                                   </ul>
                                 </li>
                                 <li className="has-sub has-sub--nested">
@@ -304,7 +304,7 @@ const Header = () => {
                                     <li><a href="https://erp.quickcampus.online/auth" target="_blank" rel="noreferrer">Syllabus</a></li>
                                   </ul>
                                 </li>
-                                <li><Link href="/admission">Admission</Link></li>
+                                <li><Link href="/student-zone/admission">Admission</Link></li>
                               </ul>
                             </li>
 
@@ -312,18 +312,18 @@ const Header = () => {
                             <li className="has-sub">
                               <a href="#">Academic Zone <i className="ri-arrow-down-s-line" /></a>
                               <ul className="sub-menu">
-                                <li><Link href="/affiliation">Affiliation</Link></li>
+                                <li><Link href="/academic-zone/affiliation">Affiliation</Link></li>
                                 <li className="has-sub has-sub--nested">
                                   <a href="#">Curriculum/Syllabus <i className="ri-arrow-right-s-line sub-arrow" /></a>
                                   <ul className="sub-menu sub-menu--nested">
-                                    <li><Link href="/primary-school">Primary School</Link></li>
-                                    <li><Link href="/middle-school">Middle School</Link></li>
-                                    <li><Link href="/secondary-school">Secondary School</Link></li>
-                                    <li><Link href="/senior-secondary-school">Senior Secondary School</Link></li>
+                                    <li><Link href="/academic-zone/primary-school">Primary School</Link></li>
+                                    <li><Link href="/academic-zone/middle-school">Middle School</Link></li>
+                                    <li><Link href="/academic-zone/secondary-school">Secondary School</Link></li>
+                                    <li><Link href="/academic-zone/senior-secondary-school">Senior Secondary School</Link></li>
                                   </ul>
                                 </li>
-                                <li><Link href="/streams-offered">Streams Offered</Link></li>
-                                <li><Link href="/book-list">Book List 2024-25</Link></li>
+                                <li><Link href="/academic-zone/streams-offered">Streams Offered</Link></li>
+                                <li><Link href="/academic-zone/book-list">Book List 2024-25</Link></li>
                               </ul>
                             </li>
 
@@ -331,21 +331,21 @@ const Header = () => {
                             <li className="has-sub">
                               <a href="#">Facilities <i className="ri-arrow-down-s-line" /></a>
                               <ul className="sub-menu">
-                                <li><Link href="/birla-krida-kendra">Sarala Birla Krida Kendra</Link></li>
-                                <li><Link href="/transport">Transport</Link></li>
-                                <li><Link href="/educational-tours">Excursion/Educational Tours</Link></li>
-                                <li><Link href="/bvn-anveshika">BVN-IAPT Anveshika</Link></li>
+                                <li><Link href="/facilities/birla-krida-kendra">Sarala Birla Krida Kendra</Link></li>
+                                <li><Link href="/facilities/transport">Transport</Link></li>
+                                <li><Link href="/facilities/educational-tours">Excursion/Educational Tours</Link></li>
+                                <li><Link href="/facilities/bvn-anveshika">BVN-IAPT Anveshika</Link></li>
                                 <li className="has-sub has-sub--nested">
                                   <a href="#">Clubs <i className="ri-arrow-right-s-line sub-arrow" /></a>
                                   <ul className="sub-menu sub-menu--nested">
-                                    <li><Link href="/senior-section-club">Senior Section</Link></li>
-                                    <li><Link href="/junior-section-club">Junior Section</Link></li>
+                                    <li><Link href="/facilities/senior-section-club">Senior Section</Link></li>
+                                    <li><Link href="/facilities/junior-section-club">Junior Section</Link></li>
                                   </ul>
                                 </li>
-                                <li><Link href="/canteen">Canteen</Link></li>
-                                <li><Link href="/career-counselling-cell">Career Counselling Cell</Link></li>
-                                <li><Link href="/mind-spark">Mind Spark</Link></li>
-                                <li><Link href="/atal-tinkering-lab">Atal Tinkering Lab</Link></li>
+                                <li><Link href="/facilities/canteen">Canteen</Link></li>
+                                <li><Link href="/facilities/career-counselling-cell">Career Counselling Cell</Link></li>
+                                <li><Link href="/facilities/mind-spark">Mind Spark</Link></li>
+                                <li><Link href="/facilities/atal-tinkering-lab">Atal Tinkering Lab</Link></li>
                               </ul>
                             </li>
 
@@ -353,9 +353,9 @@ const Header = () => {
                             <li className="has-sub">
                               <a href="#">Alumni Zone <i className="ri-arrow-down-s-line" /></a>
                               <ul className="sub-menu">
-                                <li><Link href="/announcements">Announcements</Link></li>
-                                <li><Link href="/principal-message">Principal&apos;s Message</Link></li>
-                                <li><Link href="/alumni-registration">Alumni Registration</Link></li>
+                                <li><Link href="/alumni-zone/announcements">Announcements</Link></li>
+                                <li><Link href="/alumni-zone/principal-message">Principal&apos;s Message</Link></li>
+                                <li><Link href="/alumni-zone/alumni-registration">Alumni Registration</Link></li>
                               </ul>
                             </li>
 
@@ -363,7 +363,7 @@ const Header = () => {
                             <li className="has-sub">
                               <a href="#">Media <i className="ri-arrow-down-s-line" /></a>
                               <ul className="sub-menu">
-                                <li><Link href="/media-press-coverage">Media / Press Coverage</Link></li>
+                                <li><Link href="/media/media-press-coverage">Media / Press Coverage</Link></li>
                               </ul>
                             </li>
 
@@ -371,8 +371,8 @@ const Header = () => {
                             <li className="has-sub drop-left">
                               <a href="#">Connect <i className="ri-arrow-down-s-line" /></a>
                               <ul className="sub-menu">
-                                <li><Link href="/reach-us">Reach Us</Link></li>
-                                <li><Link href="/sitemap">Sitemap</Link></li>
+                                <li><Link href="/connect/reach-us">Reach Us</Link></li>
+                                <li><Link href="/connect/sitemap">Sitemap</Link></li>
                               </ul>
                             </li>
 
@@ -483,7 +483,7 @@ const Header = () => {
                     <p>
                       Shri B.K. Birla &amp; Dr. Sarala Birla laid the foundation for Birla Vidya Niketan,
                       a premier South Delhi school started on 20<sup>th</sup> September 1983…{" "}
-                      <Link href="/school-profile">
+                      <Link href="/about/school-profile">
                         <i className="ri-arrow-right-up-line" />
                       </Link>
                     </p>
@@ -508,7 +508,7 @@ const Header = () => {
                         Pushp Vihar, Sector-IV, New Delhi-110017, India
                       </li>
                     </ul>
-                    <a className="btn btn-danger btn-sm mt-3" href="/reach-us" rel="noopener noreferrer">
+                    <a className="btn btn-danger btn-sm mt-3" href="/connect/reach-us" rel="noopener noreferrer">
                       Explore More
                     </a>
                   </div>
