@@ -1,0 +1,264 @@
+@use "../core/variables" as *;
+@use "../core/mixins" as *;
+
+// ─────────────────────────────────────────────
+// INNER-CONTENT__HEAD
+// font-size:20px; margin-bottom:20px;
+// color:#374550; font-family:Poppins; font-weight:400
+// Source: line 28560 of minified CSS
+// ─────────────────────────────────────────────
+.inner-content {
+  &__head {
+    font-size: var(--fontSize20);
+    margin-bottom: 20px;
+    color: var(--color-grey2);                      // #374550
+    font-family: var(--font-poppins), sans-serif;
+    font-weight: var(--fontRegular);
+  }
+}
+
+// ─────────────────────────────────────────────
+// GALLERY__DETAIL — detail page image grid wrapper
+// .gallery__detail h3: clear:left; float:left;
+//   width:100%; background:#d41a25; padding:7px;
+//   font-weight:500; font-size:15px; color:#fff
+// Source: line 29023 of minified CSS
+// ─────────────────────────────────────────────
+.gallery__detail {
+  margin-top: 1rem;
+
+  h3 {
+    clear: left;
+    float: left;
+    width: 100%;
+    background: #d41a25;
+    padding: 7px;
+    font-weight: var(--fontMedium) !important;
+    font-size: var(--fontSize15);
+    letter-spacing: 1px;
+    color: var(--color-white) !important;
+
+    &::after { display: none; }
+
+    span {
+      color: #ffbb20;
+      border-bottom: none !important;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 120px;
+        background: var(--color-black);
+        height: 4px;
+        left: 0;
+        bottom: 0;
+      }
+    }
+  }
+
+  // ── Image grid figures ────────────────────────
+  // Each col contains section > figure > a > img
+  section {
+    margin-bottom: 20px;
+
+    figure {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      @include border-radius(4px);
+      @include box-shadow(0 2px 8px rgba(0, 0, 0, 0.12));
+
+      a {
+        display: block;
+        height: 160px;
+        overflow: hidden;
+        position: relative;
+
+        // Overlay on hover — same pattern as galleryWrap
+        &::after {
+          position: absolute;
+          content: "\f0a0";                         // ri-zoom-in-line
+          font-family: remixicon !important;
+          font-size: 28px;
+          color: var(--color-white);
+          background: rgba(0, 0, 0, 0.5);
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          @include flexbox();
+          @include align-items(center);
+          @include justify-content(center);
+          opacity: 0;
+          visibility: hidden;
+          @include transition(all 0.3s ease);
+          z-index: 2;
+        }
+
+        &:hover::after {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          @include object-fit(cover);
+          @include transition(transform 0.3s ease);
+          display: block;
+        }
+
+        &:hover img {
+          @include transform(scale(1.05));
+        }
+      }
+    }
+  }
+}
+
+// ─────────────────────────────────────────────
+// DETAIL-SECTION — posted by / date footer bar
+// Already in _monthlyreport.scss — repeated here
+// for standalone use on detail pages
+// border-top + bottom: 1px #ccc solid; padding:5px;
+// display:flex; justify-content:space-between
+// .item.post:before — remixicon user icon \f255
+// .item.date:before — remixicon calendar icon \eb27
+// Source: line 28830 of minified CSS
+// ─────────────────────────────────────────────
+.detail-section {
+  width: 100%;
+  border-top: 1px #ccc solid;
+  border-bottom: 1px #ccc solid;
+  padding: 5px;
+  @include flexbox();
+  @include justify-content(space-between);
+  @include align-items(center);
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  &--left {
+    @include flexbox();
+    @include align-items(center);
+
+    .item {
+      font-size: var(--fontSize15);
+      font-weight: var(--fontMedium);
+      position: relative;
+      margin-right: 15px;
+      padding-left: 25px;
+
+      span { color: var(--color-accent-green); }
+
+      &.post::before {
+        position: absolute;
+        content: "\f255";
+        font-family: remixicon;
+        color: var(--color-primary2);
+        left: 0;
+        font-size: var(--fontSize15);
+      }
+
+      &.date::before {
+        position: absolute;
+        content: "\eb27";
+        font-family: remixicon;
+        color: var(--color-primary2);
+        left: 0;
+        font-size: var(--fontSize15);
+      }
+    }
+  }
+
+  &--right { width: auto; }
+}
+
+// ─────────────────────────────────────────────
+// GALLERY-DESC — description paragraph
+// ─────────────────────────────────────────────
+.gallery-desc {
+  font-size: var(--fontSize14);
+  color: #777;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+// ─────────────────────────────────────────────
+// LIGHTBOX — pure React overlay
+// BEM: .lb-backdrop  (full-screen dark overlay)
+//      .lb-img-wrap  (image + counter wrapper)
+//      .lb-img       (the displayed image)
+//      .lb-counter   (X / Y label)
+//      .lb-close     (× button top-right)
+//      .lb-arrow     (prev / next buttons)
+// ─────────────────────────────────────────────
+.lb-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.lb-img-wrap {
+  max-width: 90vw;
+  max-height: 90vh;
+  text-align: center;
+  position: relative;
+}
+
+.lb-img {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+.lb-counter {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--fontSize13);
+  margin-top: 10px;
+}
+
+.lb-close {
+  position: fixed;
+  top: 16px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: var(--color-white);
+  font-size: 32px;
+  cursor: pointer;
+  z-index: 10000;
+  line-height: 1;
+  padding: 0;
+  opacity: 0.8;
+
+  &:hover { opacity: 1; }
+}
+
+.lb-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: var(--color-white);
+  font-size: 36px;
+  cursor: pointer;
+  z-index: 10000;
+  padding: 8px 12px;
+  border-radius: 4px;
+  line-height: 1;
+  opacity: 0.8;
+
+  &:hover { opacity: 1; background: rgba(255, 255, 255, 0.25); }
+
+  &--prev { left: 16px; }
+  &--next { right: 16px; }
+}

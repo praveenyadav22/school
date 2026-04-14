@@ -1,0 +1,66 @@
+@use "../core/variables" as *;
+@use "../core/mixins" as *;
+
+// ─────────────────────────────────────────────
+// VIDEO GALLERY overrides
+// _walljournal.scss already covers:
+//   .galleryWrap, section, h2, .galleryPostWrap,
+//   .galleryPostWrap.view, span.marqq
+//
+// New rules here:
+//   .video-figure     — iframe card on listing page
+//   .video-detail__embed — full-width iframe on detail page
+//   .gallery-desc     — description paragraph
+// ─────────────────────────────────────────────
+
+// ── .video-figure ─────────────────────────────
+// Replaces figure > a > img pattern from _walljournal.scss
+// with a 16:9 iframe container.
+// Browser: iframe width:100% height:300px inside figure
+// Source: .o-video pattern line 30092 of minified CSS
+.video-figure {
+  width: 100% !important;
+  margin: 0 !important;
+  overflow: hidden;
+  position: relative;
+  padding-top: 56.25%;            // 16:9 = (9/16)*100
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+// ── .video-detail__embed ──────────────────────
+// Full-width 16:9 iframe on the detail page
+// Same aspect-ratio trick as .video-figure
+// Source: .o-video pattern line 30092 of minified CSS
+.video-detail__embed {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  margin-bottom: 20px;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+// ── .gallery-desc ─────────────────────────────
+// Description paragraph on detail page
+// Shared with photo gallery detail
+.gallery-desc {
+  font-size: var(--fontSize14);
+  color: #777;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
