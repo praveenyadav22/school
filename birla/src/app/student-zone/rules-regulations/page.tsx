@@ -5,14 +5,50 @@ export const metadata: Metadata = {
   title: "Rules & Regulations — Birla Vidya Niketan",
 };
 
+// ✅ Updated Sidebar (matches your HTML exactly)
 const sidebarData: SidebarLinksProps = {
   heading: "Student Zone",
   links: [
-    { label: "Rules & Regulations", href: "/student-zone/rules-regulations" },
-    { label: "Awards & Scholarships", href: "/student-zone/awards-scholarships" },
-    { label: "Senior Section Council", href: "/student-zone/senior-section-council" },
-    { label: "Junior Section Council", href: "/student-zone/junior-section-council" },
-    { label: "Admission", href: "/student-zone/admission" },
+    {
+      label: "Rules & Regulations",
+      href: "/student-zone/rules-regulations",
+    },
+    {
+      label: "Awards & Scholarships",
+      href: "/student-zone/awards-scholarships",
+    },
+    {
+      label: "Student's Council",
+      subLinks: [
+        {
+          label: "Senior Section",
+          href: "/student-zone/senior-section-council",
+        },
+        {
+          label: "Junior Section",
+          href: "/student-zone/junior-section-council",
+        },
+      ],
+    },
+    {
+      label: "Examination Schedule",
+      subLinks: [
+        {
+          label: "Schedule",
+          href: "https://erp.quickcampus.online/auth",
+          target: "_blank",
+        },
+        {
+          label: "Syllabus",
+          href: "https://erp.quickcampus.online/auth",
+          target: "_blank",
+        },
+      ],
+    },
+    {
+      label: "Admission",
+      href: "/student-zone/admission",
+    },
   ],
 };
 
@@ -22,12 +58,17 @@ export default function RulesRegulationsPage() {
       <div className="body-conent ptb-50">
         <div className="container">
           <div className="row">
+
+          
             <div className="col-12 col-lg-8">
-              Rules & Regulations
+              add content here
             </div>
+
+            {/* ── Sidebar ── */}
             <div className="col-12 col-lg-4">
               <SidebarLinks {...sidebarData} />
             </div>
+
           </div>
         </div>
       </div>

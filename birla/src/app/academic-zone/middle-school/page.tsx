@@ -8,13 +8,42 @@ export const metadata: Metadata = {
 const sidebarData: SidebarLinksProps = {
   heading: "Academic Zone",
   links: [
-    { label: "Affiliation", href: "/academic-zone/affiliation" },
-    { label: "Primary School", href: "/academic-zone/primary-school" },
-    { label: "Middle School", href: "/academic-zone/middle-school" },
-    { label: "Secondary School", href: "/academic-zone/secondary-school" },
-    { label: "Senior Secondary School", href: "/academic-zone/senior-secondary-school" },
-    { label: "Streams Offered", href: "/academic-zone/streams-offered" },
-    { label: "Book List 2024-25", href: "/academic-zone/book-list" },
+    {
+      label: "Affiliation",
+      href: "/academic-zone/affiliation",
+    },
+
+    // ✅ Curriculum (Nested like HTML)
+    {
+      label: "Curriculum/Syllabus",
+      subLinks: [
+        {
+          label: "Primary School",
+          href: "/academic-zone/primary-school",
+        },
+        {
+          label: "Middle School",
+          href: "/academic-zone/middle-school",
+        },
+        {
+          label: "Secondary School",
+          href: "/academic-zone/secondary-school",
+        },
+        {
+          label: "Senior Secondary School",
+          href: "/academic-zone/senior-secondary-school",
+        },
+      ],
+    },
+
+    {
+      label: "Streams Offered",
+      href: "/academic-zone/streams-offered",
+    },
+    {
+      label: "Book List 2024-25",
+      href: "/academic-zone/book-list",
+    },
   ],
 };
 

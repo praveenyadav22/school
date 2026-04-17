@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import LogoSlider from "@/utils/LogoSlider";
 import SocialMedia from "@/utils/SocialMedia";
 import BreadCrumb from "@/components/BreadCrumb";
+import { AccessibilityProvider } from "@/context/AccessibilityContext";
+import AccessibilityWidget from "@/components/Accessibility/AccessibilityWidget";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -38,19 +40,24 @@ export default function RootLayout({
   return (
     <html lang="en" className={poppins.variable}>
       <head>
-        {/* Remixicon — used across Header, Footer and SCSS content icons */}
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"
         />
       </head>
       <body>
-        <Header />
-        <BreadCrumb />
-        <main>{children}</main>
-        <LogoSlider />
-        <SocialMedia />
-        <Footer />
+        {/* AccessibilityProvider wraps everything so all pages
+            can read/set accessibility state via useAccessibility() */}
+        <AccessibilityProvider>
+          <Header />
+          <BreadCrumb />
+          <main>{children}</main>
+          <LogoSlider />
+          <SocialMedia />
+          <Footer />
+          {/* Fixed floating button + slide-in drawer — appears on every page */}
+          <AccessibilityWidget />
+        </AccessibilityProvider>
       </body>
     </html>
   );

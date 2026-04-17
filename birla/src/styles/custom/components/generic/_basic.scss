@@ -1526,3 +1526,169 @@ ul.checklist {
     }
   }
 }
+.inner-content {
+  .contentsection {
+    &.with_table {
+      border: none;
+      padding-top: 0;
+      margin-top: 0;
+    }
+  }
+
+  // ── Headings ──────────────────────────────
+  // .inner-content h4: font-size:1.2rem; color:#374550
+  // Source: line 29765 of minified CSS
+  h4 {
+    font-size: 1.2rem;
+    color: var(--color-grey2);               // #374550
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: var(--fontSemiBold);
+  }
+}
+.contentsection.with_table {
+
+  th {
+    color: #43464b;
+    font-weight: var(--fontMedium);
+    font-size: var(--fontSize16);
+    padding: 7px 15px;
+    @include box-shadow(0 2px 0 0 rgba(221, 221, 221, 0.5));
+    white-space: nowrap;
+  }
+
+  // .table.headerBg th — coloured header row
+  .table.headerBg th {
+    color: var(--color-white);
+    background-color: var(--color-grey);     // #374550
+    border: 2px solid var(--color-white);
+  }
+
+  td {
+    color: var(--color-grey2);               // #374550
+    font-size: var(--fontSize15);
+    padding: 8px;
+    white-space: nowrap;
+    border-bottom: 1px #ccc solid;
+
+    a {
+      color: var(--color-accent-blue);          // #b83f06
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+    }
+  }
+
+  table tr:hover {
+    background-color: var(--color-light-grey5);  // #f4f6f9
+  }
+}
+.profileImage {
+  width: 400px;
+  height: 400px;
+  max-width: 100%;
+  object-fit: cover;
+  @include border-radius(8px);
+  &.v2 {
+     width: 400px;
+  height: 400px;
+  max-width: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 1.5rem;        // centred + bottom gap replacing mb-4
+  @include border-radius(8px);
+  }
+}
+
+
+.profileImage--circle {
+  width: 350px;
+  height: 350px;
+  border-radius: 50% !important;                   // rounded-circle
+  border: 2px solid #ffc107 !important;            // border-warning — #ffc107
+  padding: 0.75rem;                                // p-3
+  @include box-shadow(0 1rem 3rem rgba(0, 0, 0, 0.175)); // shadow-lg
+}
+
+.founder-figure {
+  margin: 0;
+  @include flexbox();
+  @include justify-content(center);
+  @include align-items(center);
+  margin-bottom: 20px;
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.disclosure-btn {
+  margin-bottom: 10px;
+
+  i {
+    vertical-align: middle;
+  }
+}
+
+.contentsection {
+
+  // ── Accordion button — closed state ──────
+  // bg:#fff; color:#374550; font-weight:600;
+  // border:2px solid #f4f6f9; border-radius:5px;
+  // Source: line 29700 of minified CSS
+  .accordion-button {
+    background-color: var(--color-white);
+    color: var(--color-grey2);               // #374550
+    font-weight: var(--fontSemiBold);        // 600
+    border: 2px solid var(--color-light-grey5); // #f4f6f9
+    @include border-radius(5px);
+    @include transition(all 0.5s);
+
+    // + icon for closed state
+    // Source: line 29712 of minified CSS
+    &::after {
+      width: 1rem;
+      height: 1rem;
+      background-size: 1rem;
+      filter: brightness(0);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-plus' viewBox='0 0 16 16'%3E%3Cpath d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z'/%3E%3C/svg%3E");
+      @include transition(all 0.5s);
+    }
+  }
+
+  // ── Accordion button — open state ────────
+  // color:#a43605 (primary)
+  // Source: line 29690 of minified CSS
+  .accordion-button:not(.collapsed) {
+    color: var(--color-primary);             // #a43605
+    background-color: var(--color-white);
+    box-shadow: none;
+
+    // − icon for open state (no rotation)
+    // Source: line 29720 of minified CSS
+    &::after {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-dash' viewBox='0 0 16 16'%3E%3Cpath d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z'/%3E%3C/svg%3E");
+      transform: none;                      // override Bootstrap's rotate(-180deg)
+    }
+  }
+
+  // ── Accordion item ────────────────────────
+  // border-radius:5px; margin-bottom:15px
+  // Source: line 29708 of minified CSS
+  .accordion-item {
+    @include border-radius(5px);
+    margin-bottom: 15px;
+    border: none;                            // flush removes side borders
+  }
+
+  // ── PDF iframe ────────────────────────────
+  .frame {
+    display: block;
+    border: none;
+  }
+}
