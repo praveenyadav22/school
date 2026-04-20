@@ -54,7 +54,12 @@ export default function AffiliationPage() {
         <div className="container">
           <div className="row">
             <div className="col-12 col-lg-8">
-              Affiliation
+             <div className="inner-content">
+        <div className="contentArea">
+         <h4>Affiliation</h4>
+         <p>Birla Vidya Niketan, Sec 4, Pushp Vihar, New Delhi is affiliated with CBSE vide affiliation no. <strong>2730115.</strong></p>
+        </div> 
+       </div>
             </div>
             <div className="col-12 col-lg-4">
               <SidebarLinks {...sidebarData} />

@@ -72,7 +72,11 @@ export default function BirlaKridaKendraPage() {
         <div className="container">
           <div className="row">
             <div className="col-12 col-lg-8">
-              Sarala Birla Krida Kendra
+             <div className="inner-content">
+        <div className="contentArea">
+         <p >Sarala Birla Krida Kendra is located inside the school campus. Its world class badminton courts and dedicated coach have produced many badminton champions at state, national and international levels. BVN is one of the few schools which has a beautiful and very clean swimming pool, and many great swimmers have been trained here. The Gymnasium under its expert coach has also produced gymnasts at national level. The wooden floored Skating rink is another facet of awe at the sports center. Besides these indoor games, many other sports are also encouraged/played at BVN. To name a few are...Basket ball, Volley Ball, Football, Cricket, Athletics, Chess, Kabaddi, Marshall Arts etc.</p>
+        </div> 
+       </div>
             </div>
             <div className="col-12 col-lg-4">
               <SidebarLinks {...sidebarData} />

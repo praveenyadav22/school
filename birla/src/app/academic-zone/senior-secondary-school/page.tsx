@@ -54,7 +54,17 @@ export default function SeniorSecondarySchoolPage() {
         <div className="container">
           <div className="row">
             <div className="col-12 col-lg-8">
-              Senior Secondary School
+            <div className="inner-content">
+        <div className="contentArea">
+         <p>For classes XI and XII the CBSE curriculum and pattern of examination is followed.</p>
+         <h4 className="mb-3">All India Senior Secondary School Offers a Choice Of Subjects in:-</h4>
+         <ul className="checklist">
+          <li>Science : English Core, Mathematics/Psychology/Informatics Practices, Physics. Chemistry, Biology/Engineering Drawing/Computer Science/Economics</li>
+          <li>Commerce : English Core, Mathematics/Psychology/Informatics Practices, Business Studies, Accountancy, Economics</li>
+          <li>Humanities : English Core, Political Science/Physical Education, History, Geography/Information Practices /Mathematics, Home Science, Economics, Psychology</li>
+         </ul>
+        </div> 
+       </div>
             </div>
             <div className="col-12 col-lg-4">
               <SidebarLinks {...sidebarData} />

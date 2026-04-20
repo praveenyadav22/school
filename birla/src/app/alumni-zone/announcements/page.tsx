@@ -21,7 +21,7 @@ export default function AnnouncementsPage() {
         <div className="container">
           <div className="row">
             <div className="col-12 col-lg-8">
-              Announcements
+              No announcements data available yet!
             </div>
             <div className="col-12 col-lg-4">
               <SidebarLinks {...sidebarData} />

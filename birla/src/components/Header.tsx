@@ -304,7 +304,7 @@ const Header = () => {
                                     <li><a href="https://erp.quickcampus.online/auth" target="_blank" rel="noreferrer">Syllabus</a></li>
                                   </ul>
                                 </li>
-                                <li><Link href="/student-zone/admission">Admission</Link></li>
+                                <li><Link href="/admission">Admission</Link></li>
                               </ul>
                             </li>
 

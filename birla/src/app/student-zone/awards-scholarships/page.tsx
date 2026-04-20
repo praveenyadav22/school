@@ -44,7 +44,7 @@ const sidebarData: SidebarLinksProps = {
     },
     {
       label: "Admission",
-      href: "/student-zone/admission",
+      href: "/admission",
     },
   ],
 };

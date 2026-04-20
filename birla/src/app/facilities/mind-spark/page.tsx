@@ -72,7 +72,12 @@ export default function MindSparkPage() {
         <div className="container">
           <div className="row">
             <div className="col-12 col-lg-8">
-              Mind Spark
+             <div className="inner-content">
+        <div className="contentArea">
+         <p>Mindspark is a personalized, computer-based, adaptive learning programme for Mathematics. It is personalized because the question that a student gets depends entirely on how he/she has performed in the previous question-the system focuses on helping him/her overcome his/her weaknesses. If the student requires practice, it provides practice. If he/ she requires concept - based understanding, it challenges him / her with such activities. If a lower class concept is not understood, it provides specially remedial items. If the child has completed all the contents for that class level, it provides enrichment activities.</p>
+         <p>Mindspark as a paradigm resonates to push the boundaries of learning well beyond exams into understanding, application and appreciation. Every child experiences the magic, enjoying Mathematics at just beyond the comfort level in a manner which helps to grasp and embed concepts, resulting in learning of Mathematics for life. Mindspark works individually with each student to diagnose, remediate and motivate the student to invest the time needed to make him / her confident and fluent in the subject.</p>
+        </div> 
+       </div>
             </div>
             <div className="col-12 col-lg-4">
               <SidebarLinks {...sidebarData} />

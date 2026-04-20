@@ -72,7 +72,13 @@ export default function CanteenPage() {
         <div className="container">
           <div className="row">
             <div className="col-12 col-lg-8">
-              Canteen
+             <div className="inner-content">
+        <div className="contentArea">
+         <p>Food provided at school has a considerable influence on the development of the children’s long term eating habits, food preferences and attitude towards food.</p>
+         <p>In order to develop healthy eating habits and to encourage social skills, ‘Sampurna’ provides nutritious food for the students. Tiffin is served to the children of classes Nursery to I in the classroom itself which includes a balanced meal consisting of a fruit followed by the main course &amp; the menu is changed everyday to avoid monotony.</p>
+         <p>Canteen is supervised regularly to ensure hygiene while cooking and serving meals.</p>
+        </div> 
+       </div>
             </div>
             <div className="col-12 col-lg-4">
               <SidebarLinks {...sidebarData} />

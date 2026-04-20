@@ -72,7 +72,22 @@ export default function EducationalToursPage() {
         <div className="container">
           <div className="row">
             <div className="col-12 col-lg-8">
-              Excursion / Educational Tours
+              <div className="inner-content">
+        <div className="contentArea">
+         <p >For the holistic growth of its pupil the school believes in a strong mental and physical development. Therefore, the students are exposed to a plethora of activities, workshops etc. Trips and excursions are important aspects wherein students are offered various types of activities outside school.</p>
+         <ul className="checklist">
+          <li>Social service related trips to various schools, colonies etc.</li>
+          <li>One day fun picnics.</li>
+          <li>One day heritage walks.</li>
+          <li>One day Science education related trips.</li>
+          <li>Outstation Adventure Camps within India.</li>
+          <li>Outstation Educational trips within India.</li>
+          <li>International Educational trips.</li>
+          <li>International Students Exchange Programmes.</li>
+          <li>Visit to art gallery.</li>
+         </ul>
+        </div>
+       </div>
             </div>
             <div className="col-12 col-lg-4">
               <SidebarLinks {...sidebarData} />
