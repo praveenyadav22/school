@@ -388,7 +388,7 @@ const Header = () => {
                       aria-label="Open navigation menu"
                       aria-expanded={mobileNavOpen}
                     >
-                      <i className="ri-menu-3-fill" />
+                      <i className="ri-menu-line" />
                     </button>
 
                     {/* Othericon — original ri-menu-3-fill, always visible */}
