@@ -1,12 +1,7 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
 
-// ─────────────────────────────────────────────
-// INNER-CONTENT__HEAD
-// font-size:20px; margin-bottom:20px;
-// color:#374550; font-family:Poppins; font-weight:400
-// Source: line 28560 of minified CSS
-// ─────────────────────────────────────────────
+
 .inner-content {
   &__head {
     font-size: var(--fontSize20);
@@ -17,13 +12,6 @@
   }
 }
 
-// ─────────────────────────────────────────────
-// GALLERY__DETAIL — detail page image grid wrapper
-// .gallery__detail h3: clear:left; float:left;
-//   width:100%; background:#d41a25; padding:7px;
-//   font-weight:500; font-size:15px; color:#fff
-// Source: line 29023 of minified CSS
-// ─────────────────────────────────────────────
 .gallery__detail {
   margin-top: 1rem;
 
@@ -56,8 +44,7 @@
     }
   }
 
-  // ── Image grid figures ────────────────────────
-  // Each col contains section > figure > a > img
+
   section {
     margin-bottom: 20px;
 
@@ -74,7 +61,6 @@
         overflow: hidden;
         position: relative;
 
-        // Overlay on hover — same pattern as galleryWrap
         &::after {
           position: absolute;
           content: "\f0a0";                         // ri-zoom-in-line
@@ -116,16 +102,6 @@
   }
 }
 
-// ─────────────────────────────────────────────
-// DETAIL-SECTION — posted by / date footer bar
-// Already in _monthlyreport.scss — repeated here
-// for standalone use on detail pages
-// border-top + bottom: 1px #ccc solid; padding:5px;
-// display:flex; justify-content:space-between
-// .item.post:before — remixicon user icon \f255
-// .item.date:before — remixicon calendar icon \eb27
-// Source: line 28830 of minified CSS
-// ─────────────────────────────────────────────
 .detail-section {
   width: 100%;
   border-top: 1px #ccc solid;
@@ -173,9 +149,6 @@
   &--right { width: auto; }
 }
 
-// ─────────────────────────────────────────────
-// GALLERY-DESC — description paragraph
-// ─────────────────────────────────────────────
 .gallery-desc {
   font-size: var(--fontSize14);
   color: #777;
@@ -183,15 +156,6 @@
   margin-bottom: 16px;
 }
 
-// ─────────────────────────────────────────────
-// LIGHTBOX — pure React overlay
-// BEM: .lb-backdrop  (full-screen dark overlay)
-//      .lb-img-wrap  (image + counter wrapper)
-//      .lb-img       (the displayed image)
-//      .lb-counter   (X / Y label)
-//      .lb-close     (× button top-right)
-//      .lb-arrow     (prev / next buttons)
-// ─────────────────────────────────────────────
 .lb-backdrop {
   position: fixed;
   inset: 0;

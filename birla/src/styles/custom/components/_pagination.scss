@@ -1,0 +1,44 @@
+@use "../core/variables" as *;
+@use "../core/mixins" as *;
+
+
+
+// ── PAGINATION COMPONENT CSS STARTS ──────────────────────────
+
+.c-pagination {
+  @include flexbox();
+  @include align-items(center);
+  gap: 12px;
+  margin: 20px 0;
+
+  &__btn {
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    background-color: var(--color-white);
+    color: var(--color-primary); // #a43605
+    font-size: var(--fontSize14);
+    @include border-radius(4px);
+    @include transition(all ease 0.3s);
+    cursor: pointer;
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border-color: var(--color-primary);
+    }
+
+    &:disabled {
+      color: #777;
+      cursor: not-allowed;
+      background-color: var(--color-white);
+      border-color: #ddd;
+    }
+  }
+
+  &__info {
+    font-size: var(--fontSize14);
+    color: var(--color-grey2); // #374550
+  }
+}
+
+// ── PAGINATION COMPONENT CSS ENDS ────────────────────────────

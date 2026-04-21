@@ -2,16 +2,11 @@
 @use "../core/mixins" as *;
 @use "../components/generic/sizes" as *;
 
-// ─────────────────────────────────────────────
-// BODY CONTENT WRAPPER
-// ─────────────────────────────────────────────
+
 .body-conent {
   width: 100%;
 }
 
-// ─────────────────────────────────────────────
-// C-HOMECIRCULARSLIST
-// ─────────────────────────────────────────────
 .c-homeCircularslist {
   padding: 30px 15px;
   background-color: var(--color-white);

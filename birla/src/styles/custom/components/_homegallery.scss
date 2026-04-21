@@ -1,9 +1,7 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
 
-// ─────────────────────────────────────────────
-// CUSTOMHEAD__24 — section heading with icon
-// ─────────────────────────────────────────────
+
 .customhead__24 {
   font-size: var(--fontSize24);
   color: var(--color-grey2);
@@ -23,9 +21,7 @@
   }
 }
 
-// ─────────────────────────────────────────────
-// O-VIDEO — iframe wrapper + action bar cover
-// ─────────────────────────────────────────────
+
 .o-video {
   position: relative;
   width: 100%;
@@ -38,11 +34,6 @@
     display: block;
   }
 
-  // Covers YouTube's fullscreen-action-menu bar.
-  // ::after pseudo-elements cannot block iframe UI —
-  // iframe content paints above pseudo-elements in the
-  // stacking context. A real sibling DOM element with
-  // a higher z-index is the only reliable solution.
   &__overlay {
     position: absolute;
     top: 0;
@@ -55,9 +46,7 @@
   }
 }
 
-// ─────────────────────────────────────────────
-// GALLERY-CARDLIST — photo and video cards
-// ─────────────────────────────────────────────
+
 .gallery-cardlist {
   @include transition(all ease 0.5s);
   @include box-shadow(0 0 20px 3px rgba(0, 0, 0, 0.08));
@@ -66,14 +55,13 @@
   margin-bottom: 30px;
   background-color: var(--color-white);
 
-  // ── Image wrap ────────────────────────────────
   &__imgwrap {
     width: 100%;
     height: 300px;
     overflow: hidden;
     position: relative;
 
-    // Video play icon overlay (for .video modifier)
+
     &.video::after {
       content: "\f008";
       font-family: remixicon !important;

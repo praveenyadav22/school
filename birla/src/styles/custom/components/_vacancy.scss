@@ -1,11 +1,7 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
 
-// ─────────────────────────────────────────────
-// THEME__TABLE
-// Modifier classes work together for alternating
-// row colours + coloured header + hover effect
-// ─────────────────────────────────────────────
+
 .theme__table {
   clear: left;
   float: left;
@@ -75,10 +71,7 @@
   min-width: 800px;
 }
 
-// ─────────────────────────────────────────────
-// VACANCY STATUS BADGE
-// Matches browser: color:green; font-weight:bold
-// ─────────────────────────────────────────────
+
 .vacancy__status {
   font-weight: var(--fontBold);
 
