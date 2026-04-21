@@ -20,8 +20,8 @@ const sidebarData: SidebarLinksProps = {
     {
       label: "Examination Schedule",
       subLinks: [
-        { label: "Schedule", href: "https://erp.quickcampus.online/auth" },
-        { label: "Syllabus", href: "https://erp.quickcampus.online/auth" },
+        { label: "Schedule", href: "https://erp.quickcampus.online/auth", isExternal: true },
+        { label: "Syllabus", href: "https://erp.quickcampus.online/auth", isExternal: true },
       ],
     },
     { label: "Admission", href: "/admission" },

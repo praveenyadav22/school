@@ -352,16 +352,29 @@
 // ─────────────────────────────────────────────
 .othericon {
   margin-left: 8px;
-  cursor: pointer;
 
-  i {
-    font-size: 24px;
-    color: #43464b;
+  // WCAG 4.1.2 — button replaces i role="button"
+  &__btn {
+    background: transparent;
+    border: none;
+    padding: 0;
     cursor: pointer;
-    transition: color 0.3s ease;
+    line-height: 1;
 
-    &:hover {
+    i {
+      font-size: 24px;
+      color: #43464b;
+      transition: color 0.3s ease;
+    }
+
+    &:hover i {
       color: var(--color-primary);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+      border-radius: 2px;
     }
   }
 }
@@ -863,5 +876,27 @@
   // Show mobile hamburger in primary color
   .mobile-nav__hamburger {
     display: flex;
+  }
+}
+// ─────────────────────────────────────────────
+// SKIP TO MAIN CONTENT — WCAG 2.4.1
+// Visually hidden until focused by keyboard
+// ─────────────────────────────────────────────
+.skip-to-main {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 8px 16px;
+  font-size: var(--fontSize14);
+  font-weight: var(--fontSemiBold);
+  z-index: 99999;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+  transition: top 0.2s ease;
+
+  &:focus {
+    top: 0;
   }
 }

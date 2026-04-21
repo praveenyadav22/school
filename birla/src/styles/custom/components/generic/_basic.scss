@@ -413,6 +413,25 @@
       font-weight: var(--fontMedium) !important;
     }
   }
+
+  // ── h4 headings ─────────────────────────────
+  // Source: line 29765 of minified CSS
+  h4 {
+    font-size: 1.2rem;
+    color: var(--color-grey2);               // #374550
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: var(--fontSemiBold);
+  }
+
+  // ── contentsection.with_table inside inner-content ──
+  .contentsection {
+    &.with_table {
+      border: none;
+      padding-top: 0;
+      margin-top: 0;
+    }
+  }
 }
 
 .payheding {
@@ -1550,65 +1569,8 @@ ul.checklist {
     }
   }
 }
-.inner-content {
-  .contentsection {
-    &.with_table {
-      border: none;
-      padding-top: 0;
-      margin-top: 0;
-    }
-  }
 
-  // ── Headings ──────────────────────────────
-  // .inner-content h4: font-size:1.2rem; color:#374550
-  // Source: line 29765 of minified CSS
-  h4 {
-    font-size: 1.2rem;
-    color: var(--color-grey2); // #374550
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-weight: var(--fontSemiBold);
-  }
-}
-.contentsection.with_table {
-  th {
-    color: #43464b;
-    font-weight: var(--fontMedium);
-    font-size: var(--fontSize16);
-    padding: 7px 15px;
-    @include box-shadow(0 2px 0 0 rgba(221, 221, 221, 0.5));
-    white-space: nowrap;
-  }
 
-  // .table.headerBg th — coloured header row
-  .table.headerBg th {
-    color: var(--color-white);
-    background-color: var(--color-grey); // #374550
-    border: 2px solid var(--color-white);
-  }
-
-  td {
-    color: var(--color-grey2); // #374550
-    font-size: var(--fontSize15);
-    padding: 8px;
-    white-space: nowrap;
-    border-bottom: 1px #ccc solid;
-
-    a {
-      color: var(--color-accent-blue); // #b83f06
-      text-decoration: none;
-
-      &:hover {
-        color: var(--color-primary);
-        text-decoration: none;
-      }
-    }
-  }
-
-  table tr:hover {
-    background-color: var(--color-light-grey5); // #f4f6f9
-  }
-}
 .profileImage {
   width: 400px;
   height: 400px;
@@ -1654,6 +1616,54 @@ ul.checklist {
 
   i {
     vertical-align: middle;
+  }
+}
+
+// ─────────────────────────────────────────────
+// CONTENTSECTION WITH_TABLE — table styles
+// th: color:#43464b; font-weight:500; font-size:1rem;
+//     padding:7px 15px; white-space:nowrap
+// .table.headerBg th: color:#fff; bg:#374550; border:2px solid #fff
+// td: color:#374550; font-size:15px; padding:8px;
+//     white-space:nowrap; border-bottom:1px #ccc solid
+// tr:hover: bg:#f4f6f9
+// Source: lines 29664–29690 of minified CSS
+// ─────────────────────────────────────────────
+.contentsection.with_table {
+  th {
+    color: #43464b;
+    font-weight: var(--fontMedium);
+    font-size: var(--fontSize16);
+    padding: 7px 15px;
+    @include box-shadow(0 2px 0 0 rgba(221, 221, 221, 0.5));
+    white-space: nowrap;
+  }
+
+  .table.headerBg th {
+    color: var(--color-white);
+    background-color: var(--color-grey);
+    border: 2px solid var(--color-white);
+  }
+
+  td {
+    color: var(--color-grey2);
+    font-size: var(--fontSize15);
+    padding: 8px;
+    white-space: nowrap;
+    border-bottom: 1px #ccc solid;
+
+    a {
+      color: var(--color-accent-blue);
+      text-decoration: none;
+      &:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+    }
+  }
+
+  table tr:hover {
+    background-color: var(--color-light-grey5);
   }
 }
 

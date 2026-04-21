@@ -35,12 +35,12 @@ const sidebarData: SidebarLinksProps = {
         {
           label: "Schedule",
           href: "https://erp.quickcampus.online/auth",
-          target: "_blank",
+          isExternal: true,
         },
         {
           label: "Syllabus",
           href: "https://erp.quickcampus.online/auth",
-          target: "_blank",
+          isExternal: true,
         },
       ],
     },

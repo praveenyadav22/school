@@ -51,7 +51,7 @@ export default function RootLayout({
         <AccessibilityProvider>
           <Header />
           <BreadCrumb />
-          <main>{children}</main>
+          <main id="main-content">{children}</main>
           <LogoSlider />
           <SocialMedia />
           <Footer />

@@ -2,24 +2,26 @@ import Link from "next/link";
 
 // ── Types ─────────────────────────────────────────────────────
 export interface SubLinkItem {
-  label: string;
-  href: string;
+  label:      string;
+  href:       string;
+  isExternal?: boolean;
 }
 
 export interface LinkItem {
-  label: string;
-  href?: string;           // omit href for parent items that only toggle sub-list
-  subLinks?: SubLinkItem[];
+  label:      string;
+  href?:      string;
+  isExternal?: boolean;
+  subLinks?:  SubLinkItem[];
 }
 
 export interface SidebarLinksProps {
   heading: string;
-  links: LinkItem[];
+  links:   LinkItem[];
 }
 
 // ─────────────────────────────────────────────────────────────
 // SidebarLinks — reusable sidebar navigation widget
-// Usage: import this component + pass your page-specific data
+// Supports: internal links, external links, nested sub-lists
 // ─────────────────────────────────────────────────────────────
 const SidebarLinks = ({ heading, links }: SidebarLinksProps) => {
   return (
@@ -31,19 +33,48 @@ const SidebarLinks = ({ heading, links }: SidebarLinksProps) => {
         {links.map((item, i) => (
           <li key={i} className={item.subLinks ? "sub-quicklinks" : ""}>
 
-            {/* Main link — if no href treat as non-navigable parent */}
+            {/* Main link */}
             {item.href ? (
-              <Link href={item.href}>{item.label}</Link>
+              item.isExternal ? (
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${item.label} (opens in new tab)`}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link href={item.href}>{item.label}</Link>
+              )
             ) : (
-              <a href="javascript:;">{item.label}</a>
+              // Parent toggle — no navigation, just expands sub-list
+              <button
+                type="button"
+                className="sidebar-parent-btn"
+                aria-expanded={true}
+              >
+                {item.label}
+              </button>
             )}
 
-            {/* Sub-links — only rendered when subLinks array exists */}
+            {/* Sub-links */}
             {item.subLinks && item.subLinks.length > 0 && (
               <ul className="sub-list">
                 {item.subLinks.map((sub, j) => (
                   <li key={j}>
-                    <Link href={sub.href}>{sub.label}</Link>
+                    {sub.isExternal ? (
+                      <a
+                        href={sub.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${sub.label} (opens in new tab)`}
+                      >
+                        {sub.label}
+                      </a>
+                    ) : (
+                      <Link href={sub.href}>{sub.label}</Link>
+                    )}
                   </li>
                 ))}
               </ul>

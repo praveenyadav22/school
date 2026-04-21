@@ -2,114 +2,17 @@
 
 import { useState } from "react";
 import SidebarLinks, { SidebarLinksProps } from "@/utils/SidebarLinks";
+import { AccordionItem, BatchTable, PdfEmbed } from "@/utils/Accordion";
 
 const sidebarData: SidebarLinksProps = {
   heading: "CBSE Results",
   links: [
-    { label: "Class XII",          href: "/cbse-results/class-xii" },
-    { label: "Class X",            href: "/cbse-results/class-x" },
+    { label: "Class XII",         href: "/cbse-results/class-xii" },
+    { label: "Class X",           href: "/cbse-results/class-x" },
     { label: "Batch After School", href: "/cbse-results/batch-after-school" },
   ],
 };
 
-// ── Reusable table component ──────────────────────────────────
-function BatchTable({
-  heading,
-  colSpan,
-  headers,
-  rows,
-}: {
-  heading:  string;
-  colSpan:  number;
-  headers:  string[];
-  rows:     (string | null)[][];
-}) {
-  return (
-    <div className="contentsection with_table">
-      <div className="table-responsive">
-        <table className="table headerBg">
-          <thead>
-            <tr><th colSpan={colSpan}>{heading}</th></tr>
-          </thead>
-          <tbody>
-            <tr>{headers.map((h) => <td key={h}><strong>{h}</strong></td>)}</tr>
-            {rows.map((row, i) => (
-              <tr key={i}>
-                {row.map((cell, j) => (
-                  <td key={j}>{cell ?? "\u00a0"}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-}
-
-// ── PDF iframe component ──────────────────────────────────────
-function PdfEmbed({ src }: { src: string }) {
-  return (
-    <p>
-      <iframe
-        src={src}
-        width="100%"
-        height="600"
-        frameBorder={0}
-        title="Batch PDF"
-        className="frame"
-      />
-    </p>
-  );
-}
-
-// ── Accordion item component ──────────────────────────────────
-function AccordionItem({
-  id,
-  label,
-  openId,
-  setOpenId,
-  children,
-  defaultOpen = false,
-}: {
-  id:        string;
-  label:     string;
-  openId:    string | null;
-  setOpenId: (id: string | null) => void;
-  children:  React.ReactNode;
-  defaultOpen?: boolean;
-}) {
-  const isOpen = openId === id;
-  const toggle = () => setOpenId(isOpen ? null : id);
-
-  return (
-    <div className="accordion-item">
-      <h2 className="accordion-header">
-        <button
-          className={`accordion-button border-bottom fw-semibold${isOpen ? "" : " collapsed"}`}
-          type="button"
-          onClick={toggle}
-          aria-expanded={isOpen}
-          aria-controls={id}
-        >
-          {label}
-        </button>
-      </h2>
-      <div
-        id={id}
-        className={`accordion-collapse collapse${isOpen ? " show" : ""}`}
-      >
-        <div className="accordion-body">
-          {children}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────
-// PAGE
-// ─────────────────────────────────────────────────────────────
 export default function BatchAfterSchoolPage() {
   // Browser: flush-collapseSeven is open by default (aria-expanded="true")
   const [openId, setOpenId] = useState<string | null>("batch-2016");
