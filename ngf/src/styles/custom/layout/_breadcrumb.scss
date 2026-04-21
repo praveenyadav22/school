@@ -1,0 +1,126 @@
+@use "../core/variables" as *;
+@use "../core/mixins" as *;
+
+// ═══════════════════════════════════════════════════════════════
+// #blog_banner — inner page hero banner
+// Exact match to ngfsalaknanda.com CSS
+// ═══════════════════════════════════════════════════════════════
+
+#blog_banner {
+  position: relative;
+  background: url("/images/banner/inner-hero.jpg") no-repeat;
+  background-size: 100%;
+  background-position: center top;
+  background-attachment: fixed;
+  height: 400px;
+  width: 100%;
+
+  // Content area — sits above overlay
+  .page-title {
+    padding-top: 195px;
+    position: relative;
+    text-align: center;
+    z-index: 1;
+
+    h2 {
+      color: var(--color-primary);
+      margin-bottom: 0;
+      background: var(--color-white);
+      padding: 5px 15px;
+      display: inline-block;
+    }
+  }
+}
+
+// ── Overlays ──────────────────────────────────────────────────
+.yellow-overlay,
+.black-overlay,
+.blue-overlay {
+  background: linear-gradient(
+    to left,
+    rgba(247, 148, 30, 0.7),
+    rgba(0, 0, 0, 0.6)
+  );
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.black-overlay {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.blue-overlay {
+  background: linear-gradient(to left, rgba(0, 65, 140, 0.65), rgb(20, 49, 82));
+}
+
+// ═══════════════════════════════════════════════════════════════
+// .breadcrumb-main — bar below hero banner
+// Exact match to live site
+// ═══════════════════════════════════════════════════════════════
+.breadcrumb-main {
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid #f1f1f1;
+  background: #fbfbfb;
+
+  // Bootstrap breadcrumb override
+  .breadcrumb {
+    background: transparent;
+    margin-bottom: 0;
+    padding: 15px 0;
+    border-radius: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0;
+
+    // Separator between items
+    > li + li::before {
+      content: "/";
+      padding: 0 8px;
+      color: #ccc;
+    }
+
+    // All items
+    > li {
+      color: var(--color-primary);    // amber — matches live site
+      margin-bottom: 0;
+      padding-left: 0;
+      font-size: 15px;
+      line-height: inherit;
+      list-style: none;
+
+      // Links (Home, parent crumbs)
+      > a {
+        color: #181d31;               // dark — matches live site
+        text-decoration: none;
+
+        &:hover { color: var(--color-primary); }
+      }
+
+      // Active (current page)
+      &.active span {
+        color: var(--color-primary);  // amber
+      }
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// RESPONSIVE
+// ═══════════════════════════════════════════════════════════════
+@media only screen and (max-width: 991px) {
+  #blog_banner {
+    background-size: cover;
+
+    .page-title { padding-top: 200px; }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #blog_banner .page-title { padding-top: 170px; }
+}

@@ -1,0 +1,309 @@
+@use "../core/variables" as *;
+@use "../core/mixins" as *;
+
+// ═══════════════════════════════════════════════════════════════
+// #home-banner  — full-viewport hero carousel
+// Mirrors original site CSS exactly, adapted for Embla
+// ═══════════════════════════════════════════════════════════════
+
+#home-banner {
+  overflow: hidden;
+  height: 715px;
+  position: relative;
+  background: linear-gradient(-29deg, #000 0, #000 100%);
+
+  // ── Embla structure ───────────────────────────────────────
+  .home-banner-viewport {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .home-banner-container {
+    display: flex;
+    height: 100%;
+  }
+
+  .home-banner-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 715px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      opacity: 0.4;              // exact match to original
+      max-width: inherit;
+    }
+  }
+
+  // ── Carousel controls (.ps_control_rotate_f) ─────────────
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    z-index: 100;
+    color: var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    cursor: pointer;
+    background: var(--color-white);
+    border: none;
+    border-radius: 50%;
+    opacity: 0;
+    line-height: 48px;
+    text-shadow: none;
+    font-weight: normal;
+    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+
+    &.left  { left: 3%; }
+    &.right { right: 3%; }
+
+    &:hover {
+      color: var(--color-white);
+      background: var(--color-dark-navy);
+    }
+
+    span.fa {
+      position: relative;
+      display: block;
+    }
+  }
+
+  &:hover .carousel-control { opacity: 1; }
+
+  // ── Dot indicators (.ps_indicators_l) ────────────────────
+  .carousel-indicators {
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    z-index: 10;
+    list-style: none;
+    padding: 0;
+
+    li {
+      width: 30px;
+      height: 4px;
+      background: rgba(255, 255, 255, 1);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      border-radius: 0;
+      margin: 0;
+      text-indent: 0;
+      transition: all ease-in-out 0.5s;
+
+      &.active {
+        background: var(--color-dark-navy);
+        height: 10px;
+        width: 30px;
+      }
+    }
+  }
+}
+
+// ── kbrns zoom animation on slide images ─────────────────────
+.kbrns_zoomInOut .home-banner-slide img {
+  animation: kbrns_zoomInOut 25s linear 0s infinite alternate;
+}
+
+@keyframes kbrns_zoomInOut {
+  0%   { transform: scale(1.0); }
+  50%  { transform: scale(1.06); }
+  100% { transform: scale(1.0); }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// .caption_slide1 — text overlay on each slide
+// ═══════════════════════════════════════════════════════════════
+.caption_slide1 {
+  top: 23.3%;
+  left: 9%;
+  width: 50%;
+  right: auto;
+  text-align: left;
+  position: absolute;
+  z-index: 10;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  // variant: right-aligned
+  &.caption_slide1_right {
+    right: 9%;
+    left: auto;
+    text-align: right;
+  }
+
+  // variant: centred
+  &.caption_slide1_center {
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+  }
+
+  // ── headings ──────────────────────────────────────────────
+  > h3 {
+    position: relative;
+    display: inline-block;
+    padding-left: 15px;
+    margin: 0;
+    color: var(--color-white);
+    font-size: var(--fontSize28);
+    font-weight: var(--fontLight);
+    letter-spacing: 1px;
+    text-transform: capitalize;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--color-primary);
+    }
+  }
+
+  > h1 {
+    color: var(--color-white);
+    margin: 20px 0;
+    font-size: var(--fontSize60);
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  }
+
+  > h2 {
+    margin: 20px 0;
+    color: var(--color-white);
+    font-size: var(--fontSize52);
+    font-weight: var(--fontRegular);
+    letter-spacing: 1px;
+    text-transform: capitalize;
+  }
+
+  > p { color: var(--color-white); font-size: var(--fontSize18); }
+}
+
+// ── Buttons on slides ─────────────────────────────────────────
+.mt_btn_yellow {
+  display: inline-block;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 10px 26px;
+  font-size: var(--fontSize14);
+  font-weight: var(--fontSemiBold);
+  border-radius: 4px;
+  text-decoration: none;
+  border: 2px solid var(--color-primary);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: var(--color-dark-navy);
+    border-color: var(--color-dark-navy);
+    color: var(--color-white);
+    text-decoration: none;
+  }
+}
+
+.mt_btn_white-bor {
+  display: inline-block;
+  background: transparent;
+  color: var(--color-white);
+  padding: 10px 26px;
+  font-size: var(--fontSize14);
+  font-weight: var(--fontSemiBold);
+  border-radius: 4px;
+  text-decoration: none;
+  border: 2px solid var(--color-white);
+  margin-right: 10px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: var(--color-white);
+    color: var(--color-dark-navy);
+    text-decoration: none;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// RESPONSIVE
+// ═══════════════════════════════════════════════════════════════
+
+@media (min-width: 1367px) {
+  .caption_slide1 { top: 39%; }
+}
+
+@media only screen and (max-width: 1200px) {
+  .caption_slide1 { width: 70%; }
+}
+
+@media only screen and (max-width: 991px) {
+  #home-banner { height: 550px; }
+
+  #home-banner .home-banner-slide img { height: 550px; }
+
+  .caption_slide1 {
+    > h1 { font-size: var(--fontSize48); }
+    > h2 { font-size: var(--fontSize32); }
+    h1   { font-size: var(--fontSize42); }
+  }
+
+  #home-banner .carousel-control.left  { left: 0; }
+  #home-banner .carousel-control.right { right: 0; }
+}
+
+@media only screen and (max-width: 767px) {
+  #home-banner { height: 630px; }
+  #home-banner .home-banner-slide img { height: 630px; }
+  .caption_slide1 { width: 80%; }
+}
+
+@media (max-width: 735px) {
+  .caption_slide1 {
+    top: 27%;
+    img { display: none; }
+    h1  { font-size: var(--fontSize32); }
+  }
+}
+
+@media (max-width: 639px) {
+  .caption_slide1,
+  .caption_slide1.caption_slide1_right,
+  .caption_slide1.caption_slide1_center {
+    right: 2%;
+    left: 2%;
+    text-align: center;
+    width: 96%;
+    top: 23%;
+  }
+
+  #home-banner .carousel-control.left,
+  #home-banner .carousel-control.right {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #home-banner { height: 500px; }
+  #home-banner .home-banner-slide img { height: 500px; }
+  .caption_slide1 > h1 { font-size: var(--fontSize26); }
+  .caption_slide1 > h3 { font-size: var(--fontSize18); }
+}
