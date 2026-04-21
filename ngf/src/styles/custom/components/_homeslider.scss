@@ -1,3 +1,86 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+// ═══════════════════════════════════════════════════════════════
+// EduCourses  (.edu-courses  .inner-grid  .text-courses)
+// ═══════════════════════════════════════════════════════════════
+
+.edu-courses {
+  margin-top: -100px; // overlaps banner bottom
+  position: relative;
+  z-index: 2;
+
+  // On inner pages, don't pull up
+  .page & { margin-top: 0; }
+}
+
+.panel-grid-banner {
+  position: relative;
+  z-index: 2;
+}
+
+// ── Individual course card ──────────────────────────────────
+.inner-grid {
+  display: inline-block;
+  width: 100%;
+  padding: 40px 30px;
+  box-shadow: 0 0 30px rgba(204, 204, 204, 0.45);
+  background: var(--color-white);
+  position: relative;
+  margin-bottom: 30px;
+
+  // Amber corner accent
+  &::before {
+    content: "";
+    background: var(--color-primary);
+    height: 50%;
+    width: 50%;
+    position: absolute;
+    left: -5px;
+    top: -5px;
+    z-index: -1;
+  }
+
+  i {
+    display: inline-block;
+    color: var(--color-primary);
+    font-size: 40px;
+  }
+}
+
+// ── Course text block ─────────────────────────────────────────
+.text-courses,
+.text-coursesa {
+  h3 { margin: 10px 0 5px; }
+}
+
+.courses-content {
+  p { line-height: 1.7; }
+}
+
+// ─── Responsive ──────────────────────────────────────────────
+@media (max-width: 1200px) {
+  .inner-grid { padding: 15px; }
+  .text-courses h3 { margin: 5px 0; font-size: 20px; }
+  .courses-content p { margin: 10px 0; }
+}
+
+@media (max-width: 991px) {
+  .edu-courses { padding: 80px 0 0; margin: 0; }
+
+  .edu-courses .col-md-4.col-sm-12 { margin-bottom: 35px; }
+
+  .text-courses { text-align: center; }
+
+  .inner-grid i { float: none; padding: 9px 14px; }
+
+  .text-courses h3 { display: inline-block; margin: 10px 0 0; }
+}
+
+@media (max-width: 767px) {
+  .edu-courses .col-md-4.col-sm-12 { margin-bottom: 0; }
+}
+
+@media (max-width: 735px) {
+  .edu-courses { padding-bottom: 0; }
+}

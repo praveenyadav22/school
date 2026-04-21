@@ -1,3 +1,87 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+// ═══════════════════════════════════════════════════════════════
+// HomeGallerySection  (#const-testi  .wide-gallery)
+// ═══════════════════════════════════════════════════════════════
+
+.wide-gallery {
+  .row {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .mix { padding: 0; }
+
+  // ── Gallery thumbnail item ──────────────────
+  .item.port-popup {
+    position: relative;
+    overflow: hidden;
+    transition: all ease-out 0.3s;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    // Gradient overlay
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(101, 100, 96, 0) 0%,
+        rgba(103, 102, 99, 0.52) 100%
+      );
+      transition: all ease 0.3s;
+    }
+
+    // Zoom icon – hidden by default, slides in on hover
+    i.fa {
+      position: absolute;
+      top: -34px;
+      right: -34px;
+      background: rgba(255, 255, 255, 0.46);
+      width: 60px;
+      height: 60px;
+      text-align: center;
+      border-bottom-left-radius: 50px;
+      line-height: 50px;
+      padding-left: 10px;
+      transition: all ease 0.3s;
+      color: #333;
+      font-size: 18px;
+    }
+
+    &:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+
+      &::before { opacity: 0; }
+
+      i.fa { top: 0; right: 0; background: var(--color-white); }
+    }
+  }
+
+  // ── Last row – View All button row ──────────
+  .last-item-g {
+    position: relative;
+
+    .item.port-popup { margin-right: 33.3%; }
+
+    .gl-more {
+      position: absolute;
+      right: 8%;
+      top: 50%;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  section#the-gallery { padding-bottom: 120px; }
+}

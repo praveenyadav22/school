@@ -49,14 +49,22 @@
         a {
           color: #fff;
           text-decoration: none;
-          &:hover { color: #ffb825; }
+
+          &:hover {
+            color: #ffb825;
+          }
         }
       }
     }
   }
 
-  .top-bar-left ul li { margin: 0; }
-  .top-bar-right ul li { margin: 0; }
+  .top-bar-left ul li {
+    margin: 0;
+  }
+
+  .top-bar-right ul li {
+    margin: 0;
+  }
 
   // ── Main navbar ───────────────────────────────────────────
   .navbar.navbar-default {
@@ -99,7 +107,9 @@
       text-decoration: none;
     }
 
-    img { display: block; }
+    img {
+      display: block;
+    }
   }
 
   // ── Desktop nav wrapper ───────────────────────────────────
@@ -141,7 +151,10 @@
     display: block;
     white-space: nowrap;
 
-    i { font-size: 11px; margin-left: 3px; }
+    i {
+      font-size: 11px;
+      margin-left: 3px;
+    }
   }
 
   .navbar.navbar-default .navbar-collapse ul.nav.navbar-nav li,
@@ -152,8 +165,13 @@
     position: relative;
     list-style: none;
 
-    &::before { display: none; }
-    &:first-child { margin-left: 0; }
+    &::before {
+      display: none;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
 
     // FIX 2: Bridge the gap between the nav link and dropdown
     // Add invisible padding-bottom that covers the space so the mouse
@@ -181,8 +199,13 @@
     color: var(--color-dark-navy) !important;
   }
 
-  .navbar.navbar-default .navbar-collapse ul.nav.navbar-nav li:last-child { border-bottom: none; }
-  .navbar.navbar-default .navbar-collapse ul.nav.navbar-nav li:before   { display: none; }
+  .navbar.navbar-default .navbar-collapse ul.nav.navbar-nav li:last-child {
+    border-bottom: none;
+  }
+
+  .navbar.navbar-default .navbar-collapse ul.nav.navbar-nav li:before {
+    display: none;
+  }
 
   // ── Dropdown menus ────────────────────────────────────────
   .nav.navbar-nav li ul {
@@ -190,7 +213,7 @@
     padding: 0;
     margin: 0;
     position: absolute;
-    top: 43px;          // sits flush under the 43px line-height link — no gap
+    top: 43px; // sits flush under the 43px line-height link — no gap
     left: 0;
     width: 210px;
     display: none;
@@ -207,10 +230,16 @@
       text-align: left;
       margin-left: 0;
       padding: 0;
-      // cancel parent li hover padding
-      &:hover { padding-bottom: 0; margin-bottom: 0; }
 
-      &::before { display: none; }
+      // cancel parent li hover padding
+      &:hover {
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+
+      &::before {
+        display: none;
+      }
 
       a {
         border-bottom: 1px solid #e6e6e6;
@@ -224,7 +253,9 @@
         line-height: 1.25;
         text-transform: none;
 
-        i { float: right; }
+        i {
+          float: right;
+        }
 
         &:hover {
           background: transparent;
@@ -235,7 +266,9 @@
         }
       }
 
-      &:last-child > a { border-bottom: 0; }
+      &:last-child > a {
+        border-bottom: 0;
+      }
     }
   }
 
@@ -244,7 +277,9 @@
     display: block !important;
   }
 
-  .nav.navbar-nav > li:last-child > a::after { display: none; }
+  .nav.navbar-nav > li:last-child > a::after {
+    display: none;
+  }
 
   // ── Sticky state ──────────────────────────────────────────
   .navbar-fixed-top.navbar-sticky-in {
@@ -282,7 +317,9 @@
   }
 
   // sticky logo colour
-  .navbar-sticky-in .logo a { color: var(--color-dark-navy); }
+  .navbar-sticky-in .logo a {
+    color: var(--color-dark-navy);
+  }
 
   // ── Slicknav (mobile) ─────────────────────────────────────
   .slicknav_menu {
@@ -304,7 +341,9 @@
     text-decoration: none;
     z-index: 10;
 
-    .slicknav_menutxt { display: none; }
+    .slicknav_menutxt {
+      display: none;
+    }
 
     .slicknav_icon {
       display: flex;
@@ -350,7 +389,9 @@
     height: 300px;
     overflow-y: auto;
 
-    &.slicknav_hidden { display: none; }
+    &.slicknav_hidden {
+      display: none;
+    }
 
     li {
       list-style: none;
@@ -358,7 +399,9 @@
       padding: 0 !important;
       margin: 0 !important;
 
-      &::before { display: none; }
+      &::before {
+        display: none;
+      }
 
       // cancel gap-bridge on mobile items
       &:hover {
@@ -378,7 +421,9 @@
         line-height: 1.5;
         border-bottom: none;
 
-        i { display: none; }
+        i {
+          display: none;
+        }
 
         &:hover {
           color: var(--color-primary);
@@ -401,7 +446,9 @@
             text-transform: none;
             border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
 
-            &:hover { padding-left: 28px; }
+            &:hover {
+              padding-left: 28px;
+            }
           }
         }
       }
@@ -430,13 +477,20 @@
       border: none;
       line-height: 1.5;
 
-      i { display: none; }
+      i {
+        display: none;
+      }
     }
 
-    &:hover { background: rgba(255, 255, 255, 0.05); }
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
   }
 
-  .slicknav_item { display: flex; width: 100%; }
+  .slicknav_item {
+    display: flex;
+    width: 100%;
+  }
 }
 
 // ── Bulletin CSS ticker ────────────────────────────────────────
@@ -453,7 +507,9 @@
     white-space: nowrap;
     animation: ticker-scroll 30s linear infinite;
 
-    &:hover { animation-play-state: paused; }
+    &:hover {
+      animation-play-state: paused;
+    }
 
     li {
       display: inline-block;
@@ -469,8 +525,13 @@
 }
 
 @keyframes ticker-scroll {
-  0%   { transform: translateX(100vw); }
-  100% { transform: translateX(-200%); }
+  0% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(-200%);
+  }
 }
 
 // ── Back to top ───────────────────────────────────────────────
@@ -494,8 +555,15 @@
   text-decoration: none;
   transition: opacity 0.3s;
 
-  &:hover { opacity: 0.8; }
-  &.show  { display: flex; align-items: center; justify-content: center; }
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -505,6 +573,7 @@
 // 1200–1024px
 @media (max-width: 1200px) and (min-width: 1024px) {
   #inner-navigation {
+
     .nav.navbar-nav > li > a,
     .navbar.navbar-default .navbar-collapse ul.nav.navbar-nav li a {
       font-size: 14px;
@@ -521,7 +590,9 @@
 
 // 812–991px — slicknav button offset
 @media (max-width: 991px) and (min-width: 812px) {
-  #inner-navigation .slicknav_btn { right: 47px; }
+  #inner-navigation .slicknav_btn {
+    right: 47px;
+  }
 }
 
 // ≤ 991px — mobile: hide desktop nav, show slicknav
@@ -539,10 +610,12 @@
     }
 
     .navbar-nav-wrapper {
-      display: none !important;  // hide entire desktop nav block
+      display: none !important; // hide entire desktop nav block
     }
 
-    .slicknav_menu { display: block; }
+    .slicknav_menu {
+      display: block;
+    }
 
     .navbar.navbar-default {
       margin: 0;
@@ -581,5 +654,7 @@
 
 // ≤ 767px — hide topbars
 @media only screen and (max-width: 767px) {
-  .topbar-section { display: none; }
+  .topbar-section {
+    display: none;
+  }
 }

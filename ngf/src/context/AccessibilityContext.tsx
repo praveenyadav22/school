@@ -31,7 +31,7 @@ export const AccessibilityProvider = ({ children }: { children: React.ReactNode 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (key: keyof AccessibilityState, value: any) => {
       let resolvedValue = value;
-      if (typeof value === "string" && value.startsWith("level")) {
+      if (typeof value === "string" && (value as string).startsWith("level")) {
         const num = parseInt(value.replace("level", ""), 10);
         resolvedValue = isNaN(num) ? 0 : num;
       }

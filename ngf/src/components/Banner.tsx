@@ -107,7 +107,7 @@ export default function Banner() {
         {snaps.map((_, i) => (
           <li
             key={i}
-            className={i === selected ? "active" : ""}
+            className={i === selected ? "" : ""}
             onClick={() => scrollTo(i)}
             aria-label={`Go to slide ${i + 1}`}
           />

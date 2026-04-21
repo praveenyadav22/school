@@ -60,7 +60,8 @@ const AccessibilityPanel: React.FC = () => {
     }
 
     setStep(nextStep);
-    toggleSetting(key, `level${nextStep}`);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    toggleSetting(key, `level${nextStep}` as any);
   };
 
 

@@ -1,3 +1,187 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+// ═══════════════════════════════════════════════════════════════
+// UpcomingEvents  (.edu-events)
+// Exact match to live site CSS from minified source
+// ═══════════════════════════════════════════════════════════════
+
+.edu-events {
+  padding: 80px 0;
+}
+
+// ── Left column — image with floating white card ───────────────
+.event-left {
+  position: relative;
+
+  // The next.js Image fills the container
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+// Floating white card that overlaps the image bottom
+.event-donation {
+  position: absolute;
+  background: #fff;
+  padding: 20px;
+  left: 10px;
+  right: 10px;
+  bottom: -15px;
+  box-shadow: 0 0 10px #cccccc7a;
+
+  // No font-size override on h2 — inherits page default (~20-22px, dark)
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+}
+
+// Card sits differently inside .page context
+.page .event-donation {
+  bottom: 0;
+  position: relative;
+  width: 96%;
+  z-index: 1;
+  top: -10px;
+}
+
+// ≥ 991px and ≤ 1200px — card needs more bottom room
+@media (max-width: 1200px) and (min-width: 991px) {
+  .event-donation { bottom: -112px; }
+}
+
+// ── Right column — ticker + view all link ─────────────────────
+.event-main {
+  // No h2 in this col in our markup — heading is in .inner-heading above
+
+  // "View All News" link at the bottom
+  > a {
+    display: inline-block;
+    margin-top: 16px;
+    color: var(--color-primary);
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover { text-decoration: underline; }
+
+    i { margin-left: 6px; }
+  }
+}
+
+// ── Bouncing news ticker ───────────────────────────────────────
+// Replicates <marquee behavior="alternate" direction="up" style="height:400px">
+.news-ticker-outer {
+  height: 400px;         // matches marquee height:400px
+  overflow: hidden;
+  position: relative;
+}
+
+.news-ticker-track {
+  will-change: transform;
+  // No duplicate items needed — bounce reversal handles the loop
+}
+
+// ── Individual news item ──────────────────────────────────────
+.event-item {
+  display: inline-block;
+  border-bottom: 1px dashed #eee;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  transition: all ease-in-out 0.3s;
+  width: 100%;
+  position: relative;
+}
+
+// ── News item text ─────────────────────────────────────────────
+.event-details {
+  padding-left: 15px;   // matches live CSS exactly
+
+  p { margin: 15px 0 0; }
+
+  h3 {
+    font-size: 15px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+
+    a {
+      // Live CSS: only transition defined — color inherits (dark)
+      transition: all ease-in-out 0.3s;
+      color: inherit;
+      text-decoration: none;
+
+      &:hover { color: var(--color-primary); }
+    }
+  }
+}
+
+.event-item .event-details:hover h3 a {
+  color: #ffac00;
+}
+
+// ── Meta row (Posted On / Posted By) ──────────────────────────
+ul.event-time {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+
+  li {
+    padding: 0 10px 0 0;   // matches: padding: 0 10px 0 0
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 14px;        // matches live: font-size: 14px
+    color: #555;
+
+    i {
+      color: #ffac00;        // matches live: color: #ffac00
+      padding-right: 10px;   // matches live: padding-right: 10px (not margin)
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// RESPONSIVE
+// ═══════════════════════════════════════════════════════════════
+
+@media only screen and (max-width: 991px) {
+  .edu-events .col-sm-12 {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  .edu-events .col-sm-12:last-child { padding-bottom: 0; }
+
+  .edu-events .event-item { min-height: auto; }
+
+  .event-main { margin-top: 50px; }
+}
+
+@media (max-width: 639px) {
+  .event-donation,
+  .page .event-donation {
+    position: relative;
+    left: inherit;
+    right: inherit;
+    bottom: inherit;
+    width: 100%;
+    top: inherit;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .event-item .col-xs-4,
+  .event-item .col-xs-8 { width: 100%; }
+
+  .event-item .col-xs-4 { min-height: 165px; }
+
+  .event-item .col-xs-8 { padding-left: 15px; }
+
+  .event-left .event-item .col-lg-4 { padding-right: 0; }
+}

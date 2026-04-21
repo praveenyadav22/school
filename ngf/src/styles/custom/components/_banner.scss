@@ -133,7 +133,7 @@
 // .caption_slide1 — text overlay on each slide
 // ═══════════════════════════════════════════════════════════════
 .caption_slide1 {
-  top: 23.3%;
+  top: 35%;
   left: 9%;
   width: 50%;
   right: auto;
@@ -203,107 +203,3 @@
 }
 
 // ── Buttons on slides ─────────────────────────────────────────
-.mt_btn_yellow {
-  display: inline-block;
-  background: var(--color-primary);
-  color: var(--color-white);
-  padding: 10px 26px;
-  font-size: var(--fontSize14);
-  font-weight: var(--fontSemiBold);
-  border-radius: 4px;
-  text-decoration: none;
-  border: 2px solid var(--color-primary);
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: var(--color-dark-navy);
-    border-color: var(--color-dark-navy);
-    color: var(--color-white);
-    text-decoration: none;
-  }
-}
-
-.mt_btn_white-bor {
-  display: inline-block;
-  background: transparent;
-  color: var(--color-white);
-  padding: 10px 26px;
-  font-size: var(--fontSize14);
-  font-weight: var(--fontSemiBold);
-  border-radius: 4px;
-  text-decoration: none;
-  border: 2px solid var(--color-white);
-  margin-right: 10px;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: var(--color-white);
-    color: var(--color-dark-navy);
-    text-decoration: none;
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════
-// RESPONSIVE
-// ═══════════════════════════════════════════════════════════════
-
-@media (min-width: 1367px) {
-  .caption_slide1 { top: 39%; }
-}
-
-@media only screen and (max-width: 1200px) {
-  .caption_slide1 { width: 70%; }
-}
-
-@media only screen and (max-width: 991px) {
-  #home-banner { height: 550px; }
-
-  #home-banner .home-banner-slide img { height: 550px; }
-
-  .caption_slide1 {
-    > h1 { font-size: var(--fontSize48); }
-    > h2 { font-size: var(--fontSize32); }
-    h1   { font-size: var(--fontSize42); }
-  }
-
-  #home-banner .carousel-control.left  { left: 0; }
-  #home-banner .carousel-control.right { right: 0; }
-}
-
-@media only screen and (max-width: 767px) {
-  #home-banner { height: 630px; }
-  #home-banner .home-banner-slide img { height: 630px; }
-  .caption_slide1 { width: 80%; }
-}
-
-@media (max-width: 735px) {
-  .caption_slide1 {
-    top: 27%;
-    img { display: none; }
-    h1  { font-size: var(--fontSize32); }
-  }
-}
-
-@media (max-width: 639px) {
-  .caption_slide1,
-  .caption_slide1.caption_slide1_right,
-  .caption_slide1.caption_slide1_center {
-    right: 2%;
-    left: 2%;
-    text-align: center;
-    width: 96%;
-    top: 23%;
-  }
-
-  #home-banner .carousel-control.left,
-  #home-banner .carousel-control.right {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  #home-banner { height: 500px; }
-  #home-banner .home-banner-slide img { height: 500px; }
-  .caption_slide1 > h1 { font-size: var(--fontSize26); }
-  .caption_slide1 > h3 { font-size: var(--fontSize18); }
-}

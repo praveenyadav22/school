@@ -1,3 +1,228 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+// ═══════════════════════════════════════════════════════════════
+// CounterSection  (#mt_fun)
+// Two-column flex card: stats left, photo panel right
+// ═══════════════════════════════════════════════════════════════
+
+#mt_fun {
+  padding: 60px 0;
+  position: relative;
+}
+
+// ── Outer card — white border, flex row ───────────────────────
+.cs-card {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+  overflow: hidden;   // clips the right photo panel to the card's border-radius
+  min-height: 440px;
+}
+
+// ── Left panel — heading + stats ──────────────────────────────
+.cs-card__left {
+  flex: 0 0 66.6667%;
+  max-width: 66.6667%;
+  padding: 50px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cs-card__heading {
+  // override generic inner-heading bottom margin so stats sit closer
+  margin-bottom: 20px;
+}
+
+// ── Stats row — three equal columns ──────────────────────────
+.cs-stats-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+// ── Single stat block ─────────────────────────────────────────
+.cs-stat {
+  flex: 1;
+  text-align: center;
+  padding: 20px 10px 10px;
+
+  // Icon
+  &__icon {
+    font-size: 34px !important;
+    color: #333a65;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  // Animated number
+  &__figure {
+    font-size: 33px;
+    font-weight: 700;
+    color: #333a65;
+    margin: 0 0 4px;
+    padding: 0;
+    line-height: 1.2;
+  }
+
+  // Amber underline between figure and label
+  &__label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    position: relative;
+    padding-top: 12px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 2px;
+      background: #fead06;
+    }
+  }
+}
+
+// ── Right panel — background photo + dark overlay ─────────────
+.cs-card__right {
+  flex: 0 0 33.3333%;
+  max-width: 28%;
+  position: relative;
+  background: url("/images/generic/stats.jpg") center center / cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  overflow: hidden;
+
+  // Dark navy overlay
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #333a65;
+    opacity: 0.6;
+    z-index: 0;
+  }
+}
+
+// ── "Take a tour" heading ─────────────────────────────────────
+.cs-tour__title {
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 30px;
+  text-align: center;
+}
+
+.cs-tour__link {
+  position: relative;
+  z-index: 1;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+// ── Play button ───────────────────────────────────────────────
+.cs-play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cs-play__btn {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #ffac00;
+  border: 2px solid #ffac00;
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: cs-pulse 1.8s ease-in-out infinite;
+
+  i { padding-left: 4px; }
+
+  // White ring around button
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+  }
+
+  &:hover {
+    background: #fff;
+    color: #ffac00;
+    border-color: #fff;
+  }
+}
+
+@keyframes cs-pulse {
+  0%   { box-shadow: 0 0 0 0   rgba(255, 172, 0, 0.6); }
+  60%  { box-shadow: 0 0 0 18px rgba(255, 172, 0, 0); }
+  100% { box-shadow: 0 0 0 0   rgba(255, 172, 0, 0); }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// RESPONSIVE
+// ═══════════════════════════════════════════════════════════════
+
+// ≤ 991px – slightly reduce padding
+@media (max-width: 991px) {
+  .cs-card__left { padding: 30px 25px; }
+  .cs-card__heading { margin-bottom: 10px; }
+}
+
+// ≤ 767px – stack vertically
+@media (max-width: 767px) {
+  .cs-card {
+    flex-direction: column;
+  }
+
+  .cs-card__left,
+  .cs-card__right {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .cs-card__left  { padding: 30px 20px; }
+  .cs-card__right { min-height: 260px; }
+
+  .cs-stats-row { gap: 0; }
+
+  .cs-stat {
+    padding: 15px 5px 5px;
+
+    &__icon  { font-size: 26px; }
+    &__figure{ font-size: 26px; }
+    &__label { font-size: 12px; }
+  }
+}
+
+// ≤ 480px – wrap stats to column
+@media (max-width: 480px) {
+  .cs-stats-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cs-stat { width: 100%; padding: 20px 0; }
+}

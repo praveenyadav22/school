@@ -1,305 +1,170 @@
 @use '../core/variables' as *;
 @use '../core/mixins' as *;
-@use '../components/generic/sizes' as *;
 
-.dark-mode {
-  --border1: #fa6d0440;
-  --grey3: #bbb6b6;
-  --white: #111;
-  --black: #bbb6b6;
-  --greyishBlue: #bbb6b6;
-  --color-white: #030303;
-  --color-black: #bdbdbd;
-  --color-accent-orange: #3f280b;
+// ═══════════════════════════════════════════════════════════════
+// ACCESSIBILITY WIDGET
+// Fixed floating button → slide-in drawer → panel
+// ═══════════════════════════════════════════════════════════════
 
-  .footerWrapper .footer__menu--list-item {
-    color: #bdbdbd !important;
-  }
+// ── Design tokens ─────────────────────────────────────────────
+$acc-orange:      #ff8c00;
+$acc-orange-dark: #e47828;
+$acc-navy:        #333a65;
+$acc-navy-light:  #3557a0;
+$acc-bg:          #eceef5;
+$acc-white:       #ffffff;
+$acc-shadow:      0 4px 24px rgba(0, 0, 0, 0.18);
 
-  .footerWrapper .footer__head {
-    color: #bdbdbd !important;
-  }
+// ═══════════════════════════════════════════════════════════════
+// 1. FLOATING TRIGGER BUTTON
+// ═══════════════════════════════════════════════════════════════
 
-  .footerWrapper .infoWrapper__address {
-    color: #bdbdbd !important;
-  }
-
-  .footerWrapper .infoWrapper__iconView--detail .info {
-    color: #bdbdbd !important;
-  }
-
-  .btnPrimary.v2 {
-     color: #bdbdbd !important;
-  }
-  .menuPrimary {
-    ul > li > a {
-      color: #bdbdbd !important;
-    }
-  }
-  .tabContainer.v3 .tabWrapper__action--btn.active {
-     color: #bdbdbd !important;
-  }
-}
-
-.accessbilitytoggler {
-  border: none;
-  border-radius: 70px;
-  bottom: 24px;
-  cursor: pointer;
-  height: 70px;
-  padding: 18px;
+.acc-trigger {
   position: fixed;
-  right: -3px;
+  right: 20px;
+  bottom: 120px;       // above back-to-top button
+  z-index: 9999;
   display: flex;
-  overflow: hidden;
   align-items: center;
-  width: auto;
-  max-width: 70px;
-  transition: all 400ms;
-  color: var(--color-white);
-  background-color: #f58634;
-  text-align: left;
-  z-index: 99999;
+  justify-content: flex-end;
+}
 
-  .txt {
-    white-space: nowrap;
-    padding-left: 5px;
-    font-size: 16px;
+// Animated pulse ring behind the button
+.acc-trigger__ring {
+  position: absolute;
+  right: 0;
+  left: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid $acc-orange;
+  opacity: 0;
+  animation: acc-ring-pulse 2.5s ease-out infinite;
+  pointer-events: none;
+}
+
+// Main button
+.acc-trigger__btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+  // Pill shape, starts collapsed showing icon only
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  padding: 0 10px;
+  background: $acc-orange;
+  border: none;
+  cursor: pointer;
+  color: $acc-white;
+  box-shadow: $acc-shadow;
+  // Smooth expand on hover
+  transition:
+    width       0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-radius 0.4s ease,
+    background  0.3s ease,
+    box-shadow  0.3s ease;
+  white-space: nowrap;
+
+  // SVG icon
+  .acc-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  // Hidden label text
+  .acc-trigger__label {
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    color: $acc-white;
     opacity: 0;
-    color: #fff;
+    max-width: 0;
+    overflow: hidden;
+    transition:
+      opacity     0.25s ease 0.1s,
+      max-width   0.4s ease;
+    white-space: nowrap;
+    padding-left: 0;
+    letter-spacing: 0.02em;
   }
 
-  &:hover {
-    max-width: 300px;
+  // Hover: expand pill + reveal label
+  &:hover,
+  &--active {
+    width: 158px;
+    border-radius: 22px;
+    background: $acc-orange;
+    box-shadow: 0 6px 28px rgba(255, 140, 0, 0.45);
 
-    .txt {
+    .acc-icon {
+      transform: rotate(15deg) scale(1.1);
+    }
+
+    .acc-trigger__label {
       opacity: 1;
+      max-width: 120px;
+      padding-left: 8px;
     }
+  }
+
+  // Active (drawer open): orange stays, icon rotates back
+  &--active {
+    .acc-icon {
+      transform: rotate(0deg) scale(1);
+      animation: acc-icon-spin 0.5s ease-out;
+    }
+  }
+
+  &:focus-visible {
+    outline: 3px solid $acc-orange;
+    outline-offset: 3px;
   }
 }
 
-// Apply line height using mixins
-body.lineheight_increase_2 * {
-  line-height: 1.8 !important;
+// ── Pulse ring animation ───────────────────────────────────────
+@keyframes acc-ring-pulse {
+  0%   { opacity: 0.7; transform: scale(1); }
+  70%  { opacity: 0;   transform: scale(1.7); }
+  100% { opacity: 0;   transform: scale(1.7); }
 }
 
-body.letterspacing_increase_2 * {
-  letter-spacing: 2px !important;
+// ── Icon open/close spin ──────────────────────────────────────
+@keyframes acc-icon-spin {
+  0%   { transform: rotate(-20deg) scale(0.85); }
+  60%  { transform: rotate(8deg)  scale(1.05); }
+  100% { transform: rotate(0deg)  scale(1); }
 }
 
-body.letterspacing_increase_3 * {
-  letter-spacing: 2.2px !important;
-}
+// ═══════════════════════════════════════════════════════════════
+// 2. BACKDROP OVERLAY
+// ═══════════════════════════════════════════════════════════════
 
-body.dyslexia_font * {
-  font-family: var(--font-lexend), sans-serif !important;
-  font-optical-sizing: auto;
-}
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 
-.dark-mode {
-  background-color: var(--darkmode) !important;
-  color: #bbb6b6 !important;
-
-  .c-navMain__item {
-    color: #bbb6b6 !important;
-  }
-
-  .banner_container__content_title {
-    color: #bbb6b6 !important;
-  }
-
-  .banner_container__content_desc {
-    color: #bbb6b6 !important;
-  }
-
-  .elem18_content-head {
-    .title {
-      color: #bbb6b6 !important;
-    }
-
-    .desc {
-      color: #bbb6b6 !important;
-    }
-  }
-
-  .elem8__slidertext {
-    background: black !important;
-
-    .elem8__slidertext-text {
-      background: black !important;
-    }
-  }
-
-  .c-cta_content {
-    .c-cta_content_head {
-      color: #bbb6b6 !important;
-    }
-
-    .c-cta_content_desc {
-      color: #bbb6b6 !important;
-    }
-  }
-
-  .elem1__container {
-    &:hover {
-      .elem1__container_overlay {
-        color: #bbb6b6 !important;
-      }
-    }
-  }
-
-  .main_logo {
-    .u-image {
-      display: none;
-    }
-
-    .imgdark {
-      display: block !important;
-    }
-  }
-
-  .accessibility-drawer {
-    background: #333333 !important;
-  }
-
-  .elem11__header {
-    color: #bbb6b6 !important;
-  }
-
-  .c-header__contact_item {
-    color: #bbb6b6 !important;
-  }
-
-  .hero__banner-content {
-    .heading {
-      color: #bbb6b6 !important;
-    }
-
-    .desc {
-      color: #bbb6b6 !important;
-    }
-
-    .button {
-      color: #bbb6b6 !important;
-      border: 1px solid #bbb6b6 !important;
-    }
-  }
-
-  .home-slider__dot {
-    .hero_banner_dots_numb {
-      color: #bbb6b6 !important;
-    }
-
-    .hero_banner_dots_text {
-      color: #bbb6b6 !important;
-    }
-  }
-
-  .elem7__contentwrap-head {
-    color: #bbb6b6 !important;
-  }
-
-  .elem17__container_content_wrap {
-    background-color: rgba(255, 255, 255, 0.2) !important;
-  }
-
-  .c-navigation__contentBox {
-
-    h3,
-    p {
-      color: #bbb6b6 !important;
-    }
-  }
-
-  .navBox_links-title {
-    color: #bbb6b6 !important;
-  }
-
-  .elem15__contentwrap {
-    .elem15__contentwrap-head {
-      color: #bbb6b6 !important;
-    }
-
-    .elem15__contentwrap-disc {
-      color: #bbb6b6 !important;
-    }
-  }
-
-  .logoloop--fade:before {
-    background: linear-gradient(to right, #2e2e2e 0%, rgba(0, 0, 0, 0) 100%);
-  }
-
-  .logoloop--fade:after {
-    background: linear-gradient(to left, #2e2e2e 0%, rgba(0, 0, 0, 0) 100%);
-  }
-
-  .elem7__contentwrap-text {
-    color: #bbb6b6 !important;
-  }
-
-  .elem7__contentwrap-subhead {
-    color: #bbb6b6 !important;
-  }
-
-  .button_group {
-    .button {
-      background: black;
-
-    }
-  }
-
-  .c-navigation__responsive .menubar__item {
-    a {
-      color: #bbb6b6;
-    }
-  }
-
-}
-
-body.highlight-links a {
-  background-color: black !important;
-  color: yellow !important;
-}
-
-html.invert-colors {
-  filter: invert(1);
-  -webkit-filter: invert(100%);
-  background: #fff !important;
-}
-
-.hide-images {
-  * {
-    background-image: none !important;
-  }
-
-  img {
-    visibility: hidden !important;
+  &.open {
+    opacity: 1;
+    visibility: visible;
   }
 }
 
-/* .large-cursor * {
-  cursor: url('/public/cursor.svg'), auto !important;
-} */
-
-.large-cursor *,
-body.large-cursor {
-  cursor: url('data:image/svg+xml,<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="29.188px" height="43.625px" viewBox="0 0 29.188 43.625" enable-background="new 0 0 29.188 43.625" xml:space="preserve"><g><polygon fill="%23FFFFFF" stroke="%23D9DAD9" stroke-width="1.1406" stroke-miterlimit="10" points="2.8,4.549 26.847,19.902 16.964,22.701 24.239,37.749 18.278,42.017 9.741,30.724 1.138,35.809 "/><g><g><g><path fill="%23212627" d="M29.175,21.155c0.071-0.613-0.165-1.253-0.635-1.573L2.165,0.258c-0.424-0.32-0.988-0.346-1.435-0.053C0.282,0.497,0,1.03,0,1.617v34.171c0,0.613,0.306,1.146,0.776,1.439c0.471,0.267,1.059,0.213,1.482-0.16l7.482-6.344l6.847,12.155c0.259,0.48,0.729,0.746,1.2,0.746c0.235,0,0.494-0.08,0.706-0.213l6.988-4.585c0.329-0.213,0.565-0.586,0.659-1.013c0.094-0.426,0.024-0.88-0.188-1.226l-6.376-11.382l8.611-2.745C28.705,22.274,29.105,21.768,29.175,21.155z M16.964,22.701c-0.424,0.133-0.776,0.506-0.941,0.96c-0.165,0.48-0.118,1.013,0.118,1.439l6.588,11.781l-4.541,2.985l-6.894-12.315c-0.212-0.373-0.541-0.64-0.941-0.72c-0.094-0.027-0.165-0.027-0.259-0.027c-0.306,0-0.588,0.107-0.847,0.32L2.8,32.59V4.549l21.599,15.806L16.964,22.701z"/></g></g></g></g></svg>'),
-    auto !important;
-}
-
-.step-tracker-wrapper {
-  margin-bottom: 10px;
-}
-
-.step-dot {
-  font-size: 20px;
-  color: #ccc;
-  transition: color 0.3s ease;
-}
-
-.step-dot.active {
-  color: #0070f3;
-}
+// ═══════════════════════════════════════════════════════════════
+// 3. SLIDE-IN DRAWER
+// ═══════════════════════════════════════════════════════════════
 
 .accessibility-drawer {
   position: fixed;
@@ -308,43 +173,73 @@ body.large-cursor {
   max-width: 450px;
   width: 100%;
   height: 100%;
-  background: #eceef5;
-  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+  background: $acc-bg;
+  box-shadow: -4px 0 30px rgba(0, 0, 0, 0.15);
   padding: 20px;
-  transition: right 0.3s ease;
-  z-index: 1000;
-  //   border-top-left-radius: 10px;
-  //   border-top-right-radius: 10px;
-  border-radius: 10px 0px 0px 10px;
-  overflow: scroll;
+  transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 9999;
+  border-radius: 12px 0 0 12px;
+  overflow-y: scroll;
+  overflow-x: hidden;
   scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+
+  &.open {
+    right: 0;
+  }
 }
 
-.accessibility-drawer.open {
-  right: 0;
-}
+// ═══════════════════════════════════════════════════════════════
+// 4. DRAWER HEADER (orange bar, sticky)
+// ═══════════════════════════════════════════════════════════════
 
-.drawer-overlay.open {
-  opacity: 1;
-  visibility: visible;
-}
-
-.close-button {
-  @include flexbox;
-  @include justify-content(flex-end);
-  @include align-items(flex-end);
-  position: relative;
+.accessibilityHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $acc-orange;
+  color: $acc-white;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  position: fixed;
+  max-width: 410px;
+  width: calc(100% - 40px);
   z-index: 99;
+  font-weight: 600;
+  font-size: 17px;
+  box-shadow: 0 2px 12px rgba(255, 140, 0, 0.25);
+
+  .panel-title { margin: 0; }
+
+  .closeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $acc-white;
+    border: none;
+    border-radius: 6px;
+    color: #111;
+    min-width: 30px;
+    min-height: 30px;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    flex-shrink: 0;
+
+    &:hover {
+      background: #ededed;
+      transform: scale(1.1);
+    }
+  }
 }
 
-.close-button button {
-  top: 10px;
-  right: 12px;
-  background: transparent;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-}
+// ═══════════════════════════════════════════════════════════════
+// 5. ACCESSIBILITY PANEL (content inside drawer)
+// ═══════════════════════════════════════════════════════════════
 
 .accessibility-panel {
   padding-top: 75px;
@@ -354,401 +249,300 @@ body.large-cursor {
     top: 22px;
     z-index: 99;
 
-    .panel-title {
-      font-size: 20px;
-    }
+    .panel-title { font-size: 20px; }
   }
 
+  // Button grid — two columns default, three on wider drawer
   .accessibility__main-wrapper,
   .mainToggle {
-    @include flexbox;
-    // @include flex-direction(column, vertical);
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 40px;
 
     @include mq(tablet-max) {
-      @include flex-direction(row, horizontal);
+      flex-direction: row;
     }
 
     .mainToggle__btn {
-      width: calc(100% / 2 - 15px);
-      margin-bottom: 10px;
-      @include flexbox;
-      @include align-items(center);
-      @include justify-content(center);
-      background: var(--color-white);
-      color: var(--color-black);
+      width: calc(50% - 8px);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $acc-white;
+      color: #111;
       height: 124px;
-      @include border-radius(12px);
-      border: 2px solid var(--white);
+      border-radius: 12px;
+      border: 2px solid transparent;
       gap: 15px;
       position: relative;
       padding: 10px;
-      @include flex-direction(column, vertical);
-      @include box-shadow(0px 5px 5px rgba(0, 0, 0, 0.2));
-      @include transition(all 0.3s ease-in-out);
+      flex-direction: column;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: all 0.25s ease;
+      cursor: pointer;
 
       &.disabled {
         opacity: 0.5;
         cursor: not-allowed;
+        pointer-events: none;
       }
 
-      label {
-        text-align: center;
-      }
+      label { text-align: center; cursor: pointer; }
 
+      // Invisible full-size checkbox / radio
       input {
         position: absolute;
-        left: 0;
-        top: 0;
+        inset: 0;
         width: 100%;
         height: 100%;
         opacity: 0;
         cursor: pointer;
+        margin: 0;
 
-        &:checked + .controlBtn {
-          .controlBtn__icon {
-            background: #3557a0;
-          }
+        &:checked + .controlBtn .controlBtn__icon {
+          background: $acc-navy-light;
         }
       }
 
-      cursor: pointer;
-
       @include mq(tablet-max) {
-        width: calc(100% / 3 - 10px);
-        margin: 0px 10px 10px 0px;
+        width: calc(33.333% - 8px);
+        margin: 0 8px 10px 0;
       }
 
       &:hover {
-        background: var(--color-accent-peach3);
-        border: 2px solid var(--color-accent-orange);
+        border-color: $acc-orange;
+        background: lighten($acc-orange, 40%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(255, 140, 0, 0.2);
       }
 
       > button {
         border: none;
         background: transparent;
+        cursor: pointer;
       }
 
       .highlightLinks {
         text-align: center;
-        font-size: 14px;
-        color: #000;
+        font-size: 13px;
+        color: #333;
       }
 
+      // Step dots (font size, etc.)
       .step-indicator {
         position: absolute;
-        bottom: 5px;
+        bottom: 6px;
         left: 50%;
-        @include transform(translateX(-50%));
-        @include flexbox;
-        @include align-items(center);
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 4px;
 
         .step-dot {
           width: 10px;
           height: 3px;
           background: #d3d3d3;
-          margin: 0px 3px;
+          border-radius: 2px;
           display: inline-block;
+          transition: background 0.2s;
 
-          &.active {
-            background: #18336a;
-          }
+          &.active { background: #18336a; }
         }
       }
 
+      // Active state indicator badge (top-right)
       .controlBtn {
         position: absolute;
-        top: 10px;
-        right: 10px;
+        top: 8px;
+        right: 8px;
         display: none;
 
         &__icon {
-          @include flexbox();
-          @include align-items(center);
-          @include justify-content(center);
-          background: grey;
-          padding: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #aaa;
+          padding: 4px;
           border-radius: 50%;
           min-width: 20px;
           min-height: 20px;
           width: 20px;
+          height: 20px;
+          transition: background 0.2s;
         }
       }
 
       .withIcon {
-        @include flexbox();
-        @include align-items(center);
-        @include justify-content(center);
-        @include flex-direction(column, vertical);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
 
         .step-button {
           background: none;
           border: none;
-          color: var(--black);
+          color: #111;
+          cursor: pointer;
         }
       }
     }
 
+    // Active button state
     .mainToggle__btn.active {
-      background: #fa6d0440;
-      border-color: var(--border1);
+      background: rgba(250, 109, 4, 0.12);
+      border-color: rgba(250, 109, 4, 0.4);
+      box-shadow: 0 4px 14px rgba(250, 109, 4, 0.2);
 
       .controlBtn {
         display: block;
 
-        .controlBtn__icon {
-          background: #3557a0;
-        }
+        .controlBtn__icon { background: $acc-navy-light; }
       }
     }
   }
 }
 
-.accessibilityHead {
-  @include flexbox();
-  @include align-items(center);
-  @include justify-content(space-between);
-  background: var(--color-accent-orange);
-  color: white;
-  padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  position: fixed;
-  max-width: 360px;
-  width: 100%;
-  z-index: 99 !important;
-  font-weight: 500;
-  @include font-size(18);
-
-  @include mq(phone-wide) {
-    max-width: 410px;
-  }
-
-  @include mq(phablet) {
-    max-width: 410px;
-  }
-
-  @include mq(tablet-small) {
-    max-width: 410px;
-  }
-
-  @include mq(tablet) {
-    max-width: 410px;
-  }
-
-  @include mq(tablet-max) {
-    @include font-size(20);
-    max-width: 400px;
-  }
-
-  //        @include mq(tablet-wide) {
-  //    max-width: 410px;
-  // }
-  //         @include mq(desktop-min) {
-  //    max-width: 410px;
-  // }
-  //          @include mq(desktop) {
-  //    max-width: 410px;
-  // }
-  //            @include mq(desktop-wide) {
-  //    max-width: 410px;
-  // }
-  //            @include mq(desktop-wide-max) {
-  //    max-width: 410px;
-  // }
-
-  .closeBtn {
-    background: white;
-    border: none;
-    border-radius: 6px;
-    color: #111;
-    min-width: 30px;
-    min-height: 30px;
-    width: 30px;
-    transition: all 0.3s ease-in-out;
-
-    @include mq(tablet-max) {
-      min-width: 33px;
-    }
-
-    &:hover {
-      background: #ededed;
-    }
-  }
-}
-
-// .accessibility__main-wrapper {
-//   @include flexbox();
-//   flex-wrap: wrap;
-//   @include align-items(center);
-//   @include justify-content(center);
-//   gap: 15px;
-// }
+// ═══════════════════════════════════════════════════════════════
+// 6. DRAWER FOOTER (Reset button)
+// ═══════════════════════════════════════════════════════════════
 
 .accessFooter {
-  @include flexbox();
-  @include align-items(center);
-  @include justify-content(center);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: 400px;
-  background: none;
   padding: 15px 10px;
   border-radius: 10px;
   position: fixed;
   bottom: 10px;
-  z-index: 99 !important;
+  z-index: 99;
+  background: $acc-bg;
 
   .resetBtn {
-    @include flexbox();
-    @include align-items(center);
-    @include justify-content(center);
-    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 18px;
     border: none;
-    background: #f58634;
+    background: $acc-orange;
     border-radius: 25px;
-    color: white;
+    color: $acc-white;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-
-    .resetBtn__title {
-      font-size: 12px;
-    }
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.25s ease, transform 0.2s ease;
 
     &:hover {
-      background: #e47828;
+      background: $acc-orange-dark;
+      transform: scale(1.04);
     }
 
     &__media {
       margin-right: 7px;
-
-      .u-image {
-        filter: invert(1);
-      }
+      .u-image { filter: invert(1); }
     }
+
+    .resetBtn__title { font-size: 13px; }
   }
 }
 
-.dark-mode {
+// ═══════════════════════════════════════════════════════════════
+// 7. BODY-CLASS MODIFIERS (applied by AccessibilityService)
+// ═══════════════════════════════════════════════════════════════
 
-  .mainToggle,
-  .mainToggle__btn {
-    .withIcon {
-
-      img,
-      svg {
-        filter: invert(1);
-      }
-    }
-  }
-
-  .accessibility-panel .accessibility__main-wrapper .mainToggle__btn.active,
-  .accessibility-panel .mainToggle .mainToggle__btn.active {
-    background-color: #111;
-  }
-}
-
-body.letterspacing_increase_1 * {
-  letter-spacing: 0.12em !important;
-  word-spacing: 0.16em !important;
-}
-
-body.letterspacing_increase_2 * {
-  letter-spacing: 0.24em !important;
-  word-spacing: 0.32em !important;
-}
-
-body.letterspacing_increase_3 * {
-  letter-spacing: 0.36em !important;
-  word-spacing: 0.48em !important;
-}
-
-body.lineheight_increase_1 * {
-  line-height: 1.5 !important;
-}
-
-body.lineheight_increase_2 * {
-  line-height: 1.8 !important;
-}
-
-body.lineheight_increase_3 * {
-  line-height: 2.1 !important;
-}
-// ── Font size body classes applied by AccessibilityService ────
+// Font size
 body.font_increase_1 * { font-size: 110% !important; }
 body.font_increase_2 * { font-size: 120% !important; }
 body.font_increase_3 * { font-size: 130% !important; }
 body.font_increase_4 * { font-size: 140% !important; }
-body.font_decrease_1 * { font-size: 90% !important; }
-body.font_decrease_2 * { font-size: 80% !important; }
-body.font_decrease_3 * { font-size: 70% !important; }
-body.font_decrease_4 * { font-size: 60% !important; }
+body.font_decrease_1 * { font-size: 90%  !important; }
+body.font_decrease_2 * { font-size: 80%  !important; }
+body.font_decrease_3 * { font-size: 70%  !important; }
+body.font_decrease_4 * { font-size: 60%  !important; }
 
-// ── Invert colors applied to html element ─────────────────────
+// Line height
+body.lineheight_increase_1 * { line-height: 1.5 !important; }
+body.lineheight_increase_2 * { line-height: 1.8 !important; }
+body.lineheight_increase_3 * { line-height: 2.1 !important; }
+
+// Letter spacing
+body.letterspacing_increase_1 * { letter-spacing: 0.12em !important; word-spacing: 0.16em !important; }
+body.letterspacing_increase_2 * { letter-spacing: 0.24em !important; word-spacing: 0.32em !important; }
+body.letterspacing_increase_3 * { letter-spacing: 0.36em !important; word-spacing: 0.48em !important; }
+
+// Dyslexia font
+body.dyslexia_font * { font-family: var(--font-lexend, sans-serif) !important; }
+
+// Highlight links
+body.highlight-links a {
+  background-color: #000 !important;
+  color: #ff0 !important;
+}
+
+// Hide images
+body.hide-images * { background-image: none !important; }
+body.hide-images img { visibility: hidden !important; }
+
+// Large cursor
+.large-cursor *,
+body.large-cursor {
+  cursor: url('data:image/svg+xml,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="29.188px" height="43.625px" viewBox="0 0 29.188 43.625"><polygon fill="%23FFFFFF" stroke="%23D9DAD9" stroke-width="1.1406" stroke-miterlimit="10" points="2.8,4.549 26.847,19.902 16.964,22.701 24.239,37.749 18.278,42.017 9.741,30.724 1.138,35.809"/><path fill="%23212627" d="M29.175,21.155c0.071-0.613-0.165-1.253-0.635-1.573L2.165,0.258c-0.424-0.32-0.988-0.346-1.435-0.053C0.282,0.497,0,1.03,0,1.617v34.171c0,0.613,0.306,1.146,0.776,1.439c0.471,0.267,1.059,0.213,1.482-0.16l7.482-6.344l6.847,12.155c0.259,0.48,0.729,0.746,1.2,0.746c0.235,0,0.494-0.08,0.706-0.213l6.988-4.585c0.329-0.213,0.565-0.586,0.659-1.013c0.094-0.426,0.024-0.88-0.188-1.226l-6.376-11.382l8.611-2.745C28.705,22.274,29.105,21.768,29.175,21.155z"/></svg>') 0 0, auto !important;
+}
+
+// Invert colours (applied to <html>)
 html.invert-colors {
   filter: invert(1);
   -webkit-filter: invert(100%);
   background: #fff !important;
 }
 
-// ── DRAWER OVERLAY backdrop ───────────────────────────────────
-.drawer-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-  z-index: 998;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease;
+// ═══════════════════════════════════════════════════════════════
+// 8. DARK MODE
+// ═══════════════════════════════════════════════════════════════
 
-  &.open {
-    opacity: 1;
-    visibility: visible;
-  }
-}
+.dark-mode {
+  --color-white: #030303;
+  --color-black: #bdbdbd;
+  --grey3:       #bbb6b6;
 
-// ── ACCESSIBILITY TOGGLE WRAP — right side below topsocialicon ──
-.accessibilityToggleWrap {
-  position: fixed;
-  right: -3px;
-  top: calc(40% + 295px);
-  width: 50px;
-  min-width: 50px;
-  height: 50px; 
-  z-index: 999;
-  border-radius: 50%;
-  background: var(--color-accent-orange);
+  background-color: #1a1a1a !important;
+  color: #bbb6b6 !important;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0; 
-}
-
-.accessibilityToggleBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 35px;
-  height: 35px;
-  border: none;
-  background: #374550;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all ease 0.5s;
-  color: #fff;
-  margin: 5px 0;
-
-  i {
-    font-size: 17px;
-    line-height: 1;
-    display: block;
+  // Panel buttons inverted
+  .mainToggle,
+  .mainToggle__btn {
+    .withIcon img,
+    .withIcon svg { filter: invert(1); }
   }
 
-  &:hover {
-    transform: translateY(-5px);
-    background-color: #b83f06;
+  .accessibility-panel .accessibility__main-wrapper .mainToggle__btn.active,
+  .accessibility-panel .mainToggle .mainToggle__btn.active {
+    background-color: #222 !important;
+  }
+
+  .accessibility-drawer { background: #2a2a2a !important; }
+
+  .accessFooter { background: #2a2a2a !important; }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// 9. RESPONSIVE
+// ═══════════════════════════════════════════════════════════════
+
+@media (max-width: 480px) {
+  .accessibility-drawer {
+    max-width: 100%;
+    border-radius: 0;
+  }
+
+  .accessibilityHead { max-width: calc(100% - 40px); }
+
+  // On very small screens collapse button sits bottom-right
+  .acc-trigger {
+    bottom: 80px;
   }
 }

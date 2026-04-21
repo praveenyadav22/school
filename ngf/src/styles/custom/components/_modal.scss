@@ -1,0 +1,83 @@
+@use "../core/variables" as *;
+@use "../core/mixins" as *;
+
+// ═══════════════════════════════════════════════════════════════
+// HomeModal — on-load popup (#myModal equivalent)
+// ═══════════════════════════════════════════════════════════════
+
+// Backdrop
+.home-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 10000;
+  cursor: pointer;
+  animation: modal-fade-in 0.3s ease;
+}
+
+// Dialog wrapper — centred
+.home-modal__dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10001;
+  width: 100%;
+  max-width: 560px;
+  padding: 0 15px;
+  animation: modal-slide-in 0.35s ease;
+}
+
+// Content box — transparent background matching original
+.home-modal__content {
+  background: transparent;
+  border: none;
+  position: relative;
+}
+
+// Close × button
+.home-modal__close {
+  position: absolute;
+  top: -14px;
+  right: 0;
+  background: var(--color-primary);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--color-white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: background 0.2s;
+
+  &:hover { background: var(--color-dark-navy); }
+}
+
+// Image body
+.home-modal__body {
+  padding: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+// Animations
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes modal-slide-in {
+  from { opacity: 0; transform: translate(-50%, -48%); }
+  to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+// ─── Responsive ──────────────────────────────────────────────
+@media (max-width: 576px) {
+  .home-modal__dialog { max-width: 95vw; }
+}
