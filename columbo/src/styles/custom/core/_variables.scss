@@ -61,41 +61,44 @@
   --scaling-factor: 0.85;
 
   // ── Base colours ──────────────────────────────────────────
-  --color-white:      #ffffff;
-  --color-black:      #000000;
-  --color-grey:       #f7f7f7;
-  --color-grey2:      #f9f9f9;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-grey: #f7f7f7;
+  --color-grey2: #f9f9f9;
   --color-light-grey: #eeeeee;
 
-  // ── Brand colours (from original site CSS) ───────────────
-  --color-primary:        #ffac00;   // amber – hover, bullets, headings
-  --color-primary-hover:  #ffb825;   // lighter amber – link hover
-  --color-primary2:       #f5cb01;
-
-  // ── Dark navy palette (from #333a65 / #293058) ───────────
-  --color-dark-navy:      #333a65;   // footer bg, sticky nav bg, btn bg
-  --color-darker-navy:    #293058;   // footer ::before left panel
-  --color-navy-overlay:   #ffffff1f; // footer copy bar
-
-  // ── Accent colours ────────────────────────────────────────
-  --color-accent-blue:    #333a65;
-  --color-accent-blue2:   #2a2f52;
-  --color-accent-blue3:   #293058;
-  --color-accent-blue4:   #d9edf7;
-  --color-accent-link:    #337ab7;
-  --color-accent-orange2: #e45000;
-  --color-accent-orange3: #c84409;
-  --color-accent-orange4: #dd4c0b;
-
-  // ── Topbar ────────────────────────────────────────────────
-  --color-topbar-bg:      rgba(255,255,255,0.14);
-  --color-topbar-border:  rgba(204,204,204,0.25);
-  --color-topbar-text:    #ffffff;
-
-  // ── Navbar ────────────────────────────────────────────────
-  --color-nav-link:          #333a65;
-  --color-nav-link-hover:    #ffac00;
-  --color-nav-dropdown-bg:   #ffffff;
-  --color-nav-dropdown-link: #555555;
-  --color-nav-sticky-bg:     #ffffff;
+  --colorPrimary: #212121;
+  --colorPrimaryDark: #000000;
+  --colorAccent: #711123;
+  --colorAccent2: #efb137;
+  --colorWarn: #d0081c;
+  --blueColor: #0094da;
+  --greenColor: #0ab120;
+  --yellowColor: #f6c806;
+  --textColor: rgba(0, 0, 0, 0.8);
+  --divider: #d9d9d9;
+  --facebook_color: #3b5998;
+  --whatsapp_color: #25d366;
+  --pinterest_color: #cb2026;
+  --google_plus_color: #d34836;
+  --twitter: #0084b4;
+  --instagram: #d6249f;
+  --light_blue_grey: #3d5562;
+  --dark_blue_grey: #2b3a42;
+  --textColor: #424242;
+  --black_shade: #212121;
+  --button_disabled: #727272;
+  --light_grey: #d9d9d9;
+  --error_color: #b71c1c;
+  --textColor: rgba(0, 0, 0, 0.8);
+  --dark_grey: #767575;
+  --tag_back_color: #efeeee;
+  --tag_color: #6d6d6d;
+  --logo-orange: #75d0f7;
+  --logo-green: #75d0f7;
+  --gradient: linear-gradient(to right, #e2e2e2, #b0b0b0);
+  --content-width: 1500px;
+  --main-font: "AtGeodesic", sans-serif;
+  --heading-font: "Montserrat", sans-serif;
+  --background-gradient: linear-gradient(to bottom, #980d0e, #490608);
 }
