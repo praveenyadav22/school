@@ -1,0 +1,94 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// ─────────────────────────────────────────────────────────────
+// _typography.scss
+// Sets Poppins as the universal default font on the body.
+// Every element inherits — never declare font-family again.
+// ─────────────────────────────────────────────────────────────
+
+body {
+  font-family: var(--font-primary); // Poppins, sans-serif
+  @include font-size(16);
+  color: var(--color-grey2);
+  background-color: var(--color-white);
+  @include size(100%);
+  overscroll-behavior-y: none;
+  scrollbar-width: thin;
+}
+
+// ── Scrollbar utility ────────────────────────────────────────
+.scrollBar-smallWidth {
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.5);
+    @include border-radius(10px);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    @include border-radius(10px);
+  }
+
+  &::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+body * {
+  @extend .scrollBar-smallWidth;
+}
+
+// ── Dynamic font-scale helpers ───────────────────────────────
+.font_increase_1 { --font-increase: 1; }
+.font_increase_2 { --font-increase: 2; }
+.font_increase_3 { --font-increase: 3; }
+.font_increase_4 { --font-increase: 4; }
+
+.font_decrease_1 { --font-decrease: 1; }
+.font_decrease_2 { --font-decrease: 2; }
+.font_decrease_3 { --font-decrease: 3; }
+.font_decrease_4 { --font-decrease: 4; }
+
+.font_reset {
+  --font-increase: 0;
+  --font-decrease: 0;
+}
+
+// ── Base element resets ──────────────────────────────────────
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;   // picks up Poppins from body
+  font-weight: var(--fontSemiBold);
+  line-height: 1.3;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+a {
+  font-family: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button, input, select, textarea {
+  font-family: inherit;   // critical — browsers don't inherit font on form elements
+  font-size: inherit;
+}
