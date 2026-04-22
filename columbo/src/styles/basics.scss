@@ -1035,20 +1035,29 @@ footer {
 
 // ---- Quick Links ----
 .quick_links_section {
+  display: flex;
+  flex-direction: column;
   width: 90%;
-  min-width: 300px;
-  max-width: 400px;
+  min-width: 280px;
+  max-width: 340px;
   border: 1px solid var(--colorAccent);
   border-radius: 12px;
   padding: 4px;
   align-self: flex-start;
+  position: sticky;
+  top: 110px;
+  flex-shrink: 0;
+  margin-left: 20px;
 
   .heading {
     border-radius: 8px;
     background: var(--colorAccent);
     color: white;
     font-size: 16px;
+    font-weight: 500;
     padding: 16px;
+    font-family: var(--main-font);
+    display: flex;
   }
 
   a {
@@ -1056,16 +1065,28 @@ footer {
     margin-top: 4px;
     color: var(--colorAccent);
     background: #F7E9BC;
-    font-size: 16px;
-    padding: 16px;
+    font-size: 15px;
+    padding: 14px 16px;
     @include transition;
     cursor: pointer;
     text-decoration: none;
     display: flex;
+    font-family: var(--main-font);
+    line-height: 1.4;
 
     &:hover {
       background: #dad2b6;
+      color: var(--colorAccent);
     }
+  }
+
+  @include mobile {
+    position: static;
+    align-self: center;
+    margin-left: 0;
+    max-width: 100%;
+    width: 100%;
+    margin-top: 24px;
   }
 }
 
@@ -1573,7 +1594,4 @@ footer {
     width: calc(100% - 24px);
   }
 
-  .quick_links_section {
-    align-self: center;
-  }
 }

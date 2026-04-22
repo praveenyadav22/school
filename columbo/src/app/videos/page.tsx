@@ -1,5 +1,7 @@
 import Breadcrumb from '@/components/shared/Breadcrumb';
 import PageBanner from '@/components/shared/PageBanner';
+import SidebarLayout from '@/components/shared/SidebarLayout';
+import { gallerySidebarLinks } from '@/lib/sidebarLinks';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = { title: 'Video Gallery | St. Columbo Public School' };
@@ -14,30 +16,33 @@ const videos = [
 
 export default function VideosPage() {
   return (
-    <div className="column_alignment base_margin">
+    <div className="column_alignment base_margin" style={{ background: 'white' }}>
       <PageBanner title="Video Gallery" />
       <Breadcrumb />
-      <div className="column_alignment section_wrapper">
-        <div className="column_alignment main_content align_self_center">
-          <span className="page_heading">Video <b>Gallery</b></span>
-          <div className="row_alignment wrap two" style={{ marginTop: 24 }}>
+
+      <SidebarLayout quickLinks={gallerySidebarLinks} activeHref="/videos">
+        <div className="column_alignment about_content_wrapper">
+          <span className="page_heading" style={{ alignSelf: 'flex-start' }}>Video <b>Gallery</b></span>
+          <div className="row_alignment wrap" style={{ margin: '16px -8px' }}>
             {videos.map((v) => (
-              <div key={v.id} className="column_alignment" style={{ padding: 12 }}>
+              <div key={v.id} style={{ width: 'calc(50% - 16px)', minWidth: 260, margin: 8 }}>
                 <iframe
                   src={`https://www.youtube.com/embed/${v.id}`}
                   title={v.title}
                   width="100%"
-                  height="280"
-                  style={{ borderRadius: 12, border: 'none' }}
+                  height="220"
+                  style={{ borderRadius: 10, border: 'none', display: 'block' }}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />
-                <span style={{ marginTop: 8, fontWeight: 500, color: '#333', textAlign: 'center' }}>{v.title}</span>
+                <span style={{ display: 'block', marginTop: 8, fontWeight: 500, color: '#333', fontSize: 14 }}>
+                  {v.title}
+                </span>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </SidebarLayout>
     </div>
   );
 }

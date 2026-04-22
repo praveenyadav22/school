@@ -1,108 +1,70 @@
 import Breadcrumb from '@/components/shared/Breadcrumb';
 import PageBanner from '@/components/shared/PageBanner';
-import Link from 'next/link';
+import SidebarLayout from '@/components/shared/SidebarLayout';
+import { aboutSidebarLinks } from '@/lib/sidebarLinks';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'About SCPS | St. Columbo Public School',
-  description: 'Learn about St. Columbo Public School — our history, values, and commitment to holistic education.',
 };
 
 export default function AboutPage() {
   return (
-    <div className="column_alignment base_margin">
-      <PageBanner title="About SCPS" />
+    <div className="column_alignment base_margin" style={{ background: 'white' }}>
+      <PageBanner title="About Us" />
       <Breadcrumb />
-      <div className="column_alignment section_wrapper">
-        <div className="main_content row_column_alignment two align_self_center">
-          <div className="column_alignment about_content_wrapper">
-            <span className="content_heading">
-              About <b>St. Columbo Public School</b>
-            </span>
-            <p>
-              St. Columbo Public School is a premier educational institution dedicated to nurturing
-              young minds and shaping future leaders. Founded with the vision of providing
-              world-class education in a holistic environment, we have been a beacon of academic
-              excellence for decades.
-            </p>
-            <p>
-              Our school believes in the comprehensive development of every child — academically,
-              physically, socially, and emotionally. We integrate modern pedagogical methods with
-              time-tested values to create an environment where students thrive.
-            </p>
-            <p>
-              At SCPS, education goes beyond textbooks. We offer a rich tapestry of co-curricular
-              activities, sports, arts, and technology programs that help students discover their
-              unique talents and build confidence.
-            </p>
-            <p>
-              Our dedicated faculty, state-of-the-art infrastructure, and strong parent-school
-              partnership form the foundation of our success. We are committed to preparing students
-              not just for examinations, but for life.
-            </p>
-            <Link href="/mission-vision" className="accent_button" style={{ alignSelf: 'flex-start', marginTop: 16 }}>
-              Our Vision &amp; Mission
-            </Link>
-          </div>
-          <div className="column_alignment align_center" style={{ padding: 24 }}>
-            <img
-              src="/images/generic/welcome_scps.png"
-              alt="About SCPS"
-              style={{ width: '100%', maxWidth: 450, borderRadius: 12 }}
-            />
-            <div
-              className="column_alignment"
-              style={{
-                marginTop: 24,
-                background: 'linear-gradient(135deg, #711123, #4c0415)',
-                borderRadius: 12,
-                padding: 24,
-                color: 'white',
-                width: '100%',
-                maxWidth: 450,
-              }}
-            >
-              {[
-                { value: '25+', label: 'Years of Excellence' },
-                { value: '5000+', label: 'Alumni Worldwide' },
-                { value: '200+', label: 'Qualified Faculty' },
-                { value: '100%', label: 'Board Results' },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="row_alignment"
-                  style={{
-                    justifyContent: 'space-between',
-                    padding: '12px 0',
-                    borderBottom: '1px solid rgba(255,255,255,0.2)',
-                  }}
-                >
-                  <span style={{ fontSize: 28, fontWeight: 900, color: '#EFB137' }}>{stat.value}</span>
-                  <span style={{ fontSize: 16, color: 'rgba(255,255,255,0.85)', textAlign: 'right' }}>
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Quick Links */}
-      <div className="column_alignment section_wrapper" style={{ background: '#f8f8f8' }}>
-        <div className="main_content align_self_center">
-          <span className="page_heading">Explore <b>More About Us</b></span>
-          <div className="row_alignment wrap" style={{ marginTop: 24, justifyContent: 'center', gap: 16 }}>
-            {[
-              { label: 'Vision & Mission', href: '/mission-vision' },
-              { label: 'Why Us', href: '/why-us' },
-              { label: 'Safety & Security', href: '/safety-and-security' },
-              { label: 'Management', href: '/management' },
-            ].map((link) => (
-              <Link key={link.label} href={link.href} className="accent_button">
-                {link.label}
-              </Link>
-            ))}
+      <SidebarLayout quickLinks={aboutSidebarLinks} activeHref="/about">
+        <div className="column_alignment about_content_wrapper">
+          <span className="page_heading" style={{ alignSelf: 'flex-start' }}>About Us</span>
+          <span className="content_heading"><b>&ldquo;Vasudeva Kutumbakam&rdquo;</b></span>
+          <span className="content_heading">meaning The World Is One</span>
+          <p>
+            St Columbo Public School is Delhi&apos;s leading CBSE continuum school located in
+            Pitampura and is part of the elite cohort of other CBSE prestigious schools. For the
+            past 30 years, SCPS has provided the education sector with a world-class learning
+            environment that is truly international in quality, space and spirit.
+            <br /><br />
+            The school gives its students significant life-changing experiences that are formed by
+            innovative educators, who inspire in them a passion for learning, leadership, and service.
+            We aim to create responsible, global citizens who are compassionate, understanding, and
+            accepting of other people&apos;s viewpoints. We strive to ensure that every child in our
+            care is empowered to make choices and encouraged to contribute to our community.
+            <br /><br />
+            Every student at St Columbo Public School has the opportunity to explore talents, nurture
+            intellect and creativity, and grow to his or her fullest potential with the awareness of a
+            core value system of commitment and empathy. Our vision is that every young pupil who
+            passes through these portals will be a principled thinker, an effective communicator and
+            an open-minded global citizen.
+          </p>
+        </div>
+      </SidebarLayout>
+
+      <div className="column_alignment section_wrapper dark_section">
+        <div className="column_alignment main_content align_self_center">
+          <div className="row_column_alignment two">
+            <div className="column_alignment">
+              <div className="column_alignment about_content_wrapper">
+                <p style={{ color: 'white' }}>
+                  St. Columbo Public School provides an ideal atmosphere for learners to acquire and
+                  imbibe skills necessary for their physical, mental, social, and intellectual
+                  development combined with modern state-of-the-art technology and expertise.
+                  <br /><br />
+                  The school follows a child-centred approach where each child is an individual and is
+                  nurtured accordingly. The school&apos;s vision is to Pioneer a New Paradigm of
+                  Excellence in Secondary Education through a learner-centred educational system aimed
+                  at awakening and fostering the latent capacity of each student to fully develop his
+                  or her own unique individuality and creativity.
+                </p>
+              </div>
+            </div>
+            <div className="column_alignment align_center">
+              <img
+                src="/images/generic/welcome_scps.png"
+                alt="About SCPS"
+                style={{ width: '90%', maxWidth: 450, borderRadius: 12 }}
+              />
+            </div>
           </div>
         </div>
       </div>

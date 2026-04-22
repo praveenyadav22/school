@@ -21,62 +21,37 @@ const disclosureData = [
 
 export default function PublicDisclosurePage() {
   return (
-    <div className="column_alignment base_margin">
+    <div className="column_alignment base_margin" style={{ background: 'white' }}>
       <PageBanner title="Public Disclosure" />
       <Breadcrumb />
-      <div className="column_alignment section_wrapper">
+      <div className="column_alignment section_wrapper" style={{ background: 'white' }}>
         <div className="column_alignment main_content align_self_center">
           <span className="page_heading">Public <b>Disclosure</b></span>
           <p style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto 32px', color: '#555', fontSize: 16, lineHeight: 1.7 }}>
-            In accordance with the Central Board of Secondary Education (CBSE) guidelines, we
-            provide the following mandatory public disclosures.
+            In accordance with CBSE guidelines, we provide the following mandatory public disclosures.
           </p>
-
           <div style={{ overflowX: 'auto', width: '100%' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white', borderRadius: 12, overflow: 'hidden', boxShadow: '0 4px 16px rgba(0,0,0,0.08)' }}>
               <thead>
                 <tr style={{ background: 'var(--colorAccent)' }}>
-                  <th style={{ padding: '14px 20px', color: 'white', textAlign: 'left', fontFamily: 'var(--main-font)', fontSize: 15 }}>
-                    Detail
-                  </th>
-                  <th style={{ padding: '14px 20px', color: 'white', textAlign: 'left', fontFamily: 'var(--main-font)', fontSize: 15 }}>
-                    Information
-                  </th>
+                  <th style={{ padding: '14px 20px', color: 'white', textAlign: 'left', fontFamily: 'var(--main-font)', fontSize: 15 }}>Detail</th>
+                  <th style={{ padding: '14px 20px', color: 'white', textAlign: 'left', fontFamily: 'var(--main-font)', fontSize: 15 }}>Information</th>
                 </tr>
               </thead>
               <tbody>
                 {disclosureData.map((row, i) => (
-                  <tr
-                    key={row.label}
-                    style={{ background: i % 2 === 0 ? '#fff' : '#fafafa', borderBottom: '1px solid #eee' }}
-                  >
-                    <td style={{ padding: '13px 20px', fontWeight: 600, color: '#333', fontSize: 14 }}>
-                      {row.label}
-                    </td>
-                    <td style={{ padding: '13px 20px', color: '#555', fontSize: 14 }}>
-                      {row.value}
-                    </td>
+                  <tr key={row.label} style={{ background: i % 2 === 0 ? '#fff' : '#fafafa', borderBottom: '1px solid #eee' }}>
+                    <td style={{ padding: '13px 20px', fontWeight: 600, color: '#333', fontSize: 14 }}>{row.label}</td>
+                    <td style={{ padding: '13px 20px', color: '#555', fontSize: 14 }}>{row.value}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-
-          <div
-            style={{
-              marginTop: 32,
-              background: '#FFF8E1',
-              border: '1px solid #EFB137',
-              borderRadius: 8,
-              padding: 16,
-            }}
-          >
+          <div style={{ marginTop: 24, background: '#FFF8E1', border: '1px solid #EFB137', borderRadius: 8, padding: 16 }}>
             <p style={{ margin: 0, color: '#555', fontSize: 14, lineHeight: 1.6 }}>
-              <strong>Note:</strong> For complete mandatory disclosure documents as required by
-              CBSE, please visit the school office or contact us at{' '}
-              <a href="mailto:stcolumbo@gmail.com" style={{ color: 'var(--colorAccent)' }}>
-                stcolumbo@gmail.com
-              </a>.
+              <strong>Note:</strong> For complete mandatory disclosure documents as required by CBSE, please visit the school office or contact us at{' '}
+              <a href="mailto:stcolumbo@gmail.com" style={{ color: 'var(--colorAccent)' }}>stcolumbo@gmail.com</a>.
             </p>
           </div>
         </div>

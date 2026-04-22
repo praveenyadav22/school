@@ -1,11 +1,13 @@
 import Breadcrumb from '@/components/shared/Breadcrumb';
 import PageBanner from '@/components/shared/PageBanner';
+import SidebarLayout from '@/components/shared/SidebarLayout';
+import { campusLifeSidebarLinks } from '@/lib/sidebarLinks';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = { title: 'Events & Celebrations | St. Columbo Public School' };
 
 const events = [
-  { title: 'Annual Day', date: 'January 2025', icon: '🎭', desc: 'A grand celebration showcasing student talent in music, dance, drama, and sports.' },
+  { title: 'Annual Day', date: 'January 2025', icon: '🎭', desc: 'A grand celebration showcasing student talent in music, dance, and drama.' },
   { title: 'Sports Day', date: 'December 2024', icon: '🏆', desc: 'Annual sports meet where students compete across a range of athletic disciplines.' },
   { title: 'Science Exhibition', date: 'November 2024', icon: '🔬', desc: 'Students present innovative science projects, fostering creativity and curiosity.' },
   { title: 'Independence Day', date: 'August 2024', icon: '🇮🇳', desc: 'Patriotic celebrations with cultural performances and flag hoisting.' },
@@ -15,59 +17,47 @@ const events = [
 
 export default function EventsPage() {
   return (
-    <div className="column_alignment base_margin">
+    <div className="column_alignment base_margin" style={{ background: 'white' }}>
       <PageBanner title="Events & Celebrations" />
       <Breadcrumb />
-      <div className="column_alignment section_wrapper">
-        <div className="column_alignment main_content align_self_center">
-          <span className="page_heading">Events & <b>Celebrations</b></span>
-          <p style={{ textAlign: 'center', maxWidth: 650, margin: '0 auto 40px', color: '#555', fontSize: 18, lineHeight: 1.7 }}>
-            Life at SCPS is vibrant and full of memorable experiences. Here are some of the highlights from our academic year.
+
+      <SidebarLayout quickLinks={campusLifeSidebarLinks} activeHref="/g/events-celebrations">
+        <div className="column_alignment about_content_wrapper">
+          <span className="page_heading" style={{ alignSelf: 'flex-start' }}>Events & <b>Celebrations</b></span>
+          <p>
+            Life at SCPS is vibrant and full of memorable experiences. Here are some of the
+            highlights from our academic year.
           </p>
-          <div className="row_alignment wrap three">
+          <div className="row_alignment wrap" style={{ margin: '16px -8px' }}>
             {events.map((ev) => (
               <div
                 key={ev.title}
-                className="column_alignment"
                 style={{
-                  margin: 10,
+                  width: 'calc(50% - 16px)',
+                  minWidth: 200,
+                  margin: 8,
                   background: 'white',
-                  borderRadius: 12,
-                  padding: 24,
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.09)',
-                  width: 'calc(33.33% - 20px)',
-                  position: 'relative',
-                  borderTop: '4px solid var(--colorAccent)',
+                  border: '1px solid #eee',
+                  borderRadius: 10,
+                  padding: 20,
+                  borderTop: '3px solid var(--colorAccent)',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
                 }}
               >
-                <span style={{ fontSize: 40, marginBottom: 12, display: 'block' }}>{ev.icon}</span>
-                <span style={{ fontSize: 12, color: 'var(--colorAccent)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: 1 }}>
-                  {ev.date}
-                </span>
-                <h3 style={{ color: '#212121', margin: '8px 0' }}>{ev.title}</h3>
-                <p style={{ margin: 0, color: '#666', lineHeight: 1.5 }}>{ev.desc}</p>
+                <span style={{ fontSize: 34, display: 'block', marginBottom: 6 }}>{ev.icon}</span>
+                <span style={{ fontSize: 11, color: 'var(--colorAccent)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>{ev.date}</span>
+                <strong style={{ display: 'block', fontSize: 16, color: '#212121', margin: '6px 0' }}>{ev.title}</strong>
+                <p style={{ margin: 0, fontSize: 13, color: '#555', lineHeight: 1.5 }}>{ev.desc}</p>
               </div>
             ))}
           </div>
-        </div>
-      </div>
-
-      {/* Excellence Toppers */}
-      <div className="column_alignment section_wrapper" style={{ background: '#f8f8f8' }}>
-        <div className="column_alignment main_content align_self_center">
-          <span className="page_heading">Celebrating <b>Excellence</b></span>
-          <div className="row_alignment wrap" style={{ marginTop: 24, justifyContent: 'center', gap: 16 }}>
+          <div className="row_alignment wrap" style={{ marginTop: 24, gap: 12 }}>
             {['/images/generic/school_topper_x_1.jpg', '/images/generic/school_topper_x_2.jpg'].map((src) => (
-              <img
-                key={src}
-                src={src}
-                alt="School Toppers"
-                style={{ borderRadius: 16, width: '45%', minWidth: 280, boxShadow: '0 4px 20px rgba(0,0,0,0.12)' }}
-              />
+              <img key={src} src={src} alt="School Excellence" style={{ borderRadius: 12, width: 'calc(50% - 6px)', minWidth: 200, boxShadow: '0 4px 16px rgba(0,0,0,0.1)' }} />
             ))}
           </div>
         </div>
-      </div>
+      </SidebarLayout>
     </div>
   );
 }
