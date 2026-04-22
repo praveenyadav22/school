@@ -63,39 +63,23 @@
   // ── Base colours ──────────────────────────────────────────
   --color-white:      #ffffff;
   --color-black:      #000000;
-  --color-grey:       #f7f7f7;
-  --color-grey2:      #f9f9f9;
+  --color-grey:       #e8e6e6;
+  --color-grey2:      #dadada;
   --color-light-grey: #eeeeee;
 
   // ── Brand colours (from original site CSS) ───────────────
-  --color-primary:        #ffac00;   // amber – hover, bullets, headings
-  --color-primary-hover:  #ffb825;   // lighter amber – link hover
-  --color-primary2:       #f5cb01;
-
-  // ── Dark navy palette (from #333a65 / #293058) ───────────
-  --color-dark-navy:      #333a65;   // footer bg, sticky nav bg, btn bg
-  --color-darker-navy:    #293058;   // footer ::before left panel
-  --color-navy-overlay:   #ffffff1f; // footer copy bar
-
+  --color-primary:        #002649;   // 
+  --color-secondary:        #9b0c23;   // 
+  --color-secondary2:        #890a1e;   // 
+  
   // ── Accent colours ────────────────────────────────────────
-  --color-accent-blue:    #333a65;
-  --color-accent-blue2:   #2a2f52;
-  --color-accent-blue3:   #293058;
-  --color-accent-blue4:   #d9edf7;
-  --color-accent-link:    #337ab7;
-  --color-accent-orange2: #e45000;
-  --color-accent-orange3: #c84409;
-  --color-accent-orange4: #dd4c0b;
-
-  // ── Topbar ────────────────────────────────────────────────
-  --color-topbar-bg:      rgba(255,255,255,0.14);
-  --color-topbar-border:  rgba(204,204,204,0.25);
-  --color-topbar-text:    #ffffff;
-
-  // ── Navbar ────────────────────────────────────────────────
-  --color-nav-link:          #333a65;
-  --color-nav-link-hover:    #ffac00;
-  --color-nav-dropdown-bg:   #ffffff;
-  --color-nav-dropdown-link: #555555;
-  --color-nav-sticky-bg:     #ffffff;
+  --color-accent-blue:    #202d47;
+  --color-accent-blue2:   #587c9c;
+  --color-accent-blue3:   #6885a6;
+  --color-accent-blue4:   #106a9c;
+  --color-accent-blue5:   #8396ad;
+  --color-accent-url:   #337ab7;
+  --color-accent-hover:   #286090;
+  --color-accent-green:    #3db166;
+  
 }
