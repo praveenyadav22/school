@@ -1,12 +1,23 @@
 // ─────────────────────────────────────────────────────────────
-// _variables.scss  — design tokens for NGFS Alaknanda
+// _variables.scss
+// All design tokens as CSS custom properties on :root + body
 // ─────────────────────────────────────────────────────────────
 
 :root {
-  // ── Fonts ─────────────────────────────────────────────────
-  --font-poppins: "Poppins", sans-serif;
-  --font-primary: var(--font-poppins);
-  --font-secondary: var(--font-poppins);
+  // ── Font (injected by Next.js Poppins loader onto <html>) ──
+  --font-playfair: "Playfair Display", serif;
+  --font-pt-sans: "PT Sans", sans-serif;
+  --font-primary: var(--font-playfair);
+  --font-secondary: var(--font-pt-sans);
+
+  // ── Brand ──────────────────────────────────────────────
+  --color-brand-red: #d9232d;
+  --color-brand-blue: #007cce;
+  --color-topbar-bg: #fdfdfd;
+
+  // ── Layout ─────────────────────────────────────────────
+  --header-height: 80px;
+  --logo-size: 130px;
 
   // ── Font weights ──────────────────────────────────────────
   --fontUltraThin: 100;
@@ -55,47 +66,44 @@
   --fontSize72: 72px;
   --fontSize80: 80px;
 
-  // ── Dynamic font scaling ──────────────────────────────────
+  // ── Dynamic font scaling controls ────────────────────────
   --font-increase: 0;
   --font-decrease: 0;
   --scaling-factor: 0.85;
 
-  // ── Base colours ──────────────────────────────────────────
-  --color-white:      #ffffff;
-  --color-black:      #000000;
-  --color-grey:       #f7f7f7;
-  --color-grey2:      #f9f9f9;
-  --color-light-grey: #eeeeee;
+  // ── Colours ───────────────────────────────────────────────
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-grey: #384450;
 
-  // ── Brand colours (from original site CSS) ───────────────
-  --color-primary:        #ffac00;   // amber – hover, bullets, headings
-  --color-primary-hover:  #ffb825;   // lighter amber – link hover
-  --color-primary2:       #f5cb01;
 
-  // ── Dark navy palette (from #333a65 / #293058) ───────────
-  --color-dark-navy:      #333a65;   // footer bg, sticky nav bg, btn bg
-  --color-darker-navy:    #293058;   // footer ::before left panel
-  --color-navy-overlay:   #ffffff1f; // footer copy bar
+  // ── Primary Theme ──────────────────────────────────────
+  --color-primary: #007cce; // Main brand (blue)
+  --color-primary-dark: #0e3759; // Dark blue variant
 
-  // ── Accent colours ────────────────────────────────────────
-  --color-accent-blue:    #333a65;
-  --color-accent-blue2:   #2a2f52;
-  --color-accent-blue3:   #293058;
-  --color-accent-blue4:   #d9edf7;
-  --color-accent-link:    #337ab7;
-  --color-accent-orange2: #e45000;
-  --color-accent-orange3: #c84409;
-  --color-accent-orange4: #dd4c0b;
 
-  // ── Topbar ────────────────────────────────────────────────
-  --color-topbar-bg:      rgba(255,255,255,0.14);
-  --color-topbar-border:  rgba(204,204,204,0.25);
-  --color-topbar-text:    #ffffff;
+  // ── Secondary / Accent ────────────────────────────────
+  --color-secondary: #d9534f; // Red tone
+  --color-accent: #ff3c00; // Bright orange accent
+  --color-accent-yellow: #ffc107; // keep existing if needed
 
-  // ── Navbar ────────────────────────────────────────────────
-  --color-nav-link:          #333a65;
-  --color-nav-link-hover:    #ffac00;
-  --color-nav-dropdown-bg:   #ffffff;
-  --color-nav-dropdown-link: #555555;
-  --color-nav-sticky-bg:     #ffffff;
+
+  // ── Text Colors ───────────────────────────────────────
+  --color-text-secondary: #505050;
+  --color-text-muted: #6f6f6f;
+  --color-text-light: #777;
+
+  // ── Backgrounds ───────────────────────────────────────
+  --color-bg-primary: #fff;
+  --color-bg-dark: #0e3759;
+
+
+  // ── Borders / UI ──────────────────────────────────────
+  --color-border: #6f6f6f;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+
+  // ── Optional (UI states) ──────────────────────────────
+  --color-hover: #005fa3; // derived from primary
+  --color-danger: #d9534f;
+
 }

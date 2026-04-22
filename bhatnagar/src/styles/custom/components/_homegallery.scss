@@ -1,3 +1,60 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+.gallery-cardlist {
+  @include flexbox();
+  @include align-items(center);
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background: var(--color-white);
+  @include box-shadow(0 2px 6px rgba(0,0,0,0.06));
+
+  &__imgwrap {
+    flex-shrink: 0;
+    width: 120px;
+
+    .u-img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+  }
+
+  &__content {
+    flex: 1;
+
+    &--titel {
+      font-size: var(--fontSize17);
+      color: var(--color-primary-dark);
+      margin-bottom: 8px;
+      font-weight: var(--fontSemiBold);
+    }
+
+    &--meta {
+      @include flexbox();
+      @include align-items(center);
+      @include justify-content(space-between);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    &--postedwrap {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .list {
+        font-size: var(--fontSize13);
+        color: #777;
+
+        .value {
+          color: var(--color-primary-dark);
+          font-weight: var(--fontSemiBold);
+        }
+      }
+    }
+  }
+}

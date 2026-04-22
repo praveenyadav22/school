@@ -1,3 +1,257 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+// ── Home banner (Embla replacing Owl) ─────────────────────
+.mainbanner__wrapper {
+  overflow: hidden;
+  max-height: 650px;
+  height: 100%;
+  position: relative;
+
+  // Embla internals
+  .mainbanner__embla-viewport {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .mainbanner__embla-container {
+    display: flex;
+  }
+
+  .mainbanner__embla-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  // ── Arrows ────────────────────────────────────────────
+  .owl-nav {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    pointer-events: none;
+
+    .owl-prev,
+    .owl-next {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border-radius: 100%;
+      border: 2px solid var(--color-white);
+      font-size: 25px;
+      text-align: center;
+      line-height: 1.3;
+      color: var(--color-white);
+      cursor: pointer;
+      pointer-events: all;
+      @include transition(all 0.3s);
+
+      &:hover {
+        background: var(--color-white);
+        color: var(--color-black);
+      }
+    }
+
+    .owl-prev {
+      left: -50px;
+    }
+
+    .owl-next {
+      right: -50px;
+    }
+  }
+
+  &:hover {
+    .owl-prev {
+      left: 10px;
+    }
+
+    .owl-next {
+      right: 10px;
+    }
+  }
+
+  // ── Dots ──────────────────────────────────────────────
+  .owl-dots {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    text-align: center;
+
+    .owl-dot {
+      display: inline-block;
+      cursor: pointer;
+      margin: 0 3px;
+
+      span {
+        display: block;
+        width: 15px;
+        height: 15px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+      }
+
+      &.active span {
+        background: var(--color-black);
+        position: relative;
+
+        &::after {
+          position: absolute;
+          top: 25%;
+          left: 28%;
+          content: "";
+          width: 7.5px;
+          height: 7.5px;
+          background: var(--color-white);
+          border-radius: 100%;
+        }
+      }
+    }
+  }
+
+  @include mq("tablet-max", max) {
+    .owl-nav {
+      display: none;
+    }
+  }
+}
+
+// ── Facilities slider (Embla replacing Owl) ────────────────
+.facilitiesBis__wrapper {
+  .main-head {
+    text-align: center;
+    margin-bottom: 30px;
+
+    h2 {
+      font-size: var(--fontSize30);
+      color: var(--color-primary-dark);
+      font-weight: var(--fontSemiBold);
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-size: var(--fontSize16);
+      color: #777;
+    }
+  }
+
+  .facilitiesBis {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .facilitiesBis__embla-viewport {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .facilitiesBis__embla-container {
+    display: flex;
+    gap: 30px;
+  }
+
+  .facilitiesBis__embla-slide {
+    flex: 0 0 calc(25% - 23px);
+    min-width: 0;
+
+    @include mq("tablet-max", max) {
+      flex: 0 0 calc(50% - 15px);
+    }
+
+    @include mq("tablet", max) {
+      flex: 0 0 100%;
+    }
+  }
+}
+
+.facilitiesBis-content {
+  text-align: center;
+
+  figure {
+    margin: 0 0 10px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  h3 {
+    color: #505050;
+    font-weight: var(--fontSemiBold);
+    margin: 12px 0;
+    font-size: var(--fontSize18);
+    text-align: center;
+  }
+
+  p {
+    height: 150px;
+    overflow: hidden;
+    font-size: var(--fontSize14);
+    text-align: center;
+    color: #666;
+    line-height: 1.6;
+  }
+}
+
+// ── Facility slider nav buttons ────────────────────────────
+.themeSlidebtn {
+  .owl-nav {
+    position: absolute;
+    top: 16%;
+    width: 100%;
+    pointer-events: none;
+
+    .owl-prev,
+    .owl-next {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border-radius: 100%;
+      border: 2px solid var(--color-white);
+      font-size: 25px;
+      text-align: center;
+      line-height: 1.3;
+      color: var(--color-white);
+      cursor: pointer;
+      pointer-events: all;
+      @include transition(all 0.3s);
+
+      &:hover {
+        background: var(--color-white);
+        color: var(--color-black);
+      }
+
+      &.disabled {
+        opacity: 0.4;
+        pointer-events: none;
+      }
+    }
+
+    .owl-prev {
+      left: -50px;
+    }
+
+    .owl-next {
+      right: -50px;
+    }
+  }
+
+  &:hover,
+  .themeSlide:hover & {
+    .owl-prev {
+      left: 10px;
+    }
+
+    .owl-next {
+      right: 10px;
+    }
+  }
+}

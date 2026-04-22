@@ -9,7 +9,9 @@ declare global {
         React.HTMLAttributes<HTMLElement> & {
           behavior?: string;
           direction?: string;
-          scrolldelay?: number; // ✅ fixed here
+          scrolldelay?: number;
+          onmouseover?: string;
+          onmouseout?: string;
         },
         HTMLElement
       >;

@@ -1,3 +1,47 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+// Sidebar used on all inner pages
+.sidebar__wrapper {
+  h2 {
+    position: relative;
+    font-family: var(--font-playfair);
+    color: var(--color-white);
+    font-weight: var(--fontRegular);
+    font-size: var(--fontSize20);
+    margin: 0 0 20px 0;
+    padding: 7px 0 7px 10px;
+    background: var(--color-primary-dark);
+    border-left: var(--color-primary) solid 3px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      font-size: var(--fontSize16);
+      margin: 0;
+      padding: 4px 0 4px 10px;
+      border-bottom: #d2d2d2 solid 1px;
+
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+        font-size: var(--fontSize16);
+        font-weight: var(--fontSemiBold);
+        @include transition(0.5s ease);
+
+        &:hover { color: var(--color-primary-dark); }
+      }
+
+      span {
+        font-size: var(--fontSize16);
+        margin-right: 5px;
+        color: var(--color-primary-dark);
+        font-weight: var(--fontRegular);
+      }
+    }
+  }
+}

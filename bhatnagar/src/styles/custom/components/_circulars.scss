@@ -1,3 +1,34 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+.circulars-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &__item {
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(space-between);
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    gap: 15px;
+    @include transition(background 0.2s);
+
+    &:hover {
+      background: #f8f9fa;
+    }
+
+    .title {
+      font-size: var(--fontSize14);
+      color: #333;
+      flex: 1;
+    }
+
+    .date {
+      font-size: var(--fontSize12);
+      color: #888;
+      white-space: nowrap;
+    }
+  }
+}

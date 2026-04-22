@@ -1,3 +1,27 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+
+  &__item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    @include box-shadow(0 2px 8px rgba(0,0,0,0.1));
+
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      @include transition(transform 0.3s);
+    }
+
+    &:hover img {
+      @include transform(scale(1.05));
+    }
+  }
+}

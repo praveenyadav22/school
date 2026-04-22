@@ -1,3 +1,50 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+// Generic card styles used across inner pages
+.theme-card {
+  background: var(--color-white);
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 20px;
+  @include box-shadow(0 2px 8px rgba(0,0,0,0.06));
+  @include transition(box-shadow 0.3s);
+
+  &:hover {
+    @include box-shadow(0 4px 16px rgba(0,0,0,0.12));
+  }
+
+  h3 {
+    font-size: var(--fontSize18);
+    color: var(--color-primary-dark);
+    margin-bottom: 10px;
+    font-family: var(--font-playfair);
+    font-weight: var(--fontRegular);
+  }
+
+  p {
+    font-size: var(--fontSize14);
+    color: #555;
+    line-height: 1.7;
+  }
+}
+
+// Main section heading used in sliders / homepage blocks
+.main-head {
+  text-align: center;
+  margin-bottom: 30px;
+
+  h2 {
+    font-size: var(--fontSize30);
+    color: var(--color-primary-dark);
+    font-weight: var(--fontSemiBold);
+    margin-bottom: 5px;
+    font-family: var(--font-playfair);
+  }
+
+  p {
+    font-size: var(--fontSize16);
+    color: #777;
+  }
+}

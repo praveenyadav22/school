@@ -1,3 +1,40 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+.themeButton {
+  padding: 6px 30px;
+  border: 2px solid var(--color-primary-dark);
+  color: var(--color-primary-dark);
+  border-radius: 5px;
+  display: inline-block;
+  line-height: 1.9;
+  margin: 10px 0;
+  font-size: var(--fontSize14);
+  text-transform: uppercase;
+  text-decoration: none;
+  @include transition(all 0.3s);
+
+  &:hover {
+    background: var(--color-primary-dark);
+    color: var(--color-white);
+  }
+
+  &.fillButton {
+    background: var(--color-primary-dark);
+    color: var(--color-white);
+
+    &:hover {
+      background: var(--color-black);
+      color: var(--color-white);
+    }
+  }
+}
+
+.transition4s {
+  @include transition(all 0.4s ease-in-out);
+}
+
+.highlightedBg {
+  padding: 40px 0;
+  background-color: #fbf9fe;
+}

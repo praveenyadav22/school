@@ -1,2 +1,134 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
+
+.footer__wrapper {
+  &-top {
+    padding: 35px 0;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid var(--color-primary);
+
+    p {
+      color: var(--color-black);
+      font-size: var(--fontSize14);
+      text-align: left;
+      line-height: 1.7;
+    }
+  }
+
+  &-top-content {
+    margin-bottom: 20px;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li a {
+        color: #161616;
+        font-weight: var(--fontRegular);
+        font-size: var(--fontSize14);
+        line-height: 1.2;
+        display: block;
+        margin-bottom: 10px;
+        text-decoration: none;
+        @include transition(all 0.4s ease-in-out);
+
+        &::before {
+          content: "\f101";
+          display: inline-block;
+          margin-right: 6px;
+          font-size: var(--fontSize13);
+          font-family: FontAwesome;
+          color: var(--color-primary-dark);
+          @include transition(all 0.4s ease-in-out);
+        }
+
+        &:hover {
+          color: var(--color-white);
+
+          &::before {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+
+    h4 {
+      font-size: var(--fontSize16);
+      color: var(--color-black);
+      font-weight: var(--fontBold);
+      margin-bottom: 15px;
+    }
+
+    p span {
+      margin-right: 6px;
+      color: var(--color-primary-dark);
+    }
+
+    p a {
+      font-size: var(--fontSize13);
+      text-decoration: none;
+      color: inherit;
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  &-bottom {
+    text-align: center;
+    background: var(--color-primary);
+    padding: 15px 0;
+
+    p {
+      color: var(--color-white);
+      font-size: var(--fontSize14);
+      text-align: center;
+      margin: 0;
+
+      a {
+        color: #b1b0b0;
+        text-decoration: none;
+
+        &:hover {
+          color: var(--color-white);
+        }
+      }
+    }
+  }
+}
+
+// Section head used in footer columns
+.section-head {
+  h3 {
+    font-weight: var(--fontSemiBold);
+    font-size: var(--fontSize20);
+    line-height: 1.4em;
+    padding: 0 0 12px;
+    margin-bottom: 22px;
+    text-transform: capitalize;
+    font-family: var(--font-pt-sans);
+    color: #001f3d;
+    border-bottom: 1px dashed #e1e1e1;
+
+    span {
+      font-weight: var(--fontRegular);
+    }
+  }
+
+  h4 {
+    color: #1f134b;
+    font-size: var(--fontSize26);
+    font-weight: var(--fontRegular);
+    margin: 0 0 15px 0;
+    padding: 0 0 10px 0;
+    border-bottom: #f0eeee solid 1px;
+    text-transform: none;
+    font-family: var(--font-playfair);
+  }
+}
+
+.wrapSpace {
+  white-space: nowrap;
+}

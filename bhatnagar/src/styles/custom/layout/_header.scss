@@ -1,2 +1,447 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
+
+// ═══════════════════════════════════════════════════════════════
+//  BIS HEADER — pixel-perfect match to bhatnagarinternationalschool.in
+//  Architecture: pure BEM + CSS custom properties.
+//  Bootstrap 5 grid classes are NOT used in the nav element.
+//  The nav uses a clean 3-column CSS Grid (left | logo | right).
+// ═══════════════════════════════════════════════════════════════
+
+// ── Shared z-index tokens ─────────────────────────────────────
+$z-navbar   : 100;
+$z-dropdown : 9999;
+
+// ── Top-bar ───────────────────────────────────────────────────
+.bis-topbar {
+  background: #007cce;
+  padding: 10px 0;
+  position: relative;
+  z-index: $z-navbar + 10;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  // Social icons
+  &__social {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      overflow: hidden;
+      text-decoration: none;
+      @include transition(background 0.3s);
+
+      img {
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
+        display: block;
+      }
+
+      &:hover {
+        background: rgba(255,255,255,0.2);
+      }
+    }
+  }
+
+  // Top menu links
+  &__menu {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li a {
+      display: block;
+      color: #fff;
+      font-size: 13px;
+      line-height: 1.5;
+      background: #d9534f;
+      border: 1px solid #d43f3a;
+      border-radius: 5px;
+      padding: 5px 14px;
+      text-decoration: none;
+      white-space: nowrap;
+      @include transition(background 0.3s);
+
+      &::before {
+        content: "\f090";
+        font-family: FontAwesome;
+        display: inline-block;
+        margin-right: 4px;
+        font-size: 12px;
+      }
+
+      &:hover { background: #d43f3a; }
+    }
+  }
+
+  // ── Responsive: stack on small ────────────────────────────
+  @include mq("tablet-max", max) {
+    &__inner {
+      justify-content: center;
+    }
+
+    &__menu {
+      justify-content: center;
+    }
+  }
+
+  @include mq("phone-wide", max) {
+    padding: 8px 0 0;
+
+    &__menu {
+      background: #d9534f;
+      width: 100%;
+      margin: 8px -15px 0;
+      padding: 8px 0;
+      justify-content: center;
+
+      li a {
+        background: transparent;
+        border: none;
+        font-size: 12px;
+        padding: 3px 8px;
+
+        &::before { display: none; }
+      }
+    }
+  }
+}
+
+// ── Main navbar ───────────────────────────────────────────────
+.bis-navbar {
+  position: relative;
+  background: #fff;
+  border-bottom: 1px solid #d0d0d0;
+  z-index: $z-navbar;
+  // CRITICAL: overflow visible so dropdowns escape this element
+  overflow: visible;
+
+  // Decorative polygon SVG behind logo
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 80px;
+    transform: translateX(calc(-50% + 4px));
+    width: 237px;
+    height: 113px;
+    background: url(/images/generic/polyShape.svg) no-repeat center / contain;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  // Mobile toggle row — visible only on mobile
+  &__mobile-bar {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+  }
+
+  &__mobile-logo {
+    max-width: 80px;
+    height: auto;
+  }
+
+  // Hamburger button
+  &__toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: #0e3759;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 8px;
+
+    &:hover, &:focus { background: #000; outline: none; }
+  }
+
+  &__toggle-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 1px;
+  }
+
+  // ── 3-column inner: left-nav | logo | right-nav ──────────
+  &__inner {
+    display: grid;
+    // left takes 1fr, logo is fixed 160px, right takes 1fr
+    grid-template-columns: 1fr 160px 1fr;
+    grid-template-rows: 90px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    // CRITICAL: overflow visible so dropdowns paint over the banner below
+    overflow: visible;
+  }
+
+  // Centre logo
+  &__logo {
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 5px;
+    // Logo pokes slightly below the 90px bar — allow it
+    overflow: visible;
+    z-index: 2;
+
+    a { display: inline-block; text-decoration: none; }
+
+    img {
+      max-width: 130px;
+      height: auto;
+      display: block;
+    }
+  }
+}
+
+// ── Nav lists (shared left + right) ───────────────────────────
+.bis-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  // CRITICAL: overflow visible — dropdowns must escape the list
+  overflow: visible;
+
+  &--left {
+    grid-column: 1;
+    justify-content: flex-start;
+  }
+
+  &--right {
+    grid-column: 3;
+    justify-content: flex-end;
+  }
+
+  // ── Nav item ────────────────────────────────────────────
+  &__item {
+    position: relative;   // dropdown anchors here
+    // CRITICAL: overflow visible
+    overflow: visible;
+
+    // Bullet separator between siblings
+    & + & {
+      &::before {
+        content: "\f111";
+        font-family: FontAwesome;
+        font-size: 7px;
+        color: #000;
+        position: absolute;
+        left: -1px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+      }
+    }
+  }
+
+  // ── Top-level link ──────────────────────────────────────
+  &__link {
+    display: block;
+    color: #555;
+    font-size: 14px;
+    font-family: "PT Sans", "Poppins", sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0 18px;
+    height: 90px;           // fill entire navbar height
+    line-height: 90px;      // vertically centre text
+    white-space: nowrap;
+    @include transition(color 0.3s);
+
+    &:hover { color: #000; }
+  }
+
+  &__caret {
+    font-size: 10px;
+    opacity: 0.6;
+    margin-left: 2px;
+  }
+
+  // ── Dropdown list ────────────────────────────────────────
+  &__dropdown {
+    position: absolute;
+    top: 90px;             // exactly at the bottom of the 90px navbar
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 200px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    border: 1px solid #b3d8f0;
+    z-index: $z-dropdown;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    // Never collapse height — let it paint over the page
+    overflow: visible;
+
+    &--right {
+      left: auto;
+      right: 0;
+      transform: none;
+    }
+  }
+
+  // Up-caret arrow (::before pseudo — separate li for clean stacking)
+  &__arrow {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    font-family: FontAwesome;
+    font-size: 28px;
+    line-height: 20px;
+    color: #007cce;
+    pointer-events: none;
+
+    &::before {
+      content: "\f0d8";
+    }
+  }
+
+  // ── Dropdown items ──────────────────────────────────────
+  &__dropdown-item {
+    display: block;
+    text-align: center;
+
+    a {
+      display: block;
+      padding: 8px 15px;
+      background: #007cce;
+      color: #fff;
+      font-size: 13px;
+      text-decoration: none;
+      white-space: nowrap;
+      @include transition(background 0.3s);
+
+      &:hover { background: #3396d8; }
+    }
+
+    & + & {
+      border-top: 1px solid #80bee7;
+    }
+  }
+}
+
+// ── Desktop hover: open dropdown ──────────────────────────────
+@include mq("tablet-max") {
+  .bis-nav__item--has-dropdown:hover > .bis-nav__dropdown,
+  .bis-nav__item--has-dropdown.is-open > .bis-nav__dropdown {
+    display: block;
+  }
+}
+
+// ── Mobile (< 992px) ──────────────────────────────────────────
+@include mq("tablet-max", max) {
+  .bis-navbar {
+    &::after { display: none; }
+
+    &__mobile-bar {
+      display: flex; // show hamburger row
+    }
+
+    &__logo {
+      display: none; // logo shown in mobile-bar instead
+    }
+
+    &__inner {
+      // Stack to a single column, hidden by default
+      display: none;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      width: 100%;
+      overflow: visible;
+
+      &.is-open {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        border-top: 1px solid #ddd;
+        padding-bottom: 10px;
+      }
+    }
+  }
+
+  .bis-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    overflow: visible;
+
+    &--left, &--right {
+      grid-column: auto;
+      justify-content: flex-start;
+    }
+
+    // No bullet separators on mobile
+    &__item + &__item::before { display: none; }
+
+    &__link {
+      height: auto;
+      line-height: 1.4;
+      padding: 11px 20px;
+      background: #006db5;
+      color: #fff;
+      border-bottom: 1px solid #014f82;
+      font-size: 14px;
+
+      &:hover { background: #015b96; color: #fff; }
+    }
+
+    // Mobile dropdown: static, full width
+    &__dropdown {
+      position: static;
+      top: auto;
+      left: auto;
+      transform: none;
+      min-width: 100%;
+      box-shadow: none;
+      border: 0;
+      background: transparent;
+      overflow: visible;
+    }
+
+    &__arrow { display: none; }
+
+    &__dropdown-item a {
+      padding: 9px 20px 9px 35px;
+      text-align: left;
+      font-size: 13px;
+    }
+  }
+}

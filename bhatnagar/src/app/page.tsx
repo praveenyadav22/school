@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import Banner from "@/components/Banner";
+import HomeBanner from "@/components/HomeBanner";
+import CusMarquee from "@/components/CusMarquee";
+import HomeFeatured from "@/components/HomeFeatured";
+import SchoolInfo from "@/components/SchoolInfo";
+import FacilitiesSection from "@/components/FacilitiesSection";
 
 export const metadata: Metadata = {
   title: "Bhatnagar International School | Top CBSE School in Vasant Kunj, Delhi",
@@ -8,7 +12,11 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <Banner />
+      <HomeBanner />
+      <CusMarquee />
+      <HomeFeatured />
+      <SchoolInfo />
+      <FacilitiesSection />
     </>
   );
 }
