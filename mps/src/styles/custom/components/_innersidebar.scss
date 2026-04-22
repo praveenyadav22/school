@@ -1,3 +1,90 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+// ── Sidebar links widget ──────────────────────────────────────
+
+#slidbarLink,
+.quickLinksWrap,
+.important-links {
+  background-color: #f9f9f9;
+  border: #d8d8d8 solid 1px;
+  @include border-radius(5px);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.important-links__head {
+  margin: 0;
+  background: var(--color-red);
+  padding: 12px;
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: var(--fontSemiBold);
+}
+
+.listitem {
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+
+  li {
+    margin: 2px 0;
+    background-color: var(--color-bg-grey);
+
+    a {
+      display: block;
+      color: #333;
+      font-size: 14px;
+      font-weight: var(--fontSemiBold);
+      padding: 8px 0 8px 10px;
+      @include transition(all 0.3s ease);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-white);
+        padding-left: 15px;
+        background: var(--color-blue);
+        text-decoration: none;
+      }
+    }
+
+    &.active a {
+      color: var(--color-white);
+      background: var(--color-blue);
+    }
+
+    // Sub-list
+    &.sub-quicklinks > a { font-weight: var(--fontBold); }
+
+    .sub-list {
+      margin: 0;
+      padding: 0 0 0 10px;
+      list-style: none;
+
+      li {
+        background: #cecece;
+        a { font-size: 13px; font-weight: var(--fontRegular); padding-left: 15px; }
+      }
+    }
+  }
+}
+
+// ── Sidebar parent toggle button ──────────────────────────────
+.sidebar-parent-btn {
+  display: block;
+  width: 100%;
+  color: #333;
+  font-size: 14px;
+  font-weight: var(--fontBold);
+  padding: 8px 0 8px 10px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  @include transition(all 0.3s ease);
+
+  &:hover {
+    color: var(--color-white);
+    background: var(--color-blue);
+  }
+}

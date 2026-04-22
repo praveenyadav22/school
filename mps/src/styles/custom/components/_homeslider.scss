@@ -1,3 +1,288 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+// ── Latest News / Circulars ticker ────────────────────────────
+
+.c-latestnewwrap {
+  width: 100%;
+  background-color: var(--color-primary);
+  padding: 8px 0;
+
+  &__content {
+    @include flex-center-column();
+
+    &--title {
+      font-size: var(--fontSize16);
+      font-weight: var(--fontLight);
+      color: var(--color-white);
+      position: relative;
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    &--text {
+      width: 100%;
+      margin-top: 10px;
+      overflow: hidden;
+
+      ul.list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        white-space: nowrap;
+
+        li.item {
+          display: inline;
+          font-size: var(--fontSize13);
+          color: var(--color-white);
+          font-weight: var(--fontRegular);
+          border-left: 1px solid #c1c1c1;
+          padding-left: 8px;
+          margin-left: 6px;
+
+          &:first-child { margin-left: 0; border-left: none; }
+
+          span {
+            color: var(--color-accent-yellow);
+            display: inline-block;
+            margin-right: 7px;
+          }
+
+          a {
+            color: var(--color-white);
+            text-decoration: none;
+            @include transition(all ease 0.5s);
+            &:hover { color: var(--color-accent-yellow); }
+          }
+        }
+      }
+    }
+  }
+
+  &.v2 {
+    background-color: var(--color-tertiary);
+    margin-bottom: 0;
+    @include box-shadow(0 0.125rem 0.25rem rgba(0, 0, 0, 0.075));
+  }
+
+  @include mq("tablet-max") {
+    &__content {
+      @include flexbox();
+      @include flex-direction(row, horizontal);
+      @include align-items(center);
+
+      &--title {
+        width: 150px;
+        flex-shrink: 0;
+      }
+
+      &--text {
+        @include calc(width, "100% - 150px");
+        margin-top: 0;
+        padding-left: 20px;
+      }
+    }
+  }
+}
+
+// ── Circulars list ────────────────────────────────────────────
+
+.c-homeCircularslist {
+  width: 100%;
+  padding: 20px 0;
+
+  &__title {
+    font-size: var(--fontSize24);
+    font-weight: var(--fontSemiBold);
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-secondary);
+    position: relative;
+  }
+
+  &__content {
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+
+    .scrolling-container {
+      height: 100%;
+      overflow: hidden;
+
+      ul.listitem {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        animation: scrollUp 30s linear infinite;
+
+        &:hover { animation-play-state: paused; }
+
+        li.item {
+          padding: 8px 0;
+          border-bottom: 1px solid #eee;
+          font-size: 13px;
+
+          span {
+            display: block;
+            color: var(--color-secondary);
+            font-size: 12px;
+            margin-bottom: 2px;
+            i { margin-right: 4px; }
+          }
+
+          .text a {
+            color: #333;
+            text-decoration: none;
+            font-size: 13px;
+            @include transition(color 0.3s ease);
+            &:hover { color: var(--color-primary); }
+          }
+        }
+      }
+    }
+  }
+
+  .default-btn {
+    display: inline-block;
+    margin-top: 15px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 8px 20px;
+    text-decoration: none;
+    font-size: 14px;
+    @include transition(all 0.3s ease);
+    @include border-radius(3px);
+
+    &:hover { background-color: var(--color-secondary); color: var(--color-white); }
+  }
+}
+
+@keyframes scrollUp {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+// ── Home Gallery ──────────────────────────────────────────────
+
+.gallery-cardlist {
+  width: 100%;
+  @include flexbox();
+  @include flex-direction(column, vertical);
+  background: var(--color-white);
+  @include box-shadow(0 0 20px 3px rgba(0, 0, 0, 0.08));
+  margin-bottom: 20px;
+  @include transition(box-shadow 0.3s ease);
+
+  &:hover { @include box-shadow(0 1px 30px rgba(0, 0, 0, 0.15)); }
+
+  &__imgwrap {
+    width: 100%;
+    overflow: hidden;
+
+    .u-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .o-video {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+
+      iframe {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    }
+  }
+
+  &__content {
+    padding: 15px;
+
+    &--titel {
+      font-size: var(--fontSize16);
+      font-weight: var(--fontMedium);
+      color: var(--color-primary);
+      margin-bottom: 10px;
+    }
+
+    &--meta {
+      @include flexbox();
+      @include align-items(center);
+      @include justify-content(space-between);
+    }
+
+    &--postedwrap {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      .list.date {
+        font-size: var(--fontSize13);
+        color: #777;
+        .value { font-weight: var(--fontMedium); color: #333; }
+      }
+    }
+  }
+
+  // v2 — Video variant
+  &.v2 .gallery-cardlist__imgwrap { background: #000; }
+}
+
+.customhead__24 {
+  font-size: var(--fontSize24);
+  font-weight: var(--fontSemiBold);
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-secondary);
+  padding-bottom: 10px;
+}
+
+// ── CSS Marquee (replaces deprecated <marquee>) ───────────────
+.c-latestnewwrap__content--text {
+  overflow: hidden;
+  flex: 1;
+}
+
+.marquee-track {
+  display: inline-flex;
+  gap: 0;
+  white-space: nowrap;
+  animation: marquee-scroll 30s linear infinite;
+  will-change: transform;
+
+  &:hover { animation-play-state: paused; }
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fontSize13);
+  color: var(--color-white);
+  padding: 0 20px;
+  border-right: 1px solid rgba(255,255,255,0.25);
+
+  .marquee-date {
+    color: var(--color-accent-yellow);
+    font-weight: var(--fontMedium);
+    white-space: nowrap;
+  }
+
+  a {
+    color: var(--color-white);
+    text-decoration: none;
+    @include transition(color 0.3s ease);
+    &:hover { color: var(--color-accent-yellow); }
+  }
+}
+
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

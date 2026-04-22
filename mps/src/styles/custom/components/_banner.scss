@@ -1,2 +1,127 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
+
+// ── Home Banner (Embla) ───────────────────────────────────────
+
+.bannersection {
+  width: 100%;
+  position: relative;
+}
+
+.bannerWrap {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &.fixedHeight {
+    height: 600px;
+
+    @include mq("tablet-max", max) { height: 400px; }
+    @include mq("tablet", max)     { height: 280px; }
+  }
+}
+
+// Embla root
+.bannerSlider {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+// Embla container
+.bannerSlider__container {
+  display: flex;
+  height: 100%;
+}
+
+// Each slide
+.bannerSlider__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  position: relative;
+
+  .item {
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+}
+
+// ── Prev / Next arrows ────────────────────────────────────────
+.bannerWrap__prev,
+.bannerWrap__next {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 50%;
+  margin-top: -40px;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--color-white);
+  display: inline-block;
+  text-align: center;
+  z-index: 220;
+  height: 80px;
+  width: 40px;
+  border: none;
+  cursor: pointer;
+  line-height: 80px;
+  @include transition(width 0.3s ease);
+
+  &::before {
+    font-family: FontAwesome, "Font Awesome 4", sans-serif;
+    font-size: 40px;
+    color: var(--color-white);
+    line-height: 80px;
+  }
+
+  &:hover { width: 50px; }
+}
+
+.bannerWrap__prev {
+  left: 0;
+  &::before { content: "\f104"; }
+}
+
+.bannerWrap__next {
+  right: 0;
+  &::before { content: "\f105"; }
+}
+
+// ── Dots ──────────────────────────────────────────────────────
+.bannerWrap__dots {
+  width: 100%;
+  position: absolute;
+  bottom: 15px;
+  text-align: center;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bannerWrap__dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid var(--color-white);
+  border-radius: 10px;
+  @include transition(background 0.3s ease);
+  padding: 0;
+
+  &.is-selected,
+  &:hover,
+  &:focus {
+    background: var(--color-white);
+  }
+}

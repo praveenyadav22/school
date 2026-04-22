@@ -1,3 +1,25 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+.social-links {
+  @include flexbox();
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-size: 14px;
+    text-decoration: none;
+    @include transition(background 0.3s ease);
+    &:hover { background: var(--color-secondary); }
+  }
+}

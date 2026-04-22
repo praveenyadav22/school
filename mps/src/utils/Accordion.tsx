@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
 // ─────────────────────────────────────────────────────────────
 // ACCORDION ITEM — reusable controlled accordion panel
@@ -67,13 +67,10 @@ export const Accordion = ({ id = "accordion", defaultOpen = null, children }: Ac
   const [openId, setOpenId] = useState<string | null>(defaultOpen);
 
   // Clone children and inject openId/setOpenId props
-  const items = Array.isArray(children) ? children : [children];
-  const cloned = items.map((child: any) => {
-    if (!child) return null;
-    return {
-      ...child,
-      props: { ...child.props, openId, setOpenId },
-    };
+  const items = React.Children.toArray(children) as React.ReactElement[];
+  const cloned = items.map((child) => {
+    if (!React.isValidElement(child)) return null;
+    return React.cloneElement(child, { openId, setOpenId } as Record<string, unknown>);
   });
 
   return (

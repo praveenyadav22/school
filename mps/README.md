@@ -1,44 +1,14 @@
-# New Green Field School — Next.js Website
+# Modern Public School — Shalimar Bagh (Next.js)
 
-A production-ready Next.js 16 + TypeScript school website with SCSS styling, Bootstrap 5, and full accessibility support.
+A production-ready Next.js 16 website for Modern Public School, Shalimar Bagh, Delhi.
 
 ## Tech Stack
-
-- **Framework**: Next.js 16 (App Router)
-- **Language**: TypeScript 5
-- **Styling**: SCSS + Bootstrap 5
-- **Icons**: Remixicon (via SCSS + self-hosted fonts in `/public/fonts/`)
-- **Carousel**: Embla Carousel
-- **Accessibility**: Custom AccessibilityWidget (font size, contrast, dyslexia mode, etc.)
-
-## Project Structure
-
-```
-src/
-├── app/
-│   ├── layout.tsx          # Root layout — Header + BreadCrumb + Footer on every page
-│   └── page.tsx            # Homepage
-├── components/
-│   ├── Header.tsx          # Sticky header, desktop nav, mobile drawer, info sidebar
-│   ├── Footer.tsx          # Footer columns, copyright, scroll-to-top
-│   ├── BreadCrumb.tsx      # Auto breadcrumb (hidden on homepage)
-│   ├── Banner.tsx          # Embla carousel hero banner
-│   └── Accessibility/      # Floating accessibility widget + drawer + panel
-├── context/
-│   └── AccessibilityContext.tsx
-├── styles/
-│   ├── globals.scss        # Entry point — imports all partials
-│   ├── vendors/            # Bootstrap + Lucide SCSS
-│   └── custom/
-│       ├── core/           # _variables, _mixins, _typography
-│       ├── components/     # Per-component SCSS partials
-│       └── layout/         # _header, _footer, _breadcrumb
-├── utils/                  # Shared utility components (Pagination, SidebarLinks, etc.)
-public/
-├── fonts/                  # Self-hosted Remixicon / Lucide font files
-├── images/                 # banner/, logo/, icons/, generic/
-└── favicons
-```
+- **Framework**: Next.js 16.2.3 (App Router, Turbopack)
+- **Language**: TypeScript
+- **Styling**: SCSS with CSS custom properties (variables + mixins)
+- **Carousel**: Embla Carousel v8 with Autoplay plugin
+- **Icons**: Font Awesome 4 (CDN) + Lucide React
+- **CSS Framework**: Bootstrap 5.3 (via vendor SCSS)
 
 ## Getting Started
 
@@ -46,50 +16,131 @@ public/
 # Install dependencies
 npm install
 
-# Development server
+# Start development server
 npm run dev
 
-# Production build
+# Build for production
 npm run build
+
+# Start production server
 npm start
-
-# Lint
-npm run lint
 ```
 
-## Adding New Pages
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-1. Create `src/app/[route]/page.tsx`
-2. The `layout.tsx` automatically wraps it with Header + BreadCrumb + Footer
-3. The BreadCrumb auto-generates from the URL path
+## Project Structure
 
-## Adding Logo
-
-Place your logo files at:
-- `/public/images/logo/logo.png` — main logo (used in header + footer)
-- `/public/images/logo/logo-white.png` — white version for dark footer background
-
-## Adding Banner Images
-
-Place hero images at:
-- `/public/images/banner/hero-1.jpg`
-- `/public/images/banner/hero-2.jpg`
-- `/public/images/banner/hero-3.jpg`
-- `/public/images/banner/hero-4.jpg`
-
-## Environment Variables
-
-Copy `.env.example` to `.env.local` and fill in:
-
-```bash
-cp .env.example .env.local
+```
+src/
+├── app/                        # Next.js App Router pages (32 pages)
+│   ├── page.tsx                # Homepage
+│   ├── about-us/
+│   ├── vision-mission/
+│   ├── principal-message/
+│   ├── managing-director/
+│   ├── affirmations/
+│   ├── good-modernite/
+│   ├── building-trust/
+│   ├── infrastructure/
+│   ├── school-details/
+│   ├── streams/
+│   ├── admission/
+│   ├── curriculum/
+│   ├── assessment-rules/
+│   ├── school-information/
+│   ├── innovation/             # Best Practices
+│   ├── life-skills/
+│   ├── workshops/
+│   ├── clubs/
+│   ├── sports/
+│   ├── phad-se-padh/
+│   ├── health-wellness/
+│   ├── kindergarten-events/    # School Events
+│   ├── house-system/
+│   ├── international-ventures/
+│   ├── mandatory-committees/
+│   ├── contact-us/
+│   ├── circulars/
+│   ├── photo-gallery/
+│   ├── video-gallery/
+│   ├── transfer-certificate/
+│   └── terms-conditions/
+│
+├── components/                 # Core layout components
+│   ├── Header.tsx              # Full nav with dropdowns, mobile menu
+│   ├── Footer.tsx              # Address, Facebook embed, quick links
+│   ├── Banner.tsx              # Embla carousel (10 slides)
+│   ├── BreadCrumb.tsx          # Dynamic breadcrumb with route mapping
+│   ├── InnerPage.tsx           # Inner page wrapper (breadcrumb + sidebar)
+│   └── Accessibility/          # Full accessibility widget
+│
+├── utils/                      # Reusable utility components
+│   ├── LatestNews.tsx          # Bulletin Board + Bus Updates ticker
+│   ├── Circulars.tsx           # Latest Circulars scrolling list
+│   ├── HomeGallery.tsx         # Photo + Video gallery homepage section
+│   ├── SidebarLinks.tsx        # Sidebar navigation widget
+│   ├── sidebarData.ts          # Sidebar link data (SCHOOL, ACADEMICS, etc.)
+│   ├── ImportantLinks.tsx      # Quick-access icon links
+│   ├── SocialMedia.tsx         # Social media links
+│   ├── Pagination.tsx          # Prev/Next pagination
+│   └── Accordion.tsx           # Accordion + BatchTable + PdfEmbed
+│
+├── context/
+│   └── AccessibilityContext.tsx
+│
+└── styles/
+    ├── globals.scss            # Main SCSS entry point
+    ├── vendors/
+    │   ├── bootstrap.min.scss
+    │   └── lucide.scss
+    └── custom/
+        ├── core/
+        │   ├── _variables.scss # All CSS custom properties
+        │   ├── _mixins.scss    # All mixins (flex, mq, transitions...)
+        │   └── _typography.scss
+        ├── components/
+        │   ├── generic/        # basic, colors, loader, sizes
+        │   ├── _banner.scss
+        │   ├── _button.scss
+        │   ├── _homeslider.scss  # Circulars + Gallery + marquee
+        │   ├── _innersidebar.scss
+        │   ├── _cards.scss
+        │   ├── _accessibility.scss
+        │   ├── _circulars.scss
+        │   ├── _animation.scss
+        │   ├── _pagination.scss
+        │   ├── _gallerydetail.scss
+        │   ├── _videogallery.scss
+        │   ├── _socialmedia.scss
+        │   └── _vacancy.scss
+        └── layout/
+            ├── _header.scss
+            ├── _footer.scss
+            └── _breadcrumb.scss
 ```
 
-## Production Deployment
+## Key Features
 
-This project is optimised for deployment on **Vercel** (zero-config) or any Node.js host.
+- **Pixel-perfect layout** matching the original MPS browser design
+- **Responsive** — mobile-first using SCSS `@include mq()` breakpoints
+- **Dynamic breadcrumbs** — auto-generated from URL path with parent-section mapping
+- **Sidebar navigation** on all inner pages, grouped by section
+- **Embla Carousel** for the homepage banner (replaces Owl Carousel)
+- **CSS marquee ticker** for Bulletin Board and Bus Updates (replaces deprecated `<marquee>`)
+- **Accessibility widget** — font size, line height, letter spacing, dark mode, high contrast, dyslexia font, hide images, large cursor, screen reader
+- **Static generation** — all 35 pages pre-rendered at build time (○ Static)
 
-```bash
-npm run build   # Creates .next/ build artefacts
-npm start       # Serves production build on port 3000
-```
+## Images
+
+All images should be placed in `/public/images/`:
+- `/public/images/banner/` — slide-1.jpg through slide-10.jpg, breadcrumbs-bg.jpg
+- `/public/images/icons/` — mps-logo.jpg, icon files
+- `/public/images/generic/` — logo-others-new.png
+
+## External Links Used
+- Online Fee Payment: https://modern.campuscare.cloud
+- Legacy of 50 Years: https://sessionmps.wixsite.com/50yearsofmps
+- Virtual Tour: https://mpstour.my.canva.site/
+- School Policies: https://mpsmentalhealthcorner.my.canva.site/school-policies
+- Student/Staff Login: https://erp.quickcampus.online/auth
+- CBSE: https://www.cbse.gov.in/

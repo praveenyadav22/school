@@ -1,3 +1,33 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+.c-pagination {
+  @include flexbox();
+  @include align-items(center);
+  gap: 12px;
+  margin: 20px 0;
+
+  &__btn {
+    padding: 6px 16px;
+    border: 1px solid #ddd;
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    font-size: var(--fontSize14);
+    @include border-radius(4px);
+    @include transition(all 0.3s ease);
+    cursor: pointer;
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border-color: var(--color-primary);
+    }
+
+    &:disabled { color: #aaa; cursor: not-allowed; }
+  }
+
+  &__info {
+    font-size: var(--fontSize14);
+    color: #555;
+  }
+}

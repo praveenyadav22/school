@@ -1,3 +1,34 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+
+  &__item {
+    background: var(--color-white);
+    @include border-radius(5px);
+    overflow: hidden;
+    @include box-shadow(0 2px 8px rgba(0,0,0,0.08));
+
+    .video-wrapper {
+      position: relative;
+      padding-top: 56.25%;
+      iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    }
+
+    &__title {
+      padding: 12px;
+      font-size: var(--fontSize15);
+      font-weight: var(--fontMedium);
+      color: var(--color-primary);
+    }
+  }
+}

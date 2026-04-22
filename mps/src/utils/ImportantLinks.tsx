@@ -1,12 +1,13 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const LINKS = [
-  { href: "/newsletter",        img: "/images/icons/newspaper.png",    label: "News Letter"        },
-  { href: "/infrastructure",    img: "/images/icons/school.png",       label: "Infra-Structure"    },
-  { href: "/monthly-report",    img: "/images/icons/report.png",       label: "Monthly Report"     },
-  { href: "/international-ethos", img: "/images/icons/international.png", label: "International-Ethos" },
-  { href: "/games",             img: "/images/icons/fit-india.png",    label: "Fit India"          },
-  { href: "/atal-tinkering-lab", img: "/images/icons/innovation.png",  label: "ATL-Innovation"     },
+  { href: "/circulars",          img: "/images/icons/newspaper.png",    label: "Circulars"       },
+  { href: "/infrastructure",     img: "/images/icons/school.png",       label: "Infrastructure"  },
+  { href: "/photo-gallery",      img: "/images/icons/report.png",       label: "Photo Gallery"   },
+  { href: "/international-ventures", img: "/images/icons/international.png", label: "International" },
+  { href: "/sports",             img: "/images/icons/fit-india.png",    label: "Sports"          },
+  { href: "/innovation",         img: "/images/icons/innovation.png",   label: "Best Practices"  },
 ];
 
 const ImportantLinks = () => {
@@ -16,7 +17,14 @@ const ImportantLinks = () => {
         <div className="c-importantlink__item" key={item.href}>
           <Link href={item.href} className="link">
             <figure>
-              <img src={item.img} className="u-img" alt={item.label} />
+              <Image
+                src={item.img}
+                className="u-img"
+                alt={item.label}
+                width={65}
+                height={65}
+                style={{ objectFit: "contain" }}
+              />
             </figure>
             <div className="content">{item.label}</div>
           </Link>

@@ -28,11 +28,15 @@
 @use 'custom/components/videogallery';
 @use 'custom/components/accessibility';
 @use 'custom/components/pagination';
+@use 'custom/components/vacancy';
 
 // ── Layout ────────────────────────────────────────────────────
 @use 'custom/layout/header';
 @use 'custom/layout/footer';
 @use 'custom/layout/breadcrumb';
+
+// ── Vendors extra ─────────────────────────────────────────────
+@use 'vendors/lucide';
 
 // ── Global base reset ─────────────────────────────────────────
 *,
@@ -72,7 +76,74 @@ a          { color: inherit; }
   clip: rect(0,0,0,0); border: 0;
 }
 
+// ── Col12 flex wrapper used in footer/topFooter ───────────────
+.col12 {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+}
 
+// ── colAlpha / stacked helpers (from original CSS) ───────────
+.stacked {
+  display: inline;
+  float: left;
+  width: 97.916667%;
+  margin: 0 1.041667%;
+  margin-bottom: 1em;
+}
 
-// ── Global helpers ────────────────────────────────────────────
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+// ── Ratio helper ─────────────────────────────────────────────
 .ratio-9x16 { --bs-aspect-ratio: 133.3333%; }
+
+// ── Accessibility body-level overrides ───────────────────────
+body.acc-dark-mode    { filter: invert(1) hue-rotate(180deg); }
+body.acc-invert       { filter: invert(1); }
+body.acc-hide-images  img { display: none !important; }
+body.acc-large-cursor,
+body.acc-large-cursor * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M 0 0 L 0 20 L 6 16 L 10 24 L 13 23 L 9 15 L 16 15 Z' fill='black' stroke='white' stroke-width='1'/%3E%3C/svg%3E") 0 0, auto !important; }
+body.acc-highlight-links a { background: yellow !important; color: #000 !important; text-decoration: underline !important; }
+body.acc-dyslexia-font,
+body.acc-dyslexia-font * { font-family: "OpenDyslexic", "Comic Sans MS", sans-serif !important; }
+
+// ── Accessibility body-level class overrides (matches AccessibilityService) ──
+body.dark-mode        { filter: invert(1) hue-rotate(180deg); }
+body.invert-colors    { filter: invert(1); }
+body.hide-images      img { display: none !important; }
+body.large-cursor,
+body.large-cursor *   {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M0 0L0 20L6 16L10 24L13 23L9 15L16 15Z' fill='black' stroke='white' stroke-width='1'/%3E%3C/svg%3E") 0 0, auto !important;
+}
+body.highlight-links a {
+  background: #ff0 !important;
+  color: #000 !important;
+  text-decoration: underline !important;
+}
+body.dyslexia_font,
+body.dyslexia_font *  { font-family: "OpenDyslexic", "Comic Sans MS", sans-serif !important; }
+
+// Font size scaling
+body.font_increase_1 * { font-size: calc(1em + 2px)  !important; }
+body.font_increase_2 * { font-size: calc(1em + 4px)  !important; }
+body.font_increase_3 * { font-size: calc(1em + 6px)  !important; }
+body.font_increase_4 * { font-size: calc(1em + 8px)  !important; }
+body.font_decrease_1 * { font-size: calc(1em - 2px)  !important; }
+body.font_decrease_2 * { font-size: calc(1em - 4px)  !important; }
+body.font_decrease_3 * { font-size: calc(1em - 6px)  !important; }
+body.font_decrease_4 * { font-size: calc(1em - 8px)  !important; }
+
+// Letter spacing
+body.letterspacing_increase_1 * { letter-spacing: 0.05em !important; }
+body.letterspacing_increase_2 * { letter-spacing: 0.10em !important; }
+body.letterspacing_increase_3 * { letter-spacing: 0.15em !important; }
+
+// Line height
+body.lineheight_increase_1 * { line-height: 1.8 !important; }
+body.lineheight_increase_2 * { line-height: 2.2 !important; }
+body.lineheight_increase_3 * { line-height: 2.6 !important; }

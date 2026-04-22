@@ -1,3 +1,26 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+.content-card {
+  background: var(--color-white);
+  border: 1px solid #eee;
+  @include border-radius(5px);
+  @include box-shadow(0 2px 10px rgba(0,0,0,0.08));
+  padding: 20px;
+  margin-bottom: 20px;
+  @include transition(box-shadow 0.3s ease);
+  &:hover { @include box-shadow(0 4px 20px rgba(0,0,0,0.12)); }
+
+  &__title {
+    font-size: var(--fontSize18);
+    font-weight: var(--fontSemiBold);
+    color: var(--color-primary);
+    margin-bottom: 12px;
+  }
+
+  &__text {
+    font-size: var(--fontSize15);
+    color: #555;
+    line-height: 1.7;
+  }
+}

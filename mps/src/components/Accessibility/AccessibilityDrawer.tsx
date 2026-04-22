@@ -1,25 +1,27 @@
-// components/AccessibilityDrawer.tsx
-import React from 'react';
+"use client";
+
+import React from "react";
 
 interface Props {
-    isOpen: boolean;
-    onClose: () => void;
-    children: React.ReactNode;
+  isOpen: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
 }
 
 const AccessibilityDrawer: React.FC<Props> = ({ isOpen, onClose, children }) => {
-    return (
-        <>
-            <div className={`accessibility-drawer ${isOpen ? 'open' : ''}`}>
-                <div className='accessibilityHead'>
-                    <div className="panel-title mb-0 ">Accessibility Settings</div>
-                    <button className="closeBtn" onClick={onClose}>✕</button>
-                </div>
-                {children}
-            </div>
-        </>
-    );
+  return (
+    <div className={`acc-drawer${isOpen ? " open" : ""}`} role="dialog" aria-modal="true" aria-label="Accessibility Settings">
+      <div className="acc-drawer__header">
+        <h2>Accessibility Settings</h2>
+        <button className="acc-drawer__close" onClick={onClose} aria-label="Close accessibility panel">
+          ✕
+        </button>
+      </div>
+      <div className="acc-drawer__body">
+        {children}
+      </div>
+    </div>
+  );
 };
 
 export default AccessibilityDrawer;
-

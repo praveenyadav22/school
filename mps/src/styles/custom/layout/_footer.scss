@@ -1,2 +1,206 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
+
+// ── Footer ────────────────────────────────────────────────────
+
+footer li, footer p { font-size: 14px; }
+
+.topFooter {
+  color: #000;
+  background: var(--color-white);
+  border-top: none;
+  position: relative;
+  padding: 30px 0 20px;
+
+  .col12 {
+    @include flexbox();
+    @include align-items(flex-start);
+    @include flex-wrap(wrap);
+  }
+
+  .contactDetails {
+    display: inline;
+    float: left;
+    width: 64.583333%;
+    margin: 0 1.041666%;
+
+    div { margin-left: 0; }
+
+    h3 {
+      font-size: 17px;
+      margin-bottom: 0.4em;
+      color: #a9a9a9;
+    }
+  }
+
+  .address {
+    strong {
+      color: #000;
+      text-transform: uppercase;
+      font-weight: var(--fontBold);
+    }
+    .addressDetails {
+      line-height: 1.4;
+      span { display: block; margin-bottom: 4px; }
+    }
+  }
+
+  .links {
+    display: inline;
+    float: left;
+    width: 14.583333%;
+    margin: 0 1.041666%;
+    background: none;
+    min-height: 22em;
+
+    .inner { padding: 0 2em; }
+
+    li {
+      font-size: 14px;
+      margin-bottom: 0.3em;
+      list-style: none;
+    }
+  }
+
+  h2 {
+    font-size: 14px;
+    font-family: inherit;
+    text-transform: none;
+    color: #000;
+    margin-bottom: 0.3em;
+    font-weight: var(--fontSemiBold);
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+    &:hover { color: var(--color-primary); }
+  }
+
+  .header {
+    font-size: 16px;
+
+    span {
+      margin-right: 0.7em;
+      width: 15em;
+      display: inline-block;
+      vertical-align: top;
+      font-weight: var(--fontSemiBold);
+    }
+
+    .telephoneLink {
+      font-weight: var(--fontSemiBold);
+    }
+  }
+
+  p.name { font-weight: var(--fontSemiBold); }
+
+  p { font-size: 14px; margin-bottom: 0; }
+
+  div.address + p.header,
+  p.header + p.link { margin-top: 1.5em; }
+
+  p.header + p.header { margin-top: 1em; }
+
+  // Row layout wrapper (used in rendered HTML)
+  .topFooter__row {
+    @include flexbox();
+    @include flex-wrap(wrap);
+    gap: 30px;
+    padding: 30px 0 20px;
+  }
+}
+
+.bottomFooter {
+  color: #000;
+  background-color: var(--color-white);
+  border-top: 1px solid #ddd;
+  padding: 15px 0;
+
+  a {
+    color: #000;
+    border-bottom: 1px solid #000;
+    font-weight: var(--fontSemiBold);
+    text-decoration: none;
+    &:hover { color: var(--color-primary); }
+  }
+}
+
+.housekeepingWrap {
+  display: inline;
+  float: left;
+  width: 97.916666%;
+  padding-top: 0;
+}
+
+.housekeeping_links {
+  @include flexbox();
+  @include align-items(center);
+  @include flex-wrap(wrap);
+  gap: 0;
+
+  &.clearfix {
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(space-between);
+  }
+
+  p { 
+    margin: 0;
+    font-size: 14px;
+  }
+
+  ul {
+    @include flexbox();
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+  }
+
+  li {
+    float: left;
+    font-weight: var(--fontSemiBold);
+    padding: 0 0.7em 0 0.6em;
+    position: relative;
+    list-style: none;
+    font-size: 14px;
+
+    &::after {
+      content: "";
+      width: 2px;
+      height: 100%;
+      position: absolute;
+      background: #000;
+      top: 0;
+      right: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+      &::after { display: none; }
+    }
+  }
+}
+
+// ── Responsive footer ─────────────────────────────────────────
+@include mq("tablet-max", max) {
+  .topFooter {
+    .contactDetails {
+      width: 100%;
+      margin: 0 0 20px;
+    }
+    .links {
+      width: 48%;
+      min-height: auto;
+    }
+  }
+}
+
+@include mq("tablet", max) {
+  .topFooter .links {
+    width: 100%;
+    margin-bottom: 20px;
+    .inner { padding: 0; }
+  }
+}

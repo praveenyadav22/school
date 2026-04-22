@@ -1,9 +1,10 @@
 // ─────────────────────────────────────────────────────────────
-// _variables.scss  — design tokens for NGFS Alaknanda
+// _variables.scss
+// All design tokens as CSS custom properties on :root + body
 // ─────────────────────────────────────────────────────────────
 
 :root {
-  // ── Fonts ─────────────────────────────────────────────────
+  // ── Font (injected by Next.js Poppins loader onto <html>) ──
   --font-poppins: "Poppins", sans-serif;
   --font-primary: var(--font-poppins);
   --font-secondary: var(--font-poppins);
@@ -55,47 +56,37 @@
   --fontSize72: 72px;
   --fontSize80: 80px;
 
-  // ── Dynamic font scaling ──────────────────────────────────
+  // ── Dynamic font scaling controls ────────────────────────
   --font-increase: 0;
   --font-decrease: 0;
   --scaling-factor: 0.85;
 
-  // ── Base colours ──────────────────────────────────────────
-  --color-white:      #ffffff;
-  --color-black:      #000000;
-  --color-grey:       #f7f7f7;
-  --color-grey2:      #f9f9f9;
-  --color-light-grey: #eeeeee;
+  // ── Colours ───────────────────────────────────────────────
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-grey: #e3e1dc;
 
-  // ── Brand colours (from original site CSS) ───────────────
-  --color-primary:        #ffac00;   // amber – hover, bullets, headings
-  --color-primary-hover:  #ffb825;   // lighter amber – link hover
-  --color-primary2:       #f5cb01;
+  // Theme — maroon palette
+  --color-primary: #003255;
+  --color-secondary: #4dc3cf;
+  --color-tertiary: #216c7e;
+  --color-quaternary: #6184d8;
+  --color-red: #991b2c;
+  --color-blue: #00243c;
+  --color-bg-grey: #dadada;
 
-  // ── Dark navy palette (from #333a65 / #293058) ───────────
-  --color-dark-navy:      #333a65;   // footer bg, sticky nav bg, btn bg
-  --color-darker-navy:    #293058;   // footer ::before left panel
-  --color-navy-overlay:   #ffffff1f; // footer copy bar
+  // Accent
+  --color-accent-yellow: #fdc02d;
 
-  // ── Accent colours ────────────────────────────────────────
-  --color-accent-blue:    #333a65;
-  --color-accent-blue2:   #2a2f52;
-  --color-accent-blue3:   #293058;
-  --color-accent-blue4:   #d9edf7;
-  --color-accent-link:    #337ab7;
-  --color-accent-orange2: #e45000;
-  --color-accent-orange3: #c84409;
-  --color-accent-orange4: #dd4c0b;
+  //border
+  --color-border-light: #02aeee;
+  --color-border-yellow: #fff69a;
+  --color-border-blue: #076a9d;
 
-  // ── Topbar ────────────────────────────────────────────────
-  --color-topbar-bg:      rgba(255,255,255,0.14);
-  --color-topbar-border:  rgba(204,204,204,0.25);
-  --color-topbar-text:    #ffffff;
-
-  // ── Navbar ────────────────────────────────────────────────
-  --color-nav-link:          #333a65;
-  --color-nav-link-hover:    #ffac00;
-  --color-nav-dropdown-bg:   #ffffff;
-  --color-nav-dropdown-link: #555555;
-  --color-nav-sticky-bg:     #ffffff;
+  //text
+  --color-text-primary: #2c95d9;
+  --color-text-blue: #365899;
+  --color-text-grey: #333;
+  --color-text-yellow: #fad028;
+  --color-grey-secondary: #71706e;
 }

@@ -1,94 +1,41 @@
 @use "variables" as *;
 @use "mixins" as *;
 
-// ─────────────────────────────────────────────────────────────
-// _typography.scss
-// Sets Poppins as the universal default font on the body.
-// Every element inherits — never declare font-family again.
-// ─────────────────────────────────────────────────────────────
+// ── Base typography ───────────────────────────────────────────
+
+html {
+  font-size: 100%;
+}
 
 body {
-  font-family: var(--font-primary); // Poppins, sans-serif
-  @include font-size(16);
-  color: var(--color-grey2);
-  background-color: var(--color-white);
-  @include size(100%);
-  overscroll-behavior-y: none;
-  scrollbar-width: thin;
-}
-
-// ── Scrollbar utility ────────────────────────────────────────
-.scrollBar-smallWidth {
-  scrollbar-width: thin;
-
-  &::-webkit-scrollbar {
-    width: 8px !important;
-    height: 8px !important;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.5);
-    @include border-radius(10px);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.5);
-    @include border-radius(10px);
-  }
-
-  &::-webkit-scrollbar-thumb:window-inactive {
-    background: rgba(255, 255, 255, 0.5);
-  }
-}
-
-body * {
-  @extend .scrollBar-smallWidth;
-}
-
-// ── Dynamic font-scale helpers ───────────────────────────────
-.font_increase_1 { --font-increase: 1; }
-.font_increase_2 { --font-increase: 2; }
-.font_increase_3 { --font-increase: 3; }
-.font_increase_4 { --font-increase: 4; }
-
-.font_decrease_1 { --font-decrease: 1; }
-.font_decrease_2 { --font-decrease: 2; }
-.font_decrease_3 { --font-decrease: 3; }
-.font_decrease_4 { --font-decrease: 4; }
-
-.font_reset {
-  --font-increase: 0;
-  --font-decrease: 0;
-}
-
-// ── Base element resets ──────────────────────────────────────
-h1, h2, h3, h4, h5, h6 {
-  font-family: inherit;   // picks up Poppins from body
-  font-weight: var(--fontSemiBold);
-  line-height: 1.3;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-p {
-  margin-top: 0;
-  margin-bottom: 1rem;
+  font-family: var(--font-poppins), "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  color: #555;
   line-height: 1.6;
 }
 
-a {
-  font-family: inherit;
-  text-decoration: none;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins), sans-serif;
+  line-height: 1.2;
   color: inherit;
+  margin-top: 0;
 }
 
-ul, ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+h1 { font-size: var(--fontSize36); font-weight: var(--fontBold); }
+h2 { font-size: var(--fontSize28); font-weight: var(--fontSemiBold); }
+h3 { font-size: var(--fontSize22); font-weight: var(--fontSemiBold); }
+h4 { font-size: var(--fontSize18); font-weight: var(--fontMedium); }
+h5 { font-size: var(--fontSize16); font-weight: var(--fontMedium); }
+h6 { font-size: var(--fontSize14); font-weight: var(--fontMedium); }
+
+p { margin-bottom: 1rem; }
+
+a {
+  color: var(--color-primary);
+  @include transition(color 0.3s ease);
+  &:hover { color: var(--color-secondary); text-decoration: none; }
 }
 
-button, input, select, textarea {
-  font-family: inherit;   // critical — browsers don't inherit font on form elements
-  font-size: inherit;
-}
+ul, ol { padding-left: 20px; }
+
+strong, b { font-weight: var(--fontBold); }

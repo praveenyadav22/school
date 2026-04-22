@@ -1,3 +1,55 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+.btn-theme {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 10px 25px;
+  font-size: var(--fontSize14);
+  font-weight: var(--fontMedium);
+  @include border-radius(3px);
+  @include transition(all 0.3s ease);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  &:hover { background-color: var(--color-secondary); color: var(--color-white); }
+}
+
+.default-btn {
+  background-color: var(--color-bg-grey);
+  color: #555;
+  font-size: var(--fontSize14);
+  padding: 6px 18px;
+  border-radius: 0;
+  position: relative;
+  @include transition(all ease 0.5s);
+  z-index: 1;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+
+  i { position: relative; top: 2px; padding-left: 5px; color: var(--color-primary); }
+
+  &::before {
+    position: absolute;
+    content: "";
+    background-color: var(--color-primary);
+    height: 100%;
+    width: 100%;
+    top: 0; left: 0;
+    transform: scaleX(0);
+    @include transition(all ease 0.5s);
+    z-index: -1;
+    @include border-radius(30px);
+  }
+
+  &:hover {
+    color: var(--color-white);
+    @include border-radius(30px);
+    i { color: var(--color-white); }
+    &::before { transform: scaleX(1); }
+  }
+  &:focus { box-shadow: none; }
+}

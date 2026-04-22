@@ -1,3 +1,26 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+.vacancy-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+
+  th {
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 10px 15px;
+    font-size: var(--fontSize14);
+    font-weight: var(--fontSemiBold);
+    text-align: left;
+  }
+
+  td {
+    padding: 10px 15px;
+    font-size: var(--fontSize14);
+    color: #333;
+    border-bottom: 1px solid #eee;
+  }
+
+  tr:hover td { background: #f9f9f9; }
+}
