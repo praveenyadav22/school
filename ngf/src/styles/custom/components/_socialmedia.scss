@@ -8,6 +8,13 @@
 
 .edu-events {
   padding: 80px 0;
+  .inner-heading {
+    h2 {
+      color: var(--color-accent-blue2); 
+      font-weight: var(--fontBold);
+      font-size: var(--fontSize36);
+    }
+  }
 }
 
 // ── Left column — image with floating white card ───────────────
@@ -66,11 +73,13 @@
   > a {
     display: inline-block;
     margin-top: 16px;
-    color: var(--color-primary);
+    color: var(--color-accent-blue2);
     font-weight: 500;
     text-decoration: none;
 
-    &:hover { text-decoration: underline; }
+    &:hover { text-decoration: none;
+    color: var(--color-primary);
+    }
 
     i { margin-left: 6px; }
   }
@@ -114,8 +123,11 @@
     a {
       // Live CSS: only transition defined — color inherits (dark)
       transition: all ease-in-out 0.3s;
-      color: inherit;
+      color: var(--color-accent-blue2);
+      font-weight: var(--fontBold);
       text-decoration: none;
+      font-size: var(--fontSize22);
+      
 
       &:hover { color: var(--color-primary); }
     }

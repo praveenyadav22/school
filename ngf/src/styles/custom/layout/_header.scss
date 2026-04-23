@@ -541,7 +541,7 @@
   bottom: 20px;
   right: 20px;
   display: none;
-  background-color: var(--color-dark-navy);
+  background-color: var(--color-dark-navy) !important;
   border: none;
   border-radius: 50%;
   height: 45px;
@@ -557,6 +557,7 @@
 
   &:hover {
     opacity: 0.8;
+     background-color: var( --color-accent-blue5) !important;
   }
 
   &.show {

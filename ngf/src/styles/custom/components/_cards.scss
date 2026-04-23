@@ -5,12 +5,16 @@
 // ProfileSection  (#mt_about  .about_services)
 // ═══════════════════════════════════════════════════════════════
 
-#mt_about { padding: 80px 0; }
+#mt_about {
+  padding: 80px 0;
+}
 
 .about_services {
   position: relative;
 
-  p { line-height: 1.6; }
+  p {
+    line-height: 1.6;
+  }
 
   i {
     font-size: 20px;
@@ -37,7 +41,17 @@
 }
 
 // ── Text column ───────────────────────────────────────────────
-.about-items { padding-bottom: 20px; }
+.about-items {
+  padding-bottom: 20px;
+  .inner-heading {
+      color: var(--color-accent-blue2);
+    h2 {
+    
+      font-size: var(--fontSize36);
+      font-weight: var(--fontBold);
+    }
+  }
+}
 
 // ── Read more button row ──────────────────────────────────────
 .smt-items {
@@ -50,17 +64,28 @@
 
 // ─── Responsive ──────────────────────────────────────────────
 @media (max-width: 991px) {
-  .smt-items { margin-right: 0; }
-  .about-edu-bg { width: 100%; }
-  .about-items  { padding-bottom: 0; }
+  .smt-items {
+    margin-right: 0;
+  }
+  .about-edu-bg {
+    width: 100%;
+  }
+  .about-items {
+    padding-bottom: 0;
+  }
 }
 
 @media (max-width: 811px) {
-  .smt-items { margin-right: 0; }
+  .smt-items {
+    margin-right: 0;
+  }
 }
 
 @media (max-width: 767px) {
-  .smt-items { text-align: center; margin-top: 30px; }
+  .smt-items {
+    text-align: center;
+    margin-top: 30px;
+  }
 
   #mt_about .about_services .col-sm-6 {
     padding-left: 15px;

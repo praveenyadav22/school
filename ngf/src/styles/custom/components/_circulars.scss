@@ -35,6 +35,11 @@
 .cs-card__heading {
   // override generic inner-heading bottom margin so stats sit closer
   margin-bottom: 20px;
+   h2 {
+      color: var(--color-accent-blue2); 
+      font-weight: var(--fontBold);
+      font-size: var(--fontSize36);
+    }
 }
 
 // ── Stats row — three equal columns ──────────────────────────
@@ -62,7 +67,7 @@
   &__figure {
     font-size: 33px;
     font-weight: 700;
-    color: #333a65;
+    color: var(--color-grey3);
     margin: 0 0 4px;
     padding: 0;
     line-height: 1.2;

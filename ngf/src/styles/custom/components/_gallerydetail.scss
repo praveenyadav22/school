@@ -7,6 +7,22 @@
 
 #educate-team {
   padding: 80px 0;
+  .inner-heading {
+    h2 {
+      font-size: var(--fontSize36);
+      color: var(--color-accent-blue2);
+      font-weight: var(--fontBold);
+    }
+  }
+  .imgWrapper {
+    .u-image {
+          padding: 10px;
+    box-shadow: 0 0 30px #cccccc;
+    background: #fff;
+    border: #f1f1f1 solid 1px;
+    width: 400px;
+    }
+  }
 }
 
 .laurels-img {

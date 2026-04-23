@@ -13,14 +13,17 @@
   margin-bottom: 0;
 
   h2 {
-    color: var(--color-dark-navy);
+  
     margin-bottom: 15px;
+  
+     color: var(--color-white);
     font-size: var(--fontSize28);
     font-weight: var(--fontBold);
   }
 }
 
 .news-content {
+ 
   p {
     color: var(--color-white);
     margin: 0;

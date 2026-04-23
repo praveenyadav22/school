@@ -17,22 +17,26 @@ export default function EduTeam() {
         {/* Two main laurel images */}
         <div className="row text-center">
           <div className="col-md-6 col-sm-12 mar-bottom-20 d-flex justify-content-center">
-            <Image
-              src="/images/generic/alaknanda-laurels-N1.jpg"
-              alt="Alaknanda Laurels"
-              width={600}
-              height={500}
-              className="img-fluid laurels-img laurels-img--tall"
-            />
+            <div className="imgWrapper">
+              <Image
+                src="/images/generic/alaknanda-laurels-N1.jpg"
+                alt="Alaknanda Laurels"
+                width={600}
+                height={500}
+                className="img-fluid u-image"
+              />
+            </div>
           </div>
           <div className="col-md-6 col-sm-12 mar-bottom-20 d-flex justify-content-center">
-            <Image
-              src="/images/generic/alaknanda-laurels-N2.jpg"
-              alt="Alaknanda Laurels"
-              width={600}
-              height={500}
-              className="img-fluid laurels-img laurels-img--tall"
-            />
+            <div className="imgWrapper">
+              <Image
+                src="/images/generic/alaknanda-laurels-N2.jpg"
+                alt="Alaknanda Laurels"
+                width={600}
+                height={500}
+                className="img-fluid u-image"
+              />
+            </div>
           </div>
 
           {/* Show More button */}

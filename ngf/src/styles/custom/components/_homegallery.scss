@@ -85,3 +85,11 @@
 @media (max-width: 767px) {
   section#the-gallery { padding-bottom: 120px; }
 }
+
+  .inner-heading {
+    h2 {
+      color: var(--color-accent-blue2); 
+      font-weight: var(--fontBold);
+      font-size: var(--fontSize36);
+    }
+  }

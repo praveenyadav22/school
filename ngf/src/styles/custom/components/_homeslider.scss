@@ -27,7 +27,7 @@
   box-shadow: 0 0 30px rgba(204, 204, 204, 0.45);
   background: var(--color-white);
   position: relative;
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
 
   // Amber corner accent
   &::before {
@@ -51,7 +51,11 @@
 // ── Course text block ─────────────────────────────────────────
 .text-courses,
 .text-coursesa {
-  h3 { margin: 10px 0 5px; }
+  h3 { margin: 10px 0 5px;
+    font-size: var(--fontSize22);
+    color: var(--color-accent-blue2);
+  
+  }
 }
 
 .courses-content {
