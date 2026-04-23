@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 const ITEMS = [
@@ -15,6 +15,8 @@ const ITEMS = [
 ];
 
 export default function BulletinBoard() {
+  const [paused, setPaused] = useState(false);
+
   return (
     <div className="bulletinboardwrap hidden-xs hidden-sm">
       <div className="container">
@@ -22,32 +24,24 @@ export default function BulletinBoard() {
           <div className="col-lg-12">
             <div className="head">School Bulletin Board</div>
             <div className="contentwrap">
-              <BulletinTicker items={ITEMS} />
+              <div
+                className="bulletin-ticker"
+                onMouseEnter={() => setPaused(true)}
+                onMouseLeave={() => setPaused(false)}
+              >
+                <ul className={`bulletin-ticker__list${paused ? " paused" : ""}`}>
+                  {[...ITEMS, ...ITEMS].map((item, i) => (
+                    <li key={i}>
+                      <span>{item.date}</span>
+                      <Link href={item.href}>{item.text}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-}
-
-function BulletinTicker({ items }: { items: typeof ITEMS }) {
-  const [paused, setPaused] = useState(false);
-
-  return (
-    <div
-      className="bulletin-ticker"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      <ul className={`bulletin-ticker__list${paused ? " paused" : ""}`}>
-        {[...items, ...items].map((item, i) => (
-          <li className="list-inline-item" key={i}>
-            <span>{item.date}</span>{" "}
-            <Link href={item.href}>{item.text}</Link>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }

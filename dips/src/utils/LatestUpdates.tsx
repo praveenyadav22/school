@@ -16,14 +16,6 @@ const NEWS_ITEMS = [
   { href: "/news/10", text: "We are thrilled to share the outstanding achievements of our students in the Annual Sports Meet." },
   { href: "/news/11", text: "We are proud to share that our Junior Boys Handball Team secured First Position in the Zonal Tournament." },
   { href: "/news/12", text: "Winter Carnival 2025-26 was celebrated with great enthusiasm and spirit." },
-  { href: "/news/13", text: "Ms. Pooja Sharma, Academic Head, has been felicitated with the Excellence in Education Award." },
-  { href: "/news/14", text: "Raksha Bandhan Special celebration with Hon'ble CM Ms. Rekha Gupta was a memorable event." },
-  { href: "/news/15", text: "Summer Camp 2025 – A bat in hand can shape character, just as education shapes the future." },
-  { href: "/news/16", text: "Mother's Day Celebration by FLP 1 and FLP 2 students was a heartwarming event." },
-  { href: "/news/17", text: "3-days Teachers Orientation Program was held from March 27-29, 2025." },
-  { href: "/news/18", text: "De Indian Public School solemnized Satrarambh — an auspicious beginning of the new academic session." },
-  { href: "/news/19", text: "30th International Yogasana Sports Championship 2025 – Our students shine bright!" },
-  { href: "/news/20", text: "Digital Detox Session was organized for Classes VI-VIII to promote mindful technology use." },
 ];
 
 export default function LatestUpdates() {

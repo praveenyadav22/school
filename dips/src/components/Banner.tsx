@@ -5,10 +5,10 @@ import Autoplay from "embla-carousel-autoplay";
 import { useCallback, useEffect, useState } from "react";
 
 const SLIDES = [
-  { src: "/images/banner/slide-1.jpg", alt: "De Indian Public School – Welcome" },
-  { src: "/images/banner/slide-2.jpg", alt: "Better education for a better world" },
-  { src: "/images/banner/slide-3.jpg", alt: "Exceptional people, exceptional care" },
-  { src: "/images/banner/slide-4.jpg", alt: "Excellence in education" },
+  { src: "/images/banner/XGQRSmczo6Gq3MSWMVGS.jpg", alt: "De Indian Public School – Welcome" },
+  { src: "/images/banner/932D8VuZZ3N9xMkNPwWM.jpg", alt: "Better education for a better world" },
+  { src: "/images/banner/dnQqSI0cLh1lnvdVjim5.jpg", alt: "Exceptional people, exceptional care" },
+  { src: "/images/banner/UMbqAzmz2EvLajGYzUy2.jpg", alt: "Excellence in education" },
 ];
 
 export default function Banner() {
@@ -16,7 +16,6 @@ export default function Banner() {
     { loop: true },
     [Autoplay({ delay: 5000, stopOnInteraction: false })]
   );
-
   const [selected, setSelected] = useState(0);
   const [snaps, setSnaps] = useState<number[]>([]);
 
@@ -34,8 +33,7 @@ export default function Banner() {
 
   return (
     <div className="hmBanner">
-      <div className="tp-banner-container desktopBanner">
-        {/* Embla viewport */}
+      <div className="tp-banner-container">
         <div className="home-banner-viewport" ref={emblaRef}>
           <div className="home-banner-container">
             {SLIDES.map((slide, i) => (
@@ -46,26 +44,15 @@ export default function Banner() {
             ))}
           </div>
         </div>
-
-        {/* Prev arrow */}
         <button className="carousel-control left" onClick={scrollPrev} aria-label="Previous slide">
           <span className="fa fa-angle-left" aria-hidden="true" />
         </button>
-
-        {/* Next arrow */}
         <button className="carousel-control right" onClick={scrollNext} aria-label="Next slide">
           <span className="fa fa-angle-right" aria-hidden="true" />
         </button>
-
-        {/* Dot indicators */}
         <ol className="carousel-indicators">
           {snaps.map((_, i) => (
-            <li
-              key={i}
-              className={i === selected ? "active" : ""}
-              onClick={() => scrollTo(i)}
-              aria-label={`Go to slide ${i + 1}`}
-            />
+            <li key={i} className={i === selected ? "active" : ""} onClick={() => scrollTo(i)} />
           ))}
         </ol>
       </div>

@@ -4,21 +4,20 @@ import ScrollTop from "./ScrollTop";
 export default function Footer() {
   return (
     <>
-      <div>
-        <div className="clearfix" />
-        <footer className="footer">
-          <div className="footer_linkswrap">
-            <div className="container">
+      <footer className="footer">
+        <div className="footer_linkswrap">
+          <div className="container">
+            <div className="row">
               <div className="col-md-3">
                 <section>
                   <h1>DE INDIAN PUBLIC SCHOOL</h1>
                   <div className="footerAddress">
-                    <p>Pocket 11, Sector – 24, Rohini, Delhi – 110085</p>
+                    <p>Pocket 11, Sector - 24, Rohini, Delhi- 110085</p>
                     <ul className="address">
-                      <li><span><i className="fa fa-phone" aria-hidden="true" /></span> 011-47586215, 011-27050252/3/4</li>
-                      <li><span><i className="fa fa-whatsapp" aria-hidden="true" /></span> 8448209126</li>
-                      <li><span><i className="fa fa-envelope-o" aria-hidden="true" /></span> rohini.dips@yahoo.co.in</li>
-                      <li><span><i className="fa fa-globe" aria-hidden="true" /></span> www.dipsrohini.in</li>
+                      <li><span><i className="fa fa-phone" /></span> 011-47586215, 011-27050252/3/4</li>
+                      <li><span><i className="fa fa-whatsapp" /></span> 8448209126</li>
+                      <li><span><i className="fa fa-envelope-o" /></span> rohini.dips@yahoo.co.in</li>
+                      <li><span><i className="fa fa-globe" /></span> www.dipsrohini.in</li>
                     </ul>
                     <ul className="socialicon">
                       <li><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/De-Indian-Public-School-A-Senior-Secondary-School-159716587442885/"><i className="fa fa-facebook" /></a></li>
@@ -65,7 +64,8 @@ export default function Footer() {
                     <p>
                       Truly believing in these words, we at DE INDIAN PUBLIC SCHOOL incorporate
                       this golden rule in our approach towards learning. Our learning approach
-                      facilitates interactive learning, wherein education can translate into...{" "}
+                      designed on Maria Montessori Method of Education facilitates interactive
+                      learning, wherein education can translate into...{" "}
                       <span><Link href="/about/mission-vision">Read More</Link></span>
                     </p>
                   </div>
@@ -73,30 +73,21 @@ export default function Footer() {
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="footer_bottom">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-12">
-                  © Copyright {new Date().getFullYear()} |{" "}
-                  <u>De Indian Public School</u> | Designed &amp; Maintained by{" "}
-                  <a href="https://www.quicktouch.co.in/home" target="_blank" rel="noopener noreferrer">
-                    Quicktouch Technologies Limited
-                  </a>
-                </div>
+        <div className="footer_bottom">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12">
+                © Copyright 2024 | <u>De Indian Public School</u> | Designed &amp; Maintained by{" "}
+                <a href="https://www.quicktouch.co.in/home" target="_blank" rel="noopener noreferrer">
+                  Quicktouch Technologies Limited
+                </a>
               </div>
             </div>
           </div>
-        </footer>
-      </div>
-
-      {/* WhatsApp Float */}
-      <div className="whatsuplink">
-        <a target="_blank" rel="noopener noreferrer" href="https://api.whatsapp.com/send?phone=918448209126">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/abwhatsapp.png" width={50} height={50} alt="WhatsApp" />
-        </a>
-      </div>
+        </div>
+      </footer>
 
       <ScrollTop />
     </>

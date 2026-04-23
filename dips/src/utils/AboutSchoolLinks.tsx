@@ -3,7 +3,7 @@ import Link from "next/link";
 const BOXES = [
   {
     title: "From Principal's Desk",
-    desc: "On behalf of the Management, staff and the school community, I extend to all our parents and children a very warm welcome...",
+    desc: "On behalf of the Management, staff and the school community, I extend to all our parents and children a very warm welcome to De Indian Public School...",
     href: "/about/principals-desk",
     cls: "first",
   },
@@ -15,13 +15,13 @@ const BOXES = [
   },
   {
     title: "From The Chairman's Desk",
-    desc: "A towering inspiration — You stand like a General in Command. Perfection is what you demand, with generosity and compassion...",
+    desc: "A towering inspiration You stand like a General in Command. Perfection is what you demand, with generosity and compassion You taught...",
     href: "/about/chairmans-desk",
     cls: "",
   },
   {
     title: "From The Manager's Desk",
-    desc: "Having sowed the seeds of the vision of Shri H. R. Gupta, our Chairman, it gives me a deep sense of pleasure to witness the burgeoning...",
+    desc: "Having sowed the seeds of the vision of Shri H. R. Gupta, our Chairman, it gives me a deep sense of pleasure to witness the burgeoning growth...",
     href: "/about/managers-desk",
     cls: "",
   },

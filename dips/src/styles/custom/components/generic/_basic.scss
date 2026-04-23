@@ -1,51 +1,48 @@
 @use "../../core/variables" as *;
 @use "../../core/mixins" as *;
 
-// ── Body & Page Layout ───────────────────────────────────────
-.bodyContent {
-  width: 100%;
-}
+/* ────────────────────────────────────────────────────────────
+   BASIC / HOMEPAGE SECTIONS
+──────────────────────────────────────────────────────────── */
 
-.bodyContent.homebody {
-  padding: 110px 0 0;
-}
+.clearfix::after { content: ""; display: table; clear: both; }
 
-// ── Section Head ─────────────────────────────────────────────
+.bodyContent { width: 100%; }
+.bodyContent.homebody { padding: 110px 0 0; }
+
+/* ── Section heading ─────────────────────────────────────── */
 .sectionHead {
-  width: 100%;
-  text-align: center;
+  width: 100%; text-align: center;
 
   h2 {
     position: relative;
-    font-size: var(--fontSize40);
+    font-size: 40px;
     display: inline-block;
-    font-weight: var(--fontRegular);
+    font-weight: 400;
     padding-bottom: 23px;
 
     &.colorblack { color: #343434; }
-    &.colorwhite { color: var(--color-white); }
+    &.colorwhite { color: #fff; }
 
     &::after {
-      position: absolute;
-      width: 60px;
-      height: 4px;
       content: "";
+      position: absolute;
+      width: 60px; height: 4px;
       background: #9a1428;
-      left: 50%;
-      bottom: 0;
+      left: 50%; bottom: 0;
       margin-left: -30px;
     }
   }
 }
 
-// ── About School ─────────────────────────────────────────────
+/* ── About School section ────────────────────────────────── */
 .aboutScholl {
   width: 100%;
   padding: 0 50px;
   text-align: center;
 
   p {
-    font-size: var(--fontSize18);
+    font-size: 18px;
     line-height: 26px;
     color: #484848;
     margin-top: 29px;
@@ -56,40 +53,23 @@
   }
 }
 
-// ── Events & Facilities Wrap ─────────────────────────────────
+/* ── Events Wrap (LATEST UPDATES + FACILITIES) ───────────── */
 .eventsWrap {
-  clear: left;
-  float: left;
-  width: 100%;
-  padding-bottom: 80px;
+  clear: left; float: left; width: 100%; padding-bottom: 80px;
 
-  section {
-    width: 100%;
+  section { width: 100%; }
 
-    h3 {
-      font-size: var(--fontSize24);
-      color: #333;
-      font-weight: var(--fontRegular);
-      position: relative;
-      padding-bottom: 11px;
-      margin-bottom: 32px;
+  section h3 {
+    font-size: 24px; color: #333; font-weight: 400;
+    position: relative; padding-bottom: 11px; margin-bottom: 32px;
 
-      i {
-        display: inline-block;
-        margin-right: 10px;
-      }
+    i { display: inline-block; margin-right: 10px; }
+    span { color: #9a1428; }
 
-      span { color: #9a1428; }
-
-      &::after {
-        width: 50px;
-        height: 4px;
-        position: absolute;
-        bottom: 0;
-        content: "";
-        background: #9a1428;
-        left: 0;
-      }
+    &::after {
+      content: ""; width: 50px; height: 4px;
+      position: absolute; bottom: 0; left: 0;
+      background: #9a1428;
     }
   }
 }
@@ -102,68 +82,43 @@
     background: #f7f6f2;
     display: inline-block;
     width: 100%;
+    margin-left: 0 !important;     /* from home-body-section-one1090.css */
+    padding-left: 20px !important; /* from home-body-section-one1090.css */
     padding: 12px;
   }
 
-  .event-content {
-    h4.event-title {
-      font-size: var(--fontSize15);
-      line-height: 20px;
-      font-weight: var(--fontRegular);
-      margin: 0;
+  .event-content h4.event-title {
+    font-size: 15px; line-height: 20px; font-weight: 400; margin: 0;
 
-      a {
-        color: var(--color-primary);
-        text-decoration: none;
-        @include transition(color 0.2s);
-
-        &:hover { color: var(--color-secondary); }
-      }
+    a {
+      color: #002649; text-decoration: none;
+      transition: color 0.2s;
+      &:hover { color: #9a1428; }
     }
   }
 }
 
-// ── Facilities Panel ─────────────────────────────────────────
+/* Facilities accordion */
 .facilitiesPanel {
-  .panel {
-    border: none;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 0;
+  .panel { border-bottom: 1px solid #eee; margin-bottom: 0; }
 
-    .panel-heading {
-      padding: 0;
-      background: none;
+  .panel-heading { padding: 0; background: none; }
 
-      .panel-title a {
-        display: block;
-        padding: 12px 15px;
-        font-size: var(--fontSize16);
-        color: var(--color-primary);
-        text-decoration: none;
-        font-weight: var(--fontMedium);
-        @include transition(color 0.2s);
+  .panel-heading .panel-title button {
+    display: block; width: 100%; text-align: left;
+    padding: 12px 15px; font-size: 16px; color: #002649;
+    font-weight: 500; background: none; border: none; cursor: pointer;
+    transition: color 0.2s;
+    &:hover { color: #9a1428; }
+  }
 
-        &:hover { color: var(--color-secondary); }
-      }
-    }
-
-    .panel-collapse {
-      .panel-body {
-        padding: 10px 15px 15px;
-        font-size: var(--fontSize15);
-        color: #555;
-        line-height: 1.6;
-
-        a {
-          color: var(--color-secondary);
-          text-decoration: none;
-        }
-      }
-    }
+  .panel-body {
+    padding: 10px 15px 15px; font-size: 15px; color: #555; line-height: 1.6;
+    a { color: #9a1428; text-decoration: none; }
   }
 }
 
-// ── Important Link Panels ─────────────────────────────────────
+/* ── Important link panels ───────────────────────────────── */
 .importantlink {
   display: flex;
   justify-content: flex-start;
@@ -171,446 +126,355 @@
   margin-bottom: -145px;
 
   section {
-    width: 25%;
-    overflow: hidden;
-    position: relative;
+    width: 25%; overflow: hidden; position: relative;
+
+    a { display: block; text-decoration: none; }
 
     img { display: none; }
 
     figure {
-      width: 100%;
-      min-height: 287px;
+      width: 100%; min-height: 287px;
       background-size: cover !important;
       background-position: center center !important;
-      @include transition(all 0.3s ease-in-out);
-      display: block;
-      overflow: hidden;
+      transition: all 0.3s;
+      display: block; overflow: hidden;
     }
 
-    &:hover figure {
-      @include transform(scale(1.2));
-    }
+    &:hover figure { transform: scale(1.2); }
 
     figcaption {
-      position: absolute;
-      width: 100%;
-      z-index: 100;
-      font-size: var(--fontSize22);
-      line-height: 28px;
-      color: var(--color-white);
-      padding: 0 15px;
-      bottom: 20px;
-      @include transition(all 0.3s ease-in-out);
+      position: absolute; width: 100%; z-index: 100;
+      font-size: 22px; line-height: 28px;
+      background: rgba(0,27,46,0.5) !important;  /* from home-body-section-one1090.css */
+      color: #fff;
+      padding: 15px !important;                   /* from home-body-section-one1090.css */
+      bottom: 0;
+      transition: all 0.3s;
     }
 
     &:hover figcaption {
       bottom: 30px;
-      color: #9a1428;
-      font-weight: var(--fontBold);
-    }
-
-    a {
-      display: block;
-      text-decoration: none;
+      color: #f5f5f5 !important;                  /* from home-body-section-one1090.css */
+      font-weight: 400 !important;                /* from home-body-section-one1090.css */
     }
   }
 }
 
-// ── Facilities Slider Area ────────────────────────────────────
+/* ── Facilities Container & Slider ───────────────────────── */
 .facilitiesContainer {
-  width: 100%;
-  background-color: #eee;
-  padding-bottom: 87px;
+  width: 100%; background: #eee; padding-bottom: 87px;
 }
 
 .facilitieswrapbgwrap {
   width: 100%;
-  padding-top: 200px;
-  padding-bottom: 120px;
-  background: url('/images/generic/paralax-bg.jpg') top center / cover no-repeat;
+  padding-top: 270px; padding-bottom: 120px;
+  background: url('/images/generic/image-schule-paralax.jpg') top center / cover no-repeat;
   background-attachment: fixed;
 }
 
-.facilitiesSliderwrap {
-  margin-top: -200px;
+.facilitiesSliderwrap { margin-top: -270px; }
+
+/* Embla carousel for school info slider */
+.facilities-embla { overflow: hidden; width: 100%; }
+.facilities-embla__container { display: flex; gap: 10px; }
+.facilities-embla__slide {
+  flex: 0 0 calc(33.333% - 7px);
+  min-width: 0;
+
+  @media (max-width: 992px) { flex: 0 0 calc(50% - 5px); }
+  @media (max-width: 576px) { flex: 0 0 100%; }
 }
 
 .facilitiesSlider {
-  margin-top: 40px;
-  clear: left;
-  float: left;
-  width: 100%;
-}
+  margin-top: 40px; clear: left; float: left; width: 100%;
 
-.facilitiesSlider .item {
-  width: 100%;
-  padding: 0 10px;
-
-  figure {
-    width: 100%;
-
-    img {
-      width: 100%;
-      height: auto;
-      margin-bottom: 20px;
-    }
-  }
-
-  .content {
-    width: 100%;
-    padding-bottom: 21px;
+  .item { width: 100%; padding: 0 5px; }
+  .item figure { width: 100%; img { width: 100%; height: auto; margin-bottom: 20px; } }
+  .item .content {
+    width: 100%; padding-bottom: 21px;
 
     a {
-      display: block;
-      font-size: var(--fontSize20);
-      line-height: 26px;
-      font-weight: var(--fontRegular);
-      text-decoration: none;
-      color: #000;
-
-      span {
-        display: block;
-        color: var(--color-secondary);
-        font-size: var(--fontSize17);
-        margin-bottom: 10px;
-      }
+      display: block; font-size: 20px; line-height: 26px;
+      font-weight: 400; text-decoration: none; color: #000;
+      span { display: block; color: #9b0c23; font-size: 17px; margin-bottom: 10px; }
     }
-
     p { min-height: 80px; }
   }
 }
 
-// ── About School Link Boxes ───────────────────────────────────
-.aboutschoollink {
-  width: 100%;
-  background: #202d47;
-  padding: 100px 0 65px;
-
-  section {
-    width: 100%;
-
-    h2 {
-      font-size: var(--fontSize22);
-      font-weight: var(--fontBold);
-      color: var(--color-white);
-      margin-bottom: 18px;
-      letter-spacing: 1px;
-      min-height: 50px;
-    }
-
-    p {
-      font-size: var(--fontSize17);
-      color: #d4e1fa;
-      line-height: 26px;
-      margin-bottom: 20px;
-      min-height: 100px;
-    }
-
-    a {
-      color: var(--color-accent-green);
-      font-size: var(--fontSize14);
-      text-decoration: none;
-      @include transition(color 0.3s ease);
-
-      &:hover { color: var(--color-white); }
-    }
-  }
+.facilities-controls {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; margin-top: 20px;
 }
 
-// ── Bulletin Board ────────────────────────────────────────────
+.facilities-btn {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #9a1428; color: #fff;
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; transition: background 0.2s;
+  &:hover { background: #890a1e; }
+}
+
+.facilities-dots { display: flex; gap: 6px; }
+.facilities-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #ccc; border: none; cursor: pointer; transition: background 0.2s;
+  &.active { background: #9a1428; }
+}
+
+/* ── About school link boxes ─────────────────────────────── */
+.aboutschoollink {
+  width: 100%; background: #202d47; padding: 100px 0 65px;
+
+  section { width: 100%; }
+  section h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 18px; letter-spacing: 1px; min-height: 50px; }
+  section p { font-size: 17px; color: #d4e1fa; line-height: 26px; margin-bottom: 20px; min-height: 130px; }
+  section a { color: #3db166; font-size: 14px; text-decoration: none; transition: color 0.3s; &:hover { color: #fff; } }
+}
+
+/* ── Bulletin board ──────────────────────────────────────── */
 .bulletinboardwrap {
   width: 100%;
-  background: #f7f7f7;
+  background: #f3f3f3;   /* from home-body-section-two1091.css */
   position: relative;
   overflow: hidden;
   clear: both;
 
   &::after {
-    height: 123px;
+    height: 53px;         /* from home-body-section-two1091.css */
     width: 30%;
     background: #9a1428;
     content: "";
-    position: absolute;
-    right: 0;
-    top: 0;
+    position: absolute; right: 0; top: 0;
   }
 
   .head {
     float: right;
     background: #9a1428;
-    min-height: 123px;
-    line-height: 123px;
-    padding-left: 56px;
-    font-size: var(--fontSize28);
-    color: var(--color-white);
-    font-weight: var(--fontBold);
-    width: 32%;
-    position: relative;
-    z-index: 1;
+    min-height: 53px;     /* from home-body-section-two1091.css */
+    line-height: 53px;    /* from home-body-section-two1091.css */
+    padding-left: 36px;   /* from home-body-section-two1091.css */
+    font-size: 22px;      /* from home-body-section-two1091.css */
+    color: #fff;
+    font-weight: 600;     /* from home-body-section-two1091.css */
+    width: 22%;           /* from home-body-section-two1091.css */
+    position: relative; z-index: 1;
   }
 
   .contentwrap {
     float: left;
-    width: 68%;
+    width: 78%;           /* from home-body-section-two1091.css */
     position: relative;
-    padding-right: 150px;
+    padding-right: 15px;  /* from home-body-section-two1091.css */
     padding-left: 20px;
-    margin-top: 29px;
-    padding-bottom: 34px;
+    margin-top: 0;        /* from home-body-section-two1091.css */
+    padding-bottom: 0;    /* from home-body-section-two1091.css */
+    display: flex;
+    align-items: center;
+    min-height: 53px;
+  }
 
-    .item a {
-      font-size: var(--fontSize18);
-      color: #163269;
-      line-height: 1.7;
+  .contentwrap ul {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-wrap: nowrap; align-items: center; gap: 50px;
+    overflow: hidden; white-space: nowrap; width: 100%;
+  }
+
+  .contentwrap ul li {
+    flex-shrink: 0;
+    font-size: 15px;      /* from home-body-section-two1091.css */
+
+    span {
+      color: #9a1428;     /* from home-body-section-two1091.css */
+      font-weight: 500;   /* from home-body-section-two1091.css */
+      margin-right: 5px;
+    }
+
+    a {
+      color: #163269;     /* from home-body-section-two1091.css */
+      font-weight: 500;   /* from home-body-section-two1091.css */
       text-decoration: none;
-
-      span {
-        color: #333;
-        display: inline-block;
-        padding-left: 28px;
-        font-size: var(--fontSize16);
-        font-weight: var(--fontMedium);
-      }
+      &:hover { color: #9a1428; }
     }
   }
 }
 
-// ── Admission Enquiry ─────────────────────────────────────────
+/* Scrolling bulletin ticker */
+.bulletin-ticker { overflow: hidden; }
+.bulletin-ticker__list {
+  display: flex; list-style: none; margin: 0; padding: 0;
+  gap: 50px; animation: scrollLeft 25s linear infinite;
+  width: max-content;
+  &.paused { animation-play-state: paused; }
+}
+
+@keyframes scrollLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Latest Updates ticker ───────────────────────────────── */
+.latest-updates-ticker {
+  height: 274px; overflow: hidden;
+  border: 1px solid #eee; border-radius: 2px; margin-bottom: 10px;
+}
+
+.latest-updates-inner {
+  display: flex; flex-direction: column;
+  animation: scrollUp 50s linear infinite;
+  &.paused { animation-play-state: paused; }
+}
+
+@keyframes scrollUp {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+/* ── Admission Enquiry — from admission-enquiry-homepage3584.css ── */
 .enquiry-box {
-  padding: 50px 0;
+  background: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 30px auto;
+  max-width: 900px;
+  box-shadow: 0 0 20px rgba(0,0,0,.05);
 
   h2 {
-    font-size: var(--fontSize28);
-    font-weight: var(--fontBold);
-    color: var(--color-primary);
-    margin-bottom: 30px;
-  }
-
-  .form-control {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 8px 12px;
-    font-size: var(--fontSize15);
-    width: 100%;
-    outline: none;
-    @include transition(border-color 0.2s);
-
-    &:focus {
-      border-color: var(--color-secondary);
-    }
+    color: #890a1e;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
   }
 
   label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #002649;
+    margin-bottom: 5px;
     display: block;
-    font-size: var(--fontSize14);
-    font-weight: var(--fontMedium);
-    color: #333;
-    margin-bottom: 6px;
+    letter-spacing: 0.3px;
   }
+
+  .form-control {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    box-shadow: none !important;
+    outline: none;
+    width: 100%;
+    padding: 6px 0;
+    font-size: 14px;
+    background: transparent;
+    transition: border-color 0.2s;
+
+    &:focus { border-bottom-color: #9b0c23; }
+    &::placeholder { color: #999; font-size: 13px; }
+  }
+
+  select.form-control {
+    appearance: auto;
+    cursor: pointer;
+  }
+
+  textarea.form-control { resize: none; }
 
   .btn-submit {
-    background: var(--color-secondary);
-    color: var(--color-white);
+    background: #002649;
+    border-radius: 30px;
+    padding: 10px 35px;
     border: none;
-    padding: 10px 30px;
-    font-size: var(--fontSize16);
-    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
     cursor: pointer;
-    @include transition(background 0.2s);
-
-    &:hover { background: var(--color-secondary2); }
+    transition: background 0.2s;
+    &:hover { background: #001a35; }
   }
 }
 
-// ── Inner Page Body ────────────────────────────────────────────
-.bodySection.innerBody {
-  padding: 30px 0 70px;
-  clear: both;
-}
-
-.innerBanner {
-  width: 100%;
-  height: 300px;
-  overflow: hidden;
-  position: relative;
-  background-size: cover;
-  background-position: center center !important;
-  clear: left;
-}
-
-// ── General Helpers ───────────────────────────────────────────
+/* Helper */
 .c-button {
-  display: inline-block;
-  padding: 8px 20px;
-  border-radius: 4px;
-  font-size: var(--fontSize14);
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  @include transition(all 0.2s);
-
+  display: inline-block; padding: 8px 20px;
+  font-size: 14px; text-decoration: none; cursor: pointer; border: none;
+  transition: all 0.2s;
   &.c-button-radius { border-radius: 25px; }
   &.c-button-themered {
-    background: var(--color-secondary);
-    color: var(--color-white);
-    &:hover { background: var(--color-secondary2); }
+    background: #9b0c23; color: #fff;
+    &:hover { background: #890a1e; }
   }
 }
+.has-margin-top-15 { margin-top: 15px !important; }
+.has-margin-bottom-15 { margin-bottom: 15px !important; }
 
-.has-margin-top-15 { margin-top: 15px; }
-.has-margin-bottom-15 { margin-bottom: 15px; }
-
-// ── Content Section ───────────────────────────────────────────
-.contentsection {
-  width: 100%;
-
-  &.with_table {
-    .table-responsive {
-      overflow-x: auto;
-
-      .table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: var(--fontSize15);
-
-        th, td {
-          padding: 10px 12px;
-          border: 1px solid #ddd;
-          text-align: left;
-        }
-
-        thead th {
-          background: var(--color-primary);
-          color: var(--color-white);
-          font-weight: var(--fontSemiBold);
-        }
-      }
-    }
-  }
-}
-
-// ── Inner Page Layout ──────────────────────────────────────────
-.innerBodySection {
-  padding: 40px 0 80px;
-}
-
-.innerSidebar {
-  padding-right: 20px;
-}
-
-// ── Clearfix ───────────────────────────────────────────────────
-.clearfix {
-  &::before, &::after {
-    content: '';
-    display: table;
-  }
-  &::after { clear: both; }
-}
-
-// ── Thought of Day Ticker ──────────────────────────────────────
-.thought-ticker {
-  @include flex-center-vert();
-  height: 40px;
+/* ── Quick links sidebar ─────────────────────────────────── */
+.important-links.quickLinksWrap {
+  background: #f7f7f7;
+  border: 1px solid #eee;
+  border-radius: 4px;
   overflow: hidden;
-  width: calc(100% - 180px);
-  padding-left: 15px;
+  margin-bottom: 20px;
 
-  .thought-ticker__items {
-    overflow: hidden;
-    height: 40px;
-    flex: 1;
-    position: relative;
+  .important-links__head {
+    font-size: 18px; font-weight: 600; color: #fff;
+    background: #002649; margin: 0; padding: 12px 20px;
   }
 
-  .thought-ticker__item {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40px;
-    line-height: 40px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    opacity: 0;
-    animation: thoughtFade 24s infinite;
+  .listitem {
+    list-style: none; margin: 0; padding: 0;
+
+    li { border-bottom: 1px solid #e5e5e5; &:last-child { border-bottom: 0; } }
 
     a {
-      color: var(--color-white);
-      font-size: var(--fontSize13);
-      text-decoration: none;
-    }
-  }
-
-  @for $i from 1 through 6 {
-    .thought-ticker__item:nth-child(#{$i}) {
-      animation-delay: #{($i - 1) * 4}s;
+      display: block; padding: 10px 20px;
+      font-size: 15px; color: #002649; text-decoration: none;
+      transition: all 0.2s;
+      &::before { content: "›"; margin-right: 8px; color: #9a1428; }
+      &:hover { background: #9a1428; color: #fff; &::before { color: #fff; } }
     }
   }
 }
 
-@keyframes thoughtFade {
-  0%, 12%, 100% { opacity: 0; }
-  4%, 8% { opacity: 1; }
-}
-
-// ── News marquee items ─────────────────────────────────────────
-.event-title a {
-  font-size: var(--fontSize14);
-  color: var(--color-primary);
-  text-decoration: none;
-  line-height: 1.5;
-
-  &:hover { color: var(--color-secondary); }
-}
-
-// Responsive
-@include mq('tablet', max) {
-  .aboutScholl {
-    padding: 0 15px;
-
-    p { padding-bottom: 40px; }
+.inner-content {
+  font-size: 16px; line-height: 1.7; color: #444;
+  h2 { color: #002649; margin-bottom: 15px; }
+  h3 { color: #9a1428; margin: 20px 0 10px; font-size: 20px; }
+  p { margin-bottom: 15px; }
+  a { color: #337ab7; }
+  strong { color: #002649; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px;
+    th, td { padding: 10px 12px; border: 1px solid #ddd; }
+    thead th { background: #002649; color: #fff; font-weight: 600; }
   }
+}
+
+.innerBodySection { padding: 40px 0 80px; }
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .bodyContent.homebody { padding: 75px 0 0; }
+  .aboutScholl { padding: 0 15px; p { padding-bottom: 30px; } }
 
   .importantlink {
-    flex-wrap: wrap;
-    margin-bottom: 0;
-
-    section {
-      width: 50%;
-    }
+    flex-wrap: wrap; margin-bottom: 0;
+    section { width: 50%; }
   }
 
   .aboutschoollink {
     padding: 40px 0;
-
-    section {
-      margin-bottom: 30px;
-
-      p { min-height: auto; }
-    }
+    section { margin-bottom: 30px; p { min-height: auto; } }
   }
 
   .bulletinboardwrap {
-    .head {
-      width: 100%;
-      float: none;
-      min-height: auto;
-      line-height: 60px;
-      padding: 0 20px;
-      font-size: var(--fontSize22);
-    }
-
-    .contentwrap {
-      width: 100%;
-      float: none;
-      padding: 20px;
-    }
-
+    .head { width: 100%; float: none; min-height: auto; line-height: 50px; font-size: 18px; padding: 0 15px; }
+    .contentwrap { width: 100%; float: none; padding: 10px 15px; }
     &::after { display: none; }
   }
+
+  .facilitieswrapbgwrap { background-attachment: scroll; }
+
+  .innerBodySection { padding: 20px 0 40px; }
 }
 
-@include mq('phone-wide', max) {
+@media (max-width: 480px) {
   .importantlink section { width: 100%; }
 }

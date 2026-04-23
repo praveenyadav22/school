@@ -1,10 +1,30 @@
 import Link from "next/link";
 
 const LINKS = [
-  { href: "/about/school-logo",        bg: "/images/content-3.jpg",   thumb: "/images/content-3.jpg",   label: "About School"        },
-  { href: "/academics/school-calendar", bg: "/images/content-1-1.jpg", thumb: "/images/content-1-1.jpg", label: "School Calendar"     },
-  { href: "/facilities/meal-plan",      bg: "/images/content-2-1.jpg", thumb: "/images/content-2-1.jpg", label: "Meal Plan"           },
-  { href: "/mobile-application",        bg: "/images/content-3.jpg",   thumb: "/images/content-3.jpg",   label: "Mobile Application" },
+  {
+    href: "/about/school-logo",
+    bg: "/images/generic/about-school-new.jpg",
+    thumb: "/images/content-3.jpg",
+    label: "About School",
+  },
+  {
+    href: "/academics/school-calendar",
+    bg: "/images/generic/calendar.jpg",
+    thumb: "/images/content-1-1.jpg",
+    label: "School Calendar",
+  },
+  {
+    href: "/facilities/meal-plan",
+    bg: "/images/generic/meal_plan.jpg",
+    thumb: "/images/content-2-1.jpg",
+    label: "Meal Plan",
+  },
+  {
+    href: "/mobile-application",
+    bg: "/images/content-3.jpg",
+    thumb: "/images/content-3.jpg",
+    label: "Mobile Application",
+  },
 ];
 
 export default function ImportantLinks() {

@@ -1,18 +1,18 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { X, Menu } from "lucide-react";
+import { X } from "lucide-react";
 
 const THOUGHTS = [
-  `"Education is not preparation for life, education is life itself." – John Dewey`,
+  `"Education is not preparation for life; education is life itself." – John Dewey`,
   `"An investment in knowledge pays the best interest." – Benjamin Franklin`,
   "Always do your best. What you plant now, you will harvest later.",
   "Rise, Shine and smile — each new day has a new beginning and a new hope.",
-  `"TODAY IS A NEW DAY. Even if you were wrong yesterday, you can get it right today."`,
-  "Self Confidence is a super power. Once you believe in yourself, miracles start happening.",
+  `"Today is a new day. Even if you were wrong yesterday, you can get it right today."`,
+  "Self Confidence is a super power. Once you start to believe in yourself, miracles start happening.",
 ];
 
 const NAV_LINKS = [
@@ -36,6 +36,7 @@ const NAV_LINKS = [
       { label: "Curriculum", href: "/academics/curriculum" },
       { label: "Transfer Certificate", href: "/academics/transfer-certificate" },
       { label: "School Calendar", href: "/academics/school-calendar" },
+      { label: "Holiday Homework", href: "https://erp.quickcampus.online/auth", external: true },
       { label: "Board Result", href: "/academics/board-result" },
       { label: "Award Achievements", href: "/academics/award-achievements" },
       { label: "Book List", href: "/academics/book-list" },
@@ -82,21 +83,20 @@ export default function Header() {
   const [thoughtIdx, setThoughtIdx] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [openMobileMenu, setOpenMobileMenu] = useState<string | null>(null);
+  const thoughtsLen = THOUGHTS.length;
 
-  // Sticky header on scroll
   useEffect(() => {
-    const handleScroll = () => setIsFixed(window.scrollY > 10);
+    const handleScroll = () => setIsFixed(window.scrollY > 80);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Thought of the day ticker
   useEffect(() => {
     const timer = setInterval(() => {
-      setThoughtIdx((i) => (i + 1) % THOUGHTS.length);
+      setThoughtIdx((i) => (i + 1) % thoughtsLen);
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [thoughtsLen]);
 
   const closeDrawer = useCallback(() => {
     setDrawerOpen(false);
@@ -106,11 +106,19 @@ export default function Header() {
   return (
     <>
       <header className="header">
-        {/* ── Top bar: quick links ───────────────────────── */}
+        {/* Top bar */}
         <div className="header__top">
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
+                <ul className="topsociallink">
+                  <li><strong style={{ color: "white" }}>Follow Us At</strong></li>
+                  <li><a href="https://www.facebook.com/De-Indian-Public-School-A-Senior-Secondary-School-159716587442885/" target="_blank" rel="noopener noreferrer"><i className="fa fa-facebook" /></a></li>
+                  <li><a href="https://www.instagram.com/deindianpublicschool/" target="_blank" rel="noopener noreferrer"><i className="fa fa-instagram" /></a></li>
+                  <li><a href="https://www.youtube.com/channel/UCKB-4qLoPG_vgDKpZEUm6eQ" target="_blank" rel="noopener noreferrer"><i className="fa fa-youtube-play" /></a></li>
+                  <li><a href="https://twitter.com/DeIndianPublic1" target="_blank" rel="noopener noreferrer"><i className="fa fa-twitter" /></a></li>
+                  <li><a href="https://www.linkedin.com/in/de-indian-public-school-2985a1228" target="_blank" rel="noopener noreferrer"><i className="fa fa-linkedin" /></a></li>
+                </ul>
                 <div className="top_link">
                   <ul>
                     <li><Link href="/admission">Admission</Link></li>
@@ -123,20 +131,12 @@ export default function Header() {
                     <li><Link href="/vacancy">Vacancy</Link></li>
                   </ul>
                 </div>
-                <ul className="topsociallink">
-                  <li><strong style={{ color: "white" }}>Follow Us At</strong></li>
-                  <li><a href="https://www.facebook.com/De-Indian-Public-School-A-Senior-Secondary-School-159716587442885/" target="_blank" rel="noopener noreferrer"><i className="fa fa-facebook" /></a></li>
-                  <li><a href="https://www.instagram.com/deindianpublicschool/" target="_blank" rel="noopener noreferrer"><i className="fa fa-instagram" /></a></li>
-                  <li><a href="https://www.youtube.com/channel/UCKB-4qLoPG_vgDKpZEUm6eQ" target="_blank" rel="noopener noreferrer"><i className="fa fa-youtube-play" /></a></li>
-                  <li><a href="https://twitter.com/DeIndianPublic1" target="_blank" rel="noopener noreferrer"><i className="fa fa-twitter" /></a></li>
-                  <li><a href="https://www.linkedin.com/in/de-indian-public-school-2985a1228" target="_blank" rel="noopener noreferrer"><i className="fa fa-linkedin" /></a></li>
-                </ul>
               </div>
             </div>
           </div>
         </div>
 
-        {/* ── Thought of the Day ticker ─────────────────── */}
+        {/* Thought of the Day */}
         <div className="header__top thought">
           <div className="container">
             <div className="row">
@@ -154,40 +154,26 @@ export default function Header() {
           </div>
         </div>
 
-        {/* ── Main Navbar ───────────────────────────────── */}
+        {/* Main nav */}
         <div className={`header__bottom${isFixed ? " fixed" : ""}`}>
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
                 <div className="mainNavWrap">
                   <div className="navigationLogoWrappper">
-                    {/* Logo */}
                     <div className="logo">
                       <Link href="/">
-                        <Image
-                          src="/images/logo.png"
-                          alt="De Indian Public School"
-                          width={206}
-                          height={56}
-                          priority
-                          style={{ objectFit: "contain" }}
-                        />
+                        <Image src="/images/logo.png" alt="De Indian Public School" width={206} height={56} priority style={{ objectFit: "contain" }} />
                       </Link>
                     </div>
-
-                    {/* Mobile App link */}
                     <div className="applicationlink">
                       <Link href="/mobile-application">Mobile App</Link>
                     </div>
-
-                    {/* Desktop Nav */}
+                    {/* Desktop nav - hidden on mobile via CSS */}
                     <nav id="mainNavigationERP">
                       <ul>
                         {NAV_LINKS.map((item) => (
-                          <li
-                            key={item.label}
-                            className={item.children ? "has-sub" : ""}
-                          >
+                          <li key={item.label} className={item.children ? "has-sub" : ""}>
                             {item.href ? (
                               <Link href={item.href} className={pathname === item.href ? "active" : ""}>{item.label}</Link>
                             ) : (
@@ -197,7 +183,11 @@ export default function Header() {
                               <ul>
                                 {item.children.map((child) => (
                                   <li key={child.href}>
-                                    <Link href={child.href}>{child.label}</Link>
+                                    {(child as any).external ? (
+                                      <a href={child.href} target="_blank" rel="noopener noreferrer">{child.label}</a>
+                                    ) : (
+                                      <Link href={child.href}>{child.label}</Link>
+                                    )}
                                   </li>
                                 ))}
                               </ul>
@@ -206,15 +196,10 @@ export default function Header() {
                         ))}
                       </ul>
                     </nav>
-
-                    {/* Mobile Hamburger */}
+                    {/* Mobile hamburger - only visible on small screens via CSS */}
                     <div className="mobileNav_button">
                       <span>Nav</span>
-                      <button
-                        className="navbar-btn collapsed"
-                        aria-label="Open menu"
-                        onClick={() => setDrawerOpen(true)}
-                      >
+                      <button className="navbar-btn collapsed" aria-label="Open menu" onClick={() => setDrawerOpen(true)}>
                         <span className="icon-bar" />
                         <span className="icon-bar" />
                         <span className="icon-bar" />
@@ -228,14 +213,10 @@ export default function Header() {
         </div>
       </header>
 
-      {/* ── Mobile Drawer Overlay ─────────────────────── */}
-      <div
-        className={`mobile-nav-overlay${drawerOpen ? " open" : ""}`}
-        onClick={closeDrawer}
-        aria-hidden="true"
-      />
+      {/* Overlay */}
+      <div className={`mobile-nav-overlay${drawerOpen ? " open" : ""}`} onClick={closeDrawer} aria-hidden="true" />
 
-      {/* ── Mobile Drawer ────────────────────────────── */}
+      {/* Mobile Drawer */}
       <nav className={`mobile-drawer${drawerOpen ? " open" : ""}`} aria-label="Mobile navigation">
         <div className="mobile-drawer__header">
           <span>Menu</span>
@@ -248,19 +229,19 @@ export default function Header() {
                 {item.href ? (
                   <Link href={item.href} onClick={closeDrawer}>{item.label}</Link>
                 ) : (
-                  <button
-                    onClick={() =>
-                      setOpenMobileMenu(openMobileMenu === item.label ? null : item.label)
-                    }
-                  >
-                    {item.label} {item.children && <span>{openMobileMenu === item.label ? "▲" : "▼"}</span>}
+                  <button onClick={() => setOpenMobileMenu(openMobileMenu === item.label ? null : item.label)}>
+                    {item.label} {item.children && <span>{openMobileMenu === item.label ? " ▲" : " ▼"}</span>}
                   </button>
                 )}
                 {item.children && (
                   <ul className={openMobileMenu === item.label ? "open" : ""}>
                     {item.children.map((child) => (
                       <li key={child.href}>
-                        <Link href={child.href} onClick={closeDrawer}>{child.label}</Link>
+                        {(child as any).external ? (
+                          <a href={child.href} target="_blank" rel="noopener noreferrer" onClick={closeDrawer}>{child.label}</a>
+                        ) : (
+                          <Link href={child.href} onClick={closeDrawer}>{child.label}</Link>
+                        )}
                       </li>
                     ))}
                   </ul>
