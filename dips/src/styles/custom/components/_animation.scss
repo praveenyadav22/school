@@ -1,15 +1,24 @@
-@use '../core/variables' as *;
-@use '../core/mixins' as *;
-@use '../components/generic/sizes' as *;
+@use "../core/variables" as *;
+@use "../core/mixins" as *;
 
+// Fade in
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
+.anim-fadeIn {
+  animation: fadeIn 0.4s ease forwards;
+}
 
+// Blink
+.blink {
+  animation: blink 1s linear infinite;
+  color: #fff600 !important;
+}
+
+@keyframes blink {
+  0%   { opacity: 0; }
+  50%  { opacity: 0.5; }
+  100% { opacity: 1; }
+}

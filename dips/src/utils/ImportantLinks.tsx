@@ -1,29 +1,26 @@
 import Link from "next/link";
 
 const LINKS = [
-  { href: "/newsletter",        img: "/images/icons/newspaper.png",    label: "News Letter"        },
-  { href: "/infrastructure",    img: "/images/icons/school.png",       label: "Infra-Structure"    },
-  { href: "/monthly-report",    img: "/images/icons/report.png",       label: "Monthly Report"     },
-  { href: "/international-ethos", img: "/images/icons/international.png", label: "International-Ethos" },
-  { href: "/games",             img: "/images/icons/fit-india.png",    label: "Fit India"          },
-  { href: "/atal-tinkering-lab", img: "/images/icons/innovation.png",  label: "ATL-Innovation"     },
+  { href: "/about/school-logo",        bg: "/images/content-3.jpg",   thumb: "/images/content-3.jpg",   label: "About School"        },
+  { href: "/academics/school-calendar", bg: "/images/content-1-1.jpg", thumb: "/images/content-1-1.jpg", label: "School Calendar"     },
+  { href: "/facilities/meal-plan",      bg: "/images/content-2-1.jpg", thumb: "/images/content-2-1.jpg", label: "Meal Plan"           },
+  { href: "/mobile-application",        bg: "/images/content-3.jpg",   thumb: "/images/content-3.jpg",   label: "Mobile Application" },
 ];
 
-const ImportantLinks = () => {
+export default function ImportantLinks() {
   return (
-    <div className="c-importantlink">
+    <div className="importantlink">
       {LINKS.map((item) => (
-        <div className="c-importantlink__item" key={item.href}>
-          <Link href={item.href} className="link">
-            <figure>
-              <img src={item.img} className="u-img" alt={item.label} />
+        <section key={item.href}>
+          <Link href={item.href}>
+            <figure style={{ background: `url(${item.bg})` }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={item.thumb} width={580} height={580} alt={item.label} />
             </figure>
-            <div className="content">{item.label}</div>
+            <figcaption>{item.label}</figcaption>
           </Link>
-        </div>
+        </section>
       ))}
     </div>
   );
-};
-
-export default ImportantLinks;
+}

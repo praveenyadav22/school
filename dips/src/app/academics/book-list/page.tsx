@@ -1,0 +1,14 @@
+import type { Metadata } from "next";
+import InnerPage from "@/components/InnerPage";
+
+export const metadata: Metadata = { title: "Book List" };
+
+export default function Page() {
+  return (
+    <InnerPage title="Book List" breadcrumbs={[]}>
+      <div className="inner-content">
+        <p>The prescribed book list for the current academic session is available at the school office and on the school portal. Parents are requested to ensure timely procurement of all required books.</p>
+      </div>
+    </InnerPage>
+  );
+}

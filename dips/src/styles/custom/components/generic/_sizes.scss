@@ -1,3 +1,13 @@
-@use "../../core/variables" as *;
-@use "../../core/mixins" as *;
-// placeholder
+// Spacing helpers
+.p-0  { padding: 0        !important; }
+.p-10 { padding: 10px     !important; }
+.p-20 { padding: 20px     !important; }
+.p-30 { padding: 30px     !important; }
+.mb-0  { margin-bottom: 0    !important; }
+.mb-10 { margin-bottom: 10px !important; }
+.mb-20 { margin-bottom: 20px !important; }
+.mb-30 { margin-bottom: 30px !important; }
+.mt-10 { margin-top: 10px    !important; }
+.mt-20 { margin-top: 20px    !important; }
+.mt-30 { margin-top: 30px    !important; }
+.w-100 { width: 100%         !important; }

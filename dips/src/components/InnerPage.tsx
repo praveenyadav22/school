@@ -7,40 +7,25 @@ interface Crumb {
 
 interface Props {
   title: string;
-  breadcrumbs?: Crumb[];   // parent crumbs e.g. [{ label: "About Us" }]
+  breadcrumbs?: Crumb[];
   children: React.ReactNode;
 }
 
-/**
- * InnerPage — wraps every inner page with:
- *   1. #blog_banner  — full-width hero image + black overlay (matches live site)
- *   2. .breadcrumb-main — Home / Parent / Page
- *   3. page content slot
- */
 export default function InnerPage({ title, breadcrumbs = [], children }: Props) {
   return (
     <>
-      {/* ── Inner hero banner ──────────────────────────────── */}
+      {/* Inner hero banner */}
       <div id="blog_banner">
-        <div className="page-title">
-          <div className="container">
-            {/* Live site leaves container empty — title shown via h2 below */}
-          </div>
-        </div>
-        {/* Dark overlay — matches .black-overlay in original */}
         <div className="black-overlay" />
       </div>
 
-      {/* ── Breadcrumb bar ─────────────────────────────────── */}
+      {/* Breadcrumb */}
       <div className="breadcrumb-main">
         <div className="container">
           <ul className="breadcrumb">
-            {/* Home */}
             <li>
               <Link href="/">Home</Link>
             </li>
-
-            {/* Parent crumbs */}
             {breadcrumbs.map((crumb, i) => (
               <li key={i}>
                 {crumb.href ? (
@@ -50,8 +35,6 @@ export default function InnerPage({ title, breadcrumbs = [], children }: Props) 
                 )}
               </li>
             ))}
-
-            {/* Current page — amber, no link */}
             <li className="active">
               <span>{title}</span>
             </li>
@@ -59,12 +42,48 @@ export default function InnerPage({ title, breadcrumbs = [], children }: Props) 
         </div>
       </div>
 
-      {/* ── Page content ───────────────────────────────────── */}
-      <section style={{ padding: "60px 0 80px" }}>
+      {/* Page content */}
+      <section className="innerBodySection">
         <div className="container">
-          {children}
+          <div className="row">
+            <div className="col-lg-9 col-md-8">
+              <div className="contentsection">
+                <h2 style={{ fontSize: 28, color: "#002649", marginBottom: 20, fontWeight: 600 }}>{title}</h2>
+                {children}
+              </div>
+            </div>
+            <div className="col-lg-3 col-md-4">
+              <QuickLinks />
+            </div>
+          </div>
         </div>
       </section>
     </>
+  );
+}
+
+function QuickLinks() {
+  const links = [
+    { label: "About School", href: "/about/school-logo" },
+    { label: "Admission", href: "/admission" },
+    { label: "School Calendar", href: "/academics/school-calendar" },
+    { label: "Circulars", href: "/academics/circulars" },
+    { label: "Board Result", href: "/academics/board-result" },
+    { label: "Contact Us", href: "/contact" },
+    { label: "Photo Gallery", href: "/gallery/photo" },
+    { label: "Video Gallery", href: "/gallery/video" },
+  ];
+
+  return (
+    <div id="slidbarLink" className="important-links quickLinksWrap">
+      <h3 className="important-links__head">Quick Links</h3>
+      <ul className="listitem">
+        {links.map((item) => (
+          <li key={item.href}>
+            <Link href={item.href}>{item.label}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

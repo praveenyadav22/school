@@ -1,47 +1,41 @@
 "use client";
 
 interface PaginationProps {
-  currentPage: number;
-  totalPages:  number;
-  onPrev:      () => void;
-  onNext:      () => void;
+  current: number;
+  total: number;
+  onPageChange: (page: number) => void;
 }
 
-// ─────────────────────────────────────────────────────────────
-// Pagination — reusable prev/next pagination bar
-// Only renders when totalPages > 1
-// Usage:
-//   <Pagination
-//     currentPage={currentPage}
-//     totalPages={totalPages}
-//     onPrev={goToPrev}
-//     onNext={goToNext}
-//   />
-// ─────────────────────────────────────────────────────────────
-const Pagination = ({ currentPage, totalPages, onPrev, onNext }: PaginationProps) => {
-  if (totalPages <= 1) return null;
+export default function Pagination({ current, total, onPageChange }: PaginationProps) {
+  if (total <= 1) return null;
 
   return (
-    <div className="c-pagination">
+    <div className="pagination-wrap">
       <button
-        className="c-pagination__btn"
-        onClick={onPrev}
-        disabled={currentPage === 1}
+        disabled={current === 1}
+        onClick={() => onPageChange(current - 1)}
+        style={{ opacity: current === 1 ? 0.5 : 1, cursor: current === 1 ? "not-allowed" : "pointer" }}
       >
-        Previous
+        &laquo; Prev
       </button>
-      <span className="c-pagination__info">
-        Page {currentPage} of {totalPages}
-      </span>
+
+      {Array.from({ length: total }, (_, i) => i + 1).map((page) => (
+        <button
+          key={page}
+          className={page === current ? "active" : ""}
+          onClick={() => onPageChange(page)}
+        >
+          {page}
+        </button>
+      ))}
+
       <button
-        className="c-pagination__btn"
-        onClick={onNext}
-        disabled={currentPage === totalPages}
+        disabled={current === total}
+        onClick={() => onPageChange(current + 1)}
+        style={{ opacity: current === total ? 0.5 : 1, cursor: current === total ? "not-allowed" : "pointer" }}
       >
-        Next
+        Next &raquo;
       </button>
     </div>
   );
-};
-
-export default Pagination;
+}

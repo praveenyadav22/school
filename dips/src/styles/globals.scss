@@ -28,6 +28,7 @@
 @use 'custom/components/videogallery';
 @use 'custom/components/accessibility';
 @use 'custom/components/pagination';
+@use 'custom/components/vacancy';
 
 // ── Layout ────────────────────────────────────────────────────
 @use 'custom/layout/header';
@@ -71,8 +72,6 @@ a          { color: inherit; }
   padding: 0; margin: -1px; overflow: hidden;
   clip: rect(0,0,0,0); border: 0;
 }
-
-
 
 // ── Global helpers ────────────────────────────────────────────
 .ratio-9x16 { --bs-aspect-ratio: 133.3333%; }

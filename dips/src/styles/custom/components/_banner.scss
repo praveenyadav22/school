@@ -1,2 +1,109 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
+
+// ── Homepage Banner / Hero Slider ────────────────────────────
+.hmBanner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.tp-banner-container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+// Embla carousel viewport
+.home-banner-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.home-banner-container {
+  display: flex;
+  width: 100%;
+}
+
+.home-banner-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  @include mq('tablet', max) {
+    height: 280px;
+  }
+
+  @include mq('phone-wide', max) {
+    height: 200px;
+  }
+}
+
+// Carousel controls
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.35);
+  border: none;
+  color: var(--color-white);
+  width: 40px;
+  height: 40px;
+  @include border-radius(50%);
+  font-size: var(--fontSize20);
+  cursor: pointer;
+  @include transition(background 0.2s);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover { background: rgba(154, 20, 40, 0.8); }
+
+  &.left { left: 15px; }
+  &.right { right: 15px; }
+}
+
+// Dot indicators
+.carousel-indicators {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    width: 10px;
+    height: 10px;
+    @include border-radius(50%);
+    background: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    @include transition(background 0.2s);
+
+    &.active { background: var(--color-secondary); }
+  }
+}
+
+// ── Inner Page Banner ─────────────────────────────────────────
+.desktopBanner {
+  display: block;
+
+  @include mq('tablet', max) {
+    display: none;
+  }
+}

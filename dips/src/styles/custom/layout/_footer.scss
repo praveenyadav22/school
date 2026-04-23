@@ -1,2 +1,249 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
+
+.footer {
+  background: #efeff3;
+  color: var(--color-white);
+}
+
+.footer .footer_linkswrap {
+  width: 100%;
+  background: #001f39;
+  padding: 70px 0 80px;
+  clear: left;
+  float: left;
+
+  section {
+    width: 100%;
+
+    h1 {
+      font-size: var(--fontSize20);
+      letter-spacing: 1px;
+      font-weight: var(--fontRegular);
+      position: relative;
+      color: var(--color-white);
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+
+      &::after {
+        width: 50px;
+        height: 2px;
+        position: absolute;
+        bottom: 0;
+        content: "";
+        background: var(--color-accent-blue4);
+        left: 0;
+      }
+    }
+  }
+}
+
+.footerAddress {
+  width: 100%;
+
+  p {
+    font-size: var(--fontSize16);
+    color: var(--color-accent-blue3);
+    margin-bottom: 12px;
+  }
+
+  ul.address {
+    width: 100%;
+    clear: left;
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      clear: left;
+      float: left;
+      width: 100%;
+      font-size: var(--fontSize16);
+      color: var(--color-accent-blue3);
+      margin-bottom: 8px;
+
+      a {
+        color: var(--color-accent-blue3);
+        text-decoration: none;
+
+        &:hover { color: var(--color-white); }
+      }
+
+      span {
+        display: inline-block;
+        width: 22px;
+        color: #7bb6e7;
+      }
+    }
+  }
+
+  ul.socialicon {
+    width: 100%;
+    text-align: left;
+    clear: left;
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+
+    li {
+      a {
+        display: block;
+        width: 30px;
+        height: 30px;
+        border: 1px solid #727273;
+        @include border-radius(50%);
+        text-align: center;
+        font-size: var(--fontSize16);
+        line-height: 30px;
+        color: var(--color-accent-blue3);
+        text-decoration: none;
+        @include transition(all 0.2s ease-in-out);
+
+        &:hover {
+          background: #ffbb20;
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
+ul.footerLInk {
+  width: 100%;
+  clear: left;
+  float: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    clear: left;
+    float: left;
+    width: 100%;
+    border-bottom: 1px dashed var(--color-accent-blue3);
+    padding: 11px 0;
+
+    &:first-child { padding-top: 0; }
+
+    a {
+      font-size: var(--fontSize16);
+      color: var(--color-accent-blue3);
+      font-weight: var(--fontRegular);
+      display: block;
+      width: 100%;
+      text-decoration: none;
+
+      &:hover { color: var(--color-white); }
+    }
+
+    &.admisson a {
+      color: var(--color-white);
+      font-size: var(--fontSize14);
+      text-transform: uppercase;
+      font-weight: var(--fontBolder);
+      background: linear-gradient(to right, var(--color-secondary) 10%, var(--color-accent-blue3) 50%, var(--color-white) 60%);
+      background-size: 200% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textclip 1.5s linear infinite;
+      display: inline-block;
+    }
+  }
+}
+
+@keyframes textclip {
+  to { background-position: 200% center; }
+}
+
+.footerContent p {
+  font-size: var(--fontSize16);
+  color: var(--color-accent-blue3);
+  line-height: 24px;
+
+  span {
+    display: block;
+
+    a {
+      color: #7bb6e7;
+      text-decoration: none;
+    }
+  }
+}
+
+.footer .footer_bottom {
+  width: 100%;
+  background: #001b2e;
+  padding: 24px 0;
+  font-size: var(--fontSize15);
+  color: var(--color-white);
+  text-align: center;
+  clear: left;
+  float: left;
+
+  a {
+    color: #7bb6e7;
+    text-decoration: none;
+  }
+}
+
+// Whatsapp floating
+.whatsuplink {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 9990;
+
+  a {
+    display: block;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      @include box-shadow(0 4px 12px rgba(0,0,0,0.3));
+      @include transition(transform 0.2s);
+
+      &:hover { transform: scale(1.1); }
+    }
+  }
+}
+
+// Scroll top
+.scroll-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  font-size: var(--fontSize20);
+  color: var(--color-white);
+  border: none;
+  outline: 0;
+  background: var(--color-secondary);
+  cursor: pointer;
+  z-index: 9989;
+  @include border-radius(4px);
+  @include transition(background 0.2s);
+
+  &:hover { background: var(--color-secondary2); }
+}
+
+@include mq('tablet', max) {
+  .footer .footer_linkswrap {
+    padding: 40px 0;
+
+    .col-md-3 {
+      margin-bottom: 30px;
+    }
+  }
+}
