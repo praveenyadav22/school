@@ -13,7 +13,7 @@ const PANELS = [
   {
     id: "transport",
     title: "School Transport",
-    content: "The school has its own fleet of air conditioned luxury coaches with trained attendants and experienced drivers equipped with mobile phones. The school provides transport facility for students from Rohini, Ashok Vihar, Shalimar Bagh and surrounding areas.",
+    content: "The school has its own fleet of air conditioned luxury coaches with trained attendants and experienced drivers equipped with mobile phones. The school provides transport facility for students from Rohini, Ashok Vihar, Shalimar Bagh.",
     href: "/facilities/school-transport",
   },
   {
@@ -29,33 +29,51 @@ export default function FacilitiesAccordion() {
 
   return (
     <section>
-      <h3><i className="fa fa-question-circle" /> FACILITIES <span>AT DE INDIAN PUBLIC SCHOOL</span></h3>
+      <h3>
+        <i className="fa fa-question-circle" /> FACILITIES{" "}
+        <span>AT DE INDIAN PUBLIC SCHOOL</span>
+      </h3>
       <div className="facilitiesPanel">
-        <div className="panel-group" id="accordion6">
-          {PANELS.map((panel) => (
-            <div className="panel panel-default" key={panel.id}>
-              <div className="panel-heading">
-                <h6 className="panel-title">
-                  <button
-                    style={{ background: "none", border: "none", padding: 0, cursor: "pointer", width: "100%", textAlign: "left" }}
-                    onClick={() => setOpen(open === panel.id ? "" : panel.id)}
-                  >
-                    {panel.title}
-                  </button>
-                </h6>
-              </div>
-              {open === panel.id && (
-                <div className="panel-collapse">
-                  <div className="panel-body">
-                    {panel.content}{" "}
-                    <Link href={panel.href}><span className="fa fa-arrow-circle-right" /></Link>
-                  </div>
+        <div
+          className="panel-group accordion-stylished-left-border accordion-icon-filled accordion-no-border accordion-icon-left accordion-icon-filled-theme-colored2"
+          id="accordion6"
+          role="tablist"
+        >
+          {PANELS.map((panel) => {
+            const isOpen = open === panel.id;
+            return (
+              <div className="panel panel-default" key={panel.id}>
+                <div className="panel-heading" role="tab">
+                  <h6 className="panel-title">
+                    <a
+                      role="button"
+                      className={isOpen ? "" : "collapsed"}
+                      onClick={() => setOpen(isOpen ? "" : panel.id)}
+                      style={{ cursor: "pointer" }}
+                      aria-expanded={isOpen}
+                    >
+                      {panel.title}
+                    </a>
+                  </h6>
                 </div>
-              )}
-            </div>
-          ))}
+                {isOpen && (
+                  <div className="panel-collapse" role="tabpanel">
+                    <div className="panel-body">
+                      {panel.content}{" "}
+                      <Link href={panel.href}>
+                        <span className="fa fa-arrow-circle-right" />
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
-        <Link href="/facilities/sports" className="c-button c-button-radius c-button-themered has-margin-top-15">
+        <Link
+          href="/facilities/sports"
+          className="c-button c-button-radius c-button-themered has-margin-top-15"
+        >
           Read All
         </Link>
       </div>

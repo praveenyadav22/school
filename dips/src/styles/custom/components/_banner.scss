@@ -1,56 +1,165 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
 
-/* ── Homepage Banner ─────────────────────────────────────── */
-.hmBanner { position: relative; width: 100%; }
+/* ─────────────────────────────────────────────────────────────
+   HOMEPAGE BANNER — exact match to dipsrohini.in
+   .hmBanner { height: 100vh }  ← from school-template.css line 18618
+───────────────────────────────────────────────────────────── */
+.hmBanner {
+  height: 100vh;           /* ← exact from original CSS */
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
 
-.tp-banner-container { width: 100%; position: relative; overflow: hidden; }
+.home-banner-viewport {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
-.home-banner-viewport { overflow: hidden; width: 100%; }
-.home-banner-container { display: flex; }
+.home-banner-container {
+  display: flex;
+  height: 100%;
+}
 
 .home-banner-slide {
-  flex: 0 0 100%; min-width: 0;
-  position: relative; height: 500px; overflow: hidden;
+  flex: 0 0 100%;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
 
-  img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
-
-  @media (max-width: 992px) { height: 350px; }
-  @media (max-width: 767px) { height: 250px; }
-  @media (max-width: 480px) { height: 200px; }
-}
-
-.carousel-control {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  z-index: 10; background: rgba(0,0,0,.35); border: none;
-  color: #fff; width: 40px; height: 40px; border-radius: 50%;
-  font-size: 20px; cursor: pointer; transition: background 0.2s;
-  display: flex; align-items: center; justify-content: center;
-  &:hover { background: rgba(154,20,40,.8); }
-  &.left { left: 15px; }
-  &.right { right: 15px; }
-}
-
-.carousel-indicators {
-  position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%);
-  z-index: 10; display: flex; gap: 8px; list-style: none; margin: 0; padding: 0;
-
-  li {
-    width: 10px; height: 10px; border-radius: 50%;
-    background: rgba(255,255,255,.6); cursor: pointer; transition: background 0.2s;
-    &.active { background: #9a1428; }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
   }
 }
 
-/* ── Inner page banner ────────────────────────────────────── */
+/* Left / Right arrow buttons — floating on sides */
+.tp-leftarrow,
+.tp-rightarrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  background: rgba(0,0,0,0.3);
+  border: none;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  &:hover { background: rgba(154,20,40,0.8); }
+}
+
+.tp-leftarrow  { left: 15px; }
+.tp-rightarrow { right: 15px; }
+
+/* Vertical bullet dots — right side bottom area (like live site) */
+.verticalbullet {
+  position: absolute;
+  right: 30px;
+  bottom: 60px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .bullet {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    padding: 0;
+    &.selected { background: #fff; }
+  }
+}
+
+/* Scroll icon - bottom right (from school-template.css) */
+.scroll-icon {
+  position: absolute;
+  height: 90px;
+  padding-right: 3.5rem;
+  bottom: 0;
+  right: 81px;
+  width: 25px;
+  text-align: right;
+  border-right: 1px dashed rgba(255,255,255,0.3);
+  z-index: 100;
+
+  .mouse {
+    width: 20px;
+    height: 32px;
+    border: 2px solid rgba(255,255,255,0.6);
+    border-radius: 12px;
+    position: relative;
+    margin: 0 auto;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 4px;
+      height: 8px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 2px;
+      left: 50%;
+      top: 6px;
+      transform: translateX(-50%);
+      animation: scrollDown 1.5s ease-in-out infinite;
+    }
+  }
+
+  .end-top {
+    content: "";
+    background-color: #fff;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 8px;
+  }
+}
+
+@keyframes scrollDown {
+  0%   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+}
+
+/* ── Inner page hero banner ────────────────────────────────── */
 #blog_banner {
-  width: 100%; height: 280px; overflow: hidden;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
   position: relative;
   background: url('/images/generic/inner-banner.jpg') center center / cover no-repeat;
   margin-top: 75px;
 
   @media (max-width: 1023px) { margin-top: 60px; }
-  @media (max-width: 767px) { height: 160px; margin-top: 60px; }
+  @media (max-width: 767px)  { height: 160px; margin-top: 60px; }
 }
 
-.black-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); }
+.black-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+/* Responsive banner */
+@media (max-width: 767px) {
+  .hmBanner { height: 60vw; min-height: 250px; }
+  .scroll-icon { display: none; }
+  .verticalbullet { right: 10px; bottom: 20px; }
+}

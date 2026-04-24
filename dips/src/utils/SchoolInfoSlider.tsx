@@ -6,10 +6,10 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 
 const SLIDES = [
-  { img: "/images/generic/activity-new2.jpg",       title: "School Activities", desc: "The School believes that the concept of Clubs is seen as an opportunity for adaptation...", href: "/school-info/school-activities" },
-  { img: "/images/generic/student-council-new1.jpg", title: "Student Council",  desc: "Students Council is an elected body that is comprised of student representatives...", href: "/school-info/student-council" },
-  { img: "/images/generic/house-system-new.png",     title: "House System",     desc: "The school has a flourishing House System with each House representing unique values...", href: "/school-info/house-system" },
-  { img: "/images/generic/assembly-new.jpg",         title: "Assembly Themes",  desc: "Assemblies are a medium to enlighten the young minds and channelize the energy...", href: "/school-info/assembly-themes" },
+  { img: "/images/activity-new2.jpg",      title: "School Activities", desc: "The School believes that the concept of Clubs is seen as an opportunity for adaptation...", href: "/school-info/school-activities" },
+  { img: "/images/student-council-new1.jpg", title: "Student Council",  desc: "Students Council is an elected body that is comprised of student representatives...", href: "/school-info/student-council" },
+  { img: "/images/house-system-new.png",    title: "House System",      desc: "The school has a flourishing House System with each House representing unique values...", href: "/school-info/house-system" },
+  { img: "/images/assembly-new.jpg",        title: "Assembly Themes",   desc: "Assemblies are a medium to enlighten the young minds and channelize the energy...", href: "/school-info/assembly-themes" },
 ];
 
 export default function SchoolInfoSlider() {
@@ -30,6 +30,7 @@ export default function SchoolInfoSlider() {
 
   return (
     <div className="facilitiesSlider">
+      {/* Carousel */}
       <div className="facilities-embla" ref={emblaRef}>
         <div className="facilities-embla__container">
           {SLIDES.map((slide, i) => (
@@ -44,7 +45,9 @@ export default function SchoolInfoSlider() {
                     <p>
                       <span><strong>{slide.title}</strong></span> {slide.desc}
                     </p>
-                    <span className="link"><i className="fa fa-arrow-circle-right" /> Know More</span>
+                    <span className="link">
+                      <i className="fa fa-arrow-circle-right" /> Know More
+                    </span>
                   </Link>
                 </div>
               </div>
@@ -52,18 +55,40 @@ export default function SchoolInfoSlider() {
           ))}
         </div>
       </div>
+
+      {/* Controls: buttons row FIRST, then dots row BELOW */}
       <div className="facilities-controls">
-        <button className="facilities-btn prev" onClick={() => emblaApi?.scrollPrev()} aria-label="Previous">
-          <i className="fa fa-angle-left" />
-        </button>
-        <div className="facilities-dots">
+        {/* Row 1: Prev / Next buttons */}
+        <div className="owl-controls">
+          <div className="owl-nav">
+            <button
+              className="owl-prev facilities-btn"
+              onClick={() => emblaApi?.scrollPrev()}
+              aria-label="Previous slide"
+            >
+              <i className="fa fa-angle-left" />
+            </button>
+            <button
+              className="owl-next facilities-btn"
+              onClick={() => emblaApi?.scrollNext()}
+              aria-label="Next slide"
+            >
+              <i className="fa fa-angle-right" />
+            </button>
+          </div>
+        </div>
+
+        {/* Row 2: Dot indicators */}
+        <div className="owl-dots facilities-dots">
           {snaps.map((_, i) => (
-            <button key={i} className={`facilities-dot${i === selected ? " active" : ""}`} onClick={() => emblaApi?.scrollTo(i)} />
+            <button
+              key={i}
+              className={`owl-dot facilities-dot${i === selected ? " active" : ""}`}
+              onClick={() => emblaApi?.scrollTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+            />
           ))}
         </div>
-        <button className="facilities-btn next" onClick={() => emblaApi?.scrollNext()} aria-label="Next">
-          <i className="fa fa-angle-right" />
-        </button>
       </div>
     </div>
   );

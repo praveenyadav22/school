@@ -3,12 +3,29 @@ import InnerPage from "@/components/InnerPage";
 
 export const metadata: Metadata = { title: "School Uniform" };
 
+const SIDEBAR_LINKS = [
+  { label: "Students Council", href: "/school-info/student-council" },
+  { label: "House System", href: "/school-info/house-system" },
+  { label: "School Timings", href: "/school-info/school-timings" },
+  { label: "List of Holidays", href: "/school-info/list-of-holidays" },
+  { label: "School Uniform", href: "/school-info/school-uniform" },
+  { label: "PTA", href: "/school-info/pta" },
+  { label: "Assembly Themes", href: "/school-info/assembly-themes" },
+  { label: "Safety Measure", href: "/school-info/safety-measure" },
+  { label: "School Activities", href: "/school-info/school-activities" },
+  { label: "International Policy", href: "/school-info/international-policy" },
+  { label: "Best Practices", href: "/school-info/best-practices" },
+  { label: "Publications", href: "/school-info/publications" },
+];
+
 export default function Page() {
   return (
-    <InnerPage title="School Uniform" breadcrumbs={[]}>
-      <div className="inner-content">
-        <p><strong>Summer Uniform (Boys):</strong> White shirt, Grey trousers, Black shoes.<br/><strong>Summer Uniform (Girls):</strong> White shirt, Grey skirt/salwar, Black shoes.<br/><strong>Winter Uniform:</strong> Navy blue blazer over summer uniform with tie.</p>
-      </div>
-    </InnerPage>
+    <InnerPage
+      title="School Uniform"
+      breadcrumbs={[{ label: "School Info" }]}
+      sectionTitle="School Info"
+      sidebarLinks={SIDEBAR_LINKS}
+    >
+      <p><strong>Summer Uniform (Boys):</strong> White shirt, Grey trousers, Black shoes.<br/><strong>Summer Uniform (Girls):</strong> White shirt, Grey skirt/salwar, Black shoes.<br/><strong>Winter Uniform:</strong> Navy blue blazer over summer uniform with tie.</p></InnerPage>
   );
 }

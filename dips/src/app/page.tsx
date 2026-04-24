@@ -16,59 +16,60 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+      {/* 100vh Banner */}
       <Banner />
-      <div>
-        <div className="clearfix" />
-        <div className="bodyContent homebody">
+
+      {/* About + Events + Important Links */}
+      <div className="clearfix" />
+      <div className="bodyContent homebody">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <AboutSchool />
+              <div className="eventsWrap">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-6">
+                      <LatestUpdates />
+                    </div>
+                    <div className="col-md-6">
+                      <FacilitiesAccordion />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="clearfix" />
+              <ImportantLinks />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* School Information Slider + About links + Bulletin */}
+      <div className="clearfix" />
+      <div className="bodyContent homebody">
+        <div className="facilitiesContainer">
+          <div className="facilitieswrapbgwrap" />
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
-                <AboutSchool />
-                <div className="eventsWrap">
-                  <div className="container">
-                    <div className="row">
-                      <div className="col-md-6">
-                        <LatestUpdates />
-                      </div>
-                      <div className="col-md-6">
-                        <FacilitiesAccordion />
-                      </div>
-                    </div>
+                <div className="facilitiesSliderwrap">
+                  <div className="sectionHead">
+                    <h2 className="colorwhite">School Information</h2>
                   </div>
+                  <SchoolInfoSlider />
                 </div>
-                <div className="clearfix" />
-                <ImportantLinks />
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div>
         <div className="clearfix" />
-        <div className="bodyContent homebody">
-          <div className="facilitiesContainer">
-            <div className="facilitieswrapbgwrap" />
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-12">
-                  <div className="facilitiesSliderwrap">
-                    <div className="sectionHead">
-                      <h2 className="colorwhite">School Information</h2>
-                    </div>
-                    <SchoolInfoSlider />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="clearfix" />
-          <AboutSchoolLinks />
-          <BulletinBoard />
-        </div>
+        <AboutSchoolLinks />
+        <BulletinBoard />
       </div>
 
-      <section style={{ backgroundColor: "#e8e6e6" }}>
+      {/* Admission Enquiry */}
+      <section className="enquiry-section">
         <div className="container">
           <AdmissionEnquiry />
         </div>

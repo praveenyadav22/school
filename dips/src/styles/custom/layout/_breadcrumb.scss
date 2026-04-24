@@ -1,23 +1,305 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
 
-.breadcrumb-main {
-  background: #f0f0f0;
-  border-bottom: 1px solid #ddd;
-  padding: 12px 0;
+/* ═══════════════════════════════════════════════════════════
+   INNER PAGE — exact from school-template.css lines 19547–19750
+═══════════════════════════════════════════════════════════ */
 
-  .breadcrumb {
-    margin: 0; padding: 0; background: none; list-style: none;
-    display: flex; flex-wrap: wrap; align-items: center; gap: 0;
+/* ── Inner banner — NO margin-top, header overlaps it ─────
+   Original: .innerBanner { height:300px; position:relative; }
+   Header is position:absolute so it floats over the banner.
+   The banner starts at top:0 of the page body.
+──────────────────────────────────────────────────────────── */
+.innerBanner {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  background: url('/images/generic/inner-banner.jpg') center center / cover no-repeat;
+  clear: left;
+  float: left;
+  /* No margin-top — header is position:absolute and overlaps this */
 
-    li {
-      font-size: 14px; color: #666;
+  @media (max-width: 767px) { height: 180px; }
+}
 
-      a { color: #337ab7; text-decoration: none; &:hover { color: #9a1428; text-decoration: underline; } }
+/* Dark overlay on banner */
+.innerBanner__overlay,
+.innerBanner::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  content: "";
+  top: 0; left: 0;
+}
 
-      &::after { content: " / "; margin: 0 6px; color: #999; }
-      &:last-child::after { content: ""; margin: 0; }
-      &.active span { color: #9a1428; font-weight: 500; }
+.innerBanner .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Page title inside banner */
+.pageHeadWrap {
+  padding-top: 180px; /* push title to bottom of banner area */
+
+  h1 {
+    font-size: 26px;
+    color: #fff;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 767px) {
+    padding-top: 100px;
+    h1 { font-size: 20px; }
+  }
+}
+
+/* ── Body section ────────────────────────────────────────── */
+.bodySection.innerBody {
+  padding: 30px 0;
+  clear: both;
+  padding-bottom: 70px;
+}
+
+/* ── Page heading section (title + breadcrumb row) ─────────
+   Original: .pageHeadsection {
+     border-bottom: 1px #dddada solid;
+     padding-bottom: 15px;
+     clear: left; float: left; width: 100%;
+     margin-bottom: 20px;
+   }
+──────────────────────────────────────────────────────────── */
+.pageHeadsection {
+  border-bottom: 1px #dddada solid;
+  padding-bottom: 15px;
+  clear: left;
+  float: left;
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Page head title — float:left */
+.pageHead {
+  float: left;
+  font-size: 22px;
+  color: #991b2c;
+  text-transform: uppercase;
+
+  h2 {
+    color: #991b2c;
+    font-size: 22px;
+    margin: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}
+
+/* ── Breadcrumb — float:right ──────────────────────────────
+   Original: .breadcrumb.themeBreadcrumb {
+     background: 0 0; width: auto; padding: 0;
+     border-radius: 0; border: none;
+     float: right; margin-bottom: 0;
+   }
+──────────────────────────────────────────────────────────── */
+.breadcrumb.themeBreadcrumb {
+  background: transparent;
+  width: auto;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  float: right;
+  margin-bottom: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+
+  /* Separator: " - " between items */
+  > li + li::before {
+    content: "-";
+    padding: 0 6px;
+    color: #666;
+  }
+
+  li {
+    font-size: 15px;
+    font-weight: 400;
+    color: #000;
+
+    a {
+      color: #000;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover,
+    &.active {
+      color: #991b2c;
+    }
+
+    &.active { font-weight: 500; }
+  }
+}
+
+/* ── Quicklinks sidebar ────────────────────────────────────
+   From original CSS lines 19617–19700
+──────────────────────────────────────────────────────────── */
+.quicklinks__wrapper {
+  background-color: #f9f9f9;
+  border: 1px #d8d8d8 solid;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.quicklinks__wrapper-content {
+  background: #fff;
+
+  /* h3 — desktop heading bar */
+  h3 {
+    margin: 0;
+    background: #991b2c;
+    padding: 12px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+  }
+
+  /* h4 — mobile accordion (hidden on desktop) */
+  h4 {
+    margin: 0;
+    display: none;
+    background: #991b2c;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+
+    a {
+      display: block;
+      padding: 9px 12px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    span { float: right; line-height: 1.3; }
+  }
+}
+
+/* Quicklinks list */
+.quickLinks {
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+
+  li {
+    margin: 2px 0;
+    background-color: #dadada;
+
+    &:last-child { border: none; }
+
+    a {
+      display: block;
+      color: #333;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 8px 0 8px 10px;
+      text-decoration: none;
+      transition: 0.3s ease;
+
+      i.fa { margin-right: 5px; }
+    }
+
+    a:hover,
+    &.active a {
+      color: #fff;
+      margin-left: 5px;
+      text-decoration: none;
+      background: #00243c;
     }
   }
+}
+
+/* ── Normal content area ───────────────────────────────────
+   From: .normalContent { clear:left; float:left; width:100%; }
+──────────────────────────────────────────────────────────── */
+.normalContent {
+  clear: left;
+  float: left;
+  width: 100%;
+
+  p {
+    margin-bottom: 15px;
+    font-size: 15px;
+    color: #333;
+    line-height: 25px;
+    font-family: 'PT Sans', sans-serif;
+  }
+
+  h2 {
+    margin-bottom: 15px;
+    font-size: 19px;
+    font-weight: 700;
+    color: #333;
+    position: relative;
+    padding-bottom: 10px;
+    font-family: 'PT Sans', sans-serif;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 120px;
+      background: #991b2c;
+      height: 4px;
+      bottom: 0; left: 0;
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    margin-bottom: 20px;
+
+    th, td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    thead th {
+      background: #002649;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) { background: #f9f9f9; }
+  }
+
+  strong { color: #002649; }
+  a { color: #337ab7; }
+}
+
+/* Bootstrap 5 uses natural column order - content col-md-9 left, sidebar col-md-3 right */
+
+/* ── Mobile: show h4, hide h3 ──────────────────────────── */
+@media (max-width: 767px) {
+  .quicklinks__wrapper-content {
+    h3 { display: none; }
+    h4 { display: block; }
+  }
+
+  .pageHeadsection { flex-direction: column; align-items: flex-start; }
+  .breadcrumb.themeBreadcrumb { float: none; }
 }

@@ -1,59 +1,57 @@
 @use "../../core/variables" as *;
 @use "../../core/mixins" as *;
 
-/* ────────────────────────────────────────────────────────────
-   BASIC / HOMEPAGE SECTIONS
-──────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════
+   BASIC / HOMEPAGE — pixel-perfect match to dipsrohini.in
+   Sources: school-template.css, home-body-section-one/two css
+═══════════════════════════════════════════════════════════ */
 
 .clearfix::after { content: ""; display: table; clear: both; }
 
-.bodyContent { width: 100%; }
+.bodyContent        { width: 100%; }
 .bodyContent.homebody { padding: 110px 0 0; }
 
-/* ── Section heading ─────────────────────────────────────── */
-.sectionHead {
-  width: 100%; text-align: center;
-
-  h2 {
-    position: relative;
-    font-size: 40px;
-    display: inline-block;
-    font-weight: 400;
-    padding-bottom: 23px;
-
-    &.colorblack { color: #343434; }
-    &.colorwhite { color: #fff; }
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 60px; height: 4px;
-      background: #9a1428;
-      left: 50%; bottom: 0;
-      margin-left: -30px;
-    }
+/* ── Section heading ───────────────────────────────────────── */
+.sectionHead { width: 100%; text-align: center; }
+.sectionHead h2 {
+  position: relative;
+  font-size: 40px;
+  display: inline-block;
+  font-family: 'PT Sans', sans-serif;
+  font-weight: 400;
+  padding-bottom: 23px;
+  &.colorblack { color: #343434; }
+  &.colorwhite { color: #fff; }
+  &::after {
+    content: "";
+    position: absolute;
+    width: 60px; height: 4px;
+    background: #9a1428;
+    left: 50%; bottom: 0;
+    margin-left: -30px;
   }
 }
 
-/* ── About School section ────────────────────────────────── */
+/* ── About School ──────────────────────────────────────────── */
 .aboutScholl {
   width: 100%;
   padding: 0 50px;
   text-align: center;
 
   p {
+    font-family: 'PT Sans', sans-serif;
     font-size: 18px;
     line-height: 26px;
     color: #484848;
     margin-top: 29px;
     padding-bottom: 97px;
-
-    a, span { color: #9a1428; }
-    a { display: block; text-decoration: none; }
   }
+
+  p a, p span { color: #9a1428; }
+  p a { display: block; text-decoration: none; }
 }
 
-/* ── Events Wrap (LATEST UPDATES + FACILITIES) ───────────── */
+/* ── Events Wrap ───────────────────────────────────────────── */
 .eventsWrap {
   clear: left; float: left; width: 100%; padding-bottom: 80px;
 
@@ -62,10 +60,8 @@
   section h3 {
     font-size: 24px; color: #333; font-weight: 400;
     position: relative; padding-bottom: 11px; margin-bottom: 32px;
-
     i { display: inline-block; margin-right: 10px; }
     span { color: #9a1428; }
-
     &::after {
       content: ""; width: 50px; height: 4px;
       position: absolute; bottom: 0; left: 0;
@@ -74,6 +70,7 @@
   }
 }
 
+/* Event block */
 .event-block {
   margin: 4px 0 15px;
   position: relative;
@@ -82,14 +79,13 @@
     background: #f7f6f2;
     display: inline-block;
     width: 100%;
-    margin-left: 0 !important;     /* from home-body-section-one1090.css */
-    padding-left: 20px !important; /* from home-body-section-one1090.css */
+    margin-left: 0 !important;
+    padding-left: 20px !important;
     padding: 12px;
   }
 
   .event-content h4.event-title {
     font-size: 15px; line-height: 20px; font-weight: 400; margin: 0;
-
     a {
       color: #002649; text-decoration: none;
       transition: color 0.2s;
@@ -98,134 +94,287 @@
   }
 }
 
-/* Facilities accordion */
+/* ── Facilities Accordion — matches live site exactly ─────── */
+/*
+  The live site uses:
+  .facilitiesPanel .panel-group.accordion-stylished-left-border.accordion-icon-left
+  It shows fa-plus (f067) when collapsed, fa-minus (f068) when open
+  Blue square background (#076a9d) for icon
+*/
 .facilitiesPanel {
-  .panel { border-bottom: 1px solid #eee; margin-bottom: 0; }
+  .panel-group { margin-bottom: 15px; }
 
-  .panel-heading { padding: 0; background: none; }
+  .panel-group .panel-heading { padding: 0; }
 
-  .panel-heading .panel-title button {
-    display: block; width: 100%; text-align: left;
-    padding: 12px 15px; font-size: 16px; color: #002649;
-    font-weight: 500; background: none; border: none; cursor: pointer;
-    transition: color 0.2s;
-    &:hover { color: #9a1428; }
+  .panel-group.accordion-no-border .panel .panel-heading {
+    background-color: transparent;
+  }
+
+  .panel-group.accordion-no-border .panel .panel-heading .panel-title {
+    font-size: 14px;
+    position: relative;
+  }
+
+  /* The accordion row */
+  .panel-default > .panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+  }
+
+  .panel { border-bottom: 1px solid #ddd; margin-bottom: 0; border-radius: 0; }
+
+  /* Panel title link — with + / - icon on left */
+  .panel-group.accordion-stylished-left-border.accordion-icon-left .panel .panel-heading .panel-title a {
+    color: #111;
+    display: block;
+    padding: 10px 15px;
+    padding-left: 40px;
+    font-size: 18px;
+    text-decoration: none;
+    position: relative;
+
+    /* Minus icon (open state) */
+    &::before {
+      content: "\f068";
+      font-family: FontAwesome;
+      font-size: 12px;
+      left: 0;
+      padding: 6px 10px;
+      position: absolute;
+      color: #fff;
+      border-radius: 5px;
+      top: 5px;
+      background-color: #076a9d;
+    }
+
+    /* Plus icon (collapsed state) */
+    &.collapsed::before {
+      content: "\f067";
+      color: #fff;
+    }
+  }
+
+  .panel-group.accordion-stylished-left-border.accordion-icon-left .panel .panel-body {
+    padding-left: 40px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .panel-group.accordion-no-border .panel .panel-body {
+    border-top: none;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
   }
 
   .panel-body {
-    padding: 10px 15px 15px; font-size: 15px; color: #555; line-height: 1.6;
+    padding: 10px 15px;
+    font-size: 15px; color: #555; line-height: 1.6;
     a { color: #9a1428; text-decoration: none; }
   }
 }
 
-/* ── Important link panels ───────────────────────────────── */
+/* ── Important link panels ─────────────────────────────────── */
 .importantlink {
   display: flex;
-  justify-content: flex-start;
   position: relative;
   margin-bottom: -145px;
+  overflow: hidden;
 
   section {
-    width: 25%; overflow: hidden; position: relative;
-
+    width: 25%;
+    overflow: hidden;
+    position: relative; /* clips the scaled figure */
     a { display: block; text-decoration: none; }
-
     img { display: none; }
 
     figure {
-      width: 100%; min-height: 287px;
+      width: 100%;
+      min-height: 287px;
       background-size: cover !important;
       background-position: center center !important;
-      transition: all 0.3s;
-      display: block; overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      display: block;
     }
 
-    &:hover figure { transform: scale(1.2); }
+    &:hover figure {
+      transform: scale(1.2); /* figure scales inside clipped container */
+    }
 
     figcaption {
-      position: absolute; width: 100%; z-index: 100;
+      position: absolute;
+      width: 100%; z-index: 100;
       font-size: 22px; line-height: 28px;
-      background: rgba(0,27,46,0.5) !important;  /* from home-body-section-one1090.css */
       color: #fff;
-      padding: 15px !important;                   /* from home-body-section-one1090.css */
-      bottom: 0;
-      transition: all 0.3s;
+      padding: 0 15px;
+      bottom: 20px;
+      background: rgba(0,27,46,0.5) !important;
+      padding: 15px !important;
+      transition: all 0.3s ease-in-out;
     }
 
     &:hover figcaption {
       bottom: 30px;
-      color: #f5f5f5 !important;                  /* from home-body-section-one1090.css */
-      font-weight: 400 !important;                /* from home-body-section-one1090.css */
+      color: #f5f5f5 !important;
+      font-weight: 400 !important;
     }
   }
 }
 
-/* ── Facilities Container & Slider ───────────────────────── */
+/* ── Facilities container / slider section ─────────────────── */
 .facilitiesContainer {
-  width: 100%; background: #eee; padding-bottom: 87px;
+  width: 100%;
+  background: #eee;
+  padding-bottom: 87px;
 }
 
 .facilitieswrapbgwrap {
   width: 100%;
-  padding-top: 270px; padding-bottom: 120px;
+  padding-top: 200px;
+  padding-bottom: 120px;
   background: url('/images/generic/image-schule-paralax.jpg') top center / cover no-repeat;
   background-attachment: fixed;
 }
 
-.facilitiesSliderwrap { margin-top: -270px; }
+.facilitiesSliderwrap { margin-top: -200px; }
 
-/* Embla carousel for school info slider */
+/* Embla carousel */
 .facilities-embla { overflow: hidden; width: 100%; }
-.facilities-embla__container { display: flex; gap: 10px; }
-.facilities-embla__slide {
-  flex: 0 0 calc(33.333% - 7px);
-  min-width: 0;
+.facilities-embla__container { display: flex; gap: 0; }
 
-  @media (max-width: 992px) { flex: 0 0 calc(50% - 5px); }
+.facilities-embla__slide {
+  flex: 0 0 33.333%;
+  min-width: 0;
+  padding: 0 5px;
+
+  @media (max-width: 992px) { flex: 0 0 50%; }
   @media (max-width: 576px) { flex: 0 0 100%; }
 }
 
+/* Individual card — equal height via flex column */
 .facilitiesSlider {
-  margin-top: 40px; clear: left; float: left; width: 100%;
+  margin-top: 40px;
+  clear: left;
+  float: left;
+  width: 100%;
 
-  .item { width: 100%; padding: 0 5px; }
-  .item figure { width: 100%; img { width: 100%; height: auto; margin-bottom: 20px; } }
-  .item .content {
-    width: 100%; padding-bottom: 21px;
+  .facilities-embla__container {
+    align-items: stretch; /* makes all slides same height */
+  }
 
-    a {
-      display: block; font-size: 20px; line-height: 26px;
-      font-weight: 400; text-decoration: none; color: #000;
-      span { display: block; color: #9b0c23; font-size: 17px; margin-bottom: 10px; }
+  .item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    figure {
+      width: 100%;
+      flex-shrink: 0;
+      img { width: 100%; height: auto; margin-bottom: 0; display: block; }
     }
-    p { min-height: 80px; }
+
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 15px 0 0;
+
+      a {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        font-size: 20px;
+        line-height: 26px;
+        font-weight: 400;
+        text-decoration: none;
+        color: #000;
+
+        span {
+          display: block;
+          color: #9b0c23;
+          font-size: 17px;
+          margin-bottom: 10px;
+        }
+
+        p {
+          flex: 1; /* pushes .link to bottom */
+          min-height: 0;
+          margin-bottom: 10px;
+        }
+
+        .link {
+          display: block;
+          margin-top: auto; /* always at bottom */
+          color: #9a1428;
+          font-size: 14px;
+          font-weight: 500;
+          i { margin-right: 5px; }
+        }
+      }
+    }
   }
 }
 
+/* Slider controls */
 .facilities-controls {
-  display: flex; align-items: center; justify-content: center;
-  gap: 12px; margin-top: 20px;
+  display: flex;
+  flex-direction: column;   /* buttons row THEN dots row below */
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  clear: both;
 }
 
-.facilities-btn {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: #9a1428; color: #fff;
-  border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; transition: background 0.2s;
+/* Row 1: prev/next buttons */
+.owl-controls { width: 100%; }
+
+.owl-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.facilities-btn, .owl-prev, .owl-next {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: #9a1428;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: background 0.2s;
   &:hover { background: #890a1e; }
 }
 
-.facilities-dots { display: flex; gap: 6px; }
-.facilities-dot {
-  width: 10px; height: 10px; border-radius: 50%;
-  background: #ccc; border: none; cursor: pointer; transition: background 0.2s;
+/* Row 2: dot indicators below buttons */
+.facilities-dots, .owl-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  align-items: center;
+}
+
+.facilities-dot, .owl-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  padding: 0;
   &.active { background: #9a1428; }
 }
 
-/* ── About school link boxes ─────────────────────────────── */
+/* ── About school link boxes ───────────────────────────────── */
 .aboutschoollink {
-  width: 100%; background: #202d47; padding: 100px 0 65px;
+  width: 100%;
+  background: #202d47;
+  padding: 100px 0 65px;
 
   section { width: 100%; }
   section h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 18px; letter-spacing: 1px; min-height: 50px; }
@@ -233,80 +382,83 @@
   section a { color: #3db166; font-size: 14px; text-decoration: none; transition: color 0.3s; &:hover { color: #fff; } }
 }
 
-/* ── Bulletin board ──────────────────────────────────────── */
+/* ── Bulletin board — exact from home-body-section-two1091 + school-template ─ */
 .bulletinboardwrap {
   width: 100%;
-  background: #f3f3f3;   /* from home-body-section-two1091.css */
+  background: #f3f3f3;
   position: relative;
   overflow: hidden;
   clear: both;
 
   &::after {
-    height: 53px;         /* from home-body-section-two1091.css */
+    height: 123px;
     width: 30%;
     background: #9a1428;
     content: "";
-    position: absolute; right: 0; top: 0;
+    position: absolute;
+    right: 0; top: 0;
   }
 
   .head {
     float: right;
     background: #9a1428;
-    min-height: 53px;     /* from home-body-section-two1091.css */
-    line-height: 53px;    /* from home-body-section-two1091.css */
-    padding-left: 36px;   /* from home-body-section-two1091.css */
-    font-size: 22px;      /* from home-body-section-two1091.css */
+    min-height: 123px;
+    line-height: 123px;
+    padding-left: 56px;
+    font-size: 29px;
     color: #fff;
-    font-weight: 600;     /* from home-body-section-two1091.css */
-    width: 22%;           /* from home-body-section-two1091.css */
-    position: relative; z-index: 1;
+    font-weight: 700;
+    width: 32%;
+    position: relative;
+    z-index: 1;
   }
 
   .contentwrap {
     float: left;
-    width: 78%;           /* from home-body-section-two1091.css */
+    width: 68%;
     position: relative;
-    padding-right: 15px;  /* from home-body-section-two1091.css */
+    padding-right: 150px;
     padding-left: 20px;
-    margin-top: 0;        /* from home-body-section-two1091.css */
-    padding-bottom: 0;    /* from home-body-section-two1091.css */
+    margin-top: 29px;
+    padding-bottom: 34px;
+    min-height: 123px;
     display: flex;
     align-items: center;
-    min-height: 53px;
   }
 
-  .contentwrap ul {
-    list-style: none; margin: 0; padding: 0;
-    display: flex; flex-wrap: nowrap; align-items: center; gap: 50px;
-    overflow: hidden; white-space: nowrap; width: 100%;
+  .contentwrap .bulletin-ticker { width: 100%; overflow: hidden; }
+
+  .contentwrap ul li a {
+    font-size: 15px;
+    color: #163269;
+    font-weight: 500;
+    text-decoration: none;
+    &:hover { color: #9a1428; }
   }
 
-  .contentwrap ul li {
-    flex-shrink: 0;
-    font-size: 15px;      /* from home-body-section-two1091.css */
-
-    span {
-      color: #9a1428;     /* from home-body-section-two1091.css */
-      font-weight: 500;   /* from home-body-section-two1091.css */
-      margin-right: 5px;
-    }
-
-    a {
-      color: #163269;     /* from home-body-section-two1091.css */
-      font-weight: 500;   /* from home-body-section-two1091.css */
-      text-decoration: none;
-      &:hover { color: #9a1428; }
-    }
+  .contentwrap ul li span {
+    font-size: 15px;
+    color: #9a1428;
+    font-weight: 500;
   }
 }
 
-/* Scrolling bulletin ticker */
 .bulletin-ticker { overflow: hidden; }
+
 .bulletin-ticker__list {
-  display: flex; list-style: none; margin: 0; padding: 0;
-  gap: 50px; animation: scrollLeft 25s linear infinite;
+  display: flex;
+  list-style: none; margin: 0; padding: 0;
+  gap: 50px;
   width: max-content;
+  animation: scrollLeft 25s linear infinite;
   &.paused { animation-play-state: paused; }
+
+  li {
+    white-space: nowrap;
+    font-size: 15px;
+    span { color: #9a1428; font-weight: 500; margin-right: 6px; }
+    a { color: #163269; font-weight: 500; text-decoration: none; &:hover { color: #9a1428; } }
+  }
 }
 
 @keyframes scrollLeft {
@@ -314,14 +466,16 @@
   100% { transform: translateX(-50%); }
 }
 
-/* ── Latest Updates ticker ───────────────────────────────── */
+/* ── Latest updates ticker ─────────────────────────────────── */
 .latest-updates-ticker {
-  height: 274px; overflow: hidden;
-  border: 1px solid #eee; border-radius: 2px; margin-bottom: 10px;
+  height: 274px;
+  overflow: hidden;
+  margin-bottom: 10px;
 }
 
 .latest-updates-inner {
-  display: flex; flex-direction: column;
+  display: flex;
+  flex-direction: column;
   animation: scrollUp 50s linear infinite;
   &.paused { animation-play-state: paused; }
 }
@@ -331,12 +485,17 @@
   100% { transform: translateY(-50%); }
 }
 
-/* ── Admission Enquiry — from admission-enquiry-homepage3584.css ── */
+/* ── Admission Enquiry ─────────────────────────────────────── */
+section.enquiry-section {
+  background-color: #e8e6e6;
+  padding: 30px 0;  /* controlled symmetric spacing */
+}
+
 .enquiry-box {
   background: #fff;
   padding: 20px;
   border-radius: 20px;
-  margin: 30px auto;
+  margin: 0 auto;   /* no top/bottom margin - section padding handles it */
   max-width: 900px;
   box-shadow: 0 0 20px rgba(0,0,0,.05);
 
@@ -367,46 +526,25 @@
     font-size: 14px;
     background: transparent;
     transition: border-color 0.2s;
-
     &:focus { border-bottom-color: #9b0c23; }
-    &::placeholder { color: #999; font-size: 13px; }
+    &::placeholder { color: #999; font-size: 13px; opacity: 1; }
   }
 
-  select.form-control {
-    appearance: auto;
-    cursor: pointer;
-  }
-
+  select.form-control { appearance: auto; cursor: pointer; }
   textarea.form-control { resize: none; }
 
   .btn-submit {
     background: #002649;
     border-radius: 30px;
     padding: 10px 35px;
-    border: none;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
+    border: none; color: #fff;
+    font-size: 16px; cursor: pointer;
     transition: background 0.2s;
     &:hover { background: #001a35; }
   }
 }
 
-/* Helper */
-.c-button {
-  display: inline-block; padding: 8px 20px;
-  font-size: 14px; text-decoration: none; cursor: pointer; border: none;
-  transition: all 0.2s;
-  &.c-button-radius { border-radius: 25px; }
-  &.c-button-themered {
-    background: #9b0c23; color: #fff;
-    &:hover { background: #890a1e; }
-  }
-}
-.has-margin-top-15 { margin-top: 15px !important; }
-.has-margin-bottom-15 { margin-bottom: 15px !important; }
-
-/* ── Quick links sidebar ─────────────────────────────────── */
+/* ── Quick links sidebar ───────────────────────────────────── */
 .important-links.quickLinksWrap {
   background: #f7f7f7;
   border: 1px solid #eee;
@@ -421,9 +559,7 @@
 
   .listitem {
     list-style: none; margin: 0; padding: 0;
-
     li { border-bottom: 1px solid #e5e5e5; &:last-child { border-bottom: 0; } }
-
     a {
       display: block; padding: 10px 20px;
       font-size: 15px; color: #002649; text-decoration: none;
@@ -434,6 +570,7 @@
   }
 }
 
+/* ── Inner page ────────────────────────────────────────────── */
 .inner-content {
   font-size: 16px; line-height: 1.7; color: #444;
   h2 { color: #002649; margin-bottom: 15px; }
@@ -449,7 +586,19 @@
 
 .innerBodySection { padding: 40px 0 80px; }
 
-/* ── Responsive ─────────────────────────────────────────── */
+/* ── Utility ───────────────────────────────────────────────── */
+.c-button {
+  display: inline-block; padding: 8px 20px;
+  font-size: 14px; cursor: pointer; border: none;
+  transition: all 0.2s; text-decoration: none;
+  &.c-button-radius { border-radius: 25px; }
+  &.c-button-themered { background: #9b0c23; color: #fff; &:hover { background: #890a1e; color: #fff; } }
+}
+
+.has-margin-top-15    { margin-top: 15px    !important; }
+.has-margin-bottom-15 { margin-bottom: 15px !important; }
+
+/* ── Responsive ────────────────────────────────────────────── */
 @media (max-width: 767px) {
   .bodyContent.homebody { padding: 75px 0 0; }
   .aboutScholl { padding: 0 15px; p { padding-bottom: 30px; } }
@@ -465,13 +614,12 @@
   }
 
   .bulletinboardwrap {
-    .head { width: 100%; float: none; min-height: auto; line-height: 50px; font-size: 18px; padding: 0 15px; }
-    .contentwrap { width: 100%; float: none; padding: 10px 15px; }
     &::after { display: none; }
+    .head { width: 100%; float: none; min-height: auto; line-height: 50px; font-size: 20px; padding: 0 15px; }
+    .contentwrap { width: 100%; float: none; padding: 10px 15px; margin-top: 0; }
   }
 
   .facilitieswrapbgwrap { background-attachment: scroll; }
-
   .innerBodySection { padding: 20px 0 40px; }
 }
 

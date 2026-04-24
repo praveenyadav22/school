@@ -1,23 +1,29 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
 
-/* ────────────────────────────────────────────────────────────
-   HEADER  (matches dipsrohini.in exactly)
-──────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════
+   HEADER — exact from school-template.css
+   IMPORTANT: Header is position:ABSOLUTE initially.
+   It floats over the homepage banner and inner page banner.
+   It becomes position:FIXED only after JS adds .fixed class on scroll.
+═══════════════════════════════════════════════════════════ */
+
 .header {
-  position: absolute;
+  position: absolute;   /* overlaps content below */
   z-index: 1000;
   width: 100%;
+  top: 0;
+  left: 0;
 }
 
-/* ── Top bar (dark navy) ─────────────────────────────────── */
+/* ── Top bar ──────────────────────────────────────────────── */
 .header__top {
   height: 35px;
   background: #002649;
   overflow: hidden;
 }
 
-/* ── Thought ticker (red) ───────────────────────────────── */
+/* ── Thought of the Day ───────────────────────────────────── */
 .header__top.thought {
   height: 40px;
   background-color: #9b0c23;
@@ -28,6 +34,7 @@
     align-items: center;
     width: 100%;
     height: 40px;
+    overflow: hidden;
   }
 
   .head {
@@ -41,6 +48,7 @@
     font-weight: 700;
     color: #fff;
     background-color: #890a1e;
+    white-space: nowrap;
   }
 
   .content {
@@ -65,7 +73,7 @@
   }
 }
 
-/* ── Top social icons (left) ────────────────────────────── */
+/* ── Social icons ─────────────────────────────────────────── */
 ul.topsociallink {
   float: left;
   list-style: none;
@@ -76,15 +84,13 @@ ul.topsociallink {
     float: left;
     margin-left: 10px;
     margin-top: 5px;
-
     &:first-child { margin-left: 0; }
 
     strong { color: #fff; font-size: 13px; line-height: 25px; display: inline-block; }
 
     a {
       display: block;
-      width: 22px;
-      height: 22px;
+      width: 22px; height: 22px;
       background-color: #8396ad;
       border-radius: 50%;
       color: #002147;
@@ -93,19 +99,17 @@ ul.topsociallink {
       line-height: 22px;
       transition: background 0.3s;
       text-decoration: none;
-      &:hover { background-color: rgba(131,150,173,.7); }
+      &:hover { background-color: rgba(131,150,173,0.7); }
     }
   }
 }
 
-/* ── Top quick links (right) ────────────────────────────── */
+/* ── Quick links top right ────────────────────────────────── */
 .top_link {
   float: right;
 
   ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    list-style: none; margin: 0; padding: 0;
 
     li {
       float: left;
@@ -113,42 +117,35 @@ ul.topsociallink {
       margin-top: 8px;
 
       &:first-child {
-        margin-left: 0;
-        margin-top: 3px;
-        a {
-          background-color: #587c9c;
-          border-radius: 4px;
-          padding: 5px;
-        }
+        margin-left: 0; margin-top: 3px;
+        a { background-color: #587c9c; border-radius: 4px; padding: 5px; }
       }
 
       a {
         display: block;
-        font-size: 13px;
-        color: #fff;
-        font-weight: 400;
-        text-decoration: none;
-        transition: opacity 0.2s;
+        font-size: 13px; color: #fff; font-weight: 400;
+        text-decoration: none; transition: opacity 0.2s;
         &:hover { opacity: 0.8; }
       }
     }
   }
 }
 
-/* ── Header bottom / navbar ─────────────────────────────── */
+/* ── Header bottom / nav bar ──────────────────────────────── */
 .header__bottom {
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   transition: background 0.3s;
 
+  /* Becomes fixed on scroll */
   &.fixed {
     position: fixed;
-    background-color: #fff;
-    box-shadow: 0 3px 5px rgba(57,63,72,.3);
+    background-color: rgba(255, 255, 255, 1);
+    animation: smoothScroll 1s forwards;
+    box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
     height: 72px;
     z-index: 99999;
     width: 100%;
     top: 0;
-    animation: smoothScroll 0.5s forwards;
   }
 }
 
@@ -157,6 +154,7 @@ ul.topsociallink {
   100% { transform: translateY(0); }
 }
 
+/* ── Nav wrapper ─────────────────────────────────────────── */
 .mainNavWrap {
   width: 100%;
   position: relative;
@@ -168,15 +166,12 @@ ul.topsociallink {
   width: 100%;
   min-height: 98px;
   position: relative;
-  display: flex;
-  align-items: center;
 }
 
-/* ── Logo ───────────────────────────────────────────────── */
+/* ── Logo ────────────────────────────────────────────────── */
 .logo {
   float: left;
-  margin-top: 20px;
-  flex-shrink: 0;
+  margin-top: 30px;
 
   a {
     display: block;
@@ -186,13 +181,12 @@ ul.topsociallink {
     img { width: 100%; height: 100%; object-fit: contain; }
   }
 }
-
 .header__bottom.fixed .logo { margin-top: 8px; }
 
-/* ── Mobile App button ──────────────────────────────────── */
+/* ── Mobile App button ───────────────────────────────────── */
 .applicationlink {
   float: right;
-  margin-top: 26px;
+  margin-top: 30px;
   margin-left: 28px;
 
   a {
@@ -203,6 +197,8 @@ ul.topsociallink {
     background-color: #9b0c23;
     font-size: 16px;
     color: #f0f0f3;
+    font-family: 'PT Serif', Arial, sans-serif;
+    font-weight: 400;
     border-radius: 30px;
     transition: all 0.3s;
     text-decoration: none;
@@ -210,136 +206,152 @@ ul.topsociallink {
     &:hover { background-color: #f7f7f7; color: #222730; }
   }
 }
-
 .header__bottom.fixed .applicationlink { margin-top: 12px; }
 
-/* ── Desktop nav ────────────────────────────────────────── */
+/* ── Desktop navigation ──────────────────────────────────── */
 #mainNavigationERP {
   float: right;
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
+}
 
-  > ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
+/* Hamburger inside nav — hidden on desktop */
+#mainNavigationERP .mobileNav_button {
+  display: none;
+}
 
-    > li {
-      position: relative;
-      margin-left: 28px;
+#mainNavigationERP > ul {
+  list-style: none;
+  margin: 0; padding: 0;
+}
 
-      > a {
-        display: block;
-        color: #002649;
-        font-size: 19px;
-        font-weight: 400;
-        padding: 37px 0;
-        text-decoration: none;
-        position: relative;
-        transition: color 0.3s;
-        white-space: nowrap;
+#mainNavigationERP > ul > li {
+  float: left;
+  margin-left: 28px;
+  position: relative;
 
-        &::before {
-          content: "";
-          position: absolute;
-          height: 3px;
-          width: 0;
-          bottom: 0;
-          left: 0;
-          background: #9a1428;
-          transition: width 0.3s;
-        }
-      }
+  > a {
+    color: #002649;
+    font-family: 'PT Serif', Arial, sans-serif;
+    font-size: 19px;
+    line-height: 24px;
+    font-weight: 400;
+    display: block;
+    position: relative;
+    padding: 42px 0;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.3s;
 
-      &:hover > a {
-        color: #9a1428;
-        &::before { width: 100%; }
-      }
-
-      /* Dropdown */
-      > ul {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        z-index: 10000;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        box-shadow: 0 2px 10px rgba(0,0,0,.15);
-        min-width: 200px;
-
-        li a {
-          display: block;
-          padding: 10px;
-          font-size: 15px;
-          color: #000;
-          background: #fff;
-          border-bottom: 1px dotted #106a9c;
-          width: 200px;
-          text-decoration: none;
-          letter-spacing: 1px;
-          transition: all 0.2s;
-          &:hover { color: #fff; background: #9a1428; }
-        }
-        li:last-child a { border-bottom: 0; }
-      }
-
-      &:hover > ul { display: block; }
-
-      /* Keep last dropdown from going offscreen */
-      &:last-child > ul { right: 0; left: auto; }
+    &::before {
+      content: "";
+      position: absolute;
+      height: 3px;
+      width: 0;
+      bottom: 0; left: 0;
+      background: #9a1428;
+      transition: width 0.3s;
     }
   }
+
+  &:hover > a {
+    color: #9a1428;
+    &::before { width: 100%; }
+  }
+
+  /* Dropdown */
+  > ul {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0;
+    z-index: 10000;
+    list-style: none;
+    margin: 0; padding: 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    min-width: 200px;
+
+    li a {
+      display: block;
+      padding: 10px;
+      font-size: 15px;
+      color: #000;
+      background: #fff;
+      border-bottom: 1px dotted #106a9c;
+      width: 250px; /* exact from school.css override */
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: all 0.2s;
+      &:hover { color: #fff; background: #9a1428; }
+    }
+
+    li:last-child a { border-bottom: 0; }
+  }
+
+  &:hover > ul { display: block; }
+  &:last-child > ul { right: 0; left: auto; }
 }
 
 .header__bottom.fixed #mainNavigationERP > ul > li > a { padding: 23px 0; }
 
-/* ── Mobile hamburger — HIDDEN on desktop ───────────────── */
-.mobileNav_button {
-  display: none !important; /* Hidden on large screens */
-  color: #9a1428;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  position: absolute;
-  right: 0;
-  top: 15px;
-
-  span { font-size: 15px; text-transform: uppercase; }
-
-  .navbar-btn {
-    background: none;
-    border: none;
-    padding: 0;
+/* ── Mobile breakpoints ──────────────────────────────────── */
+@media (max-width: 1199px) {
+  /* Show hamburger inside nav */
+  #mainNavigationERP .mobileNav_button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #9a1428;
     cursor: pointer;
+    height: 50px;
+    font-size: 15px;
+    text-transform: uppercase;
+    position: absolute;
+    right: 0;
+    top: 12px;
+  }
 
-    .icon-bar {
-      display: block;
-      width: 25px;
-      height: 3px;
-      background: #9a1428;
-      margin-bottom: 4px;
-      &:last-child { margin-bottom: 0; }
-    }
+  /* Hide desktop dropdown nav items */
+  #mainNavigationERP > ul { display: none; }
+
+  .applicationlink { display: none; }
+  .logo { margin-top: 12px; }
+  .header__bottom { min-height: 60px; }
+  .header__bottom.fixed { height: 60px; }
+  .navigationLogoWrappper { min-height: 60px; }
+}
+
+@media (max-width: 767px) {
+  .header__top { display: none; }
+  .header__top.thought { display: none; }
+}
+
+/* Hamburger button styling */
+.navbar-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-left: 6px;
+
+  .icon-bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #9a1428;
+    margin-bottom: 4px;
+    &:last-child { margin-bottom: 0; }
   }
 }
 
-/* ── Mobile overlay + drawer ────────────────────────────── */
+/* ── Mobile overlay & drawer ─────────────────────────────── */
 .mobile-nav-overlay {
   display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.5);
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5);
   z-index: 9998;
   &.open { display: block; }
 }
 
 .mobile-drawer {
-  position: fixed;
-  top: 0; left: 0;
+  position: fixed; top: 0; left: 0;
   width: 280px; height: 100%;
   background: #002649;
   z-index: 9999;
@@ -351,88 +363,41 @@ ul.topsociallink {
   &__header {
     padding: 15px 20px;
     background: #9b0c23;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
     span { color: #fff; font-size: 16px; font-weight: 600; }
-    button { background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; line-height: 1; }
+    button { background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; }
   }
 
   &__nav {
     padding: 10px 0;
-
     ul {
-      list-style: none;
-      margin: 0; padding: 0;
-
+      list-style: none; margin: 0; padding: 0;
       li {
-        border-bottom: 1px solid rgba(255,255,255,.1);
-
+        border-bottom: 1px solid rgba(255,255,255,0.1);
         a, button {
-          display: block;
-          padding: 12px 20px;
-          color: #ccc;
-          font-size: 15px;
-          text-decoration: none;
-          background: none;
-          border: none;
-          width: 100%;
-          text-align: left;
-          cursor: pointer;
-          transition: all 0.2s;
-          &:hover { color: #fff; background: rgba(255,255,255,.05); }
+          display: block; padding: 12px 20px;
+          color: #ccc; font-size: 15px; text-decoration: none;
+          background: none; border: none; width: 100%;
+          text-align: left; cursor: pointer; transition: all 0.2s;
+          &:hover { color: #fff; background: rgba(255,255,255,0.05); }
         }
-
         ul {
-          background: rgba(0,0,0,.2);
+          background: rgba(0,0,0,0.2);
           display: none;
           &.open { display: block; }
-          li a {
-            padding-left: 35px;
-            font-size: 14px;
-            color: #aaa;
-          }
+          li a { padding-left: 35px; font-size: 14px; color: #aaa; }
         }
       }
     }
   }
 }
 
-/* ── RESPONSIVE ─────────────────────────────────────────── */
-/* Show hamburger only below 1024px */
-@media (max-width: 1023px) {
-  .mobileNav_button { display: flex !important; }
-  #mainNavigationERP { display: none; }
-  .applicationlink { display: none; }
-  .logo { margin-top: 12px; }
-  .header__bottom { min-height: 60px; }
-  .header__bottom.fixed { height: 60px; }
-  .navigationLogoWrappper { min-height: 60px; }
-}
-
-@media (max-width: 767px) {
-  .header__top { display: none; }
-  .header__top.thought { display: none; }
-  .header__bottom { padding-top: 0; }
-}
-
-/* Scroll-to-top */
+/* ── Scroll to top ────────────────────────────────────────── */
 .scroll-top {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 45px;
-  height: 45px;
-  font-size: 20px;
-  color: #fff;
-  border: none;
-  background: #9a1428;
-  cursor: pointer;
-  z-index: 9989;
-  border-radius: 4px;
-  transition: background 0.2s;
+  position: fixed; right: 20px; bottom: 20px;
+  display: flex; align-items: center; justify-content: center;
+  width: 45px; height: 45px; font-size: 20px; color: #fff;
+  border: none; background: #9a1428; cursor: pointer;
+  z-index: 9989; border-radius: 4px; transition: background 0.2s;
   &:hover { background: #890a1e; }
 }

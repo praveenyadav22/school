@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
 
 const THOUGHTS = [
-  `"Education is not preparation for life; education is life itself." – John Dewey`,
+  `" Education is not preparation for life, education is life itself". John Dewey`,
   `"An investment in knowledge pays the best interest." – Benjamin Franklin`,
   "Always do your best. What you plant now, you will harvest later.",
   "Rise, Shine and smile — each new day has a new beginning and a new hope.",
@@ -26,6 +26,7 @@ const NAV_LINKS = [
       { label: "From the Manager's Desk", href: "/about/managers-desk" },
       { label: "From the Principal's Desk", href: "/about/principals-desk" },
       { label: "Managing Committee", href: "/about/managing-committee" },
+      { label: "School Tour", href: "https://www.youtube.com/watch?v=rVYVSBGEBuw", external: true },
       { label: "Anger Free School", href: "/about/anger-free-school" },
       { label: "Mandatory Public Disclosure", href: "/about/mandatory-disclosure" },
     ],
@@ -56,6 +57,7 @@ const NAV_LINKS = [
       { label: "Safety Measure", href: "/school-info/safety-measure" },
       { label: "School Activities", href: "/school-info/school-activities" },
       { label: "International Policy", href: "/school-info/international-policy" },
+      { label: "School Safety", href: "/school-info/school-safety" },
       { label: "Best Practices", href: "/school-info/best-practices" },
       { label: "Publications", href: "/school-info/publications" },
     ],
@@ -67,6 +69,7 @@ const NAV_LINKS = [
       { label: "School Transport", href: "/facilities/school-transport" },
       { label: "Meal Plan", href: "/facilities/meal-plan" },
       { label: "Remedial & Enrichment Classes", href: "/facilities/remedial-enrichment" },
+      { label: "Registration of New Voter", href: "/facilities/new-voter" },
     ],
   },
   {
@@ -83,20 +86,18 @@ export default function Header() {
   const [thoughtIdx, setThoughtIdx] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [openMobileMenu, setOpenMobileMenu] = useState<string | null>(null);
-  const thoughtsLen = THOUGHTS.length;
+  const len = THOUGHTS.length;
 
   useEffect(() => {
-    const handleScroll = () => setIsFixed(window.scrollY > 80);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setIsFixed(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setThoughtIdx((i) => (i + 1) % thoughtsLen);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, [thoughtsLen]);
+    const t = setInterval(() => setThoughtIdx((i) => (i + 1) % len), 4000);
+    return () => clearInterval(t);
+  }, [len]);
 
   const closeDrawer = useCallback(() => {
     setDrawerOpen(false);
@@ -106,7 +107,7 @@ export default function Header() {
   return (
     <>
       <header className="header">
-        {/* Top bar */}
+        {/* ── Top bar ─────────────────────────────── */}
         <div className="header__top">
           <div className="container">
             <div className="row">
@@ -136,7 +137,7 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Thought of the Day */}
+        {/* ── Thought of the Day ───────────────────── */}
         <div className="header__top thought">
           <div className="container">
             <div className="row">
@@ -154,57 +155,74 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Main nav */}
+        {/* ── Main navbar ──────────────────────────── */}
         <div className={`header__bottom${isFixed ? " fixed" : ""}`}>
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
                 <div className="mainNavWrap">
                   <div className="navigationLogoWrappper">
+                    {/* Logo */}
                     <div className="logo">
                       <Link href="/">
-                        <Image src="/images/logo.png" alt="De Indian Public School" width={206} height={56} priority style={{ objectFit: "contain" }} />
+                        <Image
+                          src="/images/logo.png"
+                          alt="De Indian Public School"
+                          width={206}
+                          height={56}
+                          priority
+                          style={{ objectFit: "contain" }}
+                        />
                       </Link>
                     </div>
+
+                    {/* Mobile App button */}
                     <div className="applicationlink">
                       <Link href="/mobile-application">Mobile App</Link>
                     </div>
-                    {/* Desktop nav - hidden on mobile via CSS */}
+
+                    {/* Nav — mobileNav_button INSIDE nav, matching original HTML */}
                     <nav id="mainNavigationERP">
+                      {/* Hamburger — inside nav, display:none on desktop via CSS */}
+                      <div className="mobileNav_button">
+                        Nav{" "}
+                        <button
+                          className="navbar-btn collapsed"
+                          aria-label="Open navigation"
+                          onClick={() => setDrawerOpen(true)}
+                        >
+                          <span className="icon-bar" />
+                          <span className="icon-bar" />
+                          <span className="icon-bar" />
+                        </button>
+                      </div>
+
                       <ul>
                         {NAV_LINKS.map((item) => (
                           <li key={item.label} className={item.children ? "has-sub" : ""}>
-                            {item.href ? (
-                              <Link href={item.href} className={pathname === item.href ? "active" : ""}>{item.label}</Link>
+                            {item.children ? (
+                              <>
+                                <span className="submenu-button" />
+                                <a href="#" onClick={(e) => e.preventDefault()}>{item.label}</a>
+                                <ul>
+                                  {item.children.map((child) => (
+                                    <li key={child.label}>
+                                      {(child as any).external ? (
+                                        <a href={child.href} target="_blank" rel="noopener noreferrer">{child.label}</a>
+                                      ) : (
+                                        <Link href={child.href} className={pathname === child.href ? "active" : ""}>{child.label}</Link>
+                                      )}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </>
                             ) : (
-                              <a href="#" onClick={(e) => e.preventDefault()}>{item.label}</a>
-                            )}
-                            {item.children && (
-                              <ul>
-                                {item.children.map((child) => (
-                                  <li key={child.href}>
-                                    {(child as any).external ? (
-                                      <a href={child.href} target="_blank" rel="noopener noreferrer">{child.label}</a>
-                                    ) : (
-                                      <Link href={child.href}>{child.label}</Link>
-                                    )}
-                                  </li>
-                                ))}
-                              </ul>
+                              <Link href={item.href!} className={pathname === item.href ? "active" : ""}>{item.label}</Link>
                             )}
                           </li>
                         ))}
                       </ul>
                     </nav>
-                    {/* Mobile hamburger - only visible on small screens via CSS */}
-                    <div className="mobileNav_button">
-                      <span>Nav</span>
-                      <button className="navbar-btn collapsed" aria-label="Open menu" onClick={() => setDrawerOpen(true)}>
-                        <span className="icon-bar" />
-                        <span className="icon-bar" />
-                        <span className="icon-bar" />
-                      </button>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -213,14 +231,14 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Overlay */}
+      {/* Mobile overlay */}
       <div className={`mobile-nav-overlay${drawerOpen ? " open" : ""}`} onClick={closeDrawer} aria-hidden="true" />
 
-      {/* Mobile Drawer */}
+      {/* Mobile drawer */}
       <nav className={`mobile-drawer${drawerOpen ? " open" : ""}`} aria-label="Mobile navigation">
         <div className="mobile-drawer__header">
           <span>Menu</span>
-          <button onClick={closeDrawer} aria-label="Close menu"><X size={20} /></button>
+          <button onClick={closeDrawer} aria-label="Close"><X size={20} /></button>
         </div>
         <div className="mobile-drawer__nav">
           <ul>
@@ -236,7 +254,7 @@ export default function Header() {
                 {item.children && (
                   <ul className={openMobileMenu === item.label ? "open" : ""}>
                     {item.children.map((child) => (
-                      <li key={child.href}>
+                      <li key={child.label}>
                         {(child as any).external ? (
                           <a href={child.href} target="_blank" rel="noopener noreferrer" onClick={closeDrawer}>{child.label}</a>
                         ) : (

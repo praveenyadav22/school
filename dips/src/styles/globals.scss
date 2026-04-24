@@ -1,20 +1,20 @@
 @charset "utf-8";
 
-// ── Vendors ──────────────────────────────────────────────────
+// ── Vendors ───────────────────────────────────────────────────
 @use 'vendors/bootstrap.min';
 
-// ── Core ─────────────────────────────────────────────────────
+// ── Core ──────────────────────────────────────────────────────
 @use 'custom/core/variables' as *;
 @use 'custom/core/mixins' as *;
 @use 'custom/core/typography';
 
-// ── Generic utilities ─────────────────────────────────────────
+// ── Generic utilities ──────────────────────────────────────────
 @use 'custom/components/generic/basic';
 @use 'custom/components/generic/colors';
 @use 'custom/components/generic/loader';
 @use 'custom/components/generic/sizes';
 
-// ── Components ────────────────────────────────────────────────
+// ── Components ─────────────────────────────────────────────────
 @use 'custom/components/animation';
 @use 'custom/components/banner';
 @use 'custom/components/button';
@@ -30,12 +30,12 @@
 @use 'custom/components/pagination';
 @use 'custom/components/vacancy';
 
-// ── Layout ────────────────────────────────────────────────────
+// ── Layout ─────────────────────────────────────────────────────
 @use 'custom/layout/header';
 @use 'custom/layout/footer';
 @use 'custom/layout/breadcrumb';
 
-// ── Global base ───────────────────────────────────────────────
+// ── Global reset & base ────────────────────────────────────────
 *,
 *::before,
 *::after { box-sizing: border-box; }
@@ -44,10 +44,11 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 15px;
   color: #555;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 img, video { max-width: 100%; height: auto; }
@@ -55,29 +56,15 @@ a { color: inherit; }
 
 .pull-left  { float: left  !important; }
 .pull-right { float: right !important; }
-.mar-0 { margin: 0 !important; }
-.white { color: #fff; }
+.mar-0      { margin: 0    !important; }
+.white      { color: #fff; }
 .text-center { text-align: center; }
+
 .sr-only {
   position: absolute; width: 1px; height: 1px;
   padding: 0; margin: -1px; overflow: hidden;
   clip: rect(0,0,0,0); border: 0;
 }
 
-// ── Bootstrap-style row fix for footer columns ────────────────
-.footer .footer_linkswrap .row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.footer .footer_linkswrap .col-md-3 {
-  flex: 0 0 25%;
-  max-width: 25%;
-  padding-right: 15px;
-  padding-left: 15px;
-
-  @media (max-width: 767px) {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-}
+// Font Awesome icons display fix
+.fa { display: inline-block; }

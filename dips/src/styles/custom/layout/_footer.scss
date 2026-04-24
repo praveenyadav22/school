@@ -1,12 +1,10 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
 
-/* ────────────────────────────────────────────────────────────
-   FOOTER  (matches dipsrohini.in exactly)
-──────────────────────────────────────────────────────────── */
-.footer {
-  background: #efeff3;
-}
+/* ═══════════════════════════════════════════════════════════
+   FOOTER — pixel-perfect
+═══════════════════════════════════════════════════════════ */
+.footer { background: #efeff3; }
 
 .footer .footer_linkswrap {
   width: 100%;
@@ -14,24 +12,37 @@
   padding: 70px 0 80px;
   overflow: hidden;
 
+  /* Force 4-column flex layout */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+
+  .col-md-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    @media (max-width: 767px) {
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+
   section {
     width: 100%;
-    margin-bottom: 0;
 
     h1 {
-      font-size: 20px;
-      letter-spacing: 1px;
-      font-weight: 400;
+      font-size: 20px; letter-spacing: 1px; font-weight: 400;
+      color: #fff; padding-bottom: 15px; margin-bottom: 20px;
       position: relative;
-      color: #fff;
-      padding-bottom: 15px;
-      margin-bottom: 20px;
-
       &::after {
-        content: "";
-        width: 50px; height: 2px;
-        position: absolute;
-        bottom: 0; left: 0;
+        content: ""; width: 50px; height: 2px;
+        position: absolute; bottom: 0; left: 0;
         background: #106a9c;
       }
     }
@@ -58,19 +69,14 @@
   ul.socialicon {
     list-style: none; margin: 0; padding: 0;
     clear: left; float: left; width: 100%;
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;
 
-    li {
-      float: left; margin-right: 11px; margin-top: 8px;
-
-      a {
-        display: block; width: 30px; height: 30px;
-        border: 1px solid #727273;
-        border-radius: 50%;
-        text-align: center; font-size: 16px; line-height: 30px;
-        color: #6885a6; text-decoration: none;
-        transition: all 0.2s;
-        &:hover { background: #ffbb20; color: #000; border-color: #ffbb20; }
-      }
+    li a {
+      display: block; width: 30px; height: 30px;
+      border: 1px solid #727273; border-radius: 50%;
+      text-align: center; font-size: 16px; line-height: 30px;
+      color: #6885a6; text-decoration: none; transition: all 0.2s;
+      &:hover { background: #ffbb20; color: #000; border-color: #ffbb20; }
     }
   }
 }
@@ -92,14 +98,10 @@ ul.footerLInk {
     }
 
     &.admisson a {
-      color: #fff;
-      font-size: 14px;
-      text-transform: uppercase;
-      font-weight: 900;
+      color: #fff; font-size: 14px; text-transform: uppercase; font-weight: 900;
       background: linear-gradient(to right, #9a1428 10%, #6885a6 50%, #fff 60%);
       background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: textclip 1.5s linear infinite;
       display: inline-block;
@@ -107,9 +109,7 @@ ul.footerLInk {
   }
 }
 
-@keyframes textclip {
-  to { background-position: 200% center; }
-}
+@keyframes textclip { to { background-position: 200% center; } }
 
 .footerContent p {
   font-size: 16px; color: #6885a6; line-height: 24px;
@@ -117,27 +117,36 @@ ul.footerLInk {
 }
 
 .footer .footer_bottom {
-  width: 100%;
-  background: #001b2e;
-  padding: 24px 0;
-  font-size: 15px;
-  color: #fff;
-  text-align: center;
-  clear: left; float: left;
-
+  width: 100%; background: #001b2e;
+  padding: 24px 0; font-size: 15px; color: #fff;
+  text-align: center; clear: left; float: left;
   a { color: #7bb6e7; text-decoration: none; }
 }
 
-/* Responsive footer */
-@media (max-width: 767px) {
-  .footer .footer_linkswrap {
-    padding: 30px 0;
+/* ── WhatsApp floating icon ────────────────────────────────── */
+.whatsuplink {
+  position: fixed;
+  bottom: 80px; left: 15px;    /* live site has it bottom-left */
+  z-index: 9990;
 
-    .col-md-3 { margin-bottom: 30px; }
-
-    section ul.address { float: none; clear: both; }
-    section ul.socialicon { float: none; clear: both; }
+  a {
+    display: block;
+    img {
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+      &:hover { transform: scale(1.1); }
+    }
   }
+}
 
-  ul.footerLInk li { float: none; clear: both; }
+/* ── Scroll top ────────────────────────────────────────────── */
+.scroll-top {
+  position: fixed; right: 20px; bottom: 20px;
+  display: flex; align-items: center; justify-content: center;
+  width: 45px; height: 45px; font-size: 20px; color: #fff;
+  border: none; background: #9a1428; cursor: pointer;
+  z-index: 9989; border-radius: 4px; transition: background 0.2s;
+  &:hover { background: #890a1e; }
 }

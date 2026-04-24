@@ -3,12 +3,25 @@ import InnerPage from "@/components/InnerPage";
 
 export const metadata: Metadata = { title: "From the Principal's Desk" };
 
+const SIDEBAR_LINKS = [
+  { label: "Symbolism of School Logo", href: "/about/school-logo" },
+  { label: "Our Mission & Vision", href: "/about/mission-vision" },
+  { label: "From the Chairman's Desk", href: "/about/chairmans-desk" },
+  { label: "From the Manager's Desk", href: "/about/managers-desk" },
+  { label: "From the Principal's Desk", href: "/about/principals-desk" },
+  { label: "Managing Committee", href: "/about/managing-committee" },
+  { label: "Anger Free School", href: "/about/anger-free-school" },
+  { label: "Mandatory Public Disclosure", href: "/about/mandatory-disclosure" },
+];
+
 export default function Page() {
   return (
-    <InnerPage title="From the Principal's Desk" breadcrumbs={[]}>
-      <div className="inner-content">
-        <p>On behalf of the Management, staff and the school community, I extend to all our parents and children a very warm welcome. Education is about shaping young minds into responsible, compassionate, and capable individuals.</p>
-      </div>
-    </InnerPage>
+    <InnerPage
+      title="From the Principal's Desk"
+      breadcrumbs={[{ label: "About Us" }]}
+      sectionTitle="About Us"
+      sidebarLinks={SIDEBAR_LINKS}
+    >
+      <p>On behalf of the Management, staff and the school community, I extend to all our parents and children a very warm welcome. Education is about shaping young minds into responsible, compassionate, and capable individuals.</p></InnerPage>
   );
 }

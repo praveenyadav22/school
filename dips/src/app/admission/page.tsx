@@ -6,9 +6,6 @@ export const metadata: Metadata = { title: "Admission" };
 export default function Page() {
   return (
     <InnerPage title="Admission" breadcrumbs={[]}>
-      <div className="inner-content">
-        <p>De Indian Public School welcomes applications for all classes from Pre-School to Class XI. Admissions are conducted as per CBSE and Directorate of Education guidelines.</p><p>To apply, please fill the Admission Enquiry form or visit the school office during working hours.</p>
-      </div>
-    </InnerPage>
+      <p>De Indian Public School welcomes applications for all classes from Pre-School to Class XI. Admissions are conducted as per CBSE and Directorate of Education guidelines.</p><p>To apply, please fill the Admission Enquiry form or visit the school office during working hours.</p></InnerPage>
   );
 }
