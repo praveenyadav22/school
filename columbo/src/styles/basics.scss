@@ -917,7 +917,7 @@ footer {
   width: 100%;
   min-height: 100px;
   padding: 80px 20px 0;
-  background: linear-gradient(135deg, #8B0000 0%, #6B0000 50%, #4A0000 100%);
+  background: #ffffff;
   position: relative;
 
   .main_content {
@@ -937,7 +937,7 @@ footer {
 }
 
 .footer_link {
-  color: rgba(255, 255, 255, 0.8);
+  color:var(--color-black);
   font-size: 14px;
   line-height: 1.5;
   margin: 0;
@@ -958,7 +958,7 @@ footer {
 
   span,
   a {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color:var(--color-black);
   }
 
   &:hover {
@@ -983,16 +983,22 @@ footer {
   color: white;
   margin: 8px 4px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid #212121;
   @include transition;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
   &:hover {
     background-color: var(--colorAccent2);
     color: $colorPrimary;
     border-color: var(--colorAccent2);
+  }
+  > svg {
+    fill:black;
   }
 }
 

@@ -74,26 +74,26 @@ export default function Footer() {
             <span className="footer_heading">Get In Touch</span>
             <div className="column_alignment footer_sub_content" style={{ display: 'flex' }}>
               <a href="#" className="footer_link row_alignment">
-                <MapPin size={16} style={{ margin: '4px 8px 0 0', color: 'var(--colorAccent2)', flexShrink: 0 }} />
-                <span style={{ color: 'rgba(255,255,255,0.8)' }}>
+                <MapPin size={16} style={{ margin: '4px 8px 0 0', color: 'var(--color-black)', flexShrink: 0 }} />
+                <span>
                   Address: Maharana Partap Enclave,<br />Pitam Pura, New Delhi-110034
                 </span>
               </a>
               <div className="footer_link row_alignment">
-                <Phone size={16} style={{ margin: '4px 8px 0 0', color: 'var(--colorAccent2)', flexShrink: 0 }} />
+                <Phone size={16} style={{ margin: '4px 8px 0 0', color: 'var(--color-black)', flexShrink: 0 }} />
                 <div className="column_alignment">
                   <div className="row_alignment">
-                    <span style={{ color: 'rgba(255,255,255,0.8)' }}>Phone:&nbsp;</span>
-                    <a href="tel:+919355185555" style={{ color: 'rgba(255,255,255,0.8)' }}>+91 9355185555</a>
+                    <span>Phone:&nbsp;</span>
+                    <a href="tel:+919355185555">+91 9355185555</a>
                   </div>
-                  <a href="tel:011-42458061" style={{ color: 'rgba(255,255,255,0.8)' }}>011-42458061-62</a>
+                  <a href="tel:011-42458061">011-42458061-62</a>
                 </div>
               </div>
               <a href="mailto:stcolumbo@gmail.com" className="footer_link row_alignment">
-                <Mail size={16} style={{ margin: '4px 8px 0 0', color: 'var(--colorAccent2)', flexShrink: 0 }} />
-                <span style={{ color: 'rgba(255,255,255,0.8)' }}>Email: stcolumbo@gmail.com</span>
+                <Mail size={16} style={{ margin: '4px 8px 0 0', color: 'var(--color-black)', flexShrink: 0 }} />
+                <span>Email: stcolumbo@gmail.com</span>
               </a>
-              <span style={{ fontSize: 12, color: 'white', margin: '12px 0 0' }}>Follow Us:</span>
+              <span className="mt-2">Follow Us:</span>
               <div className="row_alignment wrap">
                 <a href="https://www.instagram.com/stcolumboschool" target="_blank" className="footer_social_link">
                   <InstagramIcon size={14} />
