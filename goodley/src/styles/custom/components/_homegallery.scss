@@ -1,3 +1,108 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+// ── Home Gallery Section ──────────────────────────────────────
+.gallery-cardlist {
+  @include flexbox();
+  gap: 16px;
+  background: var(--color-white);
+  border: 1px solid #e9e9e9;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 16px;
+
+  &__imgwrap {
+    width: 140px;
+    min-width: 140px;
+    img.u-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__content {
+    padding: 12px;
+    flex: 1;
+
+    &--titel {
+      font-size: var(--fontSize15);
+      font-weight: var(--fontSemiBold);
+      color: var(--color-secondary);
+      margin: 0 0 8px;
+    }
+
+    &--meta {
+      @include flex-center-vert;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    &--postedwrap {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .list.date {
+        font-size: var(--fontSize13);
+        color: #777;
+
+        .value {
+          font-weight: var(--fontSemiBold);
+          color: var(--color-secondary);
+        }
+      }
+    }
+  }
+
+  .default-btn {
+    font-size: var(--fontSize13);
+    padding: 4px 14px;
+    border-radius: 20px;
+    background: var(--color-primary);
+    color: #000;
+    border: 1px solid var(--color-primary-border);
+    @include transition(all 0.2s ease);
+
+    &:hover {
+      background: #e6b100;
+      color: #000;
+    }
+  }
+
+  // Video variant
+  &.v2 .gallery-cardlist__imgwrap {
+    width: 200px;
+    min-width: 200px;
+  }
+
+  .o-video {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+
+    iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    &__overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: transparent;
+    }
+  }
+}
+
+.customhead__24 {
+  font-size: var(--fontSize24);
+  font-weight: var(--fontSemiBold);
+  color: var(--color-secondary);
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 8px;
+}

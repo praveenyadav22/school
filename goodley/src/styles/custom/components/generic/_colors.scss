@@ -1,3 +1,13 @@
 @use "../../core/variables" as *;
-@use "../../core/mixins" as *;
-// placeholder
+
+// ── Utility color classes ──────────────────────────────────────
+.color-primary   { color: var(--color-primary); }
+.color-secondary { color: var(--color-secondary); }
+.color-white     { color: var(--color-white); }
+.color-black     { color: var(--color-black); }
+.color-grey      { color: var(--color-grey); }
+
+.bg-primary   { background-color: var(--color-primary); }
+.bg-secondary { background-color: var(--color-secondary); }
+.bg-white     { background-color: var(--color-white); }
+.bg-light     { background-color: var(--color-light-grey); }

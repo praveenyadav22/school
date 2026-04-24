@@ -63,39 +63,27 @@
   // ── Base colours ──────────────────────────────────────────
   --color-white:      #ffffff;
   --color-black:      #000000;
-  --color-grey:       #f7f7f7;
-  --color-grey2:      #f9f9f9;
-  --color-light-grey: #eeeeee;
+  --color-grey:       #454a53;
+  --color-grey2:       #474b54;
+  --color-light-grey:       #e9e9e9;
+
 
   // ── Brand colours (from original site CSS) ───────────────
-  --color-primary:        #ffac00;   // amber – hover, bullets, headings
-  --color-primary-hover:  #ffb825;   // lighter amber – link hover
-  --color-primary2:       #f5cb01;
+  --color-primary:        #ffc500;  
+  --color-secondary:        #1e6c84;  
+  --color-primary-border:       #e6b100;  
+ 
 
-  // ── Dark navy palette (from #333a65 / #293058) ───────────
-  --color-dark-navy:      #333a65;   // footer bg, sticky nav bg, btn bg
-  --color-darker-navy:    #293058;   // footer ::before left panel
-  --color-navy-overlay:   #ffffff1f; // footer copy bar
 
   // ── Accent colours ────────────────────────────────────────
-  --color-accent-blue:    #333a65;
-  --color-accent-blue2:   #2a2f52;
-  --color-accent-blue3:   #293058;
-  --color-accent-blue4:   #d9edf7;
-  --color-accent-link:    #337ab7;
-  --color-accent-orange2: #e45000;
-  --color-accent-orange3: #c84409;
-  --color-accent-orange4: #dd4c0b;
+  --color-accent-blue:    #076a9d;
+  --color-accent-blue2:    #236c83;
+  --color-accent-yellow:    #ffc303;
+  --color-accent-yellow2:    #cc9e00;
+  --color-accent-yellow3:    #ffc10b;
+  --color-accent-yellow4:    #ad870d;
 
-  // ── Topbar ────────────────────────────────────────────────
-  --color-topbar-bg:      rgba(255,255,255,0.14);
-  --color-topbar-border:  rgba(204,204,204,0.25);
-  --color-topbar-text:    #ffffff;
+  
 
-  // ── Navbar ────────────────────────────────────────────────
-  --color-nav-link:          #333a65;
-  --color-nav-link-hover:    #ffac00;
-  --color-nav-dropdown-bg:   #ffffff;
-  --color-nav-dropdown-link: #555555;
-  --color-nav-sticky-bg:     #ffffff;
+
 }

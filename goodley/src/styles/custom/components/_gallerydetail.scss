@@ -1,3 +1,42 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+// ── Gallery Detail ────────────────────────────────────────────
+.galleryWrap {
+  section h2 {
+    font-weight: var(--fontMedium) !important;
+    text-transform: none !important;
+  }
+
+  section .galleryPostWrap.view a {
+    color: #ed2121;
+    font-weight: var(--fontSemiBold) !important;
+    font-size: var(--fontSize12) !important;
+
+    &:hover { color: #14552c; }
+  }
+}
+
+.pagination {
+  display: inline-block;
+
+  button {
+    padding: 4px 16px;
+    text-decoration: none;
+    background: var(--color-grey2);
+    color: var(--color-white);
+    border: 1px solid #cfb80b;
+    border-radius: 20px;
+    @include transition(all 0.3s ease-in-out);
+
+    &:hover {
+      background-color: #f7f7f7;
+      color: #222730;
+    }
+  }
+
+  span {
+    color: #000;
+    font-weight: var(--fontSemiBold);
+  }
+}

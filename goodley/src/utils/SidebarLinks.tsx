@@ -1,91 +1,50 @@
-import Link from "next/link";
+export const ABOUT_US_LINKS = [
+  { label: "About School", href: "/about-us/about-school" },
+  { label: "Nursery @ GPS", href: "/about-us/nursery-gps" },
+  { label: "Managing Director's Profile", href: "/about-us/managing-directors-profile" },
+  { label: "Message From Executive Administrator", href: "/about-us/executive-administrator" },
+  { label: "Principal's Message", href: "/about-us/principals-message" },
+  { label: "Vice Principal's Message", href: "/about-us/vice-principals-message" },
+  { label: "Mandatory Public Disclosure", href: "/about-us/mandatory-public-disclosure" },
+  { label: "Faculty", href: "/about-us/faculty" },
+  { label: "School Committees", href: "/about-us/school-committees" },
+  { label: "Safety & Security", href: "/about-us/safety-security" },
+  { label: "Contact Us", href: "/about-us/contact-us" },
+];
 
-// ── Types ─────────────────────────────────────────────────────
-export interface SubLinkItem {
-  label:      string;
-  href:       string;
-  isExternal?: boolean;
-}
+export const ACADEMICS_LINKS = [
+  { label: "Examination", href: "/academics/examination" },
+  { label: "Promotion Policy", href: "/academics/promotion-policy" },
+  { label: "Assessment Policy", href: "/academics/assessment-policy" },
+  { label: "Curriculum", href: "/academics/curriculum" },
+  { label: "Fee Schedule", href: "/academics/fee-schedule" },
+  { label: "Syllabus", href: "https://erp.quickcampus.online/auth" },
+  { label: "Worksheets", href: "https://erp.quickcampus.online/auth" },
+  { label: "Holiday Homework", href: "https://erp.quickcampus.online/auth" },
+  { label: "Vacancy", href: "/academics/vacancy" },
+];
 
-export interface LinkItem {
-  label:      string;
-  href?:      string;
-  isExternal?: boolean;
-  subLinks?:  SubLinkItem[];
-}
+export const EXTENDED_LINKS = [
+  { label: "Houses", href: "/extended-classrooms/houses" },
+  { label: "Sports and Games", href: "/extended-classrooms/sports-and-games" },
+  { label: "Indian & Western Music", href: "/extended-classrooms/indian-western-music" },
+  { label: "Indian Classical and western Dance", href: "/extended-classrooms/classical-western-dance" },
+  { label: "Clubs", href: "/extended-classrooms/clubs" },
+  { label: "Educational Excursions & Trips", href: "/extended-classrooms/educational-excursions-trips" },
+];
 
-export interface SidebarLinksProps {
-  heading: string;
-  links:   LinkItem[];
-}
+export const ACHIEVEMENTS_LINKS = [
+  { label: "CBSE Results", href: "/achievements/cbse-results" },
+  { label: "Other Achievements", href: "/achievements/awards-achievements" },
+];
 
-// ─────────────────────────────────────────────────────────────
-// SidebarLinks — reusable sidebar navigation widget
-// Supports: internal links, external links, nested sub-lists
-// ─────────────────────────────────────────────────────────────
-const SidebarLinks = ({ heading, links }: SidebarLinksProps) => {
-  return (
-    <div id="slidbarLink" className="important-links quickLinksWrap">
-
-      <h3 className="important-links__head">{heading}</h3>
-
-      <ul className="listitem">
-        {links.map((item, i) => (
-          <li key={i} className={item.subLinks ? "sub-quicklinks" : ""}>
-
-            {/* Main link */}
-            {item.href ? (
-              item.isExternal ? (
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${item.label} (opens in new tab)`}
-                >
-                  {item.label}
-                </a>
-              ) : (
-                <Link href={item.href}>{item.label}</Link>
-              )
-            ) : (
-              // Parent toggle — no navigation, just expands sub-list
-              <button
-                type="button"
-                className="sidebar-parent-btn"
-                aria-expanded={true}
-              >
-                {item.label}
-              </button>
-            )}
-
-            {/* Sub-links */}
-            {item.subLinks && item.subLinks.length > 0 && (
-              <ul className="sub-list">
-                {item.subLinks.map((sub, j) => (
-                  <li key={j}>
-                    {sub.isExternal ? (
-                      <a
-                        href={sub.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${sub.label} (opens in new tab)`}
-                      >
-                        {sub.label}
-                      </a>
-                    ) : (
-                      <Link href={sub.href}>{sub.label}</Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            )}
-
-          </li>
-        ))}
-      </ul>
-
-    </div>
-  );
-};
-
-export default SidebarLinks;
+export const AMENITIES_LINKS = [
+  { label: "Laboratories", href: "/amenities/laboratories" },
+  { label: "Library", href: "/amenities/library" },
+  { label: "Music Studio", href: "/amenities/music-studio" },
+  { label: "Art Studio", href: "/amenities/art-studio" },
+  { label: "Medical Room", href: "/amenities/medical-room" },
+  { label: "Auditorium", href: "/amenities/auditorium" },
+  { label: "Conference Room", href: "/amenities/conference-room" },
+  { label: "Smart Class", href: "/amenities/smart-class" },
+];

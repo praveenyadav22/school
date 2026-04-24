@@ -1,3 +1,17 @@
-@use "../../core/variables" as *;
-@use "../../core/mixins" as *;
-// placeholder
+// ── Width / Height helpers ────────────────────────────────────
+.w-100 { width: 100%; }
+.h-100 { height: 100%; }
+.w-auto { width: auto; }
+
+// ── Flex helpers ──────────────────────────────────────────────
+.d-flex       { display: flex; }
+.flex-1       { flex: 1; }
+.flex-column  { flex-direction: column; }
+.align-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.flex-wrap    { flex-wrap: wrap; }
+.gap-8        { gap: 8px; }
+.gap-16       { gap: 16px; }
+
+// ── Object fit ────────────────────────────────────────────────
+.u-img { width: 100%; height: 100%; object-fit: cover; display: block; }

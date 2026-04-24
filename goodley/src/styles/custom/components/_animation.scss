@@ -1,15 +1,33 @@
-@use '../core/variables' as *;
-@use '../core/mixins' as *;
-@use '../components/generic/sizes' as *;
+@use "../core/variables" as *;
+@use "../core/mixins" as *;
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+// ── Fade animations ───────────────────────────────────────────
+@include keyframes(fadeInDown) {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+@include keyframes(fadeInUp) {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+.sppb-wow.fadeInDown {
+  @include animation(fadeInDown 0.6s ease both);
+}
+
+.sppb-wow.fadeInUp {
+  @include animation(fadeInUp 0.6s ease both);
+}

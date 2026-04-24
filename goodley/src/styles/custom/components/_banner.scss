@@ -1,2 +1,750 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
+
+// ══════════════════════════════════════════════════════════════
+// BULLETIN TICKER
+// ══════════════════════════════════════════════════════════════
+.bulletinTicker {
+  width: 100%;
+  background: var(--color-accent-blue2);
+  border-top: 1px solid #1b5c70;
+  border-bottom: 1px solid #1b5c70;
+  height: 34px;
+  overflow: hidden;
+}
+
+.ticker-wrap {
+  width: 100%;
+  padding: 7px 0;
+  overflow: hidden;
+  marquee { margin: 0; padding: 0; }
+}
+
+.ticker-item {
+  display: inline-block;
+  padding: 0 24px;
+  border-left: 2px solid rgba(255,255,255,0.3);
+  white-space: nowrap;
+  &:first-child { border-left: none; }
+  a {
+    font-size: var(--fontSize13);
+    font-weight: var(--fontMedium);
+    color: #fff;
+    text-decoration: none;
+    &:hover { color: var(--color-primary); }
+  }
+}
+
+.ticker-date {
+  display: inline-block;
+  font-size: var(--fontSize13);
+  font-weight: var(--fontBold);
+  color: var(--color-primary);
+  margin-right: 8px;
+}
+
+// ══════════════════════════════════════════════════════════════
+// BANNER BOTTOM — 3 gold highlight cards
+// Exact match: no extra bottom space, tight flush layout
+// ══════════════════════════════════════════════════════════════
+.bannerBottom {
+  background: var(--color-primary);
+  padding: 0 !important;
+  margin: 0;
+  overflow: hidden;
+}
+
+.higlightInfoBlog {
+  padding: 0;
+  min-height: 0;       // no forced min-height
+
+  &.blog2 { background: #ca9e00; }
+  &.blog3 { background: #8f7101; }
+
+  .title {
+    padding: 8px 16px 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    font-family: Roboto, sans-serif;
+    font-size: 44px;
+    font-weight: var(--fontUltraThin);
+    color: rgba(255,255,255,0.7);
+    line-height: 1;
+    margin: 0;
+  }
+
+  .textSection {
+    padding: 12px 16px 16px;
+
+    h3 {
+      font-family: 'Open Sans', sans-serif;
+      font-size: var(--fontSize16);
+      font-weight: var(--fontSemiBold);
+      color: #fff;
+      margin: 0 0 8px;
+    }
+
+    p {
+      font-size: var(--fontSize13);
+      color: #fff;
+      line-height: 22px;
+      margin: 0;
+
+      b { color: #fff; font-weight: var(--fontBold); }
+
+      a {
+        color: #fff;
+        text-decoration: none;
+        &:hover { opacity: 0.8; }
+        .fa { margin-left: 4px; font-size: var(--fontSize15); }
+      }
+    }
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+// ABOUT THE SCHOOL
+// Exact match from screenshot: large ultra-thin Roboto headings
+// ══════════════════════════════════════════════════════════════
+.aboutSchollWrap {
+  padding: 50px 0 60px;
+  width: 100%;
+
+  // "About the school" heading — ~56px thin
+  h1 {
+    font-family: Roboto, sans-serif;
+    font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: var(--fontUltraThin);
+    letter-spacing: -1px;
+    color: #000;
+    margin: 0 0 30px;
+    padding: 0;
+    line-height: 1;
+  }
+
+  // "Objective" / "Our Mission" — gold, ~40px thin Roboto
+  h2 {
+    font-family: Roboto, sans-serif;
+    font-size: clamp(22px, 3vw, 40px);
+    font-weight: var(--fontLight);
+    color: var(--color-primary);          // gold #ffc500
+    margin: 0 0 12px;
+    line-height: 1;
+  }
+
+  // Body text — large grey ultra-thin (matches the Roboto light grey look)
+  p {
+    font-family: Roboto, sans-serif;
+    font-size: clamp(20px, 2.5vw, 38px);
+    font-weight: var(--fontUltraThin);
+    color: #a0a3ac;
+    line-height: 1.25;
+    margin: 0;
+
+    // "Read more" link inside p
+    a {
+      font-family: 'Open Sans', sans-serif;
+      font-size: var(--fontSize14);
+      font-weight: var(--fontRegular);
+      color: var(--color-secondary);
+      vertical-align: middle;
+      @include transition(color 0.2s ease);
+      &:hover { color: var(--color-primary); }
+      .fa { font-size: var(--fontSize16); margin-left: 5px; }
+    }
+  }
+}
+
+// "Latest News" heading inside aboutSchollWrap col
+.aboutSchollWrap .col-md-4:last-child {
+  h2 {
+    // "Latest News" — same gold/Roboto thin style
+  }
+}
+
+// ── event-block: news card with white bg ──────────────────────
+.event-block {
+  background: #fff;
+  border: 1px solid #e9e9e9;
+  border-radius: 2px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+
+  .event-content {
+    h4.event-title {
+      font-family: 'Open Sans', sans-serif;
+      font-size: var(--fontSize14);
+      font-weight: var(--fontSemiBold);
+      margin: 0 0 5px;
+      line-height: 1.4;
+      a {
+        color: var(--color-secondary);     // teal
+        text-decoration: none;
+        &:hover { color: var(--color-primary); }
+      }
+    }
+    p {
+      font-family: 'Open Sans', sans-serif;
+      font-size: var(--fontSize13);
+      color: #555;
+      line-height: 20px;
+      margin: 0;
+      font-weight: var(--fontRegular);
+    }
+  }
+}
+
+// Read All button
+.btn-theme-colored2 {
+  display: inline-block;
+  background: var(--color-secondary);
+  color: #fff;
+  border-radius: 3px;
+  padding: 8px 22px;
+  font-size: var(--fontSize14);
+  text-decoration: none;
+  margin-top: 10px;
+  @include transition(background 0.2s ease);
+  &:hover { background: #155468; color: #fff; text-decoration: none; }
+}
+
+// ══════════════════════════════════════════════════════════════
+// OUR PHILOSOPHY / OUR VISION  (centre text)
+// ══════════════════════════════════════════════════════════════
+.whychooseustopic { width: 100%; padding-bottom: 30px; }
+
+.centerText {
+  text-align: center;
+
+  h1 {
+    margin: 0;
+    color: #333;
+    font-size: var(--fontSize28);
+    font-family: Roboto, sans-serif;
+    font-weight: var(--fontUltraThin);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-size: var(--fontSize14);
+    color: #555;
+    line-height: 26px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
+
+.aot-separator {
+  height: 1px;
+  background: #e1e1e1;
+  width: 50%;
+  margin: 22px auto;
+  position: relative;
+}
+
+.aot-separator-style {
+  background: #fcfcfc;
+  border-radius: 20px;
+  border: 2px solid #e1e1e1;
+  display: block;
+  height: 9px;
+  left: 50%;
+  margin-left: -4px;
+  margin-top: -4px;
+  position: absolute;
+  width: 9px;
+}
+
+// ══════════════════════════════════════════════════════════════
+// HOME SCHOOL CORNER  ← KEY FIX: 3 columns in ONE horizontal row
+// Screenshot: Tech Club | Art Room | Accordion — same height
+// ══════════════════════════════════════════════════════════════
+.homeSchollcorner {
+  padding-bottom: 60px;
+  width: 100%;
+
+  // Force 3-col horizontal flex row, equal height
+  .row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;    // equal height
+  }
+
+  // Each col — equal height, flex column content
+  [class*="col-sm-3"],
+  [class*="col-sm-6"] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Image + text card (Tech Club, Art Room)
+  section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+
+    figure {
+      margin: 0 0 10px;
+      flex-shrink: 0;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+        @include transition(transform 0.3s ease);
+        &:hover { transform: scale(1.04); }
+      }
+    }
+
+    h2 {
+      font-family: 'Open Sans', sans-serif;
+      font-size: var(--fontSize16);
+      font-weight: var(--fontRegular);
+      color: #222;
+      margin: 8px 0 6px;
+    }
+
+    p {
+      font-size: var(--fontSize13);
+      color: #666;
+      line-height: 20px;
+      margin: 0;
+    }
+  }
+
+  // Responsive: stack vertically on tablet
+  @include mq('tablet', max) {
+    .row {
+      flex-wrap: wrap;
+    }
+    [class*="col-sm-3"],
+    [class*="col-sm-6"] {
+      width: 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+    section figure img {
+      height: 200px;
+    }
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+// GOODLEY ACCORDION (Interactive Library, Smart Class, etc.)
+// Screenshot: yellow active header, dark grey inactive
+// ══════════════════════════════════════════════════════════════
+.googleyAccordian {
+  width: 100%;
+
+  .panel-group { margin: 0; padding: 0; }
+
+  .panel {
+    border: none;
+    border-radius: 0;
+    margin-bottom: 3px;
+    @include box-shadow(none);
+  }
+
+  .panel-heading { padding: 0; }
+
+  // Inactive panel header — dark grey
+  .panel-default > .panel-heading {
+    background: var(--color-grey);    // #454a53
+    border: none;
+    @include transition(background 0.2s ease);
+  }
+
+  // Active panel header — yellow
+  .panel-default.active > .panel-heading,
+  .panel-default > .panel-heading:hover {
+    background: var(--color-primary); // #ffc500
+  }
+
+  // Panel title link row
+  .panel-group .panel .panel-heading h4 {
+    margin: 0;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 14px;
+      cursor: pointer;
+      text-decoration: none;
+
+      > span:first-child {
+        font-family: 'Open Sans', sans-serif;
+        font-size: var(--fontSize14);
+        font-weight: var(--fontRegular);
+        color: #fff;
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      span.icon {
+        width: 20px;
+        flex-shrink: 0;
+        text-align: center;
+        &::before {
+          font: normal normal normal 13px/1 FontAwesome;
+          content: "\f067";   // plus
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  // Active state: minus icon, dark text
+  .panel.active .panel-heading h4 a {
+    > span:first-child { color: #000; }
+    span.icon::before  { content: "\f068"; color: #000; }
+  }
+
+  // Inactive hover — also dark text on yellow
+  .panel-default > .panel-heading:hover h4 a {
+    > span:first-child { color: #000; }
+    span.icon::before  { color: #000; }
+  }
+
+  // Panel body
+  .panel-body {
+    background: #f9f9f9;
+    padding: 14px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: var(--fontSize13);
+    color: #333;
+    line-height: 20px;
+    overflow: hidden;
+
+    img.floatleft {
+      float: left;
+      width: 90px;
+      height: auto;
+      margin-right: 12px;
+      margin-bottom: 8px;
+    }
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+// STUDENT CORNER (parallax)
+// ══════════════════════════════════════════════════════════════
+.highlightCorner {
+  background: url(/images/generic/slider.jpg) center center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 80px 0;
+
+  .heading {
+    font-family: Roboto, sans-serif;
+    font-size: var(--fontSize28);
+    font-weight: var(--fontUltraThin);
+    color: #333;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 50px;
+  }
+
+  section {
+    text-align: center;
+    padding: 0 20px;
+
+    .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      color: #000;
+      font-size: var(--fontSize22);
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-family: 'Open Sans', sans-serif;
+      font-size: var(--fontSize18);
+      font-weight: var(--fontRegular);
+      color: #444;
+      margin: 0 0 10px;
+    }
+
+    p {
+      font-size: var(--fontSize14);
+      color: #444;
+      line-height: 22px;
+      margin: 0;
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+        &:hover { color: #a88300; }
+        .fa { margin-left: 4px; }
+      }
+    }
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+// HOVER GRID (Sports / Music / Dance) — full-width 3-col
+// ══════════════════════════════════════════════════════════════
+.padding0 { padding: 0 !important; }
+
+.grid {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+}
+
+.grid figure {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 0;
+  display: block;
+  min-height: 300px;
+
+  img {
+    display: block;
+    width: calc(100% + 20px);
+    max-width: none;
+    opacity: 0.8;
+    @include transition(opacity 0.35s, transform 0.35s);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  figcaption {
+    position: absolute;
+    inset: 0;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  h2 {
+    font-size: clamp(20px, 2.5vw, 30px);
+    font-weight: var(--fontMedium);
+    position: relative;
+    margin: 0 0 10px;
+    overflow: hidden;
+    padding-bottom: 10px;
+    span { font-weight: var(--fontBolder); }
+    &::after {
+      position: absolute; bottom: 0; left: 0;
+      width: 100%; height: 3px; content: '';
+      @include transition(transform 0.35s);
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+
+  p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: var(--fontSize14);
+    line-height: 22px;
+    margin: 0;
+    opacity: 0;
+    @include transition(opacity 0.35s, transform 0.35s);
+    transform: translate3d(100%, 0, 0);
+  }
+
+  &:hover {
+    img { opacity: 0.4; transform: translate3d(0,0,0); }
+    h2::after { transform: translate3d(0,0,0); }
+    p { opacity: 1; transform: translate3d(0,0,0); }
+  }
+
+  &.first  { background: var(--color-accent-yellow3); }
+  &.second { background: #2da5b7; }
+  &.third  { background: #7ec794; }
+
+  &.first  h2 { color: #735b0d; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+  &.first  h2::after { background: #735b0d; }
+  &.first  p  { color: #735b0d; }
+  &.second h2 { color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+  &.second h2::after { background: #fff; }
+  &.second p  { color: #fff; }
+  &.third  h2 { color: #000; }
+  &.third  h2::after { background: #000; }
+  &.third  p  { color: #000; }
+}
+
+// ── Latest News marquee items ────────────────────────────────
+#news_row article .event-block {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+
+  h4.event-title {
+    font-size: var(--fontSize14);
+    margin: 0 0 4px;
+    a {
+      color: var(--color-secondary);
+      text-decoration: none;
+      &:hover { color: var(--color-primary); }
+    }
+  }
+}
+
+// ── about-cols-row flex ───────────────────────────────────────
+.about-cols-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+  width: 100%;
+  > [class*="col-"] { padding: 0 15px; }
+}
+
+// ══════════════════════════════════════════════════════════════
+// RESPONSIVE
+// ══════════════════════════════════════════════════════════════
+@include mq('tablet', max) {
+  .highlightCorner { padding: 50px 0; background-attachment: scroll; }
+  .homeSchollcorner { padding-bottom: 30px; }
+  .aboutSchollWrap { padding: 30px 0 40px; }
+  .higlightInfoBlog .title { font-size: 30px; }
+  .grid figure { min-height: 240px; }
+  .highlightCorner .heading { margin-bottom: 30px; }
+  .about-cols-row { flex-direction: column; }
+}
+
+// ── homeSchollcorner 3-col horizontal row ─────────────────────
+.hsc-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  margin: 0 -15px;
+
+  > [class*="col-"] {
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include mq('tablet', max) {
+    flex-wrap: wrap;
+    > [class*="col-"] {
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+// HSC-ROW — 3-column horizontal layout for school corner
+// (replaces Bootstrap col-sm-3/col-sm-6 with clean flexbox)
+// ══════════════════════════════════════════════════════════════
+.hsc-row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;   // equal height for all 3 cols
+  gap: 0;
+  width: 100%;
+}
+
+.hsc-col {
+  flex: 1;                // equal width
+  display: flex;
+  flex-direction: column;
+  padding: 0 12px;
+
+  &--wide {
+    flex: 2;              // accordion gets double width (like col-sm-6 vs col-sm-3)
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+
+    figure {
+      margin: 0 0 12px;
+      flex-shrink: 0;
+
+      img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+        @include transition(transform 0.3s ease);
+        &:hover { transform: scale(1.04); }
+      }
+    }
+
+    h2 {
+      font-family: 'Open Sans', sans-serif;
+      font-size: var(--fontSize16);
+      font-weight: var(--fontRegular);
+      color: #222;
+      margin: 0 0 8px;
+    }
+
+    p {
+      font-size: var(--fontSize13);
+      color: #666;
+      line-height: 20px;
+      margin: 0;
+    }
+  }
+
+  @include mq('tablet', max) {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 0 20px;
+    &--wide { flex: 0 0 100%; }
+  }
+}
+
+// On tablet: stack vertically
+.homeSchollcorner {
+  padding-bottom: 60px;
+  width: 100%;
+
+  @include mq('tablet', max) {
+    .hsc-row {
+      flex-direction: column;
+    }
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+// FORCE ACCORDION PANEL BODY VISIBLE — override Bootstrap 5 collapse
+// ══════════════════════════════════════════════════════════════
+.googleyAccordian {
+  .panel-collapse {
+    display: block !important;   // override Bootstrap5 .collapse{display:none}
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .panel-body {
+    display: block !important;
+    background: #f9f9f9 !important;
+    padding: 14px !important;
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 13px !important;
+    color: #333 !important;
+    line-height: 20px !important;
+    overflow: hidden;
+    border: none !important;
+    border-radius: 0 !important;
+
+    img.floatleft {
+      float: left;
+      width: 90px;
+      height: auto;
+      margin-right: 12px;
+      margin-bottom: 8px;
+    }
+  }
+}

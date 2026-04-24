@@ -1,3 +1,38 @@
 @use "../core/variables" as *;
 @use "../core/mixins" as *;
-// placeholder
+
+// ── Social Media Icons ────────────────────────────────────────
+.social__mediaSection {
+  ul {
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+      a {
+        display: block;
+        color: #2d3e50;
+        background: var(--color-white);
+        text-align: center;
+        @include transition(background 0.2s ease);
+
+        &:hover, &:focus { background: #e2e8ee; }
+      }
+
+      &.facebook__color a  { color: #3b5998; }
+      &.twitter__color a   { color: #00aeef; }
+      &.linkedin__color a  { color: #1f7bc2; }
+      &.youtube__color a   { color: #d62423; }
+      &.instagram__color a { color: #2c5987; }
+    }
+  }
+
+  &-horizontal ul li { float: left; }
+
+  &-width30 ul li a {
+    width: 30px;
+    height: 30px;
+    span { line-height: 30px; }
+  }
+}
